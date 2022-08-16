@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "dotenv -v NODE_ENV=development -v BASE_ENV=development webpack-dev-server",
+    "dev": "dotenv -v NODE_ENV=development webpack-dev-server",
     "dev:test": "dotenv -e .env.test -v NODE_ENV=development webpack-dev-server",
-    "dev:prod": "cross-env NODE_ENV=development webpack-dev-server",
-    "build:prod": "cross-env NODE_ENV=production webpack",
-    "build:analy": "cross-env NODE_ENV=production webpack -c build/webpack.analy.js"
+    "dev:prod": "dotenv NODE_ENV=development webpack-dev-server",
+    "build:prod": "dotenv NODE_ENV=production webpack",
+    "build:analy": "dotenv NODE_ENV=production webpack build/webpack.analy.js"
   },
   "keywords": [],
   "author": "",
