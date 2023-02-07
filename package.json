@@ -8,8 +8,8 @@
     "dev": "dotenv -v NODE_ENV=development webpack-dev-server",
     "dev:test": "dotenv -e .env.test -v NODE_ENV=development webpack-dev-server",
     "dev:prod": "dotenv NODE_ENV=development webpack-dev-server",
-    "build:prod": "dotenv NODE_ENV=production webpack",
-    "build:analy": "dotenv NODE_ENV=production webpack build/webpack.analy.js"
+    "build:prod": "dotenv -v NODE_ENV=production webpack",
+    "build:analy": "dotenv -v NODE_ENV=production webpack build/webpack.analy.js"
   },
   "keywords": [],
   "author": "",

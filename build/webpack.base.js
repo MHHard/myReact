@@ -2,6 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer"); // 引入分析打包结果插件
+
 const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
 console.log(8888, process.env.NODE_ENV);
 module.exports = {
@@ -93,6 +95,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       process: "process/browser",
     }),
+    new BundleAnalyzerPlugin(), // 配置分析打包结果插件
   ],
   cache: {
     type: "filesystem", // 使用文件缓存

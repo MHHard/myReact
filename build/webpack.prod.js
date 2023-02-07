@@ -79,6 +79,15 @@ module.exports = {
           chunks: "initial", // 只提取初始化就能获取到的模块,不管异步的
           minSize: 0, // 提取代码体积大于0就提取出来
         },
+        // terraMoney: {
+        //   name: "terraMoney",
+        //   test: (module) => {
+        //     return /terra-money/.test(module.context);
+        //   },
+        //   chunks: "all",
+        //   priority: 13,
+        //   enforce: true,//为true时，忽略minSize，minChunks，maxAsyncRequests和maxInitialRequests外面选项
+        // },
       },
     },
   },
