@@ -1,2 +1,2 @@
 # myReact
-webpack5+react8+ts
+webpack5+react18+ts
