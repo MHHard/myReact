@@ -1,0 +1,3717 @@
+/**
+ * @fileoverview gRPC-Web generated client stub for sgn.gateway.v1
+ * @enhanceable
+ * @public
+ */
+
+// GENERATED CODE -- DO NOT EDIT!
+
+
+/* eslint-disable */
+// @ts-nocheck
+
+
+import * as grpcWeb from 'grpc-web';
+
+import * as sdk_service_rfq_user_pb from '../sdk/service/rfq/user_pb';
+import * as gateway_gateway_pb from '../gateway/gateway_pb';
+import * as sgn_health_v1_health_pb from '../sgn/health/v1/health_pb';
+
+
+export class WebClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname;
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodInfoGetTransferConfigs = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTransferConfigs',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTransferConfigsRequest,
+    gateway_gateway_pb.GetTransferConfigsResponse,
+    (request: gateway_gateway_pb.GetTransferConfigsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTransferConfigsResponse.deserializeBinary
+  );
+
+  getTransferConfigs(
+    request: gateway_gateway_pb.GetTransferConfigsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTransferConfigsResponse>;
+
+  getTransferConfigs(
+    request: gateway_gateway_pb.GetTransferConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferConfigsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTransferConfigsResponse>;
+
+  getTransferConfigs(
+    request: gateway_gateway_pb.GetTransferConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferConfigsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTransferConfigs',
+        request,
+        metadata || {},
+        this.methodInfoGetTransferConfigs,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTransferConfigs',
+    request,
+    metadata || {},
+    this.methodInfoGetTransferConfigs);
+  }
+
+  methodInfoGetTransferConfigsForAll = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTransferConfigsForAll',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTransferConfigsRequest,
+    gateway_gateway_pb.GetTransferConfigsResponse,
+    (request: gateway_gateway_pb.GetTransferConfigsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTransferConfigsResponse.deserializeBinary
+  );
+
+  getTransferConfigsForAll(
+    request: gateway_gateway_pb.GetTransferConfigsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTransferConfigsResponse>;
+
+  getTransferConfigsForAll(
+    request: gateway_gateway_pb.GetTransferConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferConfigsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTransferConfigsResponse>;
+
+  getTransferConfigsForAll(
+    request: gateway_gateway_pb.GetTransferConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferConfigsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTransferConfigsForAll',
+        request,
+        metadata || {},
+        this.methodInfoGetTransferConfigsForAll,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTransferConfigsForAll',
+    request,
+    metadata || {},
+    this.methodInfoGetTransferConfigsForAll);
+  }
+
+  methodInfoGetRfqConfigs = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetRfqConfigs',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetRfqConfigsRequest,
+    gateway_gateway_pb.GetRfqConfigsResponse,
+    (request: gateway_gateway_pb.GetRfqConfigsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetRfqConfigsResponse.deserializeBinary
+  );
+
+  getRfqConfigs(
+    request: gateway_gateway_pb.GetRfqConfigsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetRfqConfigsResponse>;
+
+  getRfqConfigs(
+    request: gateway_gateway_pb.GetRfqConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetRfqConfigsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetRfqConfigsResponse>;
+
+  getRfqConfigs(
+    request: gateway_gateway_pb.GetRfqConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetRfqConfigsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetRfqConfigs',
+        request,
+        metadata || {},
+        this.methodInfoGetRfqConfigs,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetRfqConfigs',
+    request,
+    metadata || {},
+    this.methodInfoGetRfqConfigs);
+  }
+
+  methodInfoRfqPrice = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/RfqPrice',
+    grpcWeb.MethodType.UNARY,
+    sdk_service_rfq_user_pb.PriceRequest,
+    sdk_service_rfq_user_pb.PriceResponse,
+    (request: sdk_service_rfq_user_pb.PriceRequest) => {
+      return request.serializeBinary();
+    },
+    sdk_service_rfq_user_pb.PriceResponse.deserializeBinary
+  );
+
+  rfqPrice(
+    request: sdk_service_rfq_user_pb.PriceRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sdk_service_rfq_user_pb.PriceResponse>;
+
+  rfqPrice(
+    request: sdk_service_rfq_user_pb.PriceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sdk_service_rfq_user_pb.PriceResponse) => void): grpcWeb.ClientReadableStream<sdk_service_rfq_user_pb.PriceResponse>;
+
+  rfqPrice(
+    request: sdk_service_rfq_user_pb.PriceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sdk_service_rfq_user_pb.PriceResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/RfqPrice',
+        request,
+        metadata || {},
+        this.methodInfoRfqPrice,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/RfqPrice',
+    request,
+    metadata || {},
+    this.methodInfoRfqPrice);
+  }
+
+  methodInfoRfqQuote = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/RfqQuote',
+    grpcWeb.MethodType.UNARY,
+    sdk_service_rfq_user_pb.QuoteRequest,
+    sdk_service_rfq_user_pb.QuoteResponse,
+    (request: sdk_service_rfq_user_pb.QuoteRequest) => {
+      return request.serializeBinary();
+    },
+    sdk_service_rfq_user_pb.QuoteResponse.deserializeBinary
+  );
+
+  rfqQuote(
+    request: sdk_service_rfq_user_pb.QuoteRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sdk_service_rfq_user_pb.QuoteResponse>;
+
+  rfqQuote(
+    request: sdk_service_rfq_user_pb.QuoteRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sdk_service_rfq_user_pb.QuoteResponse) => void): grpcWeb.ClientReadableStream<sdk_service_rfq_user_pb.QuoteResponse>;
+
+  rfqQuote(
+    request: sdk_service_rfq_user_pb.QuoteRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sdk_service_rfq_user_pb.QuoteResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/RfqQuote',
+        request,
+        metadata || {},
+        this.methodInfoRfqQuote,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/RfqQuote',
+    request,
+    metadata || {},
+    this.methodInfoRfqQuote);
+  }
+
+  methodInfoRfqMark = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/RfqMark',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.RfqMarkRequest,
+    gateway_gateway_pb.RfqMarkResponse,
+    (request: gateway_gateway_pb.RfqMarkRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.RfqMarkResponse.deserializeBinary
+  );
+
+  rfqMark(
+    request: gateway_gateway_pb.RfqMarkRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.RfqMarkResponse>;
+
+  rfqMark(
+    request: gateway_gateway_pb.RfqMarkRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.RfqMarkResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.RfqMarkResponse>;
+
+  rfqMark(
+    request: gateway_gateway_pb.RfqMarkRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.RfqMarkResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/RfqMark',
+        request,
+        metadata || {},
+        this.methodInfoRfqMark,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/RfqMark',
+    request,
+    metadata || {},
+    this.methodInfoRfqMark);
+  }
+
+  methodInfoRfqGetRefundExecMsgCallData = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/RfqGetRefundExecMsgCallData',
+    grpcWeb.MethodType.UNARY,
+    sdk_service_rfq_user_pb.GetRefundExecMsgCallDataRequest,
+    sdk_service_rfq_user_pb.GetRefundExecMsgCallDataResponse,
+    (request: sdk_service_rfq_user_pb.GetRefundExecMsgCallDataRequest) => {
+      return request.serializeBinary();
+    },
+    sdk_service_rfq_user_pb.GetRefundExecMsgCallDataResponse.deserializeBinary
+  );
+
+  rfqGetRefundExecMsgCallData(
+    request: sdk_service_rfq_user_pb.GetRefundExecMsgCallDataRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sdk_service_rfq_user_pb.GetRefundExecMsgCallDataResponse>;
+
+  rfqGetRefundExecMsgCallData(
+    request: sdk_service_rfq_user_pb.GetRefundExecMsgCallDataRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sdk_service_rfq_user_pb.GetRefundExecMsgCallDataResponse) => void): grpcWeb.ClientReadableStream<sdk_service_rfq_user_pb.GetRefundExecMsgCallDataResponse>;
+
+  rfqGetRefundExecMsgCallData(
+    request: sdk_service_rfq_user_pb.GetRefundExecMsgCallDataRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sdk_service_rfq_user_pb.GetRefundExecMsgCallDataResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/RfqGetRefundExecMsgCallData',
+        request,
+        metadata || {},
+        this.methodInfoRfqGetRefundExecMsgCallData,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/RfqGetRefundExecMsgCallData',
+    request,
+    metadata || {},
+    this.methodInfoRfqGetRefundExecMsgCallData);
+  }
+
+  methodInfoGetTokenInfo = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTokenInfo',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTokenInfoRequest,
+    gateway_gateway_pb.GetTokenInfoResponse,
+    (request: gateway_gateway_pb.GetTokenInfoRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTokenInfoResponse.deserializeBinary
+  );
+
+  getTokenInfo(
+    request: gateway_gateway_pb.GetTokenInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTokenInfoResponse>;
+
+  getTokenInfo(
+    request: gateway_gateway_pb.GetTokenInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTokenInfoResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTokenInfoResponse>;
+
+  getTokenInfo(
+    request: gateway_gateway_pb.GetTokenInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTokenInfoResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTokenInfo',
+        request,
+        metadata || {},
+        this.methodInfoGetTokenInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTokenInfo',
+    request,
+    metadata || {},
+    this.methodInfoGetTokenInfo);
+  }
+
+  methodInfoEstimateAmt = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/EstimateAmt',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.EstimateAmtRequest,
+    gateway_gateway_pb.EstimateAmtResponse,
+    (request: gateway_gateway_pb.EstimateAmtRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.EstimateAmtResponse.deserializeBinary
+  );
+
+  estimateAmt(
+    request: gateway_gateway_pb.EstimateAmtRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.EstimateAmtResponse>;
+
+  estimateAmt(
+    request: gateway_gateway_pb.EstimateAmtRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.EstimateAmtResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.EstimateAmtResponse>;
+
+  estimateAmt(
+    request: gateway_gateway_pb.EstimateAmtRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.EstimateAmtResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/EstimateAmt',
+        request,
+        metadata || {},
+        this.methodInfoEstimateAmt,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/EstimateAmt',
+    request,
+    metadata || {},
+    this.methodInfoEstimateAmt);
+  }
+
+  methodInfoEstimateAmtForSVC = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/EstimateAmtForSVC',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.EstimateAmtRequest,
+    gateway_gateway_pb.EstimateAmtResponse,
+    (request: gateway_gateway_pb.EstimateAmtRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.EstimateAmtResponse.deserializeBinary
+  );
+
+  estimateAmtForSVC(
+    request: gateway_gateway_pb.EstimateAmtRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.EstimateAmtResponse>;
+
+  estimateAmtForSVC(
+    request: gateway_gateway_pb.EstimateAmtRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.EstimateAmtResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.EstimateAmtResponse>;
+
+  estimateAmtForSVC(
+    request: gateway_gateway_pb.EstimateAmtRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.EstimateAmtResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/EstimateAmtForSVC',
+        request,
+        metadata || {},
+        this.methodInfoEstimateAmtForSVC,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/EstimateAmtForSVC',
+    request,
+    metadata || {},
+    this.methodInfoEstimateAmtForSVC);
+  }
+
+  methodInfoGetTransferStatus = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTransferStatus',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTransferStatusRequest,
+    gateway_gateway_pb.GetTransferStatusResponse,
+    (request: gateway_gateway_pb.GetTransferStatusRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTransferStatusResponse.deserializeBinary
+  );
+
+  getTransferStatus(
+    request: gateway_gateway_pb.GetTransferStatusRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTransferStatusResponse>;
+
+  getTransferStatus(
+    request: gateway_gateway_pb.GetTransferStatusRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferStatusResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTransferStatusResponse>;
+
+  getTransferStatus(
+    request: gateway_gateway_pb.GetTransferStatusRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferStatusResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTransferStatus',
+        request,
+        metadata || {},
+        this.methodInfoGetTransferStatus,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTransferStatus',
+    request,
+    metadata || {},
+    this.methodInfoGetTransferStatus);
+  }
+
+  methodInfoGetTransferRelayInfo = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTransferRelayInfo',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTransferRelayInfoRequest,
+    gateway_gateway_pb.GetTransferRelayInfoResponse,
+    (request: gateway_gateway_pb.GetTransferRelayInfoRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTransferRelayInfoResponse.deserializeBinary
+  );
+
+  getTransferRelayInfo(
+    request: gateway_gateway_pb.GetTransferRelayInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTransferRelayInfoResponse>;
+
+  getTransferRelayInfo(
+    request: gateway_gateway_pb.GetTransferRelayInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferRelayInfoResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTransferRelayInfoResponse>;
+
+  getTransferRelayInfo(
+    request: gateway_gateway_pb.GetTransferRelayInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferRelayInfoResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTransferRelayInfo',
+        request,
+        metadata || {},
+        this.methodInfoGetTransferRelayInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTransferRelayInfo',
+    request,
+    metadata || {},
+    this.methodInfoGetTransferRelayInfo);
+  }
+
+  methodInfoGetLPInfoList = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetLPInfoList',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetLPInfoListRequest,
+    gateway_gateway_pb.GetLPInfoListResponse,
+    (request: gateway_gateway_pb.GetLPInfoListRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetLPInfoListResponse.deserializeBinary
+  );
+
+  getLPInfoList(
+    request: gateway_gateway_pb.GetLPInfoListRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetLPInfoListResponse>;
+
+  getLPInfoList(
+    request: gateway_gateway_pb.GetLPInfoListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetLPInfoListResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetLPInfoListResponse>;
+
+  getLPInfoList(
+    request: gateway_gateway_pb.GetLPInfoListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetLPInfoListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetLPInfoList',
+        request,
+        metadata || {},
+        this.methodInfoGetLPInfoList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetLPInfoList',
+    request,
+    metadata || {},
+    this.methodInfoGetLPInfoList);
+  }
+
+  methodInfoWithdrawLiquidity = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/WithdrawLiquidity',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.WithdrawLiquidityRequest,
+    gateway_gateway_pb.WithdrawLiquidityResponse,
+    (request: gateway_gateway_pb.WithdrawLiquidityRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.WithdrawLiquidityResponse.deserializeBinary
+  );
+
+  withdrawLiquidity(
+    request: gateway_gateway_pb.WithdrawLiquidityRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.WithdrawLiquidityResponse>;
+
+  withdrawLiquidity(
+    request: gateway_gateway_pb.WithdrawLiquidityRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.WithdrawLiquidityResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.WithdrawLiquidityResponse>;
+
+  withdrawLiquidity(
+    request: gateway_gateway_pb.WithdrawLiquidityRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.WithdrawLiquidityResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/WithdrawLiquidity',
+        request,
+        metadata || {},
+        this.methodInfoWithdrawLiquidity,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/WithdrawLiquidity',
+    request,
+    metadata || {},
+    this.methodInfoWithdrawLiquidity);
+  }
+
+  methodInfoEstimateWithdrawAmt = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/EstimateWithdrawAmt',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.EstimateWithdrawAmtRequest,
+    gateway_gateway_pb.EstimateWithdrawAmtResponse,
+    (request: gateway_gateway_pb.EstimateWithdrawAmtRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.EstimateWithdrawAmtResponse.deserializeBinary
+  );
+
+  estimateWithdrawAmt(
+    request: gateway_gateway_pb.EstimateWithdrawAmtRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.EstimateWithdrawAmtResponse>;
+
+  estimateWithdrawAmt(
+    request: gateway_gateway_pb.EstimateWithdrawAmtRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.EstimateWithdrawAmtResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.EstimateWithdrawAmtResponse>;
+
+  estimateWithdrawAmt(
+    request: gateway_gateway_pb.EstimateWithdrawAmtRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.EstimateWithdrawAmtResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/EstimateWithdrawAmt',
+        request,
+        metadata || {},
+        this.methodInfoEstimateWithdrawAmt,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/EstimateWithdrawAmt',
+    request,
+    metadata || {},
+    this.methodInfoEstimateWithdrawAmt);
+  }
+
+  methodInfoQueryLiquidityStatus = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/QueryLiquidityStatus',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.QueryLiquidityStatusRequest,
+    gateway_gateway_pb.QueryLiquidityStatusResponse,
+    (request: gateway_gateway_pb.QueryLiquidityStatusRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.QueryLiquidityStatusResponse.deserializeBinary
+  );
+
+  queryLiquidityStatus(
+    request: gateway_gateway_pb.QueryLiquidityStatusRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.QueryLiquidityStatusResponse>;
+
+  queryLiquidityStatus(
+    request: gateway_gateway_pb.QueryLiquidityStatusRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.QueryLiquidityStatusResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.QueryLiquidityStatusResponse>;
+
+  queryLiquidityStatus(
+    request: gateway_gateway_pb.QueryLiquidityStatusRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.QueryLiquidityStatusResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/QueryLiquidityStatus',
+        request,
+        metadata || {},
+        this.methodInfoQueryLiquidityStatus,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/QueryLiquidityStatus',
+    request,
+    metadata || {},
+    this.methodInfoQueryLiquidityStatus);
+  }
+
+  methodInfoUnlockFarmingReward = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/UnlockFarmingReward',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.UnlockFarmingRewardRequest,
+    gateway_gateway_pb.UnlockFarmingRewardResponse,
+    (request: gateway_gateway_pb.UnlockFarmingRewardRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.UnlockFarmingRewardResponse.deserializeBinary
+  );
+
+  unlockFarmingReward(
+    request: gateway_gateway_pb.UnlockFarmingRewardRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.UnlockFarmingRewardResponse>;
+
+  unlockFarmingReward(
+    request: gateway_gateway_pb.UnlockFarmingRewardRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.UnlockFarmingRewardResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.UnlockFarmingRewardResponse>;
+
+  unlockFarmingReward(
+    request: gateway_gateway_pb.UnlockFarmingRewardRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.UnlockFarmingRewardResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/UnlockFarmingReward',
+        request,
+        metadata || {},
+        this.methodInfoUnlockFarmingReward,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/UnlockFarmingReward',
+    request,
+    metadata || {},
+    this.methodInfoUnlockFarmingReward);
+  }
+
+  methodInfoGetFarmingRewardDetails = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetFarmingRewardDetails',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetFarmingRewardDetailsRequest,
+    gateway_gateway_pb.GetFarmingRewardDetailsResponse,
+    (request: gateway_gateway_pb.GetFarmingRewardDetailsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetFarmingRewardDetailsResponse.deserializeBinary
+  );
+
+  getFarmingRewardDetails(
+    request: gateway_gateway_pb.GetFarmingRewardDetailsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetFarmingRewardDetailsResponse>;
+
+  getFarmingRewardDetails(
+    request: gateway_gateway_pb.GetFarmingRewardDetailsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetFarmingRewardDetailsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetFarmingRewardDetailsResponse>;
+
+  getFarmingRewardDetails(
+    request: gateway_gateway_pb.GetFarmingRewardDetailsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetFarmingRewardDetailsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetFarmingRewardDetails',
+        request,
+        metadata || {},
+        this.methodInfoGetFarmingRewardDetails,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetFarmingRewardDetails',
+    request,
+    metadata || {},
+    this.methodInfoGetFarmingRewardDetails);
+  }
+
+  methodInfoTransferHistory = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/TransferHistory',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.TransferHistoryRequest,
+    gateway_gateway_pb.TransferHistoryResponse,
+    (request: gateway_gateway_pb.TransferHistoryRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.TransferHistoryResponse.deserializeBinary
+  );
+
+  transferHistory(
+    request: gateway_gateway_pb.TransferHistoryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.TransferHistoryResponse>;
+
+  transferHistory(
+    request: gateway_gateway_pb.TransferHistoryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.TransferHistoryResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.TransferHistoryResponse>;
+
+  transferHistory(
+    request: gateway_gateway_pb.TransferHistoryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.TransferHistoryResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/TransferHistory',
+        request,
+        metadata || {},
+        this.methodInfoTransferHistory,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/TransferHistory',
+    request,
+    metadata || {},
+    this.methodInfoTransferHistory);
+  }
+
+  methodInfoPendingHistory = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/PendingHistory',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.PendingHistoryRequest,
+    gateway_gateway_pb.PendingHistoryResponse,
+    (request: gateway_gateway_pb.PendingHistoryRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.PendingHistoryResponse.deserializeBinary
+  );
+
+  pendingHistory(
+    request: gateway_gateway_pb.PendingHistoryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.PendingHistoryResponse>;
+
+  pendingHistory(
+    request: gateway_gateway_pb.PendingHistoryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.PendingHistoryResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.PendingHistoryResponse>;
+
+  pendingHistory(
+    request: gateway_gateway_pb.PendingHistoryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.PendingHistoryResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/PendingHistory',
+        request,
+        metadata || {},
+        this.methodInfoPendingHistory,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/PendingHistory',
+    request,
+    metadata || {},
+    this.methodInfoPendingHistory);
+  }
+
+  methodInfoGetTransfer = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTransfer',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTransferRequest,
+    gateway_gateway_pb.GetTransferResponse,
+    (request: gateway_gateway_pb.GetTransferRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTransferResponse.deserializeBinary
+  );
+
+  getTransfer(
+    request: gateway_gateway_pb.GetTransferRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTransferResponse>;
+
+  getTransfer(
+    request: gateway_gateway_pb.GetTransferRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTransferResponse>;
+
+  getTransfer(
+    request: gateway_gateway_pb.GetTransferRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTransfer',
+        request,
+        metadata || {},
+        this.methodInfoGetTransfer,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTransfer',
+    request,
+    metadata || {},
+    this.methodInfoGetTransfer);
+  }
+
+  methodInfoLPHistory = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/LPHistory',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.LPHistoryRequest,
+    gateway_gateway_pb.LPHistoryResponse,
+    (request: gateway_gateway_pb.LPHistoryRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.LPHistoryResponse.deserializeBinary
+  );
+
+  lPHistory(
+    request: gateway_gateway_pb.LPHistoryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.LPHistoryResponse>;
+
+  lPHistory(
+    request: gateway_gateway_pb.LPHistoryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.LPHistoryResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.LPHistoryResponse>;
+
+  lPHistory(
+    request: gateway_gateway_pb.LPHistoryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.LPHistoryResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/LPHistory',
+        request,
+        metadata || {},
+        this.methodInfoLPHistory,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/LPHistory',
+    request,
+    metadata || {},
+    this.methodInfoLPHistory);
+  }
+
+  methodInfoClaimHistory = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/ClaimHistory',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.ClaimHistoryRequest,
+    gateway_gateway_pb.ClaimHistoryResponse,
+    (request: gateway_gateway_pb.ClaimHistoryRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.ClaimHistoryResponse.deserializeBinary
+  );
+
+  claimHistory(
+    request: gateway_gateway_pb.ClaimHistoryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.ClaimHistoryResponse>;
+
+  claimHistory(
+    request: gateway_gateway_pb.ClaimHistoryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimHistoryResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.ClaimHistoryResponse>;
+
+  claimHistory(
+    request: gateway_gateway_pb.ClaimHistoryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimHistoryResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/ClaimHistory',
+        request,
+        metadata || {},
+        this.methodInfoClaimHistory,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/ClaimHistory',
+    request,
+    metadata || {},
+    this.methodInfoClaimHistory);
+  }
+
+  methodInfoPegClaimHistory = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/PegClaimHistory',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.PegClaimHistoryRequest,
+    gateway_gateway_pb.PegClaimHistoryResponse,
+    (request: gateway_gateway_pb.PegClaimHistoryRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.PegClaimHistoryResponse.deserializeBinary
+  );
+
+  pegClaimHistory(
+    request: gateway_gateway_pb.PegClaimHistoryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.PegClaimHistoryResponse>;
+
+  pegClaimHistory(
+    request: gateway_gateway_pb.PegClaimHistoryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.PegClaimHistoryResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.PegClaimHistoryResponse>;
+
+  pegClaimHistory(
+    request: gateway_gateway_pb.PegClaimHistoryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.PegClaimHistoryResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/PegClaimHistory',
+        request,
+        metadata || {},
+        this.methodInfoPegClaimHistory,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/PegClaimHistory',
+    request,
+    metadata || {},
+    this.methodInfoPegClaimHistory);
+  }
+
+  methodInfoRewardingData = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/RewardingData',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.RewardingDataRequest,
+    gateway_gateway_pb.RewardingDataResponse,
+    (request: gateway_gateway_pb.RewardingDataRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.RewardingDataResponse.deserializeBinary
+  );
+
+  rewardingData(
+    request: gateway_gateway_pb.RewardingDataRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.RewardingDataResponse>;
+
+  rewardingData(
+    request: gateway_gateway_pb.RewardingDataRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.RewardingDataResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.RewardingDataResponse>;
+
+  rewardingData(
+    request: gateway_gateway_pb.RewardingDataRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.RewardingDataResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/RewardingData',
+        request,
+        metadata || {},
+        this.methodInfoRewardingData,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/RewardingData',
+    request,
+    metadata || {},
+    this.methodInfoRewardingData);
+  }
+
+  methodInfoStakingConfig = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/StakingConfig',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.StakingConfigRequest,
+    gateway_gateway_pb.StakingConfigResponse,
+    (request: gateway_gateway_pb.StakingConfigRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.StakingConfigResponse.deserializeBinary
+  );
+
+  stakingConfig(
+    request: gateway_gateway_pb.StakingConfigRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.StakingConfigResponse>;
+
+  stakingConfig(
+    request: gateway_gateway_pb.StakingConfigRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.StakingConfigResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.StakingConfigResponse>;
+
+  stakingConfig(
+    request: gateway_gateway_pb.StakingConfigRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.StakingConfigResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/StakingConfig',
+        request,
+        metadata || {},
+        this.methodInfoStakingConfig,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/StakingConfig',
+    request,
+    metadata || {},
+    this.methodInfoStakingConfig);
+  }
+
+  methodInfoUnlockStakingReward = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/UnlockStakingReward',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.UnlockStakingRewardRequest,
+    gateway_gateway_pb.UnlockStakingRewardResponse,
+    (request: gateway_gateway_pb.UnlockStakingRewardRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.UnlockStakingRewardResponse.deserializeBinary
+  );
+
+  unlockStakingReward(
+    request: gateway_gateway_pb.UnlockStakingRewardRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.UnlockStakingRewardResponse>;
+
+  unlockStakingReward(
+    request: gateway_gateway_pb.UnlockStakingRewardRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.UnlockStakingRewardResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.UnlockStakingRewardResponse>;
+
+  unlockStakingReward(
+    request: gateway_gateway_pb.UnlockStakingRewardRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.UnlockStakingRewardResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/UnlockStakingReward',
+        request,
+        metadata || {},
+        this.methodInfoUnlockStakingReward,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/UnlockStakingReward',
+    request,
+    metadata || {},
+    this.methodInfoUnlockStakingReward);
+  }
+
+  methodInfoGetStakingRewardDetails = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetStakingRewardDetails',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetStakingRewardDetailsRequest,
+    gateway_gateway_pb.GetStakingRewardDetailsResponse,
+    (request: gateway_gateway_pb.GetStakingRewardDetailsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetStakingRewardDetailsResponse.deserializeBinary
+  );
+
+  getStakingRewardDetails(
+    request: gateway_gateway_pb.GetStakingRewardDetailsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetStakingRewardDetailsResponse>;
+
+  getStakingRewardDetails(
+    request: gateway_gateway_pb.GetStakingRewardDetailsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetStakingRewardDetailsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetStakingRewardDetailsResponse>;
+
+  getStakingRewardDetails(
+    request: gateway_gateway_pb.GetStakingRewardDetailsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetStakingRewardDetailsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetStakingRewardDetails',
+        request,
+        metadata || {},
+        this.methodInfoGetStakingRewardDetails,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetStakingRewardDetails',
+    request,
+    metadata || {},
+    this.methodInfoGetStakingRewardDetails);
+  }
+
+  methodInfoGetTotalLiquidityProviderTokenBalance = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTotalLiquidityProviderTokenBalance',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceRequest,
+    gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceResponse,
+    (request: gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceResponse.deserializeBinary
+  );
+
+  getTotalLiquidityProviderTokenBalance(
+    request: gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceResponse>;
+
+  getTotalLiquidityProviderTokenBalance(
+    request: gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceResponse>;
+
+  getTotalLiquidityProviderTokenBalance(
+    request: gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTotalLiquidityProviderTokenBalanceResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTotalLiquidityProviderTokenBalance',
+        request,
+        metadata || {},
+        this.methodInfoGetTotalLiquidityProviderTokenBalance,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTotalLiquidityProviderTokenBalance',
+    request,
+    metadata || {},
+    this.methodInfoGetTotalLiquidityProviderTokenBalance);
+  }
+
+  methodInfoQueryLiquidityProviderTokenBalance = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/QueryLiquidityProviderTokenBalance',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.QueryLiquidityProviderTokenBalanceRequest,
+    gateway_gateway_pb.QueryLiquidityProviderTokenBalanceResponse,
+    (request: gateway_gateway_pb.QueryLiquidityProviderTokenBalanceRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.QueryLiquidityProviderTokenBalanceResponse.deserializeBinary
+  );
+
+  queryLiquidityProviderTokenBalance(
+    request: gateway_gateway_pb.QueryLiquidityProviderTokenBalanceRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.QueryLiquidityProviderTokenBalanceResponse>;
+
+  queryLiquidityProviderTokenBalance(
+    request: gateway_gateway_pb.QueryLiquidityProviderTokenBalanceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.QueryLiquidityProviderTokenBalanceResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.QueryLiquidityProviderTokenBalanceResponse>;
+
+  queryLiquidityProviderTokenBalance(
+    request: gateway_gateway_pb.QueryLiquidityProviderTokenBalanceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.QueryLiquidityProviderTokenBalanceResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/QueryLiquidityProviderTokenBalance',
+        request,
+        metadata || {},
+        this.methodInfoQueryLiquidityProviderTokenBalance,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/QueryLiquidityProviderTokenBalance',
+    request,
+    metadata || {},
+    this.methodInfoQueryLiquidityProviderTokenBalance);
+  }
+
+  methodInfoUpdateChain = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/UpdateChain',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.UpdateChainRequest,
+    gateway_gateway_pb.UpdateChainResponse,
+    (request: gateway_gateway_pb.UpdateChainRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.UpdateChainResponse.deserializeBinary
+  );
+
+  updateChain(
+    request: gateway_gateway_pb.UpdateChainRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.UpdateChainResponse>;
+
+  updateChain(
+    request: gateway_gateway_pb.UpdateChainRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.UpdateChainResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.UpdateChainResponse>;
+
+  updateChain(
+    request: gateway_gateway_pb.UpdateChainRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.UpdateChainResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/UpdateChain',
+        request,
+        metadata || {},
+        this.methodInfoUpdateChain,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/UpdateChain',
+    request,
+    metadata || {},
+    this.methodInfoUpdateChain);
+  }
+
+  methodInfoUpdateToken = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/UpdateToken',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.UpdateTokenRequest,
+    gateway_gateway_pb.UpdateTokenResponse,
+    (request: gateway_gateway_pb.UpdateTokenRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.UpdateTokenResponse.deserializeBinary
+  );
+
+  updateToken(
+    request: gateway_gateway_pb.UpdateTokenRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.UpdateTokenResponse>;
+
+  updateToken(
+    request: gateway_gateway_pb.UpdateTokenRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.UpdateTokenResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.UpdateTokenResponse>;
+
+  updateToken(
+    request: gateway_gateway_pb.UpdateTokenRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.UpdateTokenResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/UpdateToken',
+        request,
+        metadata || {},
+        this.methodInfoUpdateToken,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/UpdateToken',
+    request,
+    metadata || {},
+    this.methodInfoUpdateToken);
+  }
+
+  methodInfoGetCampaignScores = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetCampaignScores',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetCampaignScoresRequest,
+    gateway_gateway_pb.GetCampaignScoresResponse,
+    (request: gateway_gateway_pb.GetCampaignScoresRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetCampaignScoresResponse.deserializeBinary
+  );
+
+  getCampaignScores(
+    request: gateway_gateway_pb.GetCampaignScoresRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetCampaignScoresResponse>;
+
+  getCampaignScores(
+    request: gateway_gateway_pb.GetCampaignScoresRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetCampaignScoresResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetCampaignScoresResponse>;
+
+  getCampaignScores(
+    request: gateway_gateway_pb.GetCampaignScoresRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetCampaignScoresResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetCampaignScores',
+        request,
+        metadata || {},
+        this.methodInfoGetCampaignScores,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetCampaignScores',
+    request,
+    metadata || {},
+    this.methodInfoGetCampaignScores);
+  }
+
+  methodInfoGetInfoByTxHash = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetInfoByTxHash',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetInfoByTxHashRequest,
+    gateway_gateway_pb.GetInfoByTxHashResponse,
+    (request: gateway_gateway_pb.GetInfoByTxHashRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetInfoByTxHashResponse.deserializeBinary
+  );
+
+  getInfoByTxHash(
+    request: gateway_gateway_pb.GetInfoByTxHashRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetInfoByTxHashResponse>;
+
+  getInfoByTxHash(
+    request: gateway_gateway_pb.GetInfoByTxHashRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetInfoByTxHashResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetInfoByTxHashResponse>;
+
+  getInfoByTxHash(
+    request: gateway_gateway_pb.GetInfoByTxHashRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetInfoByTxHashResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetInfoByTxHash',
+        request,
+        metadata || {},
+        this.methodInfoGetInfoByTxHash,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetInfoByTxHash',
+    request,
+    metadata || {},
+    this.methodInfoGetInfoByTxHash);
+  }
+
+  methodInfoGetTransferBySrcTx = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTransferBySrcTx',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTransferBySrcTxRequest,
+    gateway_gateway_pb.GetTransferBySrcTxResponse,
+    (request: gateway_gateway_pb.GetTransferBySrcTxRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTransferBySrcTxResponse.deserializeBinary
+  );
+
+  getTransferBySrcTx(
+    request: gateway_gateway_pb.GetTransferBySrcTxRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTransferBySrcTxResponse>;
+
+  getTransferBySrcTx(
+    request: gateway_gateway_pb.GetTransferBySrcTxRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferBySrcTxResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTransferBySrcTxResponse>;
+
+  getTransferBySrcTx(
+    request: gateway_gateway_pb.GetTransferBySrcTxRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferBySrcTxResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTransferBySrcTx',
+        request,
+        metadata || {},
+        this.methodInfoGetTransferBySrcTx,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTransferBySrcTx',
+    request,
+    metadata || {},
+    this.methodInfoGetTransferBySrcTx);
+  }
+
+  methodInfoGetAbnormalStatusInfo = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetAbnormalStatusInfo',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetAbnormalStatusInfoRequest,
+    gateway_gateway_pb.GetAbnormalStatusInfoResponse,
+    (request: gateway_gateway_pb.GetAbnormalStatusInfoRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetAbnormalStatusInfoResponse.deserializeBinary
+  );
+
+  getAbnormalStatusInfo(
+    request: gateway_gateway_pb.GetAbnormalStatusInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetAbnormalStatusInfoResponse>;
+
+  getAbnormalStatusInfo(
+    request: gateway_gateway_pb.GetAbnormalStatusInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetAbnormalStatusInfoResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetAbnormalStatusInfoResponse>;
+
+  getAbnormalStatusInfo(
+    request: gateway_gateway_pb.GetAbnormalStatusInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetAbnormalStatusInfoResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetAbnormalStatusInfo',
+        request,
+        metadata || {},
+        this.methodInfoGetAbnormalStatusInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetAbnormalStatusInfo',
+    request,
+    metadata || {},
+    this.methodInfoGetAbnormalStatusInfo);
+  }
+
+  methodInfoGetAllLPInfo = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetAllLPInfo',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetAllLPInfoRequest,
+    gateway_gateway_pb.GetAllLPInfoResponse,
+    (request: gateway_gateway_pb.GetAllLPInfoRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetAllLPInfoResponse.deserializeBinary
+  );
+
+  getAllLPInfo(
+    request: gateway_gateway_pb.GetAllLPInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetAllLPInfoResponse>;
+
+  getAllLPInfo(
+    request: gateway_gateway_pb.GetAllLPInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetAllLPInfoResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetAllLPInfoResponse>;
+
+  getAllLPInfo(
+    request: gateway_gateway_pb.GetAllLPInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetAllLPInfoResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetAllLPInfo',
+        request,
+        metadata || {},
+        this.methodInfoGetAllLPInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetAllLPInfo',
+    request,
+    metadata || {},
+    this.methodInfoGetAllLPInfo);
+  }
+
+  methodInfoGetAllTXInfo = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetAllTXInfo',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetAllTXInfoRequest,
+    gateway_gateway_pb.GetAllTXInfoResponse,
+    (request: gateway_gateway_pb.GetAllTXInfoRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetAllTXInfoResponse.deserializeBinary
+  );
+
+  getAllTXInfo(
+    request: gateway_gateway_pb.GetAllTXInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetAllTXInfoResponse>;
+
+  getAllTXInfo(
+    request: gateway_gateway_pb.GetAllTXInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetAllTXInfoResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetAllTXInfoResponse>;
+
+  getAllTXInfo(
+    request: gateway_gateway_pb.GetAllTXInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetAllTXInfoResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetAllTXInfo',
+        request,
+        metadata || {},
+        this.methodInfoGetAllTXInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetAllTXInfo',
+    request,
+    metadata || {},
+    this.methodInfoGetAllTXInfo);
+  }
+
+  methodInfoFixEventMiss = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/FixEventMiss',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.FixEventMissRequest,
+    gateway_gateway_pb.FixEventMissResponse,
+    (request: gateway_gateway_pb.FixEventMissRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.FixEventMissResponse.deserializeBinary
+  );
+
+  fixEventMiss(
+    request: gateway_gateway_pb.FixEventMissRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.FixEventMissResponse>;
+
+  fixEventMiss(
+    request: gateway_gateway_pb.FixEventMissRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.FixEventMissResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.FixEventMissResponse>;
+
+  fixEventMiss(
+    request: gateway_gateway_pb.FixEventMissRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.FixEventMissResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/FixEventMiss',
+        request,
+        metadata || {},
+        this.methodInfoFixEventMiss,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/FixEventMiss',
+    request,
+    metadata || {},
+    this.methodInfoFixEventMiss);
+  }
+
+  methodInfoGetUsrBalance = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetUsrBalance',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetUsrBalanceRequest,
+    gateway_gateway_pb.GetUsrBalanceResponse,
+    (request: gateway_gateway_pb.GetUsrBalanceRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetUsrBalanceResponse.deserializeBinary
+  );
+
+  getUsrBalance(
+    request: gateway_gateway_pb.GetUsrBalanceRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetUsrBalanceResponse>;
+
+  getUsrBalance(
+    request: gateway_gateway_pb.GetUsrBalanceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetUsrBalanceResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetUsrBalanceResponse>;
+
+  getUsrBalance(
+    request: gateway_gateway_pb.GetUsrBalanceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetUsrBalanceResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetUsrBalance',
+        request,
+        metadata || {},
+        this.methodInfoGetUsrBalance,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetUsrBalance',
+    request,
+    metadata || {},
+    this.methodInfoGetUsrBalance);
+  }
+
+  methodInfoGetAllConfigs = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetAllConfigs',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetAllConfigsRequest,
+    gateway_gateway_pb.GetAllConfigsResponse,
+    (request: gateway_gateway_pb.GetAllConfigsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetAllConfigsResponse.deserializeBinary
+  );
+
+  getAllConfigs(
+    request: gateway_gateway_pb.GetAllConfigsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetAllConfigsResponse>;
+
+  getAllConfigs(
+    request: gateway_gateway_pb.GetAllConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetAllConfigsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetAllConfigsResponse>;
+
+  getAllConfigs(
+    request: gateway_gateway_pb.GetAllConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetAllConfigsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetAllConfigs',
+        request,
+        metadata || {},
+        this.methodInfoGetAllConfigs,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetAllConfigs',
+    request,
+    metadata || {},
+    this.methodInfoGetAllConfigs);
+  }
+
+  methodInfoGetCbrConfigsOnChain = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetCbrConfigsOnChain',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetCbrConfigsOnChainRequest,
+    gateway_gateway_pb.GetCbrConfigsOnChainResponse,
+    (request: gateway_gateway_pb.GetCbrConfigsOnChainRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetCbrConfigsOnChainResponse.deserializeBinary
+  );
+
+  getCbrConfigsOnChain(
+    request: gateway_gateway_pb.GetCbrConfigsOnChainRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetCbrConfigsOnChainResponse>;
+
+  getCbrConfigsOnChain(
+    request: gateway_gateway_pb.GetCbrConfigsOnChainRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetCbrConfigsOnChainResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetCbrConfigsOnChainResponse>;
+
+  getCbrConfigsOnChain(
+    request: gateway_gateway_pb.GetCbrConfigsOnChainRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetCbrConfigsOnChainResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetCbrConfigsOnChain',
+        request,
+        metadata || {},
+        this.methodInfoGetCbrConfigsOnChain,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetCbrConfigsOnChain',
+    request,
+    metadata || {},
+    this.methodInfoGetCbrConfigsOnChain);
+  }
+
+  methodInfoRfqFilterOrders = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/RfqFilterOrders',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.RfqFilterOrdersRequest,
+    sdk_service_rfq_user_pb.FilterOrdersResponse,
+    (request: gateway_gateway_pb.RfqFilterOrdersRequest) => {
+      return request.serializeBinary();
+    },
+    sdk_service_rfq_user_pb.FilterOrdersResponse.deserializeBinary
+  );
+
+  rfqFilterOrders(
+    request: gateway_gateway_pb.RfqFilterOrdersRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sdk_service_rfq_user_pb.FilterOrdersResponse>;
+
+  rfqFilterOrders(
+    request: gateway_gateway_pb.RfqFilterOrdersRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sdk_service_rfq_user_pb.FilterOrdersResponse) => void): grpcWeb.ClientReadableStream<sdk_service_rfq_user_pb.FilterOrdersResponse>;
+
+  rfqFilterOrders(
+    request: gateway_gateway_pb.RfqFilterOrdersRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sdk_service_rfq_user_pb.FilterOrdersResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/RfqFilterOrders',
+        request,
+        metadata || {},
+        this.methodInfoRfqFilterOrders,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/RfqFilterOrders',
+    request,
+    metadata || {},
+    this.methodInfoRfqFilterOrders);
+  }
+
+  methodInfoGetServicePoolToggleConfigs = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetServicePoolToggleConfigs',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetServicePoolToggleConfigsRequest,
+    gateway_gateway_pb.GetServicePoolToggleConfigsResponse,
+    (request: gateway_gateway_pb.GetServicePoolToggleConfigsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetServicePoolToggleConfigsResponse.deserializeBinary
+  );
+
+  getServicePoolToggleConfigs(
+    request: gateway_gateway_pb.GetServicePoolToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetServicePoolToggleConfigsResponse>;
+
+  getServicePoolToggleConfigs(
+    request: gateway_gateway_pb.GetServicePoolToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetServicePoolToggleConfigsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetServicePoolToggleConfigsResponse>;
+
+  getServicePoolToggleConfigs(
+    request: gateway_gateway_pb.GetServicePoolToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetServicePoolToggleConfigsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetServicePoolToggleConfigs',
+        request,
+        metadata || {},
+        this.methodInfoGetServicePoolToggleConfigs,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetServicePoolToggleConfigs',
+    request,
+    metadata || {},
+    this.methodInfoGetServicePoolToggleConfigs);
+  }
+
+  methodInfoSaveServicePoolToggleConfigs = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/SaveServicePoolToggleConfigs',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.SaveServicePoolToggleConfigsRequest,
+    gateway_gateway_pb.SaveServicePoolToggleConfigsResponse,
+    (request: gateway_gateway_pb.SaveServicePoolToggleConfigsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.SaveServicePoolToggleConfigsResponse.deserializeBinary
+  );
+
+  saveServicePoolToggleConfigs(
+    request: gateway_gateway_pb.SaveServicePoolToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.SaveServicePoolToggleConfigsResponse>;
+
+  saveServicePoolToggleConfigs(
+    request: gateway_gateway_pb.SaveServicePoolToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.SaveServicePoolToggleConfigsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.SaveServicePoolToggleConfigsResponse>;
+
+  saveServicePoolToggleConfigs(
+    request: gateway_gateway_pb.SaveServicePoolToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.SaveServicePoolToggleConfigsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/SaveServicePoolToggleConfigs',
+        request,
+        metadata || {},
+        this.methodInfoSaveServicePoolToggleConfigs,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/SaveServicePoolToggleConfigs',
+    request,
+    metadata || {},
+    this.methodInfoSaveServicePoolToggleConfigs);
+  }
+
+  methodInfoGetServicePegToggleConfigs = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetServicePegToggleConfigs',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetServicePegToggleConfigsRequest,
+    gateway_gateway_pb.GetServicePegToggleConfigsResponse,
+    (request: gateway_gateway_pb.GetServicePegToggleConfigsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetServicePegToggleConfigsResponse.deserializeBinary
+  );
+
+  getServicePegToggleConfigs(
+    request: gateway_gateway_pb.GetServicePegToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetServicePegToggleConfigsResponse>;
+
+  getServicePegToggleConfigs(
+    request: gateway_gateway_pb.GetServicePegToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetServicePegToggleConfigsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetServicePegToggleConfigsResponse>;
+
+  getServicePegToggleConfigs(
+    request: gateway_gateway_pb.GetServicePegToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetServicePegToggleConfigsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetServicePegToggleConfigs',
+        request,
+        metadata || {},
+        this.methodInfoGetServicePegToggleConfigs,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetServicePegToggleConfigs',
+    request,
+    metadata || {},
+    this.methodInfoGetServicePegToggleConfigs);
+  }
+
+  methodInfoSaveServicePegToggleConfigs = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/SaveServicePegToggleConfigs',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.SaveServicePegToggleConfigsRequest,
+    gateway_gateway_pb.SaveServicePegToggleConfigsResponse,
+    (request: gateway_gateway_pb.SaveServicePegToggleConfigsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.SaveServicePegToggleConfigsResponse.deserializeBinary
+  );
+
+  saveServicePegToggleConfigs(
+    request: gateway_gateway_pb.SaveServicePegToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.SaveServicePegToggleConfigsResponse>;
+
+  saveServicePegToggleConfigs(
+    request: gateway_gateway_pb.SaveServicePegToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.SaveServicePegToggleConfigsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.SaveServicePegToggleConfigsResponse>;
+
+  saveServicePegToggleConfigs(
+    request: gateway_gateway_pb.SaveServicePegToggleConfigsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.SaveServicePegToggleConfigsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/SaveServicePegToggleConfigs',
+        request,
+        metadata || {},
+        this.methodInfoSaveServicePegToggleConfigs,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/SaveServicePegToggleConfigs',
+    request,
+    metadata || {},
+    this.methodInfoSaveServicePegToggleConfigs);
+  }
+
+  methodInfoGetSystemAnnouncement = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetSystemAnnouncement',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetSystemAnnouncementRequest,
+    gateway_gateway_pb.GetSystemAnnouncementResponse,
+    (request: gateway_gateway_pb.GetSystemAnnouncementRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetSystemAnnouncementResponse.deserializeBinary
+  );
+
+  getSystemAnnouncement(
+    request: gateway_gateway_pb.GetSystemAnnouncementRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetSystemAnnouncementResponse>;
+
+  getSystemAnnouncement(
+    request: gateway_gateway_pb.GetSystemAnnouncementRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetSystemAnnouncementResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetSystemAnnouncementResponse>;
+
+  getSystemAnnouncement(
+    request: gateway_gateway_pb.GetSystemAnnouncementRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetSystemAnnouncementResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetSystemAnnouncement',
+        request,
+        metadata || {},
+        this.methodInfoGetSystemAnnouncement,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetSystemAnnouncement',
+    request,
+    metadata || {},
+    this.methodInfoGetSystemAnnouncement);
+  }
+
+  methodInfoSaveSystemAnnouncement = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/SaveSystemAnnouncement',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.SaveSystemAnnouncementRequest,
+    gateway_gateway_pb.SaveSystemAnnouncementResponse,
+    (request: gateway_gateway_pb.SaveSystemAnnouncementRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.SaveSystemAnnouncementResponse.deserializeBinary
+  );
+
+  saveSystemAnnouncement(
+    request: gateway_gateway_pb.SaveSystemAnnouncementRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.SaveSystemAnnouncementResponse>;
+
+  saveSystemAnnouncement(
+    request: gateway_gateway_pb.SaveSystemAnnouncementRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.SaveSystemAnnouncementResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.SaveSystemAnnouncementResponse>;
+
+  saveSystemAnnouncement(
+    request: gateway_gateway_pb.SaveSystemAnnouncementRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.SaveSystemAnnouncementResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/SaveSystemAnnouncement',
+        request,
+        metadata || {},
+        this.methodInfoSaveSystemAnnouncement,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/SaveSystemAnnouncement',
+    request,
+    metadata || {},
+    this.methodInfoSaveSystemAnnouncement);
+  }
+
+  methodInfoReportCurrentBlockNumber = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/ReportCurrentBlockNumber',
+    grpcWeb.MethodType.UNARY,
+    sgn_health_v1_health_pb.ReportSgnAnalyticsRequest,
+    sgn_health_v1_health_pb.ReportSgnAnalyticsResponse,
+    (request: sgn_health_v1_health_pb.ReportSgnAnalyticsRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_health_v1_health_pb.ReportSgnAnalyticsResponse.deserializeBinary
+  );
+
+  reportCurrentBlockNumber(
+    request: sgn_health_v1_health_pb.ReportSgnAnalyticsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_health_v1_health_pb.ReportSgnAnalyticsResponse>;
+
+  reportCurrentBlockNumber(
+    request: sgn_health_v1_health_pb.ReportSgnAnalyticsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_health_v1_health_pb.ReportSgnAnalyticsResponse) => void): grpcWeb.ClientReadableStream<sgn_health_v1_health_pb.ReportSgnAnalyticsResponse>;
+
+  reportCurrentBlockNumber(
+    request: sgn_health_v1_health_pb.ReportSgnAnalyticsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_health_v1_health_pb.ReportSgnAnalyticsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/ReportCurrentBlockNumber',
+        request,
+        metadata || {},
+        this.methodInfoReportCurrentBlockNumber,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/ReportCurrentBlockNumber',
+    request,
+    metadata || {},
+    this.methodInfoReportCurrentBlockNumber);
+  }
+
+  methodInfoReportSgnConsensusLog = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/ReportSgnConsensusLog',
+    grpcWeb.MethodType.UNARY,
+    sgn_health_v1_health_pb.SgnConsensusLogReport,
+    sgn_health_v1_health_pb.ReportSgnAnalyticsResponse,
+    (request: sgn_health_v1_health_pb.SgnConsensusLogReport) => {
+      return request.serializeBinary();
+    },
+    sgn_health_v1_health_pb.ReportSgnAnalyticsResponse.deserializeBinary
+  );
+
+  reportSgnConsensusLog(
+    request: sgn_health_v1_health_pb.SgnConsensusLogReport,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_health_v1_health_pb.ReportSgnAnalyticsResponse>;
+
+  reportSgnConsensusLog(
+    request: sgn_health_v1_health_pb.SgnConsensusLogReport,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_health_v1_health_pb.ReportSgnAnalyticsResponse) => void): grpcWeb.ClientReadableStream<sgn_health_v1_health_pb.ReportSgnAnalyticsResponse>;
+
+  reportSgnConsensusLog(
+    request: sgn_health_v1_health_pb.SgnConsensusLogReport,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_health_v1_health_pb.ReportSgnAnalyticsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/ReportSgnConsensusLog',
+        request,
+        metadata || {},
+        this.methodInfoReportSgnConsensusLog,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/ReportSgnConsensusLog',
+    request,
+    metadata || {},
+    this.methodInfoReportSgnConsensusLog);
+  }
+
+  methodInfoGetCurrentBlockNumberByNode = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetCurrentBlockNumberByNode',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetCurrentBlockNumberByNodeRequest,
+    gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse,
+    (request: gateway_gateway_pb.GetCurrentBlockNumberByNodeRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse.deserializeBinary
+  );
+
+  getCurrentBlockNumberByNode(
+    request: gateway_gateway_pb.GetCurrentBlockNumberByNodeRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse>;
+
+  getCurrentBlockNumberByNode(
+    request: gateway_gateway_pb.GetCurrentBlockNumberByNodeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse>;
+
+  getCurrentBlockNumberByNode(
+    request: gateway_gateway_pb.GetCurrentBlockNumberByNodeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetCurrentBlockNumberByNode',
+        request,
+        metadata || {},
+        this.methodInfoGetCurrentBlockNumberByNode,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetCurrentBlockNumberByNode',
+    request,
+    metadata || {},
+    this.methodInfoGetCurrentBlockNumberByNode);
+  }
+
+  methodInfoGetRetentionRewardsInfo = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetRetentionRewardsInfo',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetRetentionRewardsInfoRequest,
+    gateway_gateway_pb.GetRetentionRewardsInfoResponse,
+    (request: gateway_gateway_pb.GetRetentionRewardsInfoRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetRetentionRewardsInfoResponse.deserializeBinary
+  );
+
+  getRetentionRewardsInfo(
+    request: gateway_gateway_pb.GetRetentionRewardsInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetRetentionRewardsInfoResponse>;
+
+  getRetentionRewardsInfo(
+    request: gateway_gateway_pb.GetRetentionRewardsInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetRetentionRewardsInfoResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetRetentionRewardsInfoResponse>;
+
+  getRetentionRewardsInfo(
+    request: gateway_gateway_pb.GetRetentionRewardsInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetRetentionRewardsInfoResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetRetentionRewardsInfo',
+        request,
+        metadata || {},
+        this.methodInfoGetRetentionRewardsInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetRetentionRewardsInfo',
+    request,
+    metadata || {},
+    this.methodInfoGetRetentionRewardsInfo);
+  }
+
+  methodInfoGetIncentiveCampaignCelrRank = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetIncentiveCampaignCelrRank',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetIncentiveCampaignCelrRankRequest,
+    gateway_gateway_pb.GetIncentiveCampaignCelrRankResponse,
+    (request: gateway_gateway_pb.GetIncentiveCampaignCelrRankRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetIncentiveCampaignCelrRankResponse.deserializeBinary
+  );
+
+  getIncentiveCampaignCelrRank(
+    request: gateway_gateway_pb.GetIncentiveCampaignCelrRankRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetIncentiveCampaignCelrRankResponse>;
+
+  getIncentiveCampaignCelrRank(
+    request: gateway_gateway_pb.GetIncentiveCampaignCelrRankRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetIncentiveCampaignCelrRankResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetIncentiveCampaignCelrRankResponse>;
+
+  getIncentiveCampaignCelrRank(
+    request: gateway_gateway_pb.GetIncentiveCampaignCelrRankRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetIncentiveCampaignCelrRankResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetIncentiveCampaignCelrRank',
+        request,
+        metadata || {},
+        this.methodInfoGetIncentiveCampaignCelrRank,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetIncentiveCampaignCelrRank',
+    request,
+    metadata || {},
+    this.methodInfoGetIncentiveCampaignCelrRank);
+  }
+
+  methodInfoInIncentiveCampaignBnbWhiteList = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/InIncentiveCampaignBnbWhiteList',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.InIncentiveCampaignBnbWhiteListRequest,
+    gateway_gateway_pb.InIncentiveCampaignBnbWhiteListResponse,
+    (request: gateway_gateway_pb.InIncentiveCampaignBnbWhiteListRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.InIncentiveCampaignBnbWhiteListResponse.deserializeBinary
+  );
+
+  inIncentiveCampaignBnbWhiteList(
+    request: gateway_gateway_pb.InIncentiveCampaignBnbWhiteListRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.InIncentiveCampaignBnbWhiteListResponse>;
+
+  inIncentiveCampaignBnbWhiteList(
+    request: gateway_gateway_pb.InIncentiveCampaignBnbWhiteListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.InIncentiveCampaignBnbWhiteListResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.InIncentiveCampaignBnbWhiteListResponse>;
+
+  inIncentiveCampaignBnbWhiteList(
+    request: gateway_gateway_pb.InIncentiveCampaignBnbWhiteListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.InIncentiveCampaignBnbWhiteListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/InIncentiveCampaignBnbWhiteList',
+        request,
+        metadata || {},
+        this.methodInfoInIncentiveCampaignBnbWhiteList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/InIncentiveCampaignBnbWhiteList',
+    request,
+    metadata || {},
+    this.methodInfoInIncentiveCampaignBnbWhiteList);
+  }
+
+  methodInfoGetIncentiveCampaignBnbRank = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetIncentiveCampaignBnbRank',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetIncentiveCampaignBnbRankRequest,
+    gateway_gateway_pb.GetIncentiveCampaignBnbRankResponse,
+    (request: gateway_gateway_pb.GetIncentiveCampaignBnbRankRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetIncentiveCampaignBnbRankResponse.deserializeBinary
+  );
+
+  getIncentiveCampaignBnbRank(
+    request: gateway_gateway_pb.GetIncentiveCampaignBnbRankRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetIncentiveCampaignBnbRankResponse>;
+
+  getIncentiveCampaignBnbRank(
+    request: gateway_gateway_pb.GetIncentiveCampaignBnbRankRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetIncentiveCampaignBnbRankResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetIncentiveCampaignBnbRankResponse>;
+
+  getIncentiveCampaignBnbRank(
+    request: gateway_gateway_pb.GetIncentiveCampaignBnbRankRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetIncentiveCampaignBnbRankResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetIncentiveCampaignBnbRank',
+        request,
+        metadata || {},
+        this.methodInfoGetIncentiveCampaignBnbRank,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetIncentiveCampaignBnbRank',
+    request,
+    metadata || {},
+    this.methodInfoGetIncentiveCampaignBnbRank);
+  }
+
+  methodInfoClaimRetentionRewards = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/ClaimRetentionRewards',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.ClaimRetentionRewardsRequest,
+    gateway_gateway_pb.ClaimRetentionRewardsResponse,
+    (request: gateway_gateway_pb.ClaimRetentionRewardsRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.ClaimRetentionRewardsResponse.deserializeBinary
+  );
+
+  claimRetentionRewards(
+    request: gateway_gateway_pb.ClaimRetentionRewardsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.ClaimRetentionRewardsResponse>;
+
+  claimRetentionRewards(
+    request: gateway_gateway_pb.ClaimRetentionRewardsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimRetentionRewardsResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.ClaimRetentionRewardsResponse>;
+
+  claimRetentionRewards(
+    request: gateway_gateway_pb.ClaimRetentionRewardsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimRetentionRewardsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/ClaimRetentionRewards',
+        request,
+        metadata || {},
+        this.methodInfoClaimRetentionRewards,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/ClaimRetentionRewards',
+    request,
+    metadata || {},
+    this.methodInfoClaimRetentionRewards);
+  }
+
+  methodInfoGetBscCampaignInfo = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetBscCampaignInfo',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetBscCampaignInfoRequest,
+    gateway_gateway_pb.GetBscCampaignInfoResponse,
+    (request: gateway_gateway_pb.GetBscCampaignInfoRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetBscCampaignInfoResponse.deserializeBinary
+  );
+
+  getBscCampaignInfo(
+    request: gateway_gateway_pb.GetBscCampaignInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetBscCampaignInfoResponse>;
+
+  getBscCampaignInfo(
+    request: gateway_gateway_pb.GetBscCampaignInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetBscCampaignInfoResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetBscCampaignInfoResponse>;
+
+  getBscCampaignInfo(
+    request: gateway_gateway_pb.GetBscCampaignInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetBscCampaignInfoResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetBscCampaignInfo',
+        request,
+        metadata || {},
+        this.methodInfoGetBscCampaignInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetBscCampaignInfo',
+    request,
+    metadata || {},
+    this.methodInfoGetBscCampaignInfo);
+  }
+
+  methodInfoClaimGetBscCampaignReward = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/ClaimGetBscCampaignReward',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.ClaimGetBscCampaignRewardRequest,
+    gateway_gateway_pb.ClaimGetBscCampaignRewardResponse,
+    (request: gateway_gateway_pb.ClaimGetBscCampaignRewardRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.ClaimGetBscCampaignRewardResponse.deserializeBinary
+  );
+
+  claimGetBscCampaignReward(
+    request: gateway_gateway_pb.ClaimGetBscCampaignRewardRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.ClaimGetBscCampaignRewardResponse>;
+
+  claimGetBscCampaignReward(
+    request: gateway_gateway_pb.ClaimGetBscCampaignRewardRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimGetBscCampaignRewardResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.ClaimGetBscCampaignRewardResponse>;
+
+  claimGetBscCampaignReward(
+    request: gateway_gateway_pb.ClaimGetBscCampaignRewardRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimGetBscCampaignRewardResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/ClaimGetBscCampaignReward',
+        request,
+        metadata || {},
+        this.methodInfoClaimGetBscCampaignReward,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/ClaimGetBscCampaignReward',
+    request,
+    metadata || {},
+    this.methodInfoClaimGetBscCampaignReward);
+  }
+
+  methodInfoGetFeeRebateInfo = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetFeeRebateInfo',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetFeeRebateInfoRequest,
+    gateway_gateway_pb.GetFeeRebateInfoResponse,
+    (request: gateway_gateway_pb.GetFeeRebateInfoRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetFeeRebateInfoResponse.deserializeBinary
+  );
+
+  getFeeRebateInfo(
+    request: gateway_gateway_pb.GetFeeRebateInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetFeeRebateInfoResponse>;
+
+  getFeeRebateInfo(
+    request: gateway_gateway_pb.GetFeeRebateInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetFeeRebateInfoResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetFeeRebateInfoResponse>;
+
+  getFeeRebateInfo(
+    request: gateway_gateway_pb.GetFeeRebateInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetFeeRebateInfoResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetFeeRebateInfo',
+        request,
+        metadata || {},
+        this.methodInfoGetFeeRebateInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetFeeRebateInfo',
+    request,
+    metadata || {},
+    this.methodInfoGetFeeRebateInfo);
+  }
+
+  methodInfoClaimFeeRebate = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/ClaimFeeRebate',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.ClaimFeeRebateRequest,
+    gateway_gateway_pb.ClaimFeeRebateResponse,
+    (request: gateway_gateway_pb.ClaimFeeRebateRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.ClaimFeeRebateResponse.deserializeBinary
+  );
+
+  claimFeeRebate(
+    request: gateway_gateway_pb.ClaimFeeRebateRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.ClaimFeeRebateResponse>;
+
+  claimFeeRebate(
+    request: gateway_gateway_pb.ClaimFeeRebateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimFeeRebateResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.ClaimFeeRebateResponse>;
+
+  claimFeeRebate(
+    request: gateway_gateway_pb.ClaimFeeRebateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimFeeRebateResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/ClaimFeeRebate',
+        request,
+        metadata || {},
+        this.methodInfoClaimFeeRebate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/ClaimFeeRebate',
+    request,
+    metadata || {},
+    this.methodInfoClaimFeeRebate);
+  }
+
+  methodInfoClaimPegBridgeFee = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/ClaimPegBridgeFee',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.ClaimPegBridgeFeeRequest,
+    gateway_gateway_pb.ClaimPegBridgeFeeResponse,
+    (request: gateway_gateway_pb.ClaimPegBridgeFeeRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.ClaimPegBridgeFeeResponse.deserializeBinary
+  );
+
+  claimPegBridgeFee(
+    request: gateway_gateway_pb.ClaimPegBridgeFeeRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.ClaimPegBridgeFeeResponse>;
+
+  claimPegBridgeFee(
+    request: gateway_gateway_pb.ClaimPegBridgeFeeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimPegBridgeFeeResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.ClaimPegBridgeFeeResponse>;
+
+  claimPegBridgeFee(
+    request: gateway_gateway_pb.ClaimPegBridgeFeeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimPegBridgeFeeResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/ClaimPegBridgeFee',
+        request,
+        metadata || {},
+        this.methodInfoClaimPegBridgeFee,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/ClaimPegBridgeFee',
+    request,
+    metadata || {},
+    this.methodInfoClaimPegBridgeFee);
+  }
+
+  methodInfoInitWithdraw = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/InitWithdraw',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.InitWithdrawRequest,
+    gateway_gateway_pb.InitWithdrawResponse,
+    (request: gateway_gateway_pb.InitWithdrawRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.InitWithdrawResponse.deserializeBinary
+  );
+
+  initWithdraw(
+    request: gateway_gateway_pb.InitWithdrawRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.InitWithdrawResponse>;
+
+  initWithdraw(
+    request: gateway_gateway_pb.InitWithdrawRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.InitWithdrawResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.InitWithdrawResponse>;
+
+  initWithdraw(
+    request: gateway_gateway_pb.InitWithdrawRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.InitWithdrawResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/InitWithdraw',
+        request,
+        metadata || {},
+        this.methodInfoInitWithdraw,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/InitWithdraw',
+    request,
+    metadata || {},
+    this.methodInfoInitWithdraw);
+  }
+
+  methodInfoInitPegRefund = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/InitPegRefund',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.InitPegRefundRequest,
+    gateway_gateway_pb.InitPegRefundResponse,
+    (request: gateway_gateway_pb.InitPegRefundRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.InitPegRefundResponse.deserializeBinary
+  );
+
+  initPegRefund(
+    request: gateway_gateway_pb.InitPegRefundRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.InitPegRefundResponse>;
+
+  initPegRefund(
+    request: gateway_gateway_pb.InitPegRefundRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.InitPegRefundResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.InitPegRefundResponse>;
+
+  initPegRefund(
+    request: gateway_gateway_pb.InitPegRefundRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.InitPegRefundResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/InitPegRefund',
+        request,
+        metadata || {},
+        this.methodInfoInitPegRefund,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/InitPegRefund',
+    request,
+    metadata || {},
+    this.methodInfoInitPegRefund);
+  }
+
+  methodInfoSignAgain = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/SignAgain',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.SignAgainRequest,
+    gateway_gateway_pb.SignAgainResponse,
+    (request: gateway_gateway_pb.SignAgainRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.SignAgainResponse.deserializeBinary
+  );
+
+  signAgain(
+    request: gateway_gateway_pb.SignAgainRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.SignAgainResponse>;
+
+  signAgain(
+    request: gateway_gateway_pb.SignAgainRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.SignAgainResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.SignAgainResponse>;
+
+  signAgain(
+    request: gateway_gateway_pb.SignAgainRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.SignAgainResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/SignAgain',
+        request,
+        metadata || {},
+        this.methodInfoSignAgain,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/SignAgain',
+    request,
+    metadata || {},
+    this.methodInfoSignAgain);
+  }
+
+  methodInfoGetLPOrigin = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetLPOrigin',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetLPOriginRequest,
+    gateway_gateway_pb.GetLPOriginResponse,
+    (request: gateway_gateway_pb.GetLPOriginRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetLPOriginResponse.deserializeBinary
+  );
+
+  getLPOrigin(
+    request: gateway_gateway_pb.GetLPOriginRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetLPOriginResponse>;
+
+  getLPOrigin(
+    request: gateway_gateway_pb.GetLPOriginRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetLPOriginResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetLPOriginResponse>;
+
+  getLPOrigin(
+    request: gateway_gateway_pb.GetLPOriginRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetLPOriginResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetLPOrigin',
+        request,
+        metadata || {},
+        this.methodInfoGetLPOrigin,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetLPOrigin',
+    request,
+    metadata || {},
+    this.methodInfoGetLPOrigin);
+  }
+
+  methodInfoGetTokenBound = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTokenBound',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTokenBoundRequest,
+    gateway_gateway_pb.GetTokenBoundResponse,
+    (request: gateway_gateway_pb.GetTokenBoundRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTokenBoundResponse.deserializeBinary
+  );
+
+  getTokenBound(
+    request: gateway_gateway_pb.GetTokenBoundRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTokenBoundResponse>;
+
+  getTokenBound(
+    request: gateway_gateway_pb.GetTokenBoundRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTokenBoundResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTokenBoundResponse>;
+
+  getTokenBound(
+    request: gateway_gateway_pb.GetTokenBoundRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTokenBoundResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTokenBound',
+        request,
+        metadata || {},
+        this.methodInfoGetTokenBound,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTokenBound',
+    request,
+    metadata || {},
+    this.methodInfoGetTokenBound);
+  }
+
+  methodInfoGetTokenUsdPrice = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTokenUsdPrice',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTokenUsdPriceRequest,
+    gateway_gateway_pb.GetTokenUsdPriceResponse,
+    (request: gateway_gateway_pb.GetTokenUsdPriceRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTokenUsdPriceResponse.deserializeBinary
+  );
+
+  getTokenUsdPrice(
+    request: gateway_gateway_pb.GetTokenUsdPriceRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTokenUsdPriceResponse>;
+
+  getTokenUsdPrice(
+    request: gateway_gateway_pb.GetTokenUsdPriceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTokenUsdPriceResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTokenUsdPriceResponse>;
+
+  getTokenUsdPrice(
+    request: gateway_gateway_pb.GetTokenUsdPriceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTokenUsdPriceResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTokenUsdPrice',
+        request,
+        metadata || {},
+        this.methodInfoGetTokenUsdPrice,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTokenUsdPrice',
+    request,
+    metadata || {},
+    this.methodInfoGetTokenUsdPrice);
+  }
+
+  methodInfoGetTransferData = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTransferData',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTransferDataRequest,
+    gateway_gateway_pb.GetTransferDataResponse,
+    (request: gateway_gateway_pb.GetTransferDataRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTransferDataResponse.deserializeBinary
+  );
+
+  getTransferData(
+    request: gateway_gateway_pb.GetTransferDataRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTransferDataResponse>;
+
+  getTransferData(
+    request: gateway_gateway_pb.GetTransferDataRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferDataResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTransferDataResponse>;
+
+  getTransferData(
+    request: gateway_gateway_pb.GetTransferDataRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferDataResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTransferData',
+        request,
+        metadata || {},
+        this.methodInfoGetTransferData,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTransferData',
+    request,
+    metadata || {},
+    this.methodInfoGetTransferData);
+  }
+
+  methodInfoGetTransferOnChainKey = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTransferOnChainKey',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTransferOnChainKeyRequest,
+    gateway_gateway_pb.GetTransferOnChainKeyResponse,
+    (request: gateway_gateway_pb.GetTransferOnChainKeyRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTransferOnChainKeyResponse.deserializeBinary
+  );
+
+  getTransferOnChainKey(
+    request: gateway_gateway_pb.GetTransferOnChainKeyRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTransferOnChainKeyResponse>;
+
+  getTransferOnChainKey(
+    request: gateway_gateway_pb.GetTransferOnChainKeyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferOnChainKeyResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTransferOnChainKeyResponse>;
+
+  getTransferOnChainKey(
+    request: gateway_gateway_pb.GetTransferOnChainKeyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferOnChainKeyResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTransferOnChainKey',
+        request,
+        metadata || {},
+        this.methodInfoGetTransferOnChainKey,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTransferOnChainKey',
+    request,
+    metadata || {},
+    this.methodInfoGetTransferOnChainKey);
+  }
+
+  methodInfoMarkRefRelation = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/MarkRefRelation',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.MarkRefRelationRequest,
+    gateway_gateway_pb.MarkRefRelationResponse,
+    (request: gateway_gateway_pb.MarkRefRelationRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.MarkRefRelationResponse.deserializeBinary
+  );
+
+  markRefRelation(
+    request: gateway_gateway_pb.MarkRefRelationRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.MarkRefRelationResponse>;
+
+  markRefRelation(
+    request: gateway_gateway_pb.MarkRefRelationRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.MarkRefRelationResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.MarkRefRelationResponse>;
+
+  markRefRelation(
+    request: gateway_gateway_pb.MarkRefRelationRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.MarkRefRelationResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/MarkRefRelation',
+        request,
+        metadata || {},
+        this.methodInfoMarkRefRelation,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/MarkRefRelation',
+    request,
+    metadata || {},
+    this.methodInfoMarkRefRelation);
+  }
+
+  methodInfoClaimMsgFee = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/ClaimMsgFee',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.ClaimMsgFeeRequest,
+    gateway_gateway_pb.ClaimMsgFeeResponse,
+    (request: gateway_gateway_pb.ClaimMsgFeeRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.ClaimMsgFeeResponse.deserializeBinary
+  );
+
+  claimMsgFee(
+    request: gateway_gateway_pb.ClaimMsgFeeRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.ClaimMsgFeeResponse>;
+
+  claimMsgFee(
+    request: gateway_gateway_pb.ClaimMsgFeeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimMsgFeeResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.ClaimMsgFeeResponse>;
+
+  claimMsgFee(
+    request: gateway_gateway_pb.ClaimMsgFeeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.ClaimMsgFeeResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/ClaimMsgFee',
+        request,
+        metadata || {},
+        this.methodInfoClaimMsgFee,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/ClaimMsgFee',
+    request,
+    metadata || {},
+    this.methodInfoClaimMsgFee);
+  }
+
+  methodInfoGetWithdrawInfo = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetWithdrawInfo',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetWithdrawInfoRequest,
+    gateway_gateway_pb.GetWithdrawInfoResponse,
+    (request: gateway_gateway_pb.GetWithdrawInfoRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetWithdrawInfoResponse.deserializeBinary
+  );
+
+  getWithdrawInfo(
+    request: gateway_gateway_pb.GetWithdrawInfoRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetWithdrawInfoResponse>;
+
+  getWithdrawInfo(
+    request: gateway_gateway_pb.GetWithdrawInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetWithdrawInfoResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetWithdrawInfoResponse>;
+
+  getWithdrawInfo(
+    request: gateway_gateway_pb.GetWithdrawInfoRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetWithdrawInfoResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetWithdrawInfo',
+        request,
+        metadata || {},
+        this.methodInfoGetWithdrawInfo,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetWithdrawInfo',
+    request,
+    metadata || {},
+    this.methodInfoGetWithdrawInfo);
+  }
+
+  methodInfoGetLatest7DayTransferLatencyForQuery = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetLatest7DayTransferLatencyForQuery',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryRequest,
+    gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryResponse,
+    (request: gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryResponse.deserializeBinary
+  );
+
+  getLatest7DayTransferLatencyForQuery(
+    request: gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryResponse>;
+
+  getLatest7DayTransferLatencyForQuery(
+    request: gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryResponse>;
+
+  getLatest7DayTransferLatencyForQuery(
+    request: gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetLatest7DayTransferLatencyForQueryResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetLatest7DayTransferLatencyForQuery',
+        request,
+        metadata || {},
+        this.methodInfoGetLatest7DayTransferLatencyForQuery,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetLatest7DayTransferLatencyForQuery',
+    request,
+    metadata || {},
+    this.methodInfoGetLatest7DayTransferLatencyForQuery);
+  }
+
+  methodInfoGetLatest24HourTransferLatencyForInternalDashboard = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetLatest24HourTransferLatencyForInternalDashboard',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardRequest,
+    gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardResponse,
+    (request: gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardResponse.deserializeBinary
+  );
+
+  getLatest24HourTransferLatencyForInternalDashboard(
+    request: gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardResponse>;
+
+  getLatest24HourTransferLatencyForInternalDashboard(
+    request: gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardResponse>;
+
+  getLatest24HourTransferLatencyForInternalDashboard(
+    request: gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetLatest24HourTransferLatencyForInternalDashboardResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetLatest24HourTransferLatencyForInternalDashboard',
+        request,
+        metadata || {},
+        this.methodInfoGetLatest24HourTransferLatencyForInternalDashboard,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetLatest24HourTransferLatencyForInternalDashboard',
+    request,
+    metadata || {},
+    this.methodInfoGetLatest24HourTransferLatencyForInternalDashboard);
+  }
+
+  methodInfoGetTransferLatencyByFilterForInternalDashboard = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTransferLatencyByFilterForInternalDashboard',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardRequest,
+    gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardResponse,
+    (request: gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardResponse.deserializeBinary
+  );
+
+  getTransferLatencyByFilterForInternalDashboard(
+    request: gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardResponse>;
+
+  getTransferLatencyByFilterForInternalDashboard(
+    request: gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardResponse>;
+
+  getTransferLatencyByFilterForInternalDashboard(
+    request: gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferLatencyByFilterForInternalDashboardResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTransferLatencyByFilterForInternalDashboard',
+        request,
+        metadata || {},
+        this.methodInfoGetTransferLatencyByFilterForInternalDashboard,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTransferLatencyByFilterForInternalDashboard',
+    request,
+    metadata || {},
+    this.methodInfoGetTransferLatencyByFilterForInternalDashboard);
+  }
+
+  methodInfoGetTransferRefId = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetTransferRefId',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetTransferRefIdRequest,
+    gateway_gateway_pb.GetTransferRefIdResponse,
+    (request: gateway_gateway_pb.GetTransferRefIdRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetTransferRefIdResponse.deserializeBinary
+  );
+
+  getTransferRefId(
+    request: gateway_gateway_pb.GetTransferRefIdRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetTransferRefIdResponse>;
+
+  getTransferRefId(
+    request: gateway_gateway_pb.GetTransferRefIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferRefIdResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetTransferRefIdResponse>;
+
+  getTransferRefId(
+    request: gateway_gateway_pb.GetTransferRefIdRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetTransferRefIdResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetTransferRefId',
+        request,
+        metadata || {},
+        this.methodInfoGetTransferRefId,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetTransferRefId',
+    request,
+    metadata || {},
+    this.methodInfoGetTransferRefId);
+  }
+
+  methodInfoPing = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/Ping',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.PingRequest,
+    gateway_gateway_pb.PingResponse,
+    (request: gateway_gateway_pb.PingRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.PingResponse.deserializeBinary
+  );
+
+  ping(
+    request: gateway_gateway_pb.PingRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.PingResponse>;
+
+  ping(
+    request: gateway_gateway_pb.PingRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.PingResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.PingResponse>;
+
+  ping(
+    request: gateway_gateway_pb.PingRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.PingResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/Ping',
+        request,
+        metadata || {},
+        this.methodInfoPing,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/Ping',
+    request,
+    metadata || {},
+    this.methodInfoPing);
+  }
+
+  methodInfoPingLp = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/PingLp',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.PingLpRequest,
+    gateway_gateway_pb.PingLpResponse,
+    (request: gateway_gateway_pb.PingLpRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.PingLpResponse.deserializeBinary
+  );
+
+  pingLp(
+    request: gateway_gateway_pb.PingLpRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.PingLpResponse>;
+
+  pingLp(
+    request: gateway_gateway_pb.PingLpRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.PingLpResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.PingLpResponse>;
+
+  pingLp(
+    request: gateway_gateway_pb.PingLpRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.PingLpResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/PingLp',
+        request,
+        metadata || {},
+        this.methodInfoPingLp,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/PingLp',
+    request,
+    metadata || {},
+    this.methodInfoPingLp);
+  }
+
+  methodInfoGetRiskSeverityLevel = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetRiskSeverityLevel',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetRiskSeverityLevelRequest,
+    gateway_gateway_pb.GetRiskSeverityLevelResponse,
+    (request: gateway_gateway_pb.GetRiskSeverityLevelRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetRiskSeverityLevelResponse.deserializeBinary
+  );
+
+  getRiskSeverityLevel(
+    request: gateway_gateway_pb.GetRiskSeverityLevelRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetRiskSeverityLevelResponse>;
+
+  getRiskSeverityLevel(
+    request: gateway_gateway_pb.GetRiskSeverityLevelRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetRiskSeverityLevelResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetRiskSeverityLevelResponse>;
+
+  getRiskSeverityLevel(
+    request: gateway_gateway_pb.GetRiskSeverityLevelRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetRiskSeverityLevelResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetRiskSeverityLevel',
+        request,
+        metadata || {},
+        this.methodInfoGetRiskSeverityLevel,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetRiskSeverityLevel',
+    request,
+    metadata || {},
+    this.methodInfoGetRiskSeverityLevel);
+  }
+
+  methodInfoGetBalanceDetail = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetBalanceDetail',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetBalanceDetailRequest,
+    gateway_gateway_pb.GetBalanceDetailResponse,
+    (request: gateway_gateway_pb.GetBalanceDetailRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetBalanceDetailResponse.deserializeBinary
+  );
+
+  getBalanceDetail(
+    request: gateway_gateway_pb.GetBalanceDetailRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetBalanceDetailResponse>;
+
+  getBalanceDetail(
+    request: gateway_gateway_pb.GetBalanceDetailRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetBalanceDetailResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetBalanceDetailResponse>;
+
+  getBalanceDetail(
+    request: gateway_gateway_pb.GetBalanceDetailRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetBalanceDetailResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetBalanceDetail',
+        request,
+        metadata || {},
+        this.methodInfoGetBalanceDetail,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetBalanceDetail',
+    request,
+    metadata || {},
+    this.methodInfoGetBalanceDetail);
+  }
+
+  methodInfoUpdateRiskSeverityLevelForCsTool = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/UpdateRiskSeverityLevelForCsTool',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolRequest,
+    gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolResponse,
+    (request: gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolResponse.deserializeBinary
+  );
+
+  updateRiskSeverityLevelForCsTool(
+    request: gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolResponse>;
+
+  updateRiskSeverityLevelForCsTool(
+    request: gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolResponse>;
+
+  updateRiskSeverityLevelForCsTool(
+    request: gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.UpdateRiskSeverityLevelForCsToolResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/UpdateRiskSeverityLevelForCsTool',
+        request,
+        metadata || {},
+        this.methodInfoUpdateRiskSeverityLevelForCsTool,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/UpdateRiskSeverityLevelForCsTool',
+    request,
+    metadata || {},
+    this.methodInfoUpdateRiskSeverityLevelForCsTool);
+  }
+
+  methodInfoGetRiskSeverityLevelForCsTool = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetRiskSeverityLevelForCsTool',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetRiskSeverityLevelForCsToolRequest,
+    gateway_gateway_pb.GetRiskSeverityLevelForCsToolResponse,
+    (request: gateway_gateway_pb.GetRiskSeverityLevelForCsToolRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetRiskSeverityLevelForCsToolResponse.deserializeBinary
+  );
+
+  getRiskSeverityLevelForCsTool(
+    request: gateway_gateway_pb.GetRiskSeverityLevelForCsToolRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetRiskSeverityLevelForCsToolResponse>;
+
+  getRiskSeverityLevelForCsTool(
+    request: gateway_gateway_pb.GetRiskSeverityLevelForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetRiskSeverityLevelForCsToolResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetRiskSeverityLevelForCsToolResponse>;
+
+  getRiskSeverityLevelForCsTool(
+    request: gateway_gateway_pb.GetRiskSeverityLevelForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetRiskSeverityLevelForCsToolResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetRiskSeverityLevelForCsTool',
+        request,
+        metadata || {},
+        this.methodInfoGetRiskSeverityLevelForCsTool,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetRiskSeverityLevelForCsTool',
+    request,
+    metadata || {},
+    this.methodInfoGetRiskSeverityLevelForCsTool);
+  }
+
+}
+
+export class InternalWebClient {
+  client_: grpcWeb.AbstractClientBase;
+  hostname_: string;
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
+
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
+    if (!options) options = {};
+    if (!credentials) credentials = {};
+    options['format'] = 'binary';
+
+    this.client_ = new grpcWeb.GrpcWebClientBase(options);
+    this.hostname_ = hostname;
+    this.credentials_ = credentials;
+    this.options_ = options;
+  }
+
+  methodInfoGetDataByTimeRangeAndBridgeType = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.InternalWeb/GetDataByTimeRangeAndBridgeType',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeRequest,
+    gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeResponse,
+    (request: gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeResponse.deserializeBinary
+  );
+
+  getDataByTimeRangeAndBridgeType(
+    request: gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeResponse>;
+
+  getDataByTimeRangeAndBridgeType(
+    request: gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeResponse>;
+
+  getDataByTimeRangeAndBridgeType(
+    request: gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetDataByTimeRangeAndBridgeTypeResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.InternalWeb/GetDataByTimeRangeAndBridgeType',
+        request,
+        metadata || {},
+        this.methodInfoGetDataByTimeRangeAndBridgeType,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.InternalWeb/GetDataByTimeRangeAndBridgeType',
+    request,
+    metadata || {},
+    this.methodInfoGetDataByTimeRangeAndBridgeType);
+  }
+
+  methodInfoGetUniqueUserAddrByTimeRangeAndBridgeType = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.InternalWeb/GetUniqueUserAddrByTimeRangeAndBridgeType',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest,
+    gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse,
+    (request: gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse.deserializeBinary
+  );
+
+  getUniqueUserAddrByTimeRangeAndBridgeType(
+    request: gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse>;
+
+  getUniqueUserAddrByTimeRangeAndBridgeType(
+    request: gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse>;
+
+  getUniqueUserAddrByTimeRangeAndBridgeType(
+    request: gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.InternalWeb/GetUniqueUserAddrByTimeRangeAndBridgeType',
+        request,
+        metadata || {},
+        this.methodInfoGetUniqueUserAddrByTimeRangeAndBridgeType,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.InternalWeb/GetUniqueUserAddrByTimeRangeAndBridgeType',
+    request,
+    metadata || {},
+    this.methodInfoGetUniqueUserAddrByTimeRangeAndBridgeType);
+  }
+
+}
+

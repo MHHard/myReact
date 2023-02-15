@@ -1,24 +1,29 @@
 import React from "react";
+
 import "./app.css";
 import "./app.less";
-import bigImg from "@/assets/imgs/22.png";
-import Class from "@/components/Class";
-import { Demo1, Demo2 } from "@/components";
 
-function App() {
-  console.log("NODE_ENV", process, process.env.NODE_ENV, process.env.BASE_ENV);
-  console.log(
-    "NODE_ENV_URL",
-    process.env.NODE_ENV_URL,
-    process.env.REACT_APP_NFT_CONFIG_URL
-  );
+import { ThemeProvider } from "react-jss";
+import { ColorThemeContext } from "./providers/ThemeProvider";
+import { ConfigContextProvider } from "./providers/ConfigContextProvider";
+import { getDefaultTheme } from "./theme";
+import useThemeType from "./hooks/useThemeType";
+import CBridgeTransferHome from "./views/CBridgeTransferHome";
+import { useWindowWidth } from "./hooks";
+import { BridgeChainTokensProvider } from "./providers/BridgeChainTokensProvider";
+
+export default function App(): JSX.Element {
+  const [themeType, toggleTheme] = useThemeType();
+  useWindowWidth();
   return (
-    <h2>
-      webpack5-react-ts999
-      <Class></Class>
-      <img src={bigImg} alt="大于于10kb的图片" />
-      <Demo1 />
-    </h2>
+    <ConfigContextProvider>
+      <ColorThemeContext.Provider value={{ themeType, toggleTheme }}>
+        <ThemeProvider theme={getDefaultTheme(themeType)}>
+          <BridgeChainTokensProvider>
+            <CBridgeTransferHome />
+          </BridgeChainTokensProvider>
+        </ThemeProvider>
+      </ColorThemeContext.Provider>
+    </ConfigContextProvider>
   );
 }
-export default App;

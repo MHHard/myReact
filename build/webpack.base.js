@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer"); // 引入分析打包结果插件
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
 console.log(8888, process.env.NODE_ENV);
@@ -46,7 +47,7 @@ module.exports = {
       },
       {
         test: /.css$/, //匹配所有的 css 文件
-        include: [path.resolve(__dirname, "../src")],
+        // include: [path.resolve(__dirname, "../src")],
         use: [
           isDev ? "style-loader" : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css
           "css-loader",
@@ -60,9 +61,20 @@ module.exports = {
           isDev ? "style-loader" : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css
           "css-loader",
           "postcss-loader",
-          "less-loader",
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                exclude: /node_modules/,
+                // modifyVars: theme, // 自定义主题的
+                javascriptEnabled: true
+              }
+            }
+          }
         ],
+        
       },
+
       {
         test: /.(png|jpg|jpeg|gif|svg)$/, // 匹配图片文件
         type: "asset", // type选择asset
@@ -75,6 +87,12 @@ module.exports = {
           filename: "static/images/[name].[contenthash:8][ext]", // 文件输出目录和命名
         },
       },
+      {
+        test: /\.m?js$/,
+        resolve: {
+           fullySpecified: false
+        },
+      }
     ],
   },
   resolve: {
@@ -82,7 +100,19 @@ module.exports = {
       "@": path.join(__dirname, "../src"),
     },
     extensions: [".js", ".tsx", ".ts"],
-    modules: [path.resolve(__dirname, "../node_modules")], // 查找第三方模块只在本项目的node_modules中查找
+    // modules: [path.resolve(__dirname, "../node_modules")], // 查找第三方模块只在本项目的node_modules中查找
+    fallback: {
+      crypto: require.resolve('crypto-browserify'),
+      path: require.resolve('path-browserify'),
+      url: require.resolve('url'),
+      buffer: require.resolve('buffer/'),
+      util: require.resolve('util/'),
+      stream: require.resolve('stream-browserify/'),
+      vm: require.resolve('vm-browserify'),
+      http: require.resolve("stream-http"),
+      https: require.resolve("https-browserify"),
+      os: require.resolve("os-browserify/browser") 
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -94,8 +124,24 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       process: "process/browser",
+      Buffer: ['buffer', 'Buffer'],
+      React: "react",
     }),
     new BundleAnalyzerPlugin(), // 配置分析打包结果插件
+    // new webpack.NamedModulesPlugin(),
+    // new HardSourceWebpackPlugin(),
+    // new HardSourceWebpackPlugin.ParallelModulePlugin({
+    //   // How to launch the extra processes. Default:
+    //   fork: (fork, compiler, webpackBin) => fork(
+    //     webpackBin(),
+    //     ['--config', __filename], {
+    //       silent: true,
+    //     }
+    //   ),
+    //   numWorkers: () => 4,
+    //   minModules: 20,
+    // }),
+
   ],
   cache: {
     type: "filesystem", // 使用文件缓存

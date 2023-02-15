@@ -1,0 +1,62 @@
+stepImgName="seo_Moonbeam_Ethereum"
+indexType="one_wallet"
+
+TokenFull="Ether"
+TokenTicker="ETH"
+BridgedTokenTicker="WETH"
+TokenAKA_1=""
+TokenAKA_2="Ethereum"
+Token_Icon="https://get.celer.app/cbridge-icons/ETH.png"
+TokenInfo=""
+TokenInfo_AssetFullName="Ether"
+TokenInfo_TradingSymbol="ETH"
+TokenInfo_PriceSymbol="ETH"
+TokenInfo_TradingIcon="https://get.celer.app/cbridge-icons/ETH.png"
+TokenInfo_PriceUSD="1,221.61"
+TokenInfo_PriceLink="https://coinmarketcap.com/currencies/ethereum/"
+TokenInfo_Description1="Ether (<a href='https://ethereum.org/en/eth/' class='a-config' target='_blank'>ETH</a>), also referred to as Ethereum, is the main decentralized cryptocurrency used when dealing with <a href='https://ethereum.org/en/' class='a-config' target='_blank'>Ethereum Mainnet</a> and its various layer-2s like Arbitrum and Optimism. Simply put, it is the currency of when interacting with Ethereum Mainnet or its layer-2s. Whether you want to simply transfer some ETH between wallets, use ETH as collateral for creating an entirely new token, receive some bridged tokens from another chain like Polygon, or use an application someone had built on Ethereum; anytime you interact with Ethereum you will be required to pay a small fee in ETH. <br><br>Our cross-chain bridge, cBridge, supports the cross-chain bridging of Ether (ETH) <span><img class='describe-img' src='https://get.celer.app/cbridge-icons/ETH.png' alt=''/></span> between multiple chains with the fastest speeds, lowest costs, and most secure transactions available. The full name of this asset is Ether and the ticker of this asset is ETH. "
+
+
+
+Chain_Full_1="Moonbeam"
+Chain_Common_1="Moonbeam"
+Chain_cBridge_1="Moonbeam"
+Chain_Common_the_1="a"
+Chain_Info1=""
+Chain_Info1_ChainId=1284
+Chain_Info1_Description="As a major parachain of the Polkadot ecosystem, Moonbeam is an Ethereum-compatible parachain on Polkadot. Since Polkadot allows its users to create their own blockchains (parachains) that are directly connected to Polkadot's main relay chain. The vision behind Moonbeam is that, while it operates on Polkadot, it is able to connect to and interact with the Ethereum blockchain similar to how Evmos connects the Cosmos ecosystem to the EVM compatible ecosystem. Moonbeam is both interoperable and compatible with Ethereum and combines the best of both, the familiar and easy-to-use tools of Ethereum and the scalable, interoperable architecture of Polkadot.<br><br>Similar to other chains, Glimmer (GLMR) is the native utility token of Moonbeam. GLMR serves the Polkadot functionalities of staking and for on-chain governance functions as well as used to pay transaction fees and support network operations."
+Chain_Info1_TokenFull="Glimmer"
+Chain_Info1_TokenTicker="GLMR"
+Chain_Info1_BridgedTokenTicker=""
+Chain_Info1_TokenAKA_1=""
+Chain_Info1_TokenAKA_2=""
+Chain_Info1_Token_Icon="https://get.celer.app/cbridge-icons/chain-icon/moonbeam.png"
+Chain_Info1_Token_AssetFullName="Glimmer"
+Chain_Info1_Token_TradingSymbol="GLMR"
+Chain_Info1_Token_PriceSymbol="GLMR"
+Chain_Info1_Token_PriceUSD="0.00"
+Chain_Info1_Token_PriceLink="https://www.coingecko.com/en/coins/moonbeam"
+Chain_Info1_Token_Description1="Glimmer (GLMR) is the native platform token for Moonbeam. Serving a similar purpose as ETH on the Ethereum network, the GLMR token has some familiar utilities throughout the Moonbeam network, including participating in on-chain governance and voting on protocol upgrades and enhancements, it is also used to cover on-chain transaction costs, gas metering for smart contract execution, and as incentives for the network’s decentralized node infrastructure.<br><br>Celer’s cross-chain bridge, cBridge, supports the cross-chain bridging of GLMR <span><img class='describe-img' src='https://get.celer.app/cbridge-icons/chain-icon/moonbeam.png' alt=''/></span> between multiple chains with the fastest speeds, lowest costs, and most secure transactions available. The full name of this asset is Glimmer token and the ticker of this asset is GLMR."
+
+
+
+Chain_Full_2="Ethereum Mainnet"
+Chain_Common_2="Ethereum"
+Chain_cBridge_2="Ethereum Mainnet"
+Chain_Info2=""
+Chain_Info2_ChainId=1
+Chain_Info2_Description="Ethereum is a decentralized blockchain platform that provides open access to digital money and data-friendly services. It is a community-built technology that is responsible for Ether (ETH) also referred to as Ethereum, as well as many different decentralized applications (dApps) that many people use today. With their tools and unique programming language, Solidity, Ethereum’s users can create, publish, monetize, and use applications on the platform, while using its Ether (ETH) cryptocurrency as payment. Ethereum allows you to move money, or make agreements, directly with someone else while serving as a decentralized public ledger for verifying and recording those transactions."
+Chain_Info2_TokenFull="Ether"
+Chain_Info2_TokenTicker="ETH"
+Chain_Info2_BridgedTokenTicker="WETH"
+Chain_Info2_TokenAKA_1=""
+Chain_Info2_TokenAKA_2="Ethereum"
+Chain_Info2_Token_Icon="https://get.celer.app/cbridge-icons/ETH.png"
+Chain_Info2_Token_AssetFullName="Ether"
+Chain_Info2_Token_TradingSymbol="ETH"
+Chain_Info2_Token_PriceSymbol="ETH"
+Chain_Info2_Token_PriceUSD="1,221.61"
+Chain_Info2_Token_PriceLink="https://coinmarketcap.com/currencies/ethereum/"
+Chain_Info2_Token_Description1="Ether (<a href='https://ethereum.org/en/eth/' class='a-config' target='_blank'>ETH</a>), also referred to as Ethereum, is the main decentralized cryptocurrency used when dealing with <a href='https://ethereum.org/en/' class='a-config' target='_blank'>Ethereum Mainnet</a> and its various layer-2s like Arbitrum and Optimism. Simply put, it is the currency of when interacting with Ethereum Mainnet or its layer-2s. Whether you want to simply transfer some ETH between wallets, use ETH as collateral for creating an entirely new token, receive some bridged tokens from another chain like Polygon, or use an application someone had built on Ethereum; anytime you interact with Ethereum you will be required to pay a small fee in ETH.<br><br>Our cross-chain bridge, cBridge, supports the cross-chain bridging of Ether (ETH) <span><img class='describe-img' src='https://get.celer.app/cbridge-icons/ETH.png' alt=''/></span> between multiple chains with the fastest speeds, lowest costs, and most secure transactions available. The full name of this asset is Ether and the ticker of this asset is ETH. "
+
+
