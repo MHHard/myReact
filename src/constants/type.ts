@@ -2,235 +2,45 @@
 /* eslint-disable no-shadow */
 /* eslint-disable camelcase */
 
-// import { Bytes } from "ethers";
 import { BigNumber } from "ethers";
 import { MapLike } from "typescript";
-import { BridgeType as gatewayBridgeType } from "../proto/gateway/gateway_pb";
-
-interface ErrMsg {
-  code: ErrCode;
-  msg: string;
-}
-
-enum ErrCode {
-  ERROR_CODE_UNDEFINED = 0,
-  ERROR_CODE_COMMON = 500,
-  ERROR_NO_TOKEN_ON_DST_CHAIN = 1001,
-}
-
-export enum LPHistoryStatus {
-  LP_UNKNOWN,
-  LP_WAITING_FOR_SGN,
-  LP_WAITING_FOR_LP,
-  LP_SUBMITTING,
-  LP_COMPLETED,
-  LP_FAILED,
-  LP_DELAYED,
-}
-
-interface Chain {
-  id: number;
-  name: string;
-  icon: string;
-  block_delay: number;
-  gas_token_symbol: string;
-  explore_url: string;
-  rpc_url: string;
-  contract_addr: string;
-  drop_gas_amt?: string;
-  farming_reward_contract_addr: string;
-  transfer_agent_contract_addr?: string;
-}
+import {
+  SwapStatus,
+  Token,
+  TokenAmount,
+  SwapType,
+} from "../proto/chainhop/common_pb";
+import { BridgeType, TransferInfo } from "../proto/gateway/gateway_pb";
 
 interface PeggedPairConfig {
   org_chain_id: number;
-  org_token: TokenInfo;
+  org_token: Token.AsObject;
   pegged_chain_id: number;
-  pegged_token: TokenInfo;
+  pegged_token: Token.AsObject;
   pegged_deposit_contract_addr: string;
   pegged_burn_contract_addr: string;
   canonical_token_contract_addr: string;
-  vault_version: number;
-  bridge_version: number;
-  migration_peg_burn_contract_addr; // used to peg v0 to v2 transition, if this value is not null, stand for it's a v2 peg mode, burn the v0 supply first.
 }
 
-interface Token {
-  symbol: string;
-  address: string;
-  decimal: number;
-  xfer_disabled: boolean;
-  display_symbol?: string; /// FOR ETH <=====> WETH
-}
+interface HopHistory {
+  swapId: string;
+  amountIn?: TokenAmount.AsObject;
+  amountOut?: TokenAmount.AsObject;
+  createTs: number;
+  srcBlockTxLink: string;
+  dstBlockTxLink: string;
+  swapStatus: SwapStatus;
+  cbrTransferId: string;
+  refundedMidTokenOnDst?: Token.AsObject;
+  refundedTokenAmtOnDst: string;
+  bridgeType: string;
 
-interface GetAdvancedInfoRequest {
-  addr: string;
-}
-
-interface GetAdvancedInfoResponse {
-  slippage_tolerance: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  err: any;
-}
-interface SetAdvancedInfoRequest {
-  addr: string;
-  slippage_tolerance: number;
-}
-
-interface ChainTokenInfo {
-  token: Array<TokenInfo>;
-}
-
-interface GetTransferConfigsResponse {
-  chains: Array<Chain>;
-  chain_token: MapLike<ChainTokenInfo>;
-  pegged_pair_configs: Array<PeggedPairConfig>;
-}
-
-interface EstimateAmtRequest {
-  src_chain_id: number;
-  dst_chain_id: number;
-  token_symbol: string;
-  amt: string;
-  usr_addr: string;
-}
-
-interface EstimateAmtResponse {
-  eq_value_token_amt: string;
-  bridge_rate: number;
-  fee: string;
-  slippage_tolerance: number;
-  max_slippage: number;
-  err: any;
-}
-
-interface MarkTransferRequest {
-  transfer_id: string;
-  // dst_transfer_id: string;
-  src_send_info?: TransferInfo;
-  dst_min_received_info?: TransferInfo;
-  addr?: string;
-  src_tx_hash?: string;
-  type: MarkTransferTypeRequest;
-  withdraw_seq_num?: string;
-}
-
-interface GetTransferStatusRequest {
-  transfer_id: string;
-}
-
-interface GetTransferStatusResponse {
-  status: TransferHistoryStatus;
-  wd_onchain: string;
-  sorted_sigs: Array<string>;
-  signers: Array<string>;
-  powers: Array<string>;
-  src_block_tx_link?: string;
-  dst_block_tx_link?: string;
-}
-
-export enum MarkTransferTypeRequest {
-  TRANSFER_TYPE_UNKNOWN = 0,
-  TRANSFER_TYPE_SEND = 1,
-  TRANSFER_TYPE_REFUND = 2,
-}
-
-interface GetLPInfoListRequest {
-  addr: string;
-}
-
-interface GetLPInfoListResponse {
-  lp_info: Array<LPInfo>;
-}
-
-interface LPInfo {
-  key: string;
-  chain: Chain;
-  token: TokenInfo;
-  liquidity: number;
-  liquidity_amt: string;
-  has_farming_sessions: boolean;
-  lp_fee_earning: number;
-  farming_reward_earning: number;
-  volume_24h: number;
-  total_liquidity: number;
-  total_liquidity_amt: string;
-  lp_fee_earning_apy: number;
-  farming_apy: number;
-  farming_session_tokens: TokenInfo[];
-  isCanwidthdraw?: boolean;
-  liquidityList?: LPInfo[];
-  chainList?: Chain[];
-  diableAggregateRemove?: boolean;
-  disableAddLiquidity?: boolean;
-  isWrapTokenLiquidity?: boolean;
-}
-
-type LPList = Array<LPInfo>;
-
-interface WithdrawLiquidityRequest {
-  transfer_id?: string;
-  receiver_addr?: string;
-  amount?: string;
-  token_addr?: string;
-  chain_id?: number;
-  sig?: string;
-  reqid?: number;
-  // creator:string
-}
-
-interface WithdrawLiquidityResponse {
-  seq_num: string;
-  withdraw_id: string;
-}
-interface WithdrawDetail {
-  _wdmsg: string;
-  _sigs: Array<string>;
-  _signers: Array<string>;
-  _powers: Array<string>;
-}
-
-interface QueryLiquidityStatusResponse {
-  status: LPHistoryStatus;
-  wd_onchain: string;
-  sorted_sigs: Array<string>;
-  signers: Array<string>;
-  powers: Array<string>;
-  block_tx_link: string;
-}
-
-interface QueryLiquidityStatusRequest {
-  seq_num?: string;
-  tx_hash?: string;
-  lp_addr: string;
-  chain_id: number;
-  type: LPType;
-}
-
-interface TransferHistoryRequest {
-  next_page_token: string; // for first page, it's ""
-  page_size: number;
-  acct_addr: string[];
-}
-
-interface TransferHistory {
-  transfer_id: string;
-  src_send_info: TransferInfo;
-  dst_received_info: TransferInfo;
-  srcAddress: string;
-  dstAddress: string;
-  ts: number;
-  src_block_tx_link: string;
-  dst_block_tx_link: string;
-  status: TransferHistoryStatus;
+  status?: TransferHistoryStatus;
   updateTime?: number;
   txIsFailed?: boolean;
-  nonce: number;
+  transferHistory?: TransferHistory;
   isLocal?: boolean;
-  update_ts?: number;
-  bridge_type?: gatewayBridgeType;
-  dst_deadline?: number;
-  refund_reason?: number;
+  swapType: SwapType;
 }
 
 export enum TransferHistoryStatus {
@@ -246,211 +56,184 @@ export enum TransferHistoryStatus {
   TRANSFER_CONFIRMING_YOUR_REFUND, // user: mark refund has been submitted on chain
   TRANSFER_REFUNDED, // relayer: on refund(withdraw liquidity actually) tx event
   TRANSFER_DELAYED,
+
+  SS_PENDING,
+  SS_SRC_FAILED,
+  SS_DST_COMPLETED,
+  SS_DST_REFUNDED,
+  SS_SRC_REFUNDED,
 }
 
-interface TransferInfo {
-  chain: Chain;
-  token: Token;
-  amount: string;
+export enum TransferRefundParamStatus {
+  // TRANSFER_TYPE_NULL indicates no transfer association.
+  TRANSFER_TYPE_NULL = 0,
+  // TRANSFER_TYPE_LIQUIDITY_SEND defines a send transfer via a liquidity bridge.
+  TRANSFER_TYPE_LIQUIDITY_SEND = 1,
+  // TRANSFER_TYPE_LIQUIDITY_WITHDRAW defines a withdraw transfer from a liquidity bridge.
+  TRANSFER_TYPE_LIQUIDITY_WITHDRAW = 2,
+  // TRANSFER_TYPE_PEG_MINT defines a mint transfer via a pegged token bridge.
+  TRANSFER_TYPE_PEG_MINT = 3,
+  // TRANSFER_TYPE_PEG_MINT defines a withdraw transfer from an original token vault.
+  TRANSFER_TYPE_PEG_WITHDRAW = 4,
+  // TRANSFER_TYPE_PEG_MINT_V2 defines a mint transfer via a pegged token bridge v2.
+  TRANSFER_TYPE_PEG_MINT_V2 = 5,
+  // TRANSFER_TYPE_PEG_MINT_V2 defines a withdraw transfer from an original token vault v2.
+  TRANSFER_TYPE_PEG_WITHDRAW_V2 = 6,
 }
 
-interface TransferHistoryResponse {
-  history: Array<TransferHistory>;
-  next_page_token: string;
-  current_size: number;
+interface GetTransferInfoRequest {
+  transfer_id: string;
 }
 
-interface LPHistoryRequest {
-  next_page_token: string; // for first page, it's ""
-  page_size: number;
-  addr: string;
+interface GetTransferInfoResponse {
+  transfer: TransferHistory;
 }
 
-interface LPHistory {
-  chain: Chain;
-  token: TokenInfo;
-  amount: string;
+interface TransferHistory {
+  transfer_id: string;
+  src_send_info: TransferInfo.AsObject;
+  dst_received_info: TransferInfo.AsObject;
   ts: number;
-  block_tx_link: string;
-  status: LPHistoryStatus;
-  type: LPType;
-  withdraw_id: string;
-  seq_num: number;
-  method_type: number;
-  nonce: number;
-  isLocal?: boolean;
+  src_block_tx_link: string;
+  dst_block_tx_link: string;
+  status: TransferHistoryStatus;
+  refund_reason: number;
+
   updateTime?: number;
   txIsFailed?: boolean;
 }
 
-export enum LPType {
-  LP_TYPE_UNKNOWN = 0,
-  LP_TYPE_ADD = 1,
-  LP_TYPE_REMOVE = 2,
+interface GetTransferStatusRequest {
+  transfer_id: string;
 }
 
-interface TokenInfo {
-  token: Token;
+interface GetTransferStatusResponse {
+  status: TransferHistoryStatus;
+  wd_onchain: string;
+  sorted_sigs: Array<string>;
+  signers: Array<string>;
+  powers: Array<string>;
+  src_block_tx_link?: string;
+  dst_block_tx_link?: string;
+  src_send_info?: TransferInfo;
+  dst_received_info?: TransferInfo;
+  bridge_type?: BridgeType;
+}
+
+interface WithdrawDetail {
+  _wdmsg: string;
+  _sigs: Array<string>;
+  _signers: Array<string>;
+  _powers: Array<string>;
+}
+
+interface TokenUrlPair {
+  key: string;
+  url: string;
+}
+
+interface ConfigToken {
+  chainId: number;
+  address: string;
+  name: string;
+  symbol: string;
+  decimals: number;
+  logoURI: string;
+}
+
+interface TokenListMap {
+  key: string;
+  tokenList: ConfigToken[];
+}
+
+interface DestinationChainTransferInfo {
+  delayPeriod: BigNumber;
+  delayThresholds: BigNumber;
+  epochVolumeCaps: BigNumber;
+}
+
+interface SourceChainTransferInfo {
+  minAmount: BigNumber;
+  maxAmount: BigNumber;
+}
+
+export enum BridgeTypeForBridgeConfig {
+  Null,
+  LiquidityPool,
+  PegDeposit,
+  PegBurn,
+  PegV2Deposit,
+  PegV2Burn,
+  PegBurnMint, // Token will be burned on Peg Chain A and be minted on Peg Chain B
+}
+
+interface TransferPair {
+  sourceChainInfo: Chain | undefined;
+  sourceChainToken: TokenInfoFromBridgeConfig | undefined;
+  sourceChainContractAddress: string | undefined;
+  sourceChainCanonicalTokenAddress: string | undefined;
+  sourceChainContractVersion: number;
+  bridgeType: BridgeTypeForBridgeConfig;
+  destinationChainInfo: Chain | undefined;
+  destinationToken: TokenInfoFromBridgeConfig | undefined;
+  destinationChainContractAddress: string | undefined;
+  destinationCanonicalTokenAddress: string | undefined;
+  destinationChainContractVersion: number;
+}
+
+interface Chain {
+  id: number;
   name: string;
   icon: string;
-  max_amt?: string;
+  block_delay: number;
+  gas_token_symbol: string;
+  explore_url: string;
+  rpc_url: string;
+  contract_addr: string;
+  drop_gas_amt?: string;
+}
+
+interface TokenInfoFromBridgeConfig {
+  token: Token.AsObject;
+  name: string;
+  icon: string;
+  max_amt: string;
   balance?: string;
   inbound_lmt?: string;
-  inbound_epoch_cap?: string;
-  transfer_disabled?: boolean;
-  liq_add_disabled?: boolean;
-  liq_rm_disabled?: boolean;
-  delay_threshold?: string;
-  delay_period?: number;
-  liq_agg_rm_src_disabled?: boolean;
 }
 
-interface MarkLiquidityRequest {
-  lp_addr: string;
-  amt: string;
-  token_addr: string;
-  chain_id: number;
-  seq_num?: string;
-  tx_hash?: string;
-  type: LPType;
+interface PeggedPairConfigFromBridgeConfig {
+  org_chain_id: number;
+  org_token: TokenInfoFromBridgeConfig;
+  pegged_chain_id: number;
+  pegged_token: TokenInfoFromBridgeConfig;
+  pegged_deposit_contract_addr: string;
+  pegged_burn_contract_addr: string;
+  canonical_token_contract_addr: string;
+  vault_version: number;
+  bridge_version: number;
 }
 
-interface LPHistoryResponse {
-  history: Array<LPHistory>;
-  next_page_token: string;
-  current_size: number;
+// interface Token {
+//   symbol: string;
+//   address: string;
+//   decimal: number;
+//   xfer_disabled: boolean;
+//   display_symbol?: string; /// FOR ETH <=====> WETH
+// }
+
+interface ChainTokenInfo {
+  token: Array<TokenInfoFromBridgeConfig>;
+}
+interface ChainHopTokenInfo {
+  tokenList: Array<Token.AsObject>;
 }
 
-interface ErrMsg {
-  code: ErrCode;
-  msg: string;
-}
-
-interface ClaimWithdrawRewardRequest {
-  addr: string;
-}
-
-interface ClaimRewardDetailsRequest {
-  addr: string;
-}
-
-interface Signature {
-  signer: string;
-  sig_bytes: string;
-}
-
-interface RewardClaimDetails {
-  chain_id: string;
-  reward_proto_bytes: string;
-  signatures: Array<Signature>;
-}
-
-interface ClaimRewardDetailsResponse {
-  details?: Array<RewardClaimDetails>;
-}
-
-interface RewardingDataRequest {
-  addr: string;
-}
-
-interface Reward {
-  amt: number;
-  token: Token;
-  chain_id: number;
-}
-
-interface RewardingDataResponse {
-  err: ErrMsg;
-  historical_cumulative_rewards: Array<Reward>;
-  unlocked_cumulative_rewards: Array<Reward>;
-  usd_price: MapLike<number>;
-}
-
-interface GetRetentionRewardsInfoRequest {
-  addr: string;
-}
-
-interface GetRetentionRewardsInfoResponse {
-  err?: ErrMsg;
-  event_id: number;
-  event_end_time: number;
-  max_reward: string;
-  max_transfer_volume: number;
-  current_reward: string;
-  celr_usd_price: number;
-  claim_time: number;
-  signature: Signature;
-  event_promo_img_url: string;
-  event_faq_link_url: string;
-  event_rewards_tooltip: string;
-  event_description: string;
-  event_title: string;
-  event_max_reward_cap: number;
-  so_far_sum_reward: number;
-}
-
-interface ClaimRetentionRewardsRequest {
-  addr: string;
-}
-
-interface ClaimRetentionRewardsResponse {
-  err?: ErrMsg;
-  event_id: number;
-  current_reward: string;
-  signature: Signature;
-}
-
-interface GetPercentageFeeRebateInfoRequest {
-  addr: string;
-}
-
-interface GetPercentageFeeRebateInfoResponse {
-  err?: ErrMsg;
-  event_id: number;
-  event_end_time: number;
-  rebate_portion: number;
-  reward: string;
-  celr_usd_price: number;
-  claim_time: number;
-  signature: Signature;
-  event_max_reward_cap: number;
-  so_far_sum_reward: number;
-  reward_amt: number;
-  reward_token_symbol: string;
-  per_user_max_reward_cap: number;
-}
-
-interface ClaimPercentageFeeRebateRequest {
-  addr: string;
-}
-
-interface ClaimPercentageFeeRebateResponse {
-  err?: ErrMsg;
-  event_id: number;
-  reward: string;
-  signature: Signature;
-}
-
-export enum UnlockRewardType {
-  SWITCH_CHAIN,
-  UNLOCK,
-  UNLOCKED_TOO_FREQUENTLY,
-  UNLOCKING,
-  UNLOCK_SUCCESSED,
-}
-
-export enum ClaimRewardType {
-  CLAIMING,
-  COMPLETED,
-}
-
-export enum ClaimType {
-  SWITCH_CHAIN,
-  UNLOCKED_TOO_FREQUENTLY,
-  UNLOCKING,
-  UNLOCK_SUCCESSED,
-  CLAIMING,
-  COMPLETED,
+interface GetTransferConfigsResponse {
+  chains: Array<Chain>;
+  chain_token: MapLike<ChainTokenInfo>;
+  farming_reward_contract_addr: string;
+  pegged_pair_configs: Array<PeggedPairConfigFromBridgeConfig>;
 }
 
 interface FlowDepositParameters {
@@ -459,7 +242,7 @@ interface FlowDepositParameters {
   amount: string;
   flowAddress: string; /// Flow wallet address
   mintChainId: string;
-  destinationChainMintAddress: string; /// Receiver address: EVM wallet / Aptos wallet
+  evmMintAddress: string; /// EVM wallet address
   nonce: string;
   tokenAddress: string;
 }
@@ -475,7 +258,7 @@ interface FlowBurnParameters {
   amount: string;
   flowAddress: string; /// Flow wallet address
   withdrawChainId: string;
-  destinationChainWithdrawAddress: string; /// Receiver address: EVM wallet / Aptos wallet
+  evmWithdrawAddress: string; /// EVM wallet address
   nonce: string;
   tokenAddress: string;
 }
@@ -512,293 +295,42 @@ interface FlowTokenPathConfig {
   Symbol: string;
 }
 
+interface TokenBalance {
+  isNativeToken: boolean,
+  balance: BigNumber,
+  sysmbol: string,
+  decimals: number
+}
+
 interface CoMinterCap {
-  minterSupply: BigNumber | undefined;
+  minterSupply: BigNumber;
 }
-
-interface BurnConfig {
-  chain_id: number;
-  token: TokenInfo;
-  burn_contract_addr: string;
-  canonical_token_contract_addr: string;
-  burn_contract_version: number;
-}
-
-/// burn_config_as_org.bridge_version === 2
-/// burn_config_as_dst.bridge_version is not required
-/// If the bridge_version of burnConfig1 and burnConfig2 are 2,
-/// There should be two MultiBurnPairConfigs
-/// 1: burnConfig1 ----> burnConfig2
-/// 2: burnConfig2 ----> burnConfig1
-interface MultiBurnPairConfig {
-  burn_config_as_org: BurnConfig; /// Could be used only as from chain
-  burn_config_as_dst: BurnConfig; /// Could be used only as to chain
-}
-
-interface S3NFTToken {
-  chainid: number;
-  addr: string;
-}
-
-interface S3NFTConfig {
-  name: string;
-  symbol: string;
-  url: string;
-  orig: S3NFTToken;
-  pegs: S3NFTToken[];
-}
-
-interface NFTItem {
-  name: string;
-  img: string;
-  tokenName: string;
-  nftId: number;
-  address: string;
-  isNativeNft: boolean;
-}
-
-interface S3NFTConfigChain {
-  chainid: number;
-  addr: string;
-}
-
-interface NFTChain {
-  chainid: number;
-  name: string;
-  addr: string;
-  icon: string;
-}
-
-interface NFTHistory {
-  // second
-  createdAt: number;
-  srcChid: number;
-  dstChid: number;
-  sender: string;
-  receiver: string;
-  srcNft: string;
-  dstNft: string;
-  tokID: string;
-  srcTx: string;
-  dstTx: string;
-  status: number;
-  txIsFailed: boolean;
-}
-
-interface NFTHistoryRequest {
-  pageSize: number;
-  nextPageToken: string;
-}
-
-interface NFTHistoryResponse {
-  history: NFTHistory[];
-  nextPageToken: number;
-  pageSize: number;
-}
-
-export enum NFTBridgeStatus {
-  NFT_BRIDEGE_SUBMITTING,
-  NFT_BRIDEGE_WAITING_FOR_SGN,
-  NFT_BRIDEGE_WAITING_DST_MINT,
-  NFT_BRIDEGE_COMPLETE,
-  NFT_BRIDGE_FAILED,
-}
-
-export enum NFTBridgeMode {
-  UNDEFINED,
-  PEGGED, // orig chain lock, dst chain mint
-  BURN, // back to orig chain
-  NATIVE, // token contract cross chain
-  NON_ORIG_BURN, // remote mint on peg chains
-}
-
-interface ERC721TokenUriMetadata {
-  image: string;
-  description: string;
-  name: string;
-}
-
-interface DestinationChainTransferInfo {
-  delayPeriod: BigNumber | string;
-  delayThresholds: BigNumber;
-  epochVolumeCaps: BigNumber;
-}
-
-interface SourceChainTransferInfo {
-  minAmount: BigNumber;
-  maxAmount: BigNumber;
-}
-
-export enum BridgeType {
-  Null,
-  LiquidityPool,
-  PegDeposit,
-  PegBurn,
-  PegV2Deposit,
-  PegV2Burn,
-  PegBurnMint, // Token will be burned on Peg Chain A and be minted on Peg Chain B
-}
-
-interface TransferPair {
-  sourceChainInfo: Chain | undefined;
-  sourceChainToken: TokenInfo | undefined;
-  sourceChainContractAddress: string | undefined;
-  sourceChainCanonicalTokenAddress: string | undefined;
-  sourceChainContractVersion: number;
-  bridgeType: BridgeType;
-  destinationChainInfo: Chain | undefined;
-  destinationToken: TokenInfo | undefined;
-  destinationChainContractAddress: string | undefined;
-  destinationCanonicalTokenAddress: string | undefined;
-  destinationChainContractVersion: number;
-  destinationChainMigrationPegBurnContractAddr: string | undefined;
-}
-interface LPCheckpair {
-  chainInfo: Chain | undefined;
-  chainToken: TokenInfo | undefined;
-  chainContractAddress: string | undefined;
-  chainCanonicalTokenAddress: string | undefined;
-  amount: string | undefined;
-}
-interface ChainDelayInfo {
-  delayPeriod: string;
-  delayThresholds: string;
-  isBigAmountDelayed: boolean;
-}
-
-interface ChainSafeguardInfo {
-  minAmount: BigNumber;
-  maxAmount: BigNumber;
-  epochVolumes: BigNumber;
-  epochVolumeCaps: BigNumber;
-  lastOpTimestamps: BigNumber;
-}
-
-interface PingRequest {
-  addr: string;
-}
-
-interface PingResponse {
-  err: ErrMsg;
-}
-
-interface PingLPRequest {
-  addr: string;
-  lp_type: LPType;
-}
-
-interface PingLPResponse {
-  err: ErrMsg;
-}
-
-interface LocalChainConfiguration {
-  name: string;
-  chainId: number | string;
-  rpcUrl: string;
-  walletRpcUrl?: string; // specific RPC for wallets
-  iconUrl: string;
-  symbol: string;
-  blockExplorerUrl: string;
-  tokenSymbolList: Array<string>;
-  lqMintTokenSymbolBlackList: Array<string>;
-}
-interface PendingHistoryResponse {
-  action_transfer_history: Array<TransferHistory>;
-  pending_transfer_history: Array<TransferHistory>;
-  action_lp_history: Array<LPHistory>;
-  pending_lp_history: Array<LPHistory>;
-}
-
-type LocalChainConfigType = Record<any, LocalChainConfiguration>;
-
-interface GetAptosSafeGaurdingInfoRequest {
-  key_type: string;
-  value_type: string;
-  key: string;
-}
-
-interface GetAptosOriginalVaultSafeGaurdingInfoResponse {
-  delay_threshold: string;
-  max_deposit: string;
-  min_deposit: string;
-  vol_cap: string;
-}
-
-interface PriceOfTokens {
-  updateEpoch: string;
-  assetPrice: Array<AssetPrice>;
-  gasPrice: Array<GasPrice>;
-}
-
-interface AssetPrice {
-  symbol: string;
-  price: number;
-  extraPower10: number | undefined;
-  chainIds: Array<number> | undefined;
-}
-
-interface GasPrice {
-  chainId: string;
-  price: string;
-}
-interface GetAptosPeggedBridgeSafeGaurdingInfoResponse {
-  delay_threshold: string;
-  max_burn: string;
-  min_burn: string;
-  vol_cap: string;
-}
-
+// interface TokenInfo {
+//   decimal?: number;
+//   name?: string;
+//   symbol?: string;
+//   icon?: string;
+//   address?: string;
+// }
 export type {
-  //   LPHistoryStatus,
-  Chain,
-  Token,
-  GetAdvancedInfoRequest,
-  GetAdvancedInfoResponse,
-  SetAdvancedInfoRequest,
-  GetTransferConfigsResponse,
-  EstimateAmtRequest,
-  EstimateAmtResponse,
-  MarkTransferRequest,
   GetTransferStatusRequest,
   GetTransferStatusResponse,
-  // MarkTransferTypeRequest,
-  GetLPInfoListRequest,
-  GetLPInfoListResponse,
-  MarkLiquidityRequest,
-  LPInfo,
-  LPList,
-  WithdrawLiquidityRequest,
-  WithdrawLiquidityResponse,
-  QueryLiquidityStatusRequest,
-  QueryLiquidityStatusResponse,
-  WithdrawDetail,
-  TransferHistoryRequest,
+  GetTransferInfoRequest,
+  GetTransferInfoResponse,
   TransferHistory,
-  TransferInfo,
-  TransferHistoryResponse,
-  LPHistoryRequest,
-  LPHistory,
-  //   LPType,
-  TokenInfo,
-  LPHistoryResponse,
-  ErrMsg,
-  ClaimWithdrawRewardRequest,
-  ClaimRewardDetailsRequest,
-  RewardClaimDetails,
-  ClaimRewardDetailsResponse,
-  Reward,
-  RewardingDataRequest,
-  RewardingDataResponse,
-  Signature,
-  GetRetentionRewardsInfoRequest,
-  GetRetentionRewardsInfoResponse,
-  ClaimRetentionRewardsRequest,
-  ClaimRetentionRewardsResponse,
-  GetPercentageFeeRebateInfoRequest,
-  GetPercentageFeeRebateInfoResponse,
-  ClaimPercentageFeeRebateRequest,
-  ClaimPercentageFeeRebateResponse,
+  WithdrawDetail,
   PeggedPairConfig,
+  HopHistory,
+  TokenUrlPair,
+  TokenListMap,
+  ConfigToken,
+  TransferPair,
+  Chain,
+  TokenInfoFromBridgeConfig,
+  GetTransferConfigsResponse,
+  SourceChainTransferInfo,
+  DestinationChainTransferInfo,
+  CoMinterCap,
   FlowDepositParameters,
   FlowDepositResponse,
   FlowBurnParameters,
@@ -807,35 +339,88 @@ export type {
   FlowBurnTokenConfig,
   FlowTokenPathConfigs,
   FlowTokenPathConfig,
-  CoMinterCap,
-  BurnConfig,
-  MultiBurnPairConfig,
-  S3NFTConfig,
-  S3NFTToken,
-  NFTItem,
-  NFTChain,
-  S3NFTConfigChain,
-  NFTHistory,
-  NFTHistoryRequest,
-  NFTHistoryResponse,
-  ERC721TokenUriMetadata,
-  DestinationChainTransferInfo,
-  SourceChainTransferInfo,
-  TransferPair,
-  LPCheckpair,
-  ChainDelayInfo,
-  ChainSafeguardInfo,
-  PingRequest,
-  PingResponse,
-  ChainTokenInfo,
-  LocalChainConfiguration,
-  LocalChainConfigType,
-  PriceOfTokens,
-  AssetPrice,
-  PendingHistoryResponse,
-  GetAptosSafeGaurdingInfoRequest,
-  GetAptosOriginalVaultSafeGaurdingInfoResponse,
-  GetAptosPeggedBridgeSafeGaurdingInfoResponse,
-  PingLPRequest,
-  PingLPResponse,
+  ChainHopTokenInfo,
+  TokenBalance
 };
+
+export const COMMONTOKEN_BASES = {
+  5: [
+    { symbol: "USDT", address: "0xf4B2cbc3bA04c478F0dC824f4806aC39982Dce73" },
+    { symbol: "USDC", address: "0xcbe56b00d173a26a5978ce90db2e33622fd95a28" },
+    { symbol: "DAI", address: "0x830eB9358C40c591C9591BAd52F73f76a32ca53b" },
+  ],
+  69: [
+    { symbol: "USDT", address: "0x6a2d262d56735dba19dd70682b39f6be9a931d98" },
+  ],
+  4002: [
+    { symbol: "USDT", address: "0x7d43aabc515c356145049227cee54b608342c0ad" },
+    { symbol: "WETH", address: "0x2444486c0eee140105c0fb9b6b55513089689d62" },
+  ],
+  97: [
+    { symbol: "USDT", address: "0x7d43AABC515C356145049227CeE54B608342c0ad" },
+    { symbol: "DAI", address: "0xF82bbA32bcbbdFa1365ae13dc3Ad6cC5F0BEeF5C" },
+  ],
+  1: [
+    { symbol: "WETH", address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" },
+    { symbol: "USDC", address: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48" },
+    { symbol: "USDT", address: "0xdac17f958d2ee523a2206206994597c13d831ec7" },
+    { symbol: "DAI", address: "0x6b175474e89094c44da98b954eedeac495271d0f" },
+    { symbol: "WBTC", address: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599" },
+  ],
+  56: [
+    { symbol: "WBNB", address: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c" },
+    { symbol: "ETH", address: "0x2170Ed0880ac9A755fd29B2688956BD959F933F8" },
+    { symbol: "USDT", address: "0x55d398326f99059fF775485246999027B3197955" },
+    { symbol: "USDC", address: "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d" },
+    { symbol: "BUSD", address: "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56" },
+    { symbol: "BTCB", address: "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c" },
+  ],
+  137: [
+    { symbol: "WMATIC", address: "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270" },
+    { symbol: "ETH", address: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619" },
+    { symbol: "USDT", address: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F" },
+    { symbol: "USDC", address: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174" },
+    { symbol: "DAI", address: "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063" },
+    { symbol: "WBTC", address: "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6" },
+  ],
+  250: [
+    { symbol: "wFTM", address: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83" },
+    { symbol: "ETH", address: "0x74b23882a30290451A17c44f4F05243b6b58C76d" },
+    { symbol: "fUSDT", address: "0x049d68029688eAbF473097a2fC38ef61633A3C7A" },
+    { symbol: "USDC", address: "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75" },
+    { symbol: "DAI", address: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E" },
+    { symbol: "BTC", address: "0x321162Cd933E2Be498Cd2267a90534A804051b11" },
+  ],
+  43114: [
+    // { symbol: "WAVAX", address: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7" },
+    { symbol: "WETH.e", address: "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB" },
+    { symbol: "USDT.e", address: "0xc7198437980c041c805A1EDcbA50c1Ce5db95118" },
+    { symbol: "USDC.e", address: "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664" },
+    { symbol: "DAI.e", address: "0xd586E7F844cEa2F87f50152665BCbc2C279D8d70" },
+    { symbol: "WBTC.e", address: "0x50b7545627a5162F82A992c33b87aDc75187B218" },
+  ],
+  42161: [
+    { symbol: "WETH", address: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1" },
+    { symbol: "USDT", address: "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9" },
+    { symbol: "USDC", address: "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8" },
+    { symbol: "DAI", address: "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1" },
+    { symbol: "WBTC", address: "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f" },
+  ],
+  10: [
+    { symbol: "WETH", address: "0x4200000000000000000000000000000000000006" },
+    { symbol: "USDT", address: "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58" },
+    { symbol: "USDC", address: "0x7F5c764cBc14f9669B88837ca1490cCa17c31607" },
+    { symbol: "DAI", address: "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1" },
+    { symbol: "WBTC", address: "0x68f180fcCe6836688e9084f035309E29Bf0A2095" },
+  ],
+};
+// export const COMMONTOKEN_BASES = {
+//   1: [getNetworkById(1).symbol, "USDT", "USDC", "DAI", "WETH", "WBTC"],
+//   5: [getNetworkById(5).symbol, "USDT", "USDC", "DAI", "WETH", "WBTC"],
+//   97: [getNetworkById(5).symbol, "USDT", "USDC", "DAI", "WETH", "WBTC"],
+//   56: [getNetworkById(56).symbol, "USDT", "USDC", "DAI", "WETH", "WBTC"],
+//   137: [getNetworkById(137).symbol, "USDT", "USDC", "DAI", "WETH", "WBTC"],
+//   250: [getNetworkById(250).symbol, "USDT", "USDC", "DAI", "WETH", "WBTC"],
+//   42161: [getNetworkById(42161).symbol, "USDT", "USDC", "DAI", "WETH", "WBTC"],
+//   43114: [getNetworkById(42161).symbol, "USDT", "USDC", "DAI", "WETH", "WBTC"],
+// };

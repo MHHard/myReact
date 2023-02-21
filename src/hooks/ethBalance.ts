@@ -2,13 +2,13 @@ import { JsonRpcProvider } from "@ethersproject/providers";
 import { BigNumber } from "ethers";
 import { useEffect, useState } from "react";
 import { useToggle } from "react-use";
+import { getNetworkById } from "../constants/network";
 import { UseBalanceReturn } from "./tokenBalance";
 
 export default function useEthBalance(
-  provider: JsonRpcProvider | undefined,
-  userAddr: string,
-  isGasToken: boolean,
-  timeout = 3000,
+  chainId: number | undefined,
+  address: string,
+  timeout = 3000
 ): UseBalanceReturn {
   const [balance, setBalance] = useState(BigNumber.from(0));
   const [loading, setLoading] = useState(false);
@@ -17,11 +17,15 @@ export default function useEthBalance(
   const [reloadTrigger, reload] = useToggle(false);
 
   useEffect(() => {
-    if (!provider || !userAddr || !isGasToken) {
+    if (!chainId || !address) {
       return;
-    } 
-
-    const balancePromise = provider.getBalance(userAddr);
+    }
+    const rpcUrl = getNetworkById(chainId)?.rpcUrl;
+    if (!rpcUrl) {
+      return;
+    }
+    const provider = new JsonRpcProvider(rpcUrl);
+    const balancePromise = provider.getBalance(address);
 
     let timeoutTimer: NodeJS.Timeout;
     const timeoutPromise = new Promise<BigNumber>((_, reject) => {
@@ -39,11 +43,10 @@ export default function useEthBalance(
       })
       .catch((err: Error) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [provider, userAddr, isGasToken, reloadTrigger, timeout]);
+  }, [chainId, address, reloadTrigger, timeout]);
 
   useEffect(() => {
     if (error && retryCount < 3) {
-      console.debug("reloading balance, retry", retryCount);
       setRetryCount(retryCount + 1);
       reload();
     }

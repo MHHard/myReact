@@ -29,12 +29,13 @@ const removeFlowAddressLeading0s = (address: string) => {
   return "0x" + address.replace("0x", "").replace(/^0+/, "");
 };
 
-const calculateFlowTransferId = async (
-  address: string,
-  tokenAddress: string,
-  amountString: string,
-  nonceString: string,
-): Promise<string> => {
+const calculateFlowTransferId = 
+  async (
+    address: string, 
+    tokenAddress: string,
+    amountString: string,
+    nonceString: string,
+    ): Promise<string> => {
   const candenceCode = fcl.script`
   import FungibleToken from ${flowFungibleTokenAddress}
 
@@ -45,9 +46,9 @@ const calculateFlowTransferId = async (
   }`;
 
   const response = await fcl.send([candenceCode]);
-  const transferId = await fcl.decode(response);
-  return transferId;
-};
+  const balance = await fcl.decode(response);
+  return balance;
+}
 
 export const getFlowTokenPathConfigs = (): Promise<FlowTokenPathConfigs> =>
   axios
@@ -78,7 +79,7 @@ export const depositFromFlow = async (parameters: FlowDepositParameters): Promis
       execute {
         let depoInfo = SafeBox.DepoInfo(amt: UFix64(${parameters.amount}), mintChId: ${
     parameters.mintChainId
-  }, mintAddr: "${parameters.destinationChainMintAddress}", nonce: ${parameters.nonce})
+  }, mintAddr: "${parameters.evmMintAddress}", nonce: ${parameters.nonce})
         SafeBox.deposit(from: self.provRef, info: depoInfo)
       }
     }
@@ -94,16 +95,8 @@ export const depositFromFlow = async (parameters: FlowDepositParameters): Promis
     ]);
 
     const amountString = Number(parameters.amount)?.toFixed(8).toString() ?? parameters.amount;
-    const transferIdWithout0x = await calculateFlowTransferId(
-      parameters.flowAddress,
-      parameters.tokenAddress,
-      amountString,
-      parameters.nonce,
-    );
+    const transferIdWithout0x = await calculateFlowTransferId(parameters.flowAddress, parameters.tokenAddress, amountString, parameters.nonce)
     const transferId = "0x" + transferIdWithout0x;
-
-    // const depositParameterValue = parameters.flowAddress + parameters.tokenAddress + amountString + parameters.nonce;
-    // const transferId = "0x" + sha3_256(depositParameterValue);
 
     return { flowTransanctionId: response.transactionId, transferId };
   } catch (error) {
@@ -228,7 +221,7 @@ export const burnFromFlow = async (parameters: FlowBurnParameters): Promise<Flow
       execute {
         let burnInfo = PegBridge.BurnInfo(amt: UFix64(${parameters.amount}), withdrawChId: ${
     parameters.withdrawChainId
-  }, withdrawAddr: "${parameters.destinationChainWithdrawAddress}", nonce: ${parameters.nonce})
+  }, withdrawAddr: "${parameters.evmWithdrawAddress}", nonce: ${parameters.nonce})
         PegBridge.burn(from: self.provRef, info: burnInfo) 
       }
     }
@@ -245,16 +238,8 @@ export const burnFromFlow = async (parameters: FlowBurnParameters): Promise<Flow
 
     const amountString = Number(parameters.amount)?.toFixed(8).toString() ?? parameters.amount;
 
-    const transferIdWithout0x = await calculateFlowTransferId(
-      parameters.flowAddress,
-      parameters.tokenAddress,
-      amountString,
-      parameters.nonce,
-    );
+    const transferIdWithout0x = await calculateFlowTransferId(parameters.flowAddress, parameters.tokenAddress, amountString, parameters.nonce)
     const transferId = "0x" + transferIdWithout0x;
-
-    // const burnParameterValue = parameters.flowAddress + parameters.tokenAddress + amountString + parameters.nonce;
-    // const transferId = "0x" + sha3_256(burnParameterValue);
 
     return { flowTransanctionId: response.transactionId, transferId };
   } catch (error) {
@@ -366,7 +351,7 @@ export const submitFlowDepositRefundRequest = async (
       fcl.limit(9999),
     ]);
 
-    console.debug("flow refund response", response);
+    console.log("flow refund response", response);
     return response.transactionId;
   } catch (error) {
     console.log("error", error);
@@ -417,7 +402,7 @@ export const submitFlowBurnRefundRequest = async (
       fcl.limit(9999),
     ]);
 
-    console.debug("flow refund response", response);
+    console.log("flow refund response", response);
     return response.transactionId;
   } catch (error) {
     console.log("error", error);
@@ -447,7 +432,7 @@ export const getFlowTokenLiquidityBalance = async (flowVaultContractAddr: string
 };
 
 export const getPegBridgeMintRelayResult = async (pegBridgeContractAddress: string, transferId: string) => {
-  const transferIdWithout0x = transferId.replace("0x", "");
+  const transferIdWithout0x = transferId.replace("0x", "")
   const cadenceCode = fcl.script`
   import PegBridge from ${addPrefixOxForFlowContractAddress(pegBridgeContractAddress)}
 
@@ -463,10 +448,10 @@ export const getPegBridgeMintRelayResult = async (pegBridgeContractAddress: stri
     console.debug("error", error);
     return false;
   }
-};
+}
 
 export const getSafeBoxWithdrawRelayResult = async (safeBoxContractAddress: string, transferId: string) => {
-  const transferIdWithout0x = transferId.replace("0x", "");
+  const transferIdWithout0x = transferId.replace("0x", "")
   const cadenceCode = fcl.script`
   import SafeBox from ${addPrefixOxForFlowContractAddress(safeBoxContractAddress)}
 
@@ -482,34 +467,4 @@ export const getSafeBoxWithdrawRelayResult = async (safeBoxContractAddress: stri
     console.debug("error", error);
     return false;
   }
-};
-
-// eslint-disable-next-line
-export const queryFlowTransactionStatus = async (transactionHash: string): Promise<any> => {
-  const status = await fcl.send([fcl.getTransactionStatus(transactionHash)]).then(fcl.decode);
-
-  if (status.errorMessage) {
-    return { status: 0 };
-  }
-
-  return { status: 1 };
-};
-
-export const getFlowBurnTotalSupply = async (tokenAddress: string): Promise<number> => {
-  const splitAddresses = tokenAddress.split(".");
-  const candenceCode = fcl.script`
-    import ${splitAddresses[2]} from 0x${splitAddresses[1]}
-
-    pub fun main(): UFix64 {
-        return ${splitAddresses[2]}.totalSupply
-    }
-  `;
-  try {
-    const response = await fcl.send([candenceCode]);
-    const totalSupply = await fcl.decode(response);
-    return totalSupply;
-  } catch (error) {
-    console.log("error", error);
-    return 0;
-  }
-};
+}

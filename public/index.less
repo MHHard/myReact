@@ -1,0 +1,800 @@
+@primary: #049278;
+@bgMask: rgba(81, 106, 102, 0.3);
+@bgTheme: #FAFDFF;
+@bgWhite: #FFFFFF;
+@bgSecond: #EFF9FA;
+@bgThird: #F5F8FC;
+@bgBlack: #000000;
+@textUniversal: #049278;
+@textPrimary: #000000;
+@textSecond: #52575C;
+@textThird: #8C939C;
+@textUnable: #BCC0CE;
+@textWhite: #FFFFFF;
+@textError: #E3186D;
+@neutrualUniversal: #B98D66;
+@isMobile: true;
+body,
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, @bgTheme 0%,@bgTheme 50%,white 51%,white 100%);
+  text-align: @isMobile;
+  .content {
+    padding: 0 0px;
+    min-height: 100vh;
+    width: 1200px;
+    background: @bgWhite;
+  }
+}
+.ant-modal-header{
+  border-bottom: none !important;
+}
+.ant-modal-title{
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.myTab{
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  margin-left: 12px;
+  .myTabItem{
+    font-size: 16px;
+    font-weight: 700;
+    color: @textSecond;
+    border-bottom: 3px solid transparent;
+    margin-right: 50px;
+    cursor: pointer;
+  }
+  .myTabItemActive{
+    font-size: 20px;
+    font-weight: 700;
+    color: @textPrimary;
+    border-bottom: 3px solid @textPrimary;
+    margin-right: 50px;
+    cursor: pointer;
+  }
+}
+.bridgeContentRight{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 48px;
+  margin-bottom: 40px;
+  .currentChainBtn{
+    height: 44px;
+    width: 110px;
+    background: @textPrimary;
+    border-radius: 24px 0 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    .currentChainBtnText{
+      width: 60px;
+      height: 24px;
+      color:@textWhite;
+      font-size: 14px;
+      font-weight: 700;
+      overflow: hidden;
+      margin-left: 3px;
+    }
+    img{
+      width: 24px;
+      height: 24px;
+    }
+    .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: @primary;
+    }
+  }
+  .account{
+    width:145px;
+    height:44px;
+    background: @textPrimary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 24px 24px 0;
+    margin-left: 5px;
+    cursor: pointer !important;
+    img{
+      width: 24px;
+      height: 24px;
+    }
+    .addressText{
+      color:@textWhite;
+      width: 100px;
+      margin-left: 8px;
+    }
+  }
+  .accountOpen{
+    border-radius: 0 24px 0 0;
+  }
+
+}
+.disconnectDropDown {
+  border-radius: 0px !important;
+  padding: 0px !important;
+  background: @bgBlack !important;
+  top: -3px !important;
+  .ant-dropdown-menu-item {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 4px 0px 4px;
+  }
+  .disconnect {
+    width: 100%;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-weight: 600;
+    color: @textWhite;
+    padding: 3px 5px;
+    font-size: 14px;
+  }
+  .disconnect:hover {
+    color:@textWhite;
+    background: @bgBlack;
+    border-radius: 0;
+  }
+  .logoOutIcon{
+    width: 24px;
+    height: 24px;
+  }
+
+}
+.ant-dropdown-menu-item:hover{
+  background: @bgBlack !important;
+}
+.zkContent{
+  display: flex;
+  justify-content: space-between;
+  .bridgeInfo{
+    min-height: 100vh;
+    width: 728px;
+    background: @bgTheme;
+    padding: 0 32px;
+    .bridgeInfoHeadLeft{
+      display: flex;
+      justify-content: start;
+      width: 100%;
+      margin-top: 48px;
+      margin-bottom: 40px;
+      img{
+        width: 162px;
+        height:37px;
+        cursor: pointer;
+      }
+    }
+    .bridgeInfoContent{
+      width: 664px;
+      background: @bgSecond;
+      padding-top: 10px;
+      height: 680px;
+      .conTop{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .freshIcon{
+          width: 28px;
+          height: 28px;
+          margin-right: 20px;
+          position: relative;
+          top:-3px;
+          cursor: pointer;
+        }
+      }
+      .chartTitle{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        font-size: 14px;
+        font-weight: 700;
+        color: @textPrimary;
+        .showTitle{
+          width: 6px;
+          height: 12px;
+          margin-right: 8px;
+        }
+      }
+      .chartAre{
+        width: 100%;
+        height:342px;
+        background: @bgWhite;
+        padding:20px 12px;
+    
+        .chartRoot{
+          width: 100%;
+          height: 300px;
+        }
+        .chartTitle{
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          font-size: 14px;
+          font-weight: 700;
+          color: @textPrimary;
+          .showTitle{
+            width: 6px;
+            height: 12px;
+            margin-right: 8px;
+          }
+        }
+      }
+ 
+      .latestBody{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 8px;
+
+        .latestBlock{
+          width: 360px;
+          height:272px;
+          background: @bgWhite;
+          padding:16px 12px;
+        }
+        .latestProof{
+          width: 296px;
+          height:272px;
+          background: @bgWhite;
+          padding:16px 12px;
+        }
+        .blockContent{
+          width: 100%;
+          height: 200px;
+          background: @bgThird;
+          padding: 12px 16px 24px 16px;
+          margin-top: 15px;
+        }
+        .proofContent{
+          width: 100%;
+          height: 200px;
+          background: @bgThird;
+          padding: 12px 2px 24px 16px;
+          margin-top: 15px;
+        }
+        .dataOut{
+          height: 120px;
+          width: 100%;
+          padding-right: 16px;
+          overflow: auto;
+        }
+        .dataOut::-webkit-scrollbar {
+          width: 2px;
+          height: 8px;
+        }
+        .dataOut::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          background: #c7c7c7 !important;
+        }
+        .dataOut::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          border-radius: 10px;
+          background: #161616 !important;
+        }
+        .blockRootAuto{
+          height: 45px;
+          width: 100%;
+          padding-right: 16px;
+          overflow: auto;
+        }
+        .blockRootAuto::-webkit-scrollbar {
+          width: 2px;
+          height: 8px;
+        }
+        .blockRootAuto::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          background: #c7c7c7 !important;
+        }
+        .blockRootAuto::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          border-radius: 10px;
+          background: #161616 !important;
+        }
+        .blockItem{
+          .ant-skeleton-element ,.ant-skeleton-input{
+            width: 100% !important;
+          }
+          // display: flex;
+          padding-bottom: 0px;
+          .blockItemKey{
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            color: @textPrimary;
+            margin-right: 3px;
+          }
+          .blockItemVal{
+            display: inline-block;
+            font-size: 12px;
+            color: @textSecond;
+            word-break: break-all;
+            line-height: 14px;
+          }
+        }
+      }
+      
+    }
+  }
+
+}
+.bridgeContent{
+  margin: 0 24px;
+  .transferCard {
+    width: 480px;
+    min-height: 502px;
+    background-color: @bgSecond;
+    padding: 30px 12px 24px;
+
+    .ant-card-body {
+      padding: 0;
+    }
+    
+    .cardContent {
+      position: relative;
+    }
+
+    .transitemIcon {
+      cursor: pointer;
+      position: absolute;
+      width: 76px;
+      height: 76px;
+      top: 50%;
+      left: 50%;
+      margin-top: -38px;
+      margin-left: -38px;
+    }
+
+    .transitemFrom, .transitemTo {
+      width: 100%;
+      height: 48px;
+      background-color: #fff;
+      border-radius: 2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .transitemTitle {
+        color: @textThird;
+        font-weight: 700;
+        font-size: 12px;
+        margin-left: 20px;
+      }
+
+      .transselect {
+        cursor: pointer;
+
+        .chainSelcet {
+          display: flex;
+          align-items: center;
+          margin-right: 18px;
+        }
+      }
+    }
+
+    .transcontent {
+      background-color: @textWhite;
+      border-radius: 2px;
+      margin-top: 4px;
+      padding: 18px 16px 18px 20px;
+
+        .transnum {
+          .transnumlimt {
+            display: flex;
+            justify-content: space-between;
+            height: 32px;
+            align-items: center;
+          }
+  
+          .transnumlimtmax {
+            font-size: 12px;
+            color: @neutrualUniversal;
+            cursor: pointer;
+          }
+        }
+  
+        .transdes {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+  
+          .transdestextActive {
+            .transdestextActiveInput {
+              color: @textUniversal;
+              font-size: 28px;
+              font-weight: 700;
+            }
+           
+          }
+          
+          .transdestext {
+            .transdestextInput {
+              color: @textThird;
+              font-size: 28px;
+              font-weight: 700;
+            }
+          }
+  
+          .transdeslimt {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+  
+            .investSelct {
+              cursor: pointer;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              height: 36px;
+              background-color: @bgSecond;
+              padding: 6px 8px;
+  
+              .selectTokenIcon {
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+              }
+  
+              .selectdes {
+                font-size: 16px;
+                font-weight: 700;
+              }
+  
+              .selecttoog {
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+    }
+
+    .transitemTo {
+      margin-top: 32px;
+    }
+  }
+}
+
+.bridgeBottom {
+  margin-top: 24px;
+
+  .err {
+    width: 100%;
+
+    .errInner {
+      background: #fff;
+      padding: 8px 14px;
+      color: #E3186D;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      .errInnerbody {
+        display: flex;
+        align-items: center;
+
+        span {
+          text-align: left;
+          font-weight: 600;
+          font-size: 14px;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .transBtn, .swapBtnDisable {
+    cursor: pointer;
+    width: 100%;
+    height: 64px;
+    background-color: @primary;
+    color: @textWhite;
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    span {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin: 0 5px;
+      }
+    }
+  }  
+
+  .transBtn {
+    &:hover {
+      background-color: @primary;
+      opacity: 0.8;
+    }
+
+    &:focus { 
+      background-color: @primary;
+    }
+  }
+
+  
+
+  .swapBtnDisable {
+    background-color: @textUnable;
+    border: none;
+  }
+}
+
+.chainModalContent {
+  .activeItem {
+    background-color: @bgSecond;
+  }
+
+  .item {
+    &:hover {
+      background-color: @bgTheme;
+    }
+  }
+
+  .item, .activeItem {
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    cursor: pointer;
+    align-items: center;
+
+    &:first-child {
+      margin-bottom: 24px;
+    }
+
+    .litem {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .itemLeft {
+        display: flex;
+        align-items: center;
+
+        .tokenName {
+          font-weight: 700;
+          font-size: 16px;
+        }
+  
+        img {
+         width: 36px;
+         height: 36px;
+         margin-left: 16px; 
+        }
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: @primary;
+        margin-right: 28px;
+      }
+    }
+  }
+}
+
+.tokenModalContent {
+  .searchinput {
+    background-color: @bgThird;
+    height: 48px;
+    margin-bottom: 20px;
+
+    .ant-input {
+      background-color: @bgThird;
+    }
+  }
+
+  .item, .activeItem {
+    height: 64px;
+    line-height: 64px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: @bgTheme;
+    }
+  }
+
+  .activeItem {
+    background-color: @bgSecond;
+
+    &:hover {
+      background-color: @bgSecond;
+    }
+  }
+
+  .litem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .itemLeft {
+      display: flex;
+      align-items: center;
+
+      .tokenName {
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      img {
+       width: 36px;
+       height: 36px;
+       margin-left: 16px; 
+      }
+    }
+
+    .tokenBlance {
+      font-size: 14px;
+      color: @textUnable;
+      margin-right: 20px;
+    }
+  }
+}
+
+.connectWalletBtn{
+  padding:8px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: @textWhite;
+  border-radius: 20px;
+  background: @primary;
+  cursor: pointer;
+}
+.walletConnectContent {
+  width: "100%";
+  padding-top: 45px;
+  .infoText {
+    font-weight: 600;
+    font-size: 14;
+    text-align: "center";
+    color: @bgWhite
+  };
+}
+.providerContent {
+  width: 100%;
+  height: 72px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F6F8FC;
+  padding: 16px;
+  .title{
+    display: flex;
+    align-items: center;
+  }
+  .prologo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .proarrow {
+    margin-right: 5px;
+    color: #8C939C !important;
+  }
+  .protext {
+    font-size: 14px;
+    font-weight: 500;
+    color: @textPrimary;
+    margin-left: 12px;
+  }
+}
+.acceptDes{
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: @textPrimary;
+  margin-top: 25px;
+}
+.termsOfus{
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: @primary;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.sendModal{
+  .topImg{
+    margin-top: 55px;
+  }
+  .stateText{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: @textSecond;
+    margin-top: 20px;
+  }
+  .completedText{
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: @textPrimary;
+    margin-top: 20px;
+  }
+  .viewInExplorer{
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: @textThird;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    img{
+      width: 14px;
+      height: 14px;
+      margin-left: 5px;
+      
+    }
+  }
+  .bottomLink{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  .viewtx{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: @textThird;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    img{
+      width: 14px;
+      height: 14px;
+      margin-left: 5px;
+      
+    }
+  }
+}
+.doneBtn{
+  width: 100%;
+  text-align: center;
+  padding:16px 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: @textWhite;
+  border-radius: 2px;
+  background: @primary;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+

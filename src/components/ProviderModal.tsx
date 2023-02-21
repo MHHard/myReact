@@ -1,146 +1,10 @@
-import { useState } from "react";
-import { Avatar, Button, Checkbox, Modal, Space, Spin, Typography } from "antd";
-import classNames from "classnames";
-import { createUseStyles } from "react-jss";
+import { Button, Checkbox, Modal, Spin } from "antd";
 import { injected } from "@celer-network/web3modal";
 import { RightOutlined } from "@ant-design/icons";
+import { useContext, useState } from "react";
+import { createUseStyles } from "react-jss";
 import { useWeb3Context } from "../providers/Web3ContextProvider";
-import ActionTitle from "./common/ActionTitle";
-import { Theme } from "../theme/theme";
-import { useAppSelector } from "../redux/store";
-import cloverLogo from "../providers/logos/clover.svg";
-import dcentLogo from "../providers/logos/dcent.png";
-import tokenPocketLogo from "../providers/logos/token-pocket.jpg";
-import coinbaseLogo from "../providers/logos/coinbase.png";
-import safepalLogo from "../providers/logos/safepal.jpeg";
-import bitkeepLogo from "../providers/logos/bitkeep.svg";
-
-import { storageConstants } from "../constants/const";
-
-const { Text } = Typography;
-
-const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: Theme) => ({
-  connectModal: {
-    width: "100%",
-    minWidth: props => (props.isMobile ? "100%" : 500),
-    background: theme.secondBackground,
-    border: `1px solid ${theme.primaryBackground}`,
-    "& .ant-modal-content": {
-      background: theme.secondBackground,
-      boxShadow: props => (props.isMobile ? "none" : ""),
-      "& .ant-modal-close": {
-        color: theme.surfacePrimary,
-      },
-      "& .ant-modal-header": {
-        background: theme.secondBackground,
-        borderBottom: "none",
-        "& .ant-modal-title": {
-          color: theme.surfacePrimary,
-          "& .ant-typography": {
-            color: theme.surfacePrimary,
-          },
-        },
-      },
-      "& .ant-modal-body": {
-        "& .ant-spin-blur": {
-          border: "none",
-          borderRadius: 16,
-        },
-        "& .ant-spin-spinning": {
-          borderRadius: 16,
-          opacity: 0.8,
-          background: theme.primaryBackground,
-        },
-        "& .ant-spin-nested-loading": {
-          "& .ant-spin": {
-            maxHeight: "100%",
-          },
-        },
-      },
-      "& .ant-modal-footer": {
-        border: "none",
-        padding: props => (props.isMobile ? "8px 16px" : "10px 16px"),
-        "& .ant-btn-link": {
-          color: theme.primaryBrand,
-        },
-      },
-    },
-    "& .ant-typography": {
-      color: theme.surfacePrimary,
-    },
-  },
-  provider: {
-    background: theme.primaryBackground,
-    border: "none",
-    borderRadius: 16,
-    width: "100%",
-    height: 60,
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: 14,
-    "& .ant-typography": {
-      color: theme.surfacePrimary,
-    },
-    "@global": {
-      ".ant-spin": {
-        marginTop: 6,
-      },
-    },
-  },
-  arrow: {
-    marginRight: 15,
-    color: theme.surfacePrimary,
-  },
-  footer: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    paddingTop: 0,
-    paddingBottom: props => (props.isMobile ? 0 : 16),
-  },
-  errorInfo: {
-    width: "100%",
-    paddingTop: 72,
-  },
-  errorText: {
-    fontWeight: 600,
-    fontSize: 14,
-    color: theme.surfacePrimary,
-    textAlign: "center",
-  },
-  errorBtn: {
-    marginTop: 16,
-    width: "100%",
-    height: 56,
-    lineHeight: "56px",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 16,
-    background: theme.primaryBrand,
-    color: theme.unityWhite,
-    borderRadius: 16,
-  },
-  primaryBtn: {
-    marginTop: 16,
-    width: "100%",
-    height: 56,
-    // lineHeight: "56px",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 16,
-    background: theme.primaryBrand,
-    color: theme.unityWhite,
-    borderRadius: 16,
-    border: "none",
-  },
-  checkBoxText: {
-    color: theme.secondBrand,
-    fontSize: 12,
-    fontWeight: 600,
-  },
-}));
+import { ColorThemeContext } from "../providers/ThemeProvider";
 
 interface ProviderModalProps {
   visible: boolean;
@@ -151,92 +15,138 @@ interface WalletConnectProviderModalProps {
   onCancel: () => void;
   onSelectWalletConnect: () => void;
 }
-
 function Provider({ provider, onClick }) {
-  const { isMobile } = useAppSelector(state => state.windowWidth);
-  const classes = useStyles({ isMobile });
   return (
     <>
       {provider === "WalletConnect" ? (
-        <div className={classNames(classes.provider)} onClick={onClick}>
-          <Space>
-            <img src="./connect.png" alt="" style={{ width: 32 }} />
-            <Text>WalletConnect</Text>
-          </Space>
-          <RightOutlined className={classes.arrow} />
+        <div className="providerContent" onClick={onClick}>
+          <div className="title">
+            <div className="prologo">
+              <img src="./connect.png" alt="" style={{ width: "100%" }} />
+            </div>
+            <div className="protext">WalletConnect</div>
+          </div>
+          <RightOutlined className="proarrow" />
         </div>
       ) : (
-        <div className={classNames(classes.provider)} onClick={onClick}>
-          <Space>
-            <Avatar src={provider.logo} shape="circle" />
-            <Text>{provider.name}</Text>
-          </Space>
-          <RightOutlined className={classes.arrow} />
+        <div className="providerContent" onClick={onClick}>
+          <div className="title">
+            <img src={provider.logo} alt="" className="prologo" height="54px" />
+            <div className="protext">{provider.name}</div>
+          </div>
+          <RightOutlined className="proarrow" />
         </div>
       )}
     </>
   );
 }
 
-function Footer() {
-  const { isMobile } = useAppSelector(state => state.windowWidth);
-  const classes = useStyles({ isMobile });
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const useStyles = createUseStyles<string, { isMobile: boolean }>((theme) => ({
+  lightProviderModal: {
+    minWidth: (cssProps) => (cssProps.isMobile ? "100%" : 448),
+    top: (cssProps) => (cssProps.isMobile ? 0 : 100),
+    margin: (cssProps) => (cssProps.isMobile ? 0 : "8px auto"),
+    height: (cssProps) => (cssProps.isMobile ? "100vh" : "auto"),
+    "& .ant-modal-content": {
+      position: (cssProps) => (cssProps.isMobile ? "absolute" : "relative"),
+      bottom: 0,
+      minWidth: (cssProps) => (cssProps.isMobile ? "100%" : 448),
+      maxHeight: "calc(100vh - 57px)",
+      borderRadius: 0,
+    },
 
-  return (
-    <div className={classes.footer}>
-      <Text>By connecting, I accept</Text>
-      <Text>
-        <Button
-          type="link"
-          size="small"
-          onClick={() => window.open("https://get.celer.app/cbridge-v2-doc/tos-cbridge-2.pdf")}
-        >
-          Terms of Use
-        </Button>
-      </Text>
-    </div>
-  );
-}
+    "& .ant-modal-body": {
+      "& .ant-spin-blur::after": {
+        border: "none",
+        borderRadius: 16,
+      },
+      "& .ant-spin-container": {
+        borderRadius: 16,
+      },
+      "& .ant-spin-spinning": {
+        borderRadius: 16,
+        opacity: 0.5,
+        background: "#e6e6eb",
+      },
+      "& .ant-spin-nested-loading": {
+        maxHeight: "100%",
+        borderRadius: 16,
+        "& .ant-spin": {
+          borderRadius: 16,
+        },
+      },
+    },
+  },
+  darkProviderModal: {
+    minWidth: (cssProps) => (cssProps.isMobile ? "100%" : 448),
+    top: (cssProps) => (cssProps.isMobile ? 0 : 100),
+    margin: (cssProps) => (cssProps.isMobile ? 0 : "8px auto"),
+    height: (cssProps) => (cssProps.isMobile ? "100vh" : "auto"),
+    "& .ant-modal-content": {
+      position: (cssProps) => (cssProps.isMobile ? "absolute" : "relative"),
+      bottom: 0,
+      minWidth: (cssProps) => (cssProps.isMobile ? "100%" : 448),
+      maxHeight: "calc(100vh - 57px)",
+      borderRadius: (cssProps) => (cssProps.isMobile ? "16px 16px 0 0" : 16),
+    },
 
-function ConnectErrorModal({ visible, onCancel }: ProviderModalProps): JSX.Element {
-  const { isMobile } = useAppSelector(state => state.windowWidth);
-  const classes = useStyles({ isMobile });
-  return (
-    <Modal
-      visible={visible}
-      onCancel={onCancel}
-      className={classes.connectModal}
-      bodyStyle={{ padding: isMobile ? "0 16px 0 16px" : 24 }}
-      title={null}
-      maskClosable={false}
-      closable
-      footer={null}
-    >
-      <div className={classes.errorInfo}>
-        <div className={classes.errorText}>
-          Wallet not detected. Please use cBridge in a desktop browser with Metamask installed or a mobile wallet dApp
-          browser.
-        </div>
-        <div className={classes.errorBtn} onClick={onCancel}>
-          OK
-        </div>
-      </div>
-    </Modal>
-  );
-}
+    "& .ant-modal-body": {
+      "& .ant-spin-blur": {
+        opacity: 0.4,
+      },
+      "& .ant-spin-blur::after": {
+        opacity: 0.4,
+      },
+      "& .ant-spin-container::after": {
+        background: "#2c2c2c",
+      },
+    },
+  },
+  errorInfo: {
+    width: "100%",
+    paddingTop: 72,
+  },
+  errorText: {
+    fontWeight: 600,
+    fontSize: 14,
+    textAlign: "center",
+  },
+  primaryBtn: {
+    marginTop: 16,
+    width: "100%",
+    height: 56,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 16,
+    background: "#e4b462",
+    color: "#000000",
+    borderRadius: 16,
+    border: "none",
+  },
+  checkBoxText: {
+    fontSize: 12,
+    fontWeight: 600,
+    color: "#8F9BB3",
+  },
+  walletConnectContent: {
+    width: "100%",
+    paddingTop: 72,
+  },
+}));
 function WalletConnectModal({
   visible,
   onCancel,
   onSelectWalletConnect,
 }: WalletConnectProviderModalProps): JSX.Element {
-  const { isMobile } = useAppSelector(state => state.windowWidth);
+  const { isMobile, themeType } = useContext(ColorThemeContext);
   const classes = useStyles({ isMobile });
   const [accept, setAccept] = useState(false);
   return (
     <Modal
       visible={visible}
       onCancel={onCancel}
-      className={classes.connectModal}
+      className={classes.lightProviderModal}
       bodyStyle={{ padding: isMobile ? "0 16px 0 16px" : 24 }}
       title={null}
       maskClosable={false}
@@ -244,15 +154,16 @@ function WalletConnectModal({
       footer={null}
       destroyOnClose
     >
-      <div className={classes.errorInfo}>
-        <div className={classes.errorText}>
-          Only <span style={{ color: "#FFAA00" }}>non-Multisig, non-MPC</span> and{" "}
-          <span style={{ color: "#FFAA00" }}>simple EOA address</span> is supported via Wallet Connect. Wallet Connect
-          can be unstable from time to time, use at your own risk.
+      <div className="walletConnectContent">
+        <div className="infoText">
+          Only <span style={{ color: "#FFAA00" }}>non-Multisig, non-MPC</span>{" "}
+          and <span style={{ color: "#FFAA00" }}>simple EOA address</span> is
+          supported via Wallet Connect. Wallet Connect can be unstable from time
+          to time, use at your own risk.
         </div>
         <div style={{ width: "100%", textAlign: "center", marginTop: 40 }}>
           <Checkbox
-            onChange={e => {
+            onChange={(e) => {
               setAccept(e.target.checked);
             }}
             className={classes.checkBoxText}
@@ -260,29 +171,40 @@ function WalletConnectModal({
             I understand
           </Checkbox>
         </div>
-
-        <Button type="primary" disabled={!accept} className={classes.primaryBtn} onClick={onSelectWalletConnect}>
-          Continue
-        </Button>
+        <div className="chainHopButton">
+          <Button
+            type="primary"
+            disabled={!accept}
+            className="primaryBtn"
+            onClick={onSelectWalletConnect}
+          >
+            Continue
+          </Button>
+        </div>
       </div>
     </Modal>
   );
 }
-export default function ProviderModal({ visible, onCancel }: ProviderModalProps): JSX.Element {
-  const { isMobile } = useAppSelector(state => state.windowWidth);
-  const classes = useStyles({ isMobile });
-  const [connectErrorVisible, setConnectErroeVisible] = useState(false);
-  const [isWalletConnect, setIsWalletConnect] = useState(false);
+export default function ProviderModal({
+  visible,
+  onCancel,
+}: ProviderModalProps): JSX.Element {
   const { loadWeb3Modal, connecting } = useWeb3Context();
-  const handleSelectProvider = async (name: string) => {
-    localStorage.setItem(storageConstants.KEY_CONNECTED_WALLET_NAME, name);
+
+  const { isMobile } = useContext(ColorThemeContext);
+  const classes = useStyles({ isMobile });
+  const [isWalletConnect, setIsWalletConnect] = useState(false);
+  const handleSelectProvider = async () => {
     setIsWalletConnect(false);
-    await loadWeb3Modal("injected", isMobile ? () => setConnectErroeVisible(true) : undefined);
+    await loadWeb3Modal("injected");
     onCancel();
   };
+
   const handleSelectWalletConnectProvider = async () => {
-    localStorage.setItem(storageConstants.KEY_CONNECTED_WALLET_NAME, "walletconnect");
-    await loadWeb3Modal("walletconnect", isMobile ? () => setConnectErroeVisible(true) : undefined);
+    await loadWeb3Modal(
+      "walletconnect"
+      // isMobile ? () => setConnectErroeVisible(true) : undefined
+    );
     setIsWalletConnect(false);
     onCancel();
   };
@@ -291,102 +213,63 @@ export default function ProviderModal({ visible, onCancel }: ProviderModalProps)
     setIsWalletConnect(true);
   };
   return (
-    <>
+    <div>
       <Modal
         closable
         visible={visible}
-        className={classes.connectModal}
-        title={<ActionTitle title="Connect Your Wallet" />}
+        width={440}
+        title="Connect Your Wallet"
         onCancel={onCancel}
-        footer={<Footer />}
+        footer={null}
         maskClosable={false}
-        bodyStyle={{ padding: isMobile ? "0 16px 0 16px" : 24 }}
+        bodyStyle={{ padding: "20px 24px 24px 24px" }}
+        className={classes.lightProviderModal}
       >
         <div style={{ width: "100%" }}>
           <Spin spinning={connecting}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr", rowGap: 8 }}>
-              <Provider provider={injected.METAMASK} onClick={() => handleSelectProvider(injected.METAMASK.name)} />
-              <Provider
-                provider={{
-                  name: "TokenPocket",
-                  logo: tokenPocketLogo,
-                }}
-                onClick={() => handleSelectProvider("tokenPocket")}
-              />
-              <Provider
-                provider={{
-                  name: "Coinbase Wallet",
-                  logo: coinbaseLogo,
-                }}
-                onClick={() => handleSelectProvider("coinbase")}
-              />
-              <Provider provider="WalletConnect" onClick={handleSelectWalletConnect} />
-              <Provider
-                provider={{
-                  name: "Clover",
-                  logo: cloverLogo,
-                }}
-                onClick={() => {
-                  localStorage.setItem(storageConstants.KEY_IS_CLOVER_WALLET, "true");
-                  handleSelectProvider("clover");
-                }}
-              />
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                rowGap: 16,
+              }}
+            >
               {isMobile ? (
                 <>
-                  <Provider provider={injected.IMTOKEN} onClick={() => handleSelectProvider(injected.IMTOKEN.name)} />
                   <Provider
-                    provider={injected.MATHWALLET}
-                    onClick={() => handleSelectProvider(injected.MATHWALLET.name)}
+                    provider={injected.METAMASK}
+                    onClick={handleSelectProvider}
+                  />
+                  {/* <Provider
+                    provider={injected.IMTOKEN}
+                    onClick={handleSelectProvider}
                   />
                   <Provider
-                    provider={injected.ONTOWALLET}
-                    onClick={() => handleSelectProvider(injected.ONTOWALLET.name)}
-                  />
-                  <Provider
-                    provider={injected.COIN98WALLET}
-                    onClick={() => handleSelectProvider(injected.COIN98WALLET.name)}
-                  />
-                  <Provider
-                    provider={{
-                      name: "D'CENT Wallet",
-                      logo: dcentLogo,
-                    }}
-                    onClick={() => handleSelectProvider("dcent")}
-                  />
-                  <Provider
-                    provider={{
-                      name: "SafePal",
-                      logo: safepalLogo,
-                    }}
-                    onClick={() => handleSelectProvider("safePal")}
-                  />
-                  <Provider
-                    provider={{
-                      name: "Bitkeep",
-                      logo: bitkeepLogo,
-                    }}
-                    onClick={() => handleSelectProvider("bitkeep")}
-                  />
+                    provider={injected.COINBASE}
+                    onClick={handleSelectProvider}
+                  /> */}
                 </>
-              ) : null}
+              ) : (
+                <>
+                  <Provider
+                    provider={injected.METAMASK}
+                    onClick={handleSelectProvider}
+                  />
+                  {/* <Provider
+                    provider="WalletConnect"
+                    onClick={handleSelectWalletConnect}
+                  /> */}
+                </>
+              )}
             </div>
+            <div className="acceptDes">
+              By connecting, I accept Celer Network
+            </div>
+            <div className="termsOfus">Terms of Use</div>
           </Spin>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              margin: "16px 0 0",
-              color: "#FFAA00",
-            }}
-          >
-            <div>*Beta software. Use at your own risk!</div>
-          </div>
-          {isMobile ? null : <div style={{ height: 30 }} />}
         </div>
       </Modal>
-      <ConnectErrorModal visible={connectErrorVisible} onCancel={() => setConnectErroeVisible(!connectErrorVisible)} />
-      {isWalletConnect && (
+      {/* {isWalletConnect && (
         <WalletConnectModal
           visible={isWalletConnect}
           onCancel={() => {
@@ -394,7 +277,7 @@ export default function ProviderModal({ visible, onCancel }: ProviderModalProps)
           }}
           onSelectWalletConnect={handleSelectWalletConnectProvider}
         />
-      )}
-    </>
+      )} */}
+    </div>
   );
 }

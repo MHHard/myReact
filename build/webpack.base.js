@@ -3,10 +3,9 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer"); // 引入分析打包结果插件
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
-console.log(8888, process.env.NODE_ENV);
+// console.log(8888, process.env.NODE_ENV);
 module.exports = {
   entry: path.join(__dirname, "../src/index.tsx"), // 入口文件
   // 打包文件出口
@@ -15,6 +14,11 @@ module.exports = {
     path: path.join(__dirname, "../dist"), // 打包结果输出路径
     clean: true, // webpack4需要配置clean-webpack-plugin来删除dist文件,webpack5内置了
     publicPath: "/", // 打包后文件的公共前缀路径
+  },
+  cache:{
+    type: 'filesystem',
+    allowCollectingMemory: true,
+    compression: 'gzip',
   },
   module: {
     rules: [
@@ -111,13 +115,18 @@ module.exports = {
       vm: require.resolve('vm-browserify'),
       http: require.resolve("stream-http"),
       https: require.resolve("https-browserify"),
-      os: require.resolve("os-browserify/browser") 
+      os: require.resolve("os-browserify/browser") ,
+      fs: false
     },
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "../public/index.html"), // 模板取定义root节点的模板
       inject: true, // 自动注入静态资源
+      favicon: "./public/favicon.png",
+      logo: "./public/logo.png",
+      filename: "index.html",
+      manifest: "./public/manifest.json"
     }),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(process.env),
@@ -128,22 +137,10 @@ module.exports = {
       React: "react",
     }),
     new BundleAnalyzerPlugin(), // 配置分析打包结果插件
-    // new webpack.NamedModulesPlugin(),
-    // new HardSourceWebpackPlugin(),
-    // new HardSourceWebpackPlugin.ParallelModulePlugin({
-    //   // How to launch the extra processes. Default:
-    //   fork: (fork, compiler, webpackBin) => fork(
-    //     webpackBin(),
-    //     ['--config', __filename], {
-    //       silent: true,
-    //     }
-    //   ),
-    //   numWorkers: () => 4,
-    //   minModules: 20,
-    // }),
-
   ],
   cache: {
     type: "filesystem", // 使用文件缓存
+    allowCollectingMemory: true,
+    // compression: 'gzip',
   },
 };

@@ -6,27 +6,28 @@
 
 // GENERATED CODE -- DO NOT EDIT!
 
+
 /* eslint-disable */
 // @ts-nocheck
 
-import * as grpcWeb from "grpc-web";
 
-import * as sgn_message_v1_query_pb from "../../../sgn/message/v1/query_pb";
+import * as grpcWeb from 'grpc-web';
+
+import * as sgn_message_v1_query_pb from '../../../sgn/message/v1/query_pb';
+
 
 export class QueryClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
-  credentials_: null | { [index: string]: string };
-  options_: null | { [index: string]: any };
+  credentials_: null | { [index: string]: string; };
+  options_: null | { [index: string]: any; };
 
-  constructor(
-    hostname: string,
-    credentials?: null | { [index: string]: string },
-    options?: null | { [index: string]: any },
-  ) {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; }) {
     if (!options) options = {};
     if (!credentials) credentials = {};
-    options["format"] = "binary";
+    options['format'] = 'binary';
 
     this.client_ = new grpcWeb.GrpcWebClientBase(options);
     this.hostname_ = hostname;
@@ -35,398 +36,391 @@ export class QueryClient {
   }
 
   methodInfoParams = new grpcWeb.MethodDescriptor(
-    "/sgn.message.v1.Query/Params",
+    '/sgn.message.v1.Query/Params',
     grpcWeb.MethodType.UNARY,
     sgn_message_v1_query_pb.QueryParamsRequest,
     sgn_message_v1_query_pb.QueryParamsResponse,
     (request: sgn_message_v1_query_pb.QueryParamsRequest) => {
       return request.serializeBinary();
     },
-    sgn_message_v1_query_pb.QueryParamsResponse.deserializeBinary,
+    sgn_message_v1_query_pb.QueryParamsResponse.deserializeBinary
   );
 
   params(
     request: sgn_message_v1_query_pb.QueryParamsRequest,
-    metadata: grpcWeb.Metadata | null,
-  ): Promise<sgn_message_v1_query_pb.QueryParamsResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<sgn_message_v1_query_pb.QueryParamsResponse>;
 
   params(
     request: sgn_message_v1_query_pb.QueryParamsRequest,
     metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryParamsResponse) => void,
-  ): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryParamsResponse>;
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryParamsResponse) => void): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryParamsResponse>;
 
   params(
     request: sgn_message_v1_query_pb.QueryParamsRequest,
     metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryParamsResponse) => void,
-  ) {
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryParamsResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
-        this.hostname_ + "/sgn.message.v1.Query/Params",
+        this.hostname_ +
+          '/sgn.message.v1.Query/Params',
         request,
         metadata || {},
         this.methodInfoParams,
-        callback,
-      );
+        callback);
     }
     return this.client_.unaryCall(
-      this.hostname_ + "/sgn.message.v1.Query/Params",
-      request,
-      metadata || {},
-      this.methodInfoParams,
-    );
+    this.hostname_ +
+      '/sgn.message.v1.Query/Params',
+    request,
+    metadata || {},
+    this.methodInfoParams);
   }
 
   methodInfoExecutionContexts = new grpcWeb.MethodDescriptor(
-    "/sgn.message.v1.Query/ExecutionContexts",
+    '/sgn.message.v1.Query/ExecutionContexts',
     grpcWeb.MethodType.UNARY,
     sgn_message_v1_query_pb.QueryExecutionContextsRequest,
     sgn_message_v1_query_pb.QueryExecutionContextsResponse,
     (request: sgn_message_v1_query_pb.QueryExecutionContextsRequest) => {
       return request.serializeBinary();
     },
-    sgn_message_v1_query_pb.QueryExecutionContextsResponse.deserializeBinary,
+    sgn_message_v1_query_pb.QueryExecutionContextsResponse.deserializeBinary
   );
 
   executionContexts(
     request: sgn_message_v1_query_pb.QueryExecutionContextsRequest,
-    metadata: grpcWeb.Metadata | null,
-  ): Promise<sgn_message_v1_query_pb.QueryExecutionContextsResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<sgn_message_v1_query_pb.QueryExecutionContextsResponse>;
 
   executionContexts(
     request: sgn_message_v1_query_pb.QueryExecutionContextsRequest,
     metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryExecutionContextsResponse) => void,
-  ): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryExecutionContextsResponse>;
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryExecutionContextsResponse) => void): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryExecutionContextsResponse>;
 
   executionContexts(
     request: sgn_message_v1_query_pb.QueryExecutionContextsRequest,
     metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryExecutionContextsResponse) => void,
-  ) {
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryExecutionContextsResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
-        this.hostname_ + "/sgn.message.v1.Query/ExecutionContexts",
+        this.hostname_ +
+          '/sgn.message.v1.Query/ExecutionContexts',
         request,
         metadata || {},
         this.methodInfoExecutionContexts,
-        callback,
-      );
+        callback);
     }
     return this.client_.unaryCall(
-      this.hostname_ + "/sgn.message.v1.Query/ExecutionContexts",
-      request,
-      metadata || {},
-      this.methodInfoExecutionContexts,
-    );
+    this.hostname_ +
+      '/sgn.message.v1.Query/ExecutionContexts',
+    request,
+    metadata || {},
+    this.methodInfoExecutionContexts);
   }
 
   methodInfoMessage = new grpcWeb.MethodDescriptor(
-    "/sgn.message.v1.Query/Message",
+    '/sgn.message.v1.Query/Message',
     grpcWeb.MethodType.UNARY,
     sgn_message_v1_query_pb.QueryMessageRequest,
     sgn_message_v1_query_pb.QueryMessageResponse,
     (request: sgn_message_v1_query_pb.QueryMessageRequest) => {
       return request.serializeBinary();
     },
-    sgn_message_v1_query_pb.QueryMessageResponse.deserializeBinary,
+    sgn_message_v1_query_pb.QueryMessageResponse.deserializeBinary
   );
 
   message(
     request: sgn_message_v1_query_pb.QueryMessageRequest,
-    metadata: grpcWeb.Metadata | null,
-  ): Promise<sgn_message_v1_query_pb.QueryMessageResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<sgn_message_v1_query_pb.QueryMessageResponse>;
 
   message(
     request: sgn_message_v1_query_pb.QueryMessageRequest,
     metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryMessageResponse) => void,
-  ): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryMessageResponse>;
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryMessageResponse) => void): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryMessageResponse>;
 
   message(
     request: sgn_message_v1_query_pb.QueryMessageRequest,
     metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryMessageResponse) => void,
-  ) {
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryMessageResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
-        this.hostname_ + "/sgn.message.v1.Query/Message",
+        this.hostname_ +
+          '/sgn.message.v1.Query/Message',
         request,
         metadata || {},
         this.methodInfoMessage,
-        callback,
-      );
+        callback);
     }
     return this.client_.unaryCall(
-      this.hostname_ + "/sgn.message.v1.Query/Message",
-      request,
-      metadata || {},
-      this.methodInfoMessage,
-    );
+    this.hostname_ +
+      '/sgn.message.v1.Query/Message',
+    request,
+    metadata || {},
+    this.methodInfoMessage);
   }
 
   methodInfoMessageExists = new grpcWeb.MethodDescriptor(
-    "/sgn.message.v1.Query/MessageExists",
+    '/sgn.message.v1.Query/MessageExists',
     grpcWeb.MethodType.UNARY,
     sgn_message_v1_query_pb.QueryMessageExistsRequest,
     sgn_message_v1_query_pb.QueryMessageExistsResponse,
     (request: sgn_message_v1_query_pb.QueryMessageExistsRequest) => {
       return request.serializeBinary();
     },
-    sgn_message_v1_query_pb.QueryMessageExistsResponse.deserializeBinary,
+    sgn_message_v1_query_pb.QueryMessageExistsResponse.deserializeBinary
   );
 
   messageExists(
     request: sgn_message_v1_query_pb.QueryMessageExistsRequest,
-    metadata: grpcWeb.Metadata | null,
-  ): Promise<sgn_message_v1_query_pb.QueryMessageExistsResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<sgn_message_v1_query_pb.QueryMessageExistsResponse>;
 
   messageExists(
     request: sgn_message_v1_query_pb.QueryMessageExistsRequest,
     metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryMessageExistsResponse) => void,
-  ): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryMessageExistsResponse>;
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryMessageExistsResponse) => void): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryMessageExistsResponse>;
 
   messageExists(
     request: sgn_message_v1_query_pb.QueryMessageExistsRequest,
     metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryMessageExistsResponse) => void,
-  ) {
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryMessageExistsResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
-        this.hostname_ + "/sgn.message.v1.Query/MessageExists",
+        this.hostname_ +
+          '/sgn.message.v1.Query/MessageExists',
         request,
         metadata || {},
         this.methodInfoMessageExists,
-        callback,
-      );
+        callback);
     }
     return this.client_.unaryCall(
-      this.hostname_ + "/sgn.message.v1.Query/MessageExists",
-      request,
-      metadata || {},
-      this.methodInfoMessageExists,
-    );
+    this.hostname_ +
+      '/sgn.message.v1.Query/MessageExists',
+    request,
+    metadata || {},
+    this.methodInfoMessageExists);
   }
 
   methodInfoIsMessageActive = new grpcWeb.MethodDescriptor(
-    "/sgn.message.v1.Query/IsMessageActive",
+    '/sgn.message.v1.Query/IsMessageActive',
     grpcWeb.MethodType.UNARY,
     sgn_message_v1_query_pb.IsMessageActiveRequest,
     sgn_message_v1_query_pb.IsMessageActiveResponse,
     (request: sgn_message_v1_query_pb.IsMessageActiveRequest) => {
       return request.serializeBinary();
     },
-    sgn_message_v1_query_pb.IsMessageActiveResponse.deserializeBinary,
+    sgn_message_v1_query_pb.IsMessageActiveResponse.deserializeBinary
   );
 
   isMessageActive(
     request: sgn_message_v1_query_pb.IsMessageActiveRequest,
-    metadata: grpcWeb.Metadata | null,
-  ): Promise<sgn_message_v1_query_pb.IsMessageActiveResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<sgn_message_v1_query_pb.IsMessageActiveResponse>;
 
   isMessageActive(
     request: sgn_message_v1_query_pb.IsMessageActiveRequest,
     metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.IsMessageActiveResponse) => void,
-  ): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.IsMessageActiveResponse>;
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.IsMessageActiveResponse) => void): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.IsMessageActiveResponse>;
 
   isMessageActive(
     request: sgn_message_v1_query_pb.IsMessageActiveRequest,
     metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.IsMessageActiveResponse) => void,
-  ) {
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.IsMessageActiveResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
-        this.hostname_ + "/sgn.message.v1.Query/IsMessageActive",
+        this.hostname_ +
+          '/sgn.message.v1.Query/IsMessageActive',
         request,
         metadata || {},
         this.methodInfoIsMessageActive,
-        callback,
-      );
+        callback);
     }
     return this.client_.unaryCall(
-      this.hostname_ + "/sgn.message.v1.Query/IsMessageActive",
-      request,
-      metadata || {},
-      this.methodInfoIsMessageActive,
-    );
+    this.hostname_ +
+      '/sgn.message.v1.Query/IsMessageActive',
+    request,
+    metadata || {},
+    this.methodInfoIsMessageActive);
   }
 
   methodInfoRefundExists = new grpcWeb.MethodDescriptor(
-    "/sgn.message.v1.Query/RefundExists",
+    '/sgn.message.v1.Query/RefundExists',
     grpcWeb.MethodType.UNARY,
     sgn_message_v1_query_pb.QueryRefundExistsRequest,
     sgn_message_v1_query_pb.QueryRefundExistsResponse,
     (request: sgn_message_v1_query_pb.QueryRefundExistsRequest) => {
       return request.serializeBinary();
     },
-    sgn_message_v1_query_pb.QueryRefundExistsResponse.deserializeBinary,
+    sgn_message_v1_query_pb.QueryRefundExistsResponse.deserializeBinary
   );
 
   refundExists(
     request: sgn_message_v1_query_pb.QueryRefundExistsRequest,
-    metadata: grpcWeb.Metadata | null,
-  ): Promise<sgn_message_v1_query_pb.QueryRefundExistsResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<sgn_message_v1_query_pb.QueryRefundExistsResponse>;
 
   refundExists(
     request: sgn_message_v1_query_pb.QueryRefundExistsRequest,
     metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryRefundExistsResponse) => void,
-  ): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryRefundExistsResponse>;
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryRefundExistsResponse) => void): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryRefundExistsResponse>;
 
   refundExists(
     request: sgn_message_v1_query_pb.QueryRefundExistsRequest,
     metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryRefundExistsResponse) => void,
-  ) {
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryRefundExistsResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
-        this.hostname_ + "/sgn.message.v1.Query/RefundExists",
+        this.hostname_ +
+          '/sgn.message.v1.Query/RefundExists',
         request,
         metadata || {},
         this.methodInfoRefundExists,
-        callback,
-      );
+        callback);
     }
     return this.client_.unaryCall(
-      this.hostname_ + "/sgn.message.v1.Query/RefundExists",
-      request,
-      metadata || {},
-      this.methodInfoRefundExists,
-    );
+    this.hostname_ +
+      '/sgn.message.v1.Query/RefundExists',
+    request,
+    metadata || {},
+    this.methodInfoRefundExists);
   }
 
   methodInfoTransfer = new grpcWeb.MethodDescriptor(
-    "/sgn.message.v1.Query/Transfer",
+    '/sgn.message.v1.Query/Transfer',
     grpcWeb.MethodType.UNARY,
     sgn_message_v1_query_pb.QueryTransferRequest,
     sgn_message_v1_query_pb.QueryTransferResponse,
     (request: sgn_message_v1_query_pb.QueryTransferRequest) => {
       return request.serializeBinary();
     },
-    sgn_message_v1_query_pb.QueryTransferResponse.deserializeBinary,
+    sgn_message_v1_query_pb.QueryTransferResponse.deserializeBinary
   );
 
   transfer(
     request: sgn_message_v1_query_pb.QueryTransferRequest,
-    metadata: grpcWeb.Metadata | null,
-  ): Promise<sgn_message_v1_query_pb.QueryTransferResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<sgn_message_v1_query_pb.QueryTransferResponse>;
 
   transfer(
     request: sgn_message_v1_query_pb.QueryTransferRequest,
     metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryTransferResponse) => void,
-  ): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryTransferResponse>;
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryTransferResponse) => void): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryTransferResponse>;
 
   transfer(
     request: sgn_message_v1_query_pb.QueryTransferRequest,
     metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryTransferResponse) => void,
-  ) {
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryTransferResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
-        this.hostname_ + "/sgn.message.v1.Query/Transfer",
+        this.hostname_ +
+          '/sgn.message.v1.Query/Transfer',
         request,
         metadata || {},
         this.methodInfoTransfer,
-        callback,
-      );
+        callback);
     }
     return this.client_.unaryCall(
-      this.hostname_ + "/sgn.message.v1.Query/Transfer",
-      request,
-      metadata || {},
-      this.methodInfoTransfer,
-    );
+    this.hostname_ +
+      '/sgn.message.v1.Query/Transfer',
+    request,
+    metadata || {},
+    this.methodInfoTransfer);
   }
 
   methodInfoMessageBus = new grpcWeb.MethodDescriptor(
-    "/sgn.message.v1.Query/MessageBus",
+    '/sgn.message.v1.Query/MessageBus',
     grpcWeb.MethodType.UNARY,
     sgn_message_v1_query_pb.QueryMessageBusRequest,
     sgn_message_v1_query_pb.QueryMessageBusResponse,
     (request: sgn_message_v1_query_pb.QueryMessageBusRequest) => {
       return request.serializeBinary();
     },
-    sgn_message_v1_query_pb.QueryMessageBusResponse.deserializeBinary,
+    sgn_message_v1_query_pb.QueryMessageBusResponse.deserializeBinary
   );
 
   messageBus(
     request: sgn_message_v1_query_pb.QueryMessageBusRequest,
-    metadata: grpcWeb.Metadata | null,
-  ): Promise<sgn_message_v1_query_pb.QueryMessageBusResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<sgn_message_v1_query_pb.QueryMessageBusResponse>;
 
   messageBus(
     request: sgn_message_v1_query_pb.QueryMessageBusRequest,
     metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryMessageBusResponse) => void,
-  ): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryMessageBusResponse>;
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryMessageBusResponse) => void): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryMessageBusResponse>;
 
   messageBus(
     request: sgn_message_v1_query_pb.QueryMessageBusRequest,
     metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryMessageBusResponse) => void,
-  ) {
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryMessageBusResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
-        this.hostname_ + "/sgn.message.v1.Query/MessageBus",
+        this.hostname_ +
+          '/sgn.message.v1.Query/MessageBus',
         request,
         metadata || {},
         this.methodInfoMessageBus,
-        callback,
-      );
+        callback);
     }
     return this.client_.unaryCall(
-      this.hostname_ + "/sgn.message.v1.Query/MessageBus",
-      request,
-      metadata || {},
-      this.methodInfoMessageBus,
-    );
+    this.hostname_ +
+      '/sgn.message.v1.Query/MessageBus',
+    request,
+    metadata || {},
+    this.methodInfoMessageBus);
   }
 
   methodInfoFeeClaimInfo = new grpcWeb.MethodDescriptor(
-    "/sgn.message.v1.Query/FeeClaimInfo",
+    '/sgn.message.v1.Query/FeeClaimInfo',
     grpcWeb.MethodType.UNARY,
     sgn_message_v1_query_pb.QueryFeeClaimInfoRequest,
     sgn_message_v1_query_pb.QueryFeeClaimInfoResponse,
     (request: sgn_message_v1_query_pb.QueryFeeClaimInfoRequest) => {
       return request.serializeBinary();
     },
-    sgn_message_v1_query_pb.QueryFeeClaimInfoResponse.deserializeBinary,
+    sgn_message_v1_query_pb.QueryFeeClaimInfoResponse.deserializeBinary
   );
 
   feeClaimInfo(
     request: sgn_message_v1_query_pb.QueryFeeClaimInfoRequest,
-    metadata: grpcWeb.Metadata | null,
-  ): Promise<sgn_message_v1_query_pb.QueryFeeClaimInfoResponse>;
+    metadata: grpcWeb.Metadata | null): Promise<sgn_message_v1_query_pb.QueryFeeClaimInfoResponse>;
 
   feeClaimInfo(
     request: sgn_message_v1_query_pb.QueryFeeClaimInfoRequest,
     metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryFeeClaimInfoResponse) => void,
-  ): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryFeeClaimInfoResponse>;
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryFeeClaimInfoResponse) => void): grpcWeb.ClientReadableStream<sgn_message_v1_query_pb.QueryFeeClaimInfoResponse>;
 
   feeClaimInfo(
     request: sgn_message_v1_query_pb.QueryFeeClaimInfoRequest,
     metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError, response: sgn_message_v1_query_pb.QueryFeeClaimInfoResponse) => void,
-  ) {
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_message_v1_query_pb.QueryFeeClaimInfoResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
-        this.hostname_ + "/sgn.message.v1.Query/FeeClaimInfo",
+        this.hostname_ +
+          '/sgn.message.v1.Query/FeeClaimInfo',
         request,
         metadata || {},
         this.methodInfoFeeClaimInfo,
-        callback,
-      );
+        callback);
     }
     return this.client_.unaryCall(
-      this.hostname_ + "/sgn.message.v1.Query/FeeClaimInfo",
-      request,
-      metadata || {},
-      this.methodInfoFeeClaimInfo,
-    );
+    this.hostname_ +
+      '/sgn.message.v1.Query/FeeClaimInfo',
+    request,
+    metadata || {},
+    this.methodInfoFeeClaimInfo);
   }
+
 }
+

@@ -11,63 +11,55 @@
 /* eslint-disable */
 // @ts-nocheck
 
-var jspb = require("google-protobuf");
+var jspb = require('google-protobuf');
 var goog = jspb;
-var global = function () {
-  if (this) {
-    return this;
-  }
-  if (typeof window !== "undefined") {
-    return window;
-  }
-  if (typeof global !== "undefined") {
-    return global;
-  }
-  if (typeof self !== "undefined") {
-    return self;
-  }
-  return Function("return this")();
-}.call(null);
+var global = (function() {
+  if (this) { return this; }
+  if (typeof window !== 'undefined') { return window; }
+  if (typeof global !== 'undefined') { return global; }
+  if (typeof self !== 'undefined') { return self; }
+  return Function('return this')();
+}.call(null));
 
-var gogoproto_gogo_pb = require("../../../gogoproto/gogo_pb.js");
+var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
-var google_protobuf_duration_pb = require("google-protobuf/google/protobuf/duration_pb.js");
+var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');
 goog.object.extend(proto, google_protobuf_duration_pb);
-var google_protobuf_timestamp_pb = require("google-protobuf/google/protobuf/timestamp_pb.js");
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
-var cosmos_base_v1beta1_coin_pb = require("../../../cosmos/base/v1beta1/coin_pb.js");
+var cosmos_base_v1beta1_coin_pb = require('../../../cosmos/base/v1beta1/coin_pb.js');
 goog.object.extend(proto, cosmos_base_v1beta1_coin_pb);
-var sgn_common_v1_common_pb = require("../../../sgn/common/v1/common_pb.js");
+var sgn_common_v1_common_pb = require('../../../sgn/common/v1/common_pb.js');
 goog.object.extend(proto, sgn_common_v1_common_pb);
-goog.exportSymbol("proto.sgn.farming.v1.AccountInfo", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.AddPoolInfo", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.AddPoolProposal", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.AddPoolProposalWithDeposit", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.AddTokensProposal", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.AddTokensProposalWithDeposit", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.AdjustRewardInfo", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.AdjustRewardProposal", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.AdjustRewardProposalWithDeposit", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.BatchAddPoolProposal", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.BatchAdjustRewardProposal", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.Earnings", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.FarmingPool", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.FarmingRewardsOnChain", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.NumPools", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.Params", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.PoolCurrentRewards", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.PoolHistoricalRewards", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.RemovePoolProposal", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.RemovePoolProposalWithDeposit", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.RewardAdjustmentInput", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.RewardClaimDetails", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.RewardClaimInfo", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.RewardTokenInfo", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.SetRewardContractsProposal", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit", null, global);
-goog.exportSymbol("proto.sgn.farming.v1.StakeInfo", null, global);
+goog.exportSymbol('proto.sgn.farming.v1.AccountInfo', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.AddPoolInfo', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.AddPoolProposal', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.AddPoolProposalWithDeposit', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.AddTokensProposal', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.AddTokensProposalWithDeposit', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.AdjustRewardInfo', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.AdjustRewardProposal', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.AdjustRewardProposalWithDeposit', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.BatchAddPoolProposal', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.BatchAdjustRewardProposal', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.Earnings', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.FarmingPool', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.FarmingRewardsOnChain', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.NumPools', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.Params', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.PoolCurrentRewards', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.PoolHistoricalRewards', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.RemovePoolProposal', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.RemovePoolProposalWithDeposit', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.RewardAdjustmentInput', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.RewardClaimDetails', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.RewardClaimInfo', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.RewardTokenInfo', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.SetRewardContractsProposal', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit', null, global);
+goog.exportSymbol('proto.sgn.farming.v1.StakeInfo', null, global);
 /**
  * Generated by JsPbCodeGenerator.
  * @param {Array=} opt_data Optional initial data array, typically from a
@@ -78,7 +70,7 @@ goog.exportSymbol("proto.sgn.farming.v1.StakeInfo", null, global);
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.Params = function (opt_data) {
+proto.sgn.farming.v1.Params = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.sgn.farming.v1.Params, jspb.Message);
@@ -87,7 +79,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.Params.displayName = "proto.sgn.farming.v1.Params";
+  proto.sgn.farming.v1.Params.displayName = 'proto.sgn.farming.v1.Params';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -99,7 +91,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.FarmingPool = function (opt_data) {
+proto.sgn.farming.v1.FarmingPool = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.FarmingPool.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.FarmingPool, jspb.Message);
@@ -108,7 +100,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.FarmingPool.displayName = "proto.sgn.farming.v1.FarmingPool";
+  proto.sgn.farming.v1.FarmingPool.displayName = 'proto.sgn.farming.v1.FarmingPool';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -120,7 +112,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.NumPools = function (opt_data) {
+proto.sgn.farming.v1.NumPools = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.sgn.farming.v1.NumPools, jspb.Message);
@@ -129,7 +121,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.NumPools.displayName = "proto.sgn.farming.v1.NumPools";
+  proto.sgn.farming.v1.NumPools.displayName = 'proto.sgn.farming.v1.NumPools';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -141,7 +133,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.RewardTokenInfo = function (opt_data) {
+proto.sgn.farming.v1.RewardTokenInfo = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.sgn.farming.v1.RewardTokenInfo, jspb.Message);
@@ -150,7 +142,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.RewardTokenInfo.displayName = "proto.sgn.farming.v1.RewardTokenInfo";
+  proto.sgn.farming.v1.RewardTokenInfo.displayName = 'proto.sgn.farming.v1.RewardTokenInfo';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -162,7 +154,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.StakeInfo = function (opt_data) {
+proto.sgn.farming.v1.StakeInfo = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.sgn.farming.v1.StakeInfo, jspb.Message);
@@ -171,7 +163,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.StakeInfo.displayName = "proto.sgn.farming.v1.StakeInfo";
+  proto.sgn.farming.v1.StakeInfo.displayName = 'proto.sgn.farming.v1.StakeInfo';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -183,7 +175,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.PoolHistoricalRewards = function (opt_data) {
+proto.sgn.farming.v1.PoolHistoricalRewards = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.PoolHistoricalRewards.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.PoolHistoricalRewards, jspb.Message);
@@ -192,7 +184,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.PoolHistoricalRewards.displayName = "proto.sgn.farming.v1.PoolHistoricalRewards";
+  proto.sgn.farming.v1.PoolHistoricalRewards.displayName = 'proto.sgn.farming.v1.PoolHistoricalRewards';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -204,7 +196,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.PoolCurrentRewards = function (opt_data) {
+proto.sgn.farming.v1.PoolCurrentRewards = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.PoolCurrentRewards.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.PoolCurrentRewards, jspb.Message);
@@ -213,7 +205,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.PoolCurrentRewards.displayName = "proto.sgn.farming.v1.PoolCurrentRewards";
+  proto.sgn.farming.v1.PoolCurrentRewards.displayName = 'proto.sgn.farming.v1.PoolCurrentRewards';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -225,7 +217,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.Earnings = function (opt_data) {
+proto.sgn.farming.v1.Earnings = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.Earnings.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.Earnings, jspb.Message);
@@ -234,7 +226,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.Earnings.displayName = "proto.sgn.farming.v1.Earnings";
+  proto.sgn.farming.v1.Earnings.displayName = 'proto.sgn.farming.v1.Earnings';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -246,7 +238,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.AccountInfo = function (opt_data) {
+proto.sgn.farming.v1.AccountInfo = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.AccountInfo.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.AccountInfo, jspb.Message);
@@ -255,7 +247,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.AccountInfo.displayName = "proto.sgn.farming.v1.AccountInfo";
+  proto.sgn.farming.v1.AccountInfo.displayName = 'proto.sgn.farming.v1.AccountInfo';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -267,7 +259,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.RewardClaimDetails = function (opt_data) {
+proto.sgn.farming.v1.RewardClaimDetails = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.RewardClaimDetails.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.RewardClaimDetails, jspb.Message);
@@ -276,7 +268,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.RewardClaimDetails.displayName = "proto.sgn.farming.v1.RewardClaimDetails";
+  proto.sgn.farming.v1.RewardClaimDetails.displayName = 'proto.sgn.farming.v1.RewardClaimDetails';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -288,7 +280,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.RewardClaimInfo = function (opt_data) {
+proto.sgn.farming.v1.RewardClaimInfo = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.RewardClaimInfo.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.RewardClaimInfo, jspb.Message);
@@ -297,7 +289,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.RewardClaimInfo.displayName = "proto.sgn.farming.v1.RewardClaimInfo";
+  proto.sgn.farming.v1.RewardClaimInfo.displayName = 'proto.sgn.farming.v1.RewardClaimInfo';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -309,7 +301,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.RewardAdjustmentInput = function (opt_data) {
+proto.sgn.farming.v1.RewardAdjustmentInput = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.sgn.farming.v1.RewardAdjustmentInput, jspb.Message);
@@ -318,7 +310,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.RewardAdjustmentInput.displayName = "proto.sgn.farming.v1.RewardAdjustmentInput";
+  proto.sgn.farming.v1.RewardAdjustmentInput.displayName = 'proto.sgn.farming.v1.RewardAdjustmentInput';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -330,7 +322,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain = function (opt_data) {
+proto.sgn.farming.v1.FarmingRewardsOnChain = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.FarmingRewardsOnChain.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.FarmingRewardsOnChain, jspb.Message);
@@ -339,7 +331,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.FarmingRewardsOnChain.displayName = "proto.sgn.farming.v1.FarmingRewardsOnChain";
+  proto.sgn.farming.v1.FarmingRewardsOnChain.displayName = 'proto.sgn.farming.v1.FarmingRewardsOnChain';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -351,7 +343,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.AddPoolProposal = function (opt_data) {
+proto.sgn.farming.v1.AddPoolProposal = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.AddPoolProposal.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.AddPoolProposal, jspb.Message);
@@ -360,7 +352,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.AddPoolProposal.displayName = "proto.sgn.farming.v1.AddPoolProposal";
+  proto.sgn.farming.v1.AddPoolProposal.displayName = 'proto.sgn.farming.v1.AddPoolProposal';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -372,7 +364,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.BatchAddPoolProposal = function (opt_data) {
+proto.sgn.farming.v1.BatchAddPoolProposal = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.BatchAddPoolProposal.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.BatchAddPoolProposal, jspb.Message);
@@ -381,7 +373,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.BatchAddPoolProposal.displayName = "proto.sgn.farming.v1.BatchAddPoolProposal";
+  proto.sgn.farming.v1.BatchAddPoolProposal.displayName = 'proto.sgn.farming.v1.BatchAddPoolProposal';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -393,7 +385,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.AddPoolInfo = function (opt_data) {
+proto.sgn.farming.v1.AddPoolInfo = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.AddPoolInfo.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.AddPoolInfo, jspb.Message);
@@ -402,7 +394,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.AddPoolInfo.displayName = "proto.sgn.farming.v1.AddPoolInfo";
+  proto.sgn.farming.v1.AddPoolInfo.displayName = 'proto.sgn.farming.v1.AddPoolInfo';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -414,7 +406,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit = function (opt_data) {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.AddPoolProposalWithDeposit.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.AddPoolProposalWithDeposit, jspb.Message);
@@ -423,7 +415,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.AddPoolProposalWithDeposit.displayName = "proto.sgn.farming.v1.AddPoolProposalWithDeposit";
+  proto.sgn.farming.v1.AddPoolProposalWithDeposit.displayName = 'proto.sgn.farming.v1.AddPoolProposalWithDeposit';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -435,15 +427,8 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit = function (opt_data) {
-  jspb.Message.initialize(
-    this,
-    opt_data,
-    0,
-    -1,
-    proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.repeatedFields_,
-    null,
-  );
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -451,8 +436,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.displayName =
-    "proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit";
+  proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.displayName = 'proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -464,7 +448,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.AdjustRewardProposal = function (opt_data) {
+proto.sgn.farming.v1.AdjustRewardProposal = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.AdjustRewardProposal.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.AdjustRewardProposal, jspb.Message);
@@ -473,7 +457,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.AdjustRewardProposal.displayName = "proto.sgn.farming.v1.AdjustRewardProposal";
+  proto.sgn.farming.v1.AdjustRewardProposal.displayName = 'proto.sgn.farming.v1.AdjustRewardProposal';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -485,7 +469,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal = function (opt_data) {
+proto.sgn.farming.v1.BatchAdjustRewardProposal = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.BatchAdjustRewardProposal.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.BatchAdjustRewardProposal, jspb.Message);
@@ -494,7 +478,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.BatchAdjustRewardProposal.displayName = "proto.sgn.farming.v1.BatchAdjustRewardProposal";
+  proto.sgn.farming.v1.BatchAdjustRewardProposal.displayName = 'proto.sgn.farming.v1.BatchAdjustRewardProposal';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -506,7 +490,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.AdjustRewardInfo = function (opt_data) {
+proto.sgn.farming.v1.AdjustRewardInfo = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.AdjustRewardInfo.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.AdjustRewardInfo, jspb.Message);
@@ -515,7 +499,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.AdjustRewardInfo.displayName = "proto.sgn.farming.v1.AdjustRewardInfo";
+  proto.sgn.farming.v1.AdjustRewardInfo.displayName = 'proto.sgn.farming.v1.AdjustRewardInfo';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -527,15 +511,8 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit = function (opt_data) {
-  jspb.Message.initialize(
-    this,
-    opt_data,
-    0,
-    -1,
-    proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.repeatedFields_,
-    null,
-  );
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.AdjustRewardProposalWithDeposit, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -543,8 +520,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.displayName =
-    "proto.sgn.farming.v1.AdjustRewardProposalWithDeposit";
+  proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.displayName = 'proto.sgn.farming.v1.AdjustRewardProposalWithDeposit';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -556,15 +532,8 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit = function (opt_data) {
-  jspb.Message.initialize(
-    this,
-    opt_data,
-    0,
-    -1,
-    proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.repeatedFields_,
-    null,
-  );
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -572,8 +541,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.displayName =
-    "proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit";
+  proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.displayName = 'proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -585,7 +553,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.RemovePoolProposal = function (opt_data) {
+proto.sgn.farming.v1.RemovePoolProposal = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.sgn.farming.v1.RemovePoolProposal, jspb.Message);
@@ -594,7 +562,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.RemovePoolProposal.displayName = "proto.sgn.farming.v1.RemovePoolProposal";
+  proto.sgn.farming.v1.RemovePoolProposal.displayName = 'proto.sgn.farming.v1.RemovePoolProposal';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -606,7 +574,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit = function (opt_data) {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.sgn.farming.v1.RemovePoolProposalWithDeposit, jspb.Message);
@@ -615,7 +583,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.RemovePoolProposalWithDeposit.displayName = "proto.sgn.farming.v1.RemovePoolProposalWithDeposit";
+  proto.sgn.farming.v1.RemovePoolProposalWithDeposit.displayName = 'proto.sgn.farming.v1.RemovePoolProposalWithDeposit';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -627,7 +595,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.AddTokensProposal = function (opt_data) {
+proto.sgn.farming.v1.AddTokensProposal = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.AddTokensProposal.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.AddTokensProposal, jspb.Message);
@@ -636,7 +604,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.AddTokensProposal.displayName = "proto.sgn.farming.v1.AddTokensProposal";
+  proto.sgn.farming.v1.AddTokensProposal.displayName = 'proto.sgn.farming.v1.AddTokensProposal';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -648,15 +616,8 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit = function (opt_data) {
-  jspb.Message.initialize(
-    this,
-    opt_data,
-    0,
-    -1,
-    proto.sgn.farming.v1.AddTokensProposalWithDeposit.repeatedFields_,
-    null,
-  );
+proto.sgn.farming.v1.AddTokensProposalWithDeposit = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.AddTokensProposalWithDeposit.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.AddTokensProposalWithDeposit, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -664,7 +625,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.AddTokensProposalWithDeposit.displayName = "proto.sgn.farming.v1.AddTokensProposalWithDeposit";
+  proto.sgn.farming.v1.AddTokensProposalWithDeposit.displayName = 'proto.sgn.farming.v1.AddTokensProposalWithDeposit';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -676,7 +637,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.SetRewardContractsProposal = function (opt_data) {
+proto.sgn.farming.v1.SetRewardContractsProposal = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.SetRewardContractsProposal.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.SetRewardContractsProposal, jspb.Message);
@@ -685,7 +646,7 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.SetRewardContractsProposal.displayName = "proto.sgn.farming.v1.SetRewardContractsProposal";
+  proto.sgn.farming.v1.SetRewardContractsProposal.displayName = 'proto.sgn.farming.v1.SetRewardContractsProposal';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -697,15 +658,8 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit = function (opt_data) {
-  jspb.Message.initialize(
-    this,
-    opt_data,
-    0,
-    -1,
-    proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.repeatedFields_,
-    null,
-  );
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.repeatedFields_, null);
 };
 goog.inherits(proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -713,60 +667,62 @@ if (goog.DEBUG && !COMPILED) {
    * @public
    * @override
    */
-  proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.displayName =
-    "proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit";
+  proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.displayName = 'proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit';
 }
+
+
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.Params.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.Params.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.Params.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.Params.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.Params} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.Params.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    claimCooldown: (f = msg.getClaimCooldown()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.Params} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.Params.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        claimCooldown:
-          (f = msg.getClaimCooldown()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.Params}
  */
-proto.sgn.farming.v1.Params.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.Params.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.Params();
+  var msg = new proto.sgn.farming.v1.Params;
   return proto.sgn.farming.v1.Params.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -775,35 +731,37 @@ proto.sgn.farming.v1.Params.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.Params}
  */
-proto.sgn.farming.v1.Params.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.Params.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = new google_protobuf_duration_pb.Duration();
-        reader.readMessage(value, google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
-        msg.setClaimCooldown(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = new google_protobuf_duration_pb.Duration;
+      reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
+      msg.setClaimCooldown(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.Params.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.Params.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.Params.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -812,122 +770,125 @@ proto.sgn.farming.v1.Params.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.Params.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.Params.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getClaimCooldown();
   if (f != null) {
-    writer.writeMessage(1, f, google_protobuf_duration_pb.Duration.serializeBinaryToWriter);
+    writer.writeMessage(
+      1,
+      f,
+      google_protobuf_duration_pb.Duration.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional google.protobuf.Duration claim_cooldown = 1;
  * @return {?proto.google.protobuf.Duration}
  */
-proto.sgn.farming.v1.Params.prototype.getClaimCooldown = function () {
+proto.sgn.farming.v1.Params.prototype.getClaimCooldown = function() {
   return /** @type{?proto.google.protobuf.Duration} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 1)
-  );
+    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 1));
 };
+
 
 /**
  * @param {?proto.google.protobuf.Duration|undefined} value
  * @return {!proto.sgn.farming.v1.Params} returns this
- */
-proto.sgn.farming.v1.Params.prototype.setClaimCooldown = function (value) {
+*/
+proto.sgn.farming.v1.Params.prototype.setClaimCooldown = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.Params} returns this
  */
-proto.sgn.farming.v1.Params.prototype.clearClaimCooldown = function () {
+proto.sgn.farming.v1.Params.prototype.clearClaimCooldown = function() {
   return this.setClaimCooldown(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.Params.prototype.hasClaimCooldown = function () {
+proto.sgn.farming.v1.Params.prototype.hasClaimCooldown = function() {
   return jspb.Message.getField(this, 1) != null;
 };
+
+
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.farming.v1.FarmingPool.repeatedFields_ = [3, 5, 6];
+proto.sgn.farming.v1.FarmingPool.repeatedFields_ = [3,5,6];
+
+
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.FarmingPool.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.FarmingPool.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.FarmingPool.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.FarmingPool.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.FarmingPool} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.FarmingPool.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    stakeToken: (f = msg.getStakeToken()) && sgn_common_v1_common_pb.ERC20Token.toObject(includeInstance, f),
+    rewardTokensList: jspb.Message.toObjectList(msg.getRewardTokensList(),
+    sgn_common_v1_common_pb.ERC20Token.toObject, includeInstance),
+    totalStakedAmount: (f = msg.getTotalStakedAmount()) && cosmos_base_v1beta1_coin_pb.DecCoin.toObject(includeInstance, f),
+    rewardTokenInfosList: jspb.Message.toObjectList(msg.getRewardTokenInfosList(),
+    proto.sgn.farming.v1.RewardTokenInfo.toObject, includeInstance),
+    totalAccumulatedRewardsList: jspb.Message.toObjectList(msg.getTotalAccumulatedRewardsList(),
+    cosmos_base_v1beta1_coin_pb.DecCoin.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.FarmingPool} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.FarmingPool.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        stakeToken: (f = msg.getStakeToken()) && sgn_common_v1_common_pb.ERC20Token.toObject(includeInstance, f),
-        rewardTokensList: jspb.Message.toObjectList(
-          msg.getRewardTokensList(),
-          sgn_common_v1_common_pb.ERC20Token.toObject,
-          includeInstance,
-        ),
-        totalStakedAmount:
-          (f = msg.getTotalStakedAmount()) && cosmos_base_v1beta1_coin_pb.DecCoin.toObject(includeInstance, f),
-        rewardTokenInfosList: jspb.Message.toObjectList(
-          msg.getRewardTokenInfosList(),
-          proto.sgn.farming.v1.RewardTokenInfo.toObject,
-          includeInstance,
-        ),
-        totalAccumulatedRewardsList: jspb.Message.toObjectList(
-          msg.getTotalAccumulatedRewardsList(),
-          cosmos_base_v1beta1_coin_pb.DecCoin.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.FarmingPool}
  */
-proto.sgn.farming.v1.FarmingPool.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.FarmingPool.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.FarmingPool();
+  var msg = new proto.sgn.farming.v1.FarmingPool;
   return proto.sgn.farming.v1.FarmingPool.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -936,59 +897,61 @@ proto.sgn.farming.v1.FarmingPool.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.FarmingPool}
  */
-proto.sgn.farming.v1.FarmingPool.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.FarmingPool.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setName(value);
-        break;
-      case 2:
-        var value = new sgn_common_v1_common_pb.ERC20Token();
-        reader.readMessage(value, sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
-        msg.setStakeToken(value);
-        break;
-      case 3:
-        var value = new sgn_common_v1_common_pb.ERC20Token();
-        reader.readMessage(value, sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
-        msg.addRewardTokens(value);
-        break;
-      case 4:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.setTotalStakedAmount(value);
-        break;
-      case 5:
-        var value = new proto.sgn.farming.v1.RewardTokenInfo();
-        reader.readMessage(value, proto.sgn.farming.v1.RewardTokenInfo.deserializeBinaryFromReader);
-        msg.addRewardTokenInfos(value);
-        break;
-      case 6:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.addTotalAccumulatedRewards(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = new sgn_common_v1_common_pb.ERC20Token;
+      reader.readMessage(value,sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
+      msg.setStakeToken(value);
+      break;
+    case 3:
+      var value = new sgn_common_v1_common_pb.ERC20Token;
+      reader.readMessage(value,sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
+      msg.addRewardTokens(value);
+      break;
+    case 4:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.setTotalStakedAmount(value);
+      break;
+    case 5:
+      var value = new proto.sgn.farming.v1.RewardTokenInfo;
+      reader.readMessage(value,proto.sgn.farming.v1.RewardTokenInfo.deserializeBinaryFromReader);
+      msg.addRewardTokenInfos(value);
+      break;
+    case 6:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.addTotalAccumulatedRewards(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.FarmingPool.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -997,272 +960,318 @@ proto.sgn.farming.v1.FarmingPool.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.FarmingPool.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.FarmingPool.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getName();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getStakeToken();
   if (f != null) {
-    writer.writeMessage(2, f, sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter);
+    writer.writeMessage(
+      2,
+      f,
+      sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter
+    );
   }
   f = message.getRewardTokensList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter
+    );
   }
   f = message.getTotalStakedAmount();
   if (f != null) {
-    writer.writeMessage(4, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeMessage(
+      4,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
   f = message.getRewardTokenInfosList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(5, f, proto.sgn.farming.v1.RewardTokenInfo.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      5,
+      f,
+      proto.sgn.farming.v1.RewardTokenInfo.serializeBinaryToWriter
+    );
   }
   f = message.getTotalAccumulatedRewardsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(6, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      6,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional string name = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.getName = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.getName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
  */
-proto.sgn.farming.v1.FarmingPool.prototype.setName = function (value) {
+proto.sgn.farming.v1.FarmingPool.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional sgn.common.v1.ERC20Token stake_token = 2;
  * @return {?proto.sgn.common.v1.ERC20Token}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.getStakeToken = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.getStakeToken = function() {
   return /** @type{?proto.sgn.common.v1.ERC20Token} */ (
-    jspb.Message.getWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 2)
-  );
+    jspb.Message.getWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 2));
 };
+
 
 /**
  * @param {?proto.sgn.common.v1.ERC20Token|undefined} value
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
- */
-proto.sgn.farming.v1.FarmingPool.prototype.setStakeToken = function (value) {
+*/
+proto.sgn.farming.v1.FarmingPool.prototype.setStakeToken = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
  */
-proto.sgn.farming.v1.FarmingPool.prototype.clearStakeToken = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.clearStakeToken = function() {
   return this.setStakeToken(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.hasStakeToken = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.hasStakeToken = function() {
   return jspb.Message.getField(this, 2) != null;
 };
+
 
 /**
  * repeated sgn.common.v1.ERC20Token reward_tokens = 3;
  * @return {!Array<!proto.sgn.common.v1.ERC20Token>}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.getRewardTokensList = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.getRewardTokensList = function() {
   return /** @type{!Array<!proto.sgn.common.v1.ERC20Token>} */ (
-    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.common.v1.ERC20Token>} value
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
- */
-proto.sgn.farming.v1.FarmingPool.prototype.setRewardTokensList = function (value) {
+*/
+proto.sgn.farming.v1.FarmingPool.prototype.setRewardTokensList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.common.v1.ERC20Token=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.common.v1.ERC20Token}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.addRewardTokens = function (opt_value, opt_index) {
+proto.sgn.farming.v1.FarmingPool.prototype.addRewardTokens = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.common.v1.ERC20Token, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
  */
-proto.sgn.farming.v1.FarmingPool.prototype.clearRewardTokensList = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.clearRewardTokensList = function() {
   return this.setRewardTokensList([]);
 };
+
 
 /**
  * optional cosmos.base.v1beta1.DecCoin total_staked_amount = 4;
  * @return {?proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.getTotalStakedAmount = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.getTotalStakedAmount = function() {
   return /** @type{?proto.cosmos.base.v1beta1.DecCoin} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 4)
-  );
+    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 4));
 };
+
 
 /**
  * @param {?proto.cosmos.base.v1beta1.DecCoin|undefined} value
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
- */
-proto.sgn.farming.v1.FarmingPool.prototype.setTotalStakedAmount = function (value) {
+*/
+proto.sgn.farming.v1.FarmingPool.prototype.setTotalStakedAmount = function(value) {
   return jspb.Message.setWrapperField(this, 4, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
  */
-proto.sgn.farming.v1.FarmingPool.prototype.clearTotalStakedAmount = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.clearTotalStakedAmount = function() {
   return this.setTotalStakedAmount(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.hasTotalStakedAmount = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.hasTotalStakedAmount = function() {
   return jspb.Message.getField(this, 4) != null;
 };
+
 
 /**
  * repeated RewardTokenInfo reward_token_infos = 5;
  * @return {!Array<!proto.sgn.farming.v1.RewardTokenInfo>}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.getRewardTokenInfosList = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.getRewardTokenInfosList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.RewardTokenInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardTokenInfo, 5)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardTokenInfo, 5));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.RewardTokenInfo>} value
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
- */
-proto.sgn.farming.v1.FarmingPool.prototype.setRewardTokenInfosList = function (value) {
+*/
+proto.sgn.farming.v1.FarmingPool.prototype.setRewardTokenInfosList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 5, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.RewardTokenInfo=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.RewardTokenInfo}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.addRewardTokenInfos = function (opt_value, opt_index) {
+proto.sgn.farming.v1.FarmingPool.prototype.addRewardTokenInfos = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.sgn.farming.v1.RewardTokenInfo, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
  */
-proto.sgn.farming.v1.FarmingPool.prototype.clearRewardTokenInfosList = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.clearRewardTokenInfosList = function() {
   return this.setRewardTokenInfosList([]);
 };
+
 
 /**
  * repeated cosmos.base.v1beta1.DecCoin total_accumulated_rewards = 6;
  * @return {!Array<!proto.cosmos.base.v1beta1.DecCoin>}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.getTotalAccumulatedRewardsList = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.getTotalAccumulatedRewardsList = function() {
   return /** @type{!Array<!proto.cosmos.base.v1beta1.DecCoin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 6)
-  );
+    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 6));
 };
+
 
 /**
  * @param {!Array<!proto.cosmos.base.v1beta1.DecCoin>} value
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
- */
-proto.sgn.farming.v1.FarmingPool.prototype.setTotalAccumulatedRewardsList = function (value) {
+*/
+proto.sgn.farming.v1.FarmingPool.prototype.setTotalAccumulatedRewardsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 6, value);
 };
+
 
 /**
  * @param {!proto.cosmos.base.v1beta1.DecCoin=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.FarmingPool.prototype.addTotalAccumulatedRewards = function (opt_value, opt_index) {
+proto.sgn.farming.v1.FarmingPool.prototype.addTotalAccumulatedRewards = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.cosmos.base.v1beta1.DecCoin, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.FarmingPool} returns this
  */
-proto.sgn.farming.v1.FarmingPool.prototype.clearTotalAccumulatedRewardsList = function () {
+proto.sgn.farming.v1.FarmingPool.prototype.clearTotalAccumulatedRewardsList = function() {
   return this.setTotalAccumulatedRewardsList([]);
 };
 
+
+
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.NumPools.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.NumPools.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.NumPools.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.NumPools.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.NumPools} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.NumPools.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    numPools: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.NumPools} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.NumPools.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        numPools: jspb.Message.getFieldWithDefault(msg, 1, 0),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.NumPools}
  */
-proto.sgn.farming.v1.NumPools.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.NumPools.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.NumPools();
+  var msg = new proto.sgn.farming.v1.NumPools;
   return proto.sgn.farming.v1.NumPools.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1271,34 +1280,36 @@ proto.sgn.farming.v1.NumPools.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.NumPools}
  */
-proto.sgn.farming.v1.NumPools.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.NumPools.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {number} */ (reader.readUint64());
-        msg.setNumPools(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setNumPools(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.NumPools.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.NumPools.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.NumPools.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1307,82 +1318,92 @@ proto.sgn.farming.v1.NumPools.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.NumPools.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.NumPools.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getNumPools();
   if (f !== 0) {
-    writer.writeUint64(1, f);
+    writer.writeUint64(
+      1,
+      f
+    );
   }
 };
+
 
 /**
  * optional uint64 num_pools = 1;
  * @return {number}
  */
-proto.sgn.farming.v1.NumPools.prototype.getNumPools = function () {
+proto.sgn.farming.v1.NumPools.prototype.getNumPools = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
+
 
 /**
  * @param {number} value
  * @return {!proto.sgn.farming.v1.NumPools} returns this
  */
-proto.sgn.farming.v1.NumPools.prototype.setNumPools = function (value) {
+proto.sgn.farming.v1.NumPools.prototype.setNumPools = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
 
+
+
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.RewardTokenInfo.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.RewardTokenInfo.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.RewardTokenInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.RewardTokenInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.RewardTokenInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.RewardTokenInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    remainingAmount: (f = msg.getRemainingAmount()) && cosmos_base_v1beta1_coin_pb.DecCoin.toObject(includeInstance, f),
+    rewardStartBlockHeight: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    rewardAmountPerBlock: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.RewardTokenInfo} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.RewardTokenInfo.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        remainingAmount:
-          (f = msg.getRemainingAmount()) && cosmos_base_v1beta1_coin_pb.DecCoin.toObject(includeInstance, f),
-        rewardStartBlockHeight: jspb.Message.getFieldWithDefault(msg, 2, 0),
-        rewardAmountPerBlock: jspb.Message.getFieldWithDefault(msg, 3, ""),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.RewardTokenInfo}
  */
-proto.sgn.farming.v1.RewardTokenInfo.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.RewardTokenInfo.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.RewardTokenInfo();
+  var msg = new proto.sgn.farming.v1.RewardTokenInfo;
   return proto.sgn.farming.v1.RewardTokenInfo.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1391,43 +1412,45 @@ proto.sgn.farming.v1.RewardTokenInfo.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.RewardTokenInfo}
  */
-proto.sgn.farming.v1.RewardTokenInfo.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.RewardTokenInfo.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.setRemainingAmount(value);
-        break;
-      case 2:
-        var value = /** @type {number} */ (reader.readInt64());
-        msg.setRewardStartBlockHeight(value);
-        break;
-      case 3:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setRewardAmountPerBlock(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.setRemainingAmount(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setRewardStartBlockHeight(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRewardAmountPerBlock(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.RewardTokenInfo.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.RewardTokenInfo.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.RewardTokenInfo.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1436,141 +1459,164 @@ proto.sgn.farming.v1.RewardTokenInfo.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.RewardTokenInfo.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.RewardTokenInfo.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getRemainingAmount();
   if (f != null) {
-    writer.writeMessage(1, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeMessage(
+      1,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
   f = message.getRewardStartBlockHeight();
   if (f !== 0) {
-    writer.writeInt64(2, f);
+    writer.writeInt64(
+      2,
+      f
+    );
   }
   f = message.getRewardAmountPerBlock();
   if (f.length > 0) {
-    writer.writeString(3, f);
+    writer.writeString(
+      3,
+      f
+    );
   }
 };
+
 
 /**
  * optional cosmos.base.v1beta1.DecCoin remaining_amount = 1;
  * @return {?proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.RewardTokenInfo.prototype.getRemainingAmount = function () {
+proto.sgn.farming.v1.RewardTokenInfo.prototype.getRemainingAmount = function() {
   return /** @type{?proto.cosmos.base.v1beta1.DecCoin} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 1)
-  );
+    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 1));
 };
+
 
 /**
  * @param {?proto.cosmos.base.v1beta1.DecCoin|undefined} value
  * @return {!proto.sgn.farming.v1.RewardTokenInfo} returns this
- */
-proto.sgn.farming.v1.RewardTokenInfo.prototype.setRemainingAmount = function (value) {
+*/
+proto.sgn.farming.v1.RewardTokenInfo.prototype.setRemainingAmount = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.RewardTokenInfo} returns this
  */
-proto.sgn.farming.v1.RewardTokenInfo.prototype.clearRemainingAmount = function () {
+proto.sgn.farming.v1.RewardTokenInfo.prototype.clearRemainingAmount = function() {
   return this.setRemainingAmount(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.RewardTokenInfo.prototype.hasRemainingAmount = function () {
+proto.sgn.farming.v1.RewardTokenInfo.prototype.hasRemainingAmount = function() {
   return jspb.Message.getField(this, 1) != null;
 };
+
 
 /**
  * optional int64 reward_start_block_height = 2;
  * @return {number}
  */
-proto.sgn.farming.v1.RewardTokenInfo.prototype.getRewardStartBlockHeight = function () {
+proto.sgn.farming.v1.RewardTokenInfo.prototype.getRewardStartBlockHeight = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
+
 
 /**
  * @param {number} value
  * @return {!proto.sgn.farming.v1.RewardTokenInfo} returns this
  */
-proto.sgn.farming.v1.RewardTokenInfo.prototype.setRewardStartBlockHeight = function (value) {
+proto.sgn.farming.v1.RewardTokenInfo.prototype.setRewardStartBlockHeight = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
 };
+
 
 /**
  * optional string reward_amount_per_block = 3;
  * @return {string}
  */
-proto.sgn.farming.v1.RewardTokenInfo.prototype.getRewardAmountPerBlock = function () {
+proto.sgn.farming.v1.RewardTokenInfo.prototype.getRewardAmountPerBlock = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.RewardTokenInfo} returns this
  */
-proto.sgn.farming.v1.RewardTokenInfo.prototype.setRewardAmountPerBlock = function (value) {
+proto.sgn.farming.v1.RewardTokenInfo.prototype.setRewardAmountPerBlock = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
+
+
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.StakeInfo.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.StakeInfo.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.StakeInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.StakeInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.StakeInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.StakeInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    stakerAddress: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    poolName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    amount: (f = msg.getAmount()) && cosmos_base_v1beta1_coin_pb.DecCoin.toObject(includeInstance, f),
+    startBlockHeight: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    referencePeriod: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.StakeInfo} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.StakeInfo.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        stakerAddress: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        poolName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        amount: (f = msg.getAmount()) && cosmos_base_v1beta1_coin_pb.DecCoin.toObject(includeInstance, f),
-        startBlockHeight: jspb.Message.getFieldWithDefault(msg, 4, 0),
-        referencePeriod: jspb.Message.getFieldWithDefault(msg, 5, 0),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.StakeInfo}
  */
-proto.sgn.farming.v1.StakeInfo.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.StakeInfo.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.StakeInfo();
+  var msg = new proto.sgn.farming.v1.StakeInfo;
   return proto.sgn.farming.v1.StakeInfo.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1579,51 +1625,53 @@ proto.sgn.farming.v1.StakeInfo.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.StakeInfo}
  */
-proto.sgn.farming.v1.StakeInfo.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.StakeInfo.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setStakerAddress(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setPoolName(value);
-        break;
-      case 3:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.setAmount(value);
-        break;
-      case 4:
-        var value = /** @type {number} */ (reader.readInt64());
-        msg.setStartBlockHeight(value);
-        break;
-      case 5:
-        var value = /** @type {number} */ (reader.readUint64());
-        msg.setReferencePeriod(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setStakerAddress(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolName(value);
+      break;
+    case 3:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.setAmount(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStartBlockHeight(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setReferencePeriod(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.StakeInfo.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.StakeInfo.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.StakeInfo.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1632,127 +1680,156 @@ proto.sgn.farming.v1.StakeInfo.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.StakeInfo.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.StakeInfo.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getStakerAddress();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getPoolName();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getAmount();
   if (f != null) {
-    writer.writeMessage(3, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeMessage(
+      3,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
   f = message.getStartBlockHeight();
   if (f !== 0) {
-    writer.writeInt64(4, f);
+    writer.writeInt64(
+      4,
+      f
+    );
   }
   f = message.getReferencePeriod();
   if (f !== 0) {
-    writer.writeUint64(5, f);
+    writer.writeUint64(
+      5,
+      f
+    );
   }
 };
+
 
 /**
  * optional string staker_address = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.StakeInfo.prototype.getStakerAddress = function () {
+proto.sgn.farming.v1.StakeInfo.prototype.getStakerAddress = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.StakeInfo} returns this
  */
-proto.sgn.farming.v1.StakeInfo.prototype.setStakerAddress = function (value) {
+proto.sgn.farming.v1.StakeInfo.prototype.setStakerAddress = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string pool_name = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.StakeInfo.prototype.getPoolName = function () {
+proto.sgn.farming.v1.StakeInfo.prototype.getPoolName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.StakeInfo} returns this
  */
-proto.sgn.farming.v1.StakeInfo.prototype.setPoolName = function (value) {
+proto.sgn.farming.v1.StakeInfo.prototype.setPoolName = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * optional cosmos.base.v1beta1.DecCoin amount = 3;
  * @return {?proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.StakeInfo.prototype.getAmount = function () {
+proto.sgn.farming.v1.StakeInfo.prototype.getAmount = function() {
   return /** @type{?proto.cosmos.base.v1beta1.DecCoin} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 3)
-  );
+    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 3));
 };
+
 
 /**
  * @param {?proto.cosmos.base.v1beta1.DecCoin|undefined} value
  * @return {!proto.sgn.farming.v1.StakeInfo} returns this
- */
-proto.sgn.farming.v1.StakeInfo.prototype.setAmount = function (value) {
+*/
+proto.sgn.farming.v1.StakeInfo.prototype.setAmount = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.StakeInfo} returns this
  */
-proto.sgn.farming.v1.StakeInfo.prototype.clearAmount = function () {
+proto.sgn.farming.v1.StakeInfo.prototype.clearAmount = function() {
   return this.setAmount(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.StakeInfo.prototype.hasAmount = function () {
+proto.sgn.farming.v1.StakeInfo.prototype.hasAmount = function() {
   return jspb.Message.getField(this, 3) != null;
 };
+
 
 /**
  * optional int64 start_block_height = 4;
  * @return {number}
  */
-proto.sgn.farming.v1.StakeInfo.prototype.getStartBlockHeight = function () {
+proto.sgn.farming.v1.StakeInfo.prototype.getStartBlockHeight = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
+
 
 /**
  * @param {number} value
  * @return {!proto.sgn.farming.v1.StakeInfo} returns this
  */
-proto.sgn.farming.v1.StakeInfo.prototype.setStartBlockHeight = function (value) {
+proto.sgn.farming.v1.StakeInfo.prototype.setStartBlockHeight = function(value) {
   return jspb.Message.setProto3IntField(this, 4, value);
 };
+
 
 /**
  * optional uint64 reference_period = 5;
  * @return {number}
  */
-proto.sgn.farming.v1.StakeInfo.prototype.getReferencePeriod = function () {
+proto.sgn.farming.v1.StakeInfo.prototype.getReferencePeriod = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
+
 
 /**
  * @param {number} value
  * @return {!proto.sgn.farming.v1.StakeInfo} returns this
  */
-proto.sgn.farming.v1.StakeInfo.prototype.setReferencePeriod = function (value) {
+proto.sgn.farming.v1.StakeInfo.prototype.setReferencePeriod = function(value) {
   return jspb.Message.setProto3IntField(this, 5, value);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -1761,60 +1838,61 @@ proto.sgn.farming.v1.StakeInfo.prototype.setReferencePeriod = function (value) {
  */
 proto.sgn.farming.v1.PoolHistoricalRewards.repeatedFields_ = [1];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.PoolHistoricalRewards.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.PoolHistoricalRewards.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.PoolHistoricalRewards.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.PoolHistoricalRewards.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.PoolHistoricalRewards} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.PoolHistoricalRewards.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    cumulativeRewardRatioList: jspb.Message.toObjectList(msg.getCumulativeRewardRatioList(),
+    cosmos_base_v1beta1_coin_pb.DecCoin.toObject, includeInstance),
+    referenceCount: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.PoolHistoricalRewards} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.PoolHistoricalRewards.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        cumulativeRewardRatioList: jspb.Message.toObjectList(
-          msg.getCumulativeRewardRatioList(),
-          cosmos_base_v1beta1_coin_pb.DecCoin.toObject,
-          includeInstance,
-        ),
-        referenceCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.PoolHistoricalRewards}
  */
-proto.sgn.farming.v1.PoolHistoricalRewards.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.PoolHistoricalRewards.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.PoolHistoricalRewards();
+  var msg = new proto.sgn.farming.v1.PoolHistoricalRewards;
   return proto.sgn.farming.v1.PoolHistoricalRewards.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1823,39 +1901,41 @@ proto.sgn.farming.v1.PoolHistoricalRewards.deserializeBinary = function (bytes) 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.PoolHistoricalRewards}
  */
-proto.sgn.farming.v1.PoolHistoricalRewards.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.PoolHistoricalRewards.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.addCumulativeRewardRatio(value);
-        break;
-      case 2:
-        var value = /** @type {number} */ (reader.readUint32());
-        msg.setReferenceCount(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.addCumulativeRewardRatio(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setReferenceCount(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.PoolHistoricalRewards.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.PoolHistoricalRewards.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.PoolHistoricalRewards.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1864,68 +1944,82 @@ proto.sgn.farming.v1.PoolHistoricalRewards.prototype.serializeBinary = function 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.PoolHistoricalRewards.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.PoolHistoricalRewards.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getCumulativeRewardRatioList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(1, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
   f = message.getReferenceCount();
   if (f !== 0) {
-    writer.writeUint32(2, f);
+    writer.writeUint32(
+      2,
+      f
+    );
   }
 };
+
 
 /**
  * repeated cosmos.base.v1beta1.DecCoin cumulative_reward_ratio = 1;
  * @return {!Array<!proto.cosmos.base.v1beta1.DecCoin>}
  */
-proto.sgn.farming.v1.PoolHistoricalRewards.prototype.getCumulativeRewardRatioList = function () {
+proto.sgn.farming.v1.PoolHistoricalRewards.prototype.getCumulativeRewardRatioList = function() {
   return /** @type{!Array<!proto.cosmos.base.v1beta1.DecCoin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 1)
-  );
+    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 1));
 };
+
 
 /**
  * @param {!Array<!proto.cosmos.base.v1beta1.DecCoin>} value
  * @return {!proto.sgn.farming.v1.PoolHistoricalRewards} returns this
- */
-proto.sgn.farming.v1.PoolHistoricalRewards.prototype.setCumulativeRewardRatioList = function (value) {
+*/
+proto.sgn.farming.v1.PoolHistoricalRewards.prototype.setCumulativeRewardRatioList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
+
 
 /**
  * @param {!proto.cosmos.base.v1beta1.DecCoin=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.PoolHistoricalRewards.prototype.addCumulativeRewardRatio = function (opt_value, opt_index) {
+proto.sgn.farming.v1.PoolHistoricalRewards.prototype.addCumulativeRewardRatio = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.base.v1beta1.DecCoin, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.PoolHistoricalRewards} returns this
  */
-proto.sgn.farming.v1.PoolHistoricalRewards.prototype.clearCumulativeRewardRatioList = function () {
+proto.sgn.farming.v1.PoolHistoricalRewards.prototype.clearCumulativeRewardRatioList = function() {
   return this.setCumulativeRewardRatioList([]);
 };
+
 
 /**
  * optional uint32 reference_count = 2;
  * @return {number}
  */
-proto.sgn.farming.v1.PoolHistoricalRewards.prototype.getReferenceCount = function () {
+proto.sgn.farming.v1.PoolHistoricalRewards.prototype.getReferenceCount = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
+
 
 /**
  * @param {number} value
  * @return {!proto.sgn.farming.v1.PoolHistoricalRewards} returns this
  */
-proto.sgn.farming.v1.PoolHistoricalRewards.prototype.setReferenceCount = function (value) {
+proto.sgn.farming.v1.PoolHistoricalRewards.prototype.setReferenceCount = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -1934,61 +2028,62 @@ proto.sgn.farming.v1.PoolHistoricalRewards.prototype.setReferenceCount = functio
  */
 proto.sgn.farming.v1.PoolCurrentRewards.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.PoolCurrentRewards.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.PoolCurrentRewards.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.PoolCurrentRewards.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.PoolCurrentRewards.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.PoolCurrentRewards} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.PoolCurrentRewards.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    startBlockHeight: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    period: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    rewardsList: jspb.Message.toObjectList(msg.getRewardsList(),
+    cosmos_base_v1beta1_coin_pb.DecCoin.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.PoolCurrentRewards} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.PoolCurrentRewards.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        startBlockHeight: jspb.Message.getFieldWithDefault(msg, 1, 0),
-        period: jspb.Message.getFieldWithDefault(msg, 2, 0),
-        rewardsList: jspb.Message.toObjectList(
-          msg.getRewardsList(),
-          cosmos_base_v1beta1_coin_pb.DecCoin.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.PoolCurrentRewards}
  */
-proto.sgn.farming.v1.PoolCurrentRewards.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.PoolCurrentRewards.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.PoolCurrentRewards();
+  var msg = new proto.sgn.farming.v1.PoolCurrentRewards;
   return proto.sgn.farming.v1.PoolCurrentRewards.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1997,43 +2092,45 @@ proto.sgn.farming.v1.PoolCurrentRewards.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.PoolCurrentRewards}
  */
-proto.sgn.farming.v1.PoolCurrentRewards.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.PoolCurrentRewards.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {number} */ (reader.readInt64());
-        msg.setStartBlockHeight(value);
-        break;
-      case 2:
-        var value = /** @type {number} */ (reader.readUint64());
-        msg.setPeriod(value);
-        break;
-      case 3:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.addRewards(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStartBlockHeight(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setPeriod(value);
+      break;
+    case 3:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.addRewards(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.PoolCurrentRewards.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.PoolCurrentRewards.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.PoolCurrentRewards.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2042,88 +2139,107 @@ proto.sgn.farming.v1.PoolCurrentRewards.prototype.serializeBinary = function () 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.PoolCurrentRewards.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.PoolCurrentRewards.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getStartBlockHeight();
   if (f !== 0) {
-    writer.writeInt64(1, f);
+    writer.writeInt64(
+      1,
+      f
+    );
   }
   f = message.getPeriod();
   if (f !== 0) {
-    writer.writeUint64(2, f);
+    writer.writeUint64(
+      2,
+      f
+    );
   }
   f = message.getRewardsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional int64 start_block_height = 1;
  * @return {number}
  */
-proto.sgn.farming.v1.PoolCurrentRewards.prototype.getStartBlockHeight = function () {
+proto.sgn.farming.v1.PoolCurrentRewards.prototype.getStartBlockHeight = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
+
 
 /**
  * @param {number} value
  * @return {!proto.sgn.farming.v1.PoolCurrentRewards} returns this
  */
-proto.sgn.farming.v1.PoolCurrentRewards.prototype.setStartBlockHeight = function (value) {
+proto.sgn.farming.v1.PoolCurrentRewards.prototype.setStartBlockHeight = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
+
 
 /**
  * optional uint64 period = 2;
  * @return {number}
  */
-proto.sgn.farming.v1.PoolCurrentRewards.prototype.getPeriod = function () {
+proto.sgn.farming.v1.PoolCurrentRewards.prototype.getPeriod = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
+
 
 /**
  * @param {number} value
  * @return {!proto.sgn.farming.v1.PoolCurrentRewards} returns this
  */
-proto.sgn.farming.v1.PoolCurrentRewards.prototype.setPeriod = function (value) {
+proto.sgn.farming.v1.PoolCurrentRewards.prototype.setPeriod = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
 };
+
 
 /**
  * repeated cosmos.base.v1beta1.DecCoin rewards = 3;
  * @return {!Array<!proto.cosmos.base.v1beta1.DecCoin>}
  */
-proto.sgn.farming.v1.PoolCurrentRewards.prototype.getRewardsList = function () {
+proto.sgn.farming.v1.PoolCurrentRewards.prototype.getRewardsList = function() {
   return /** @type{!Array<!proto.cosmos.base.v1beta1.DecCoin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 3));
 };
+
 
 /**
  * @param {!Array<!proto.cosmos.base.v1beta1.DecCoin>} value
  * @return {!proto.sgn.farming.v1.PoolCurrentRewards} returns this
- */
-proto.sgn.farming.v1.PoolCurrentRewards.prototype.setRewardsList = function (value) {
+*/
+proto.sgn.farming.v1.PoolCurrentRewards.prototype.setRewardsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.cosmos.base.v1beta1.DecCoin=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.PoolCurrentRewards.prototype.addRewards = function (opt_value, opt_index) {
+proto.sgn.farming.v1.PoolCurrentRewards.prototype.addRewards = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.cosmos.base.v1beta1.DecCoin, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.PoolCurrentRewards} returns this
  */
-proto.sgn.farming.v1.PoolCurrentRewards.prototype.clearRewardsList = function () {
+proto.sgn.farming.v1.PoolCurrentRewards.prototype.clearRewardsList = function() {
   return this.setRewardsList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -2132,61 +2248,62 @@ proto.sgn.farming.v1.PoolCurrentRewards.prototype.clearRewardsList = function ()
  */
 proto.sgn.farming.v1.Earnings.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.Earnings.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.Earnings.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.Earnings.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.Earnings.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.Earnings} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.Earnings.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    targetBlockHeight: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    stakedAmount: (f = msg.getStakedAmount()) && cosmos_base_v1beta1_coin_pb.DecCoin.toObject(includeInstance, f),
+    rewardAmountsList: jspb.Message.toObjectList(msg.getRewardAmountsList(),
+    cosmos_base_v1beta1_coin_pb.DecCoin.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.Earnings} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.Earnings.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        targetBlockHeight: jspb.Message.getFieldWithDefault(msg, 1, 0),
-        stakedAmount: (f = msg.getStakedAmount()) && cosmos_base_v1beta1_coin_pb.DecCoin.toObject(includeInstance, f),
-        rewardAmountsList: jspb.Message.toObjectList(
-          msg.getRewardAmountsList(),
-          cosmos_base_v1beta1_coin_pb.DecCoin.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.Earnings}
  */
-proto.sgn.farming.v1.Earnings.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.Earnings.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.Earnings();
+  var msg = new proto.sgn.farming.v1.Earnings;
   return proto.sgn.farming.v1.Earnings.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2195,44 +2312,46 @@ proto.sgn.farming.v1.Earnings.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.Earnings}
  */
-proto.sgn.farming.v1.Earnings.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.Earnings.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {number} */ (reader.readInt64());
-        msg.setTargetBlockHeight(value);
-        break;
-      case 2:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.setStakedAmount(value);
-        break;
-      case 3:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.addRewardAmounts(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setTargetBlockHeight(value);
+      break;
+    case 2:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.setStakedAmount(value);
+      break;
+    case 3:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.addRewardAmounts(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.Earnings.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.Earnings.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.Earnings.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2241,177 +2360,193 @@ proto.sgn.farming.v1.Earnings.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.Earnings.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.Earnings.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTargetBlockHeight();
   if (f !== 0) {
-    writer.writeInt64(1, f);
+    writer.writeInt64(
+      1,
+      f
+    );
   }
   f = message.getStakedAmount();
   if (f != null) {
-    writer.writeMessage(2, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeMessage(
+      2,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
   f = message.getRewardAmountsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional int64 target_block_height = 1;
  * @return {number}
  */
-proto.sgn.farming.v1.Earnings.prototype.getTargetBlockHeight = function () {
+proto.sgn.farming.v1.Earnings.prototype.getTargetBlockHeight = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
+
 
 /**
  * @param {number} value
  * @return {!proto.sgn.farming.v1.Earnings} returns this
  */
-proto.sgn.farming.v1.Earnings.prototype.setTargetBlockHeight = function (value) {
+proto.sgn.farming.v1.Earnings.prototype.setTargetBlockHeight = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
+
 
 /**
  * optional cosmos.base.v1beta1.DecCoin staked_amount = 2;
  * @return {?proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.Earnings.prototype.getStakedAmount = function () {
+proto.sgn.farming.v1.Earnings.prototype.getStakedAmount = function() {
   return /** @type{?proto.cosmos.base.v1beta1.DecCoin} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 2)
-  );
+    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 2));
 };
+
 
 /**
  * @param {?proto.cosmos.base.v1beta1.DecCoin|undefined} value
  * @return {!proto.sgn.farming.v1.Earnings} returns this
- */
-proto.sgn.farming.v1.Earnings.prototype.setStakedAmount = function (value) {
+*/
+proto.sgn.farming.v1.Earnings.prototype.setStakedAmount = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.Earnings} returns this
  */
-proto.sgn.farming.v1.Earnings.prototype.clearStakedAmount = function () {
+proto.sgn.farming.v1.Earnings.prototype.clearStakedAmount = function() {
   return this.setStakedAmount(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.Earnings.prototype.hasStakedAmount = function () {
+proto.sgn.farming.v1.Earnings.prototype.hasStakedAmount = function() {
   return jspb.Message.getField(this, 2) != null;
 };
+
 
 /**
  * repeated cosmos.base.v1beta1.DecCoin reward_amounts = 3;
  * @return {!Array<!proto.cosmos.base.v1beta1.DecCoin>}
  */
-proto.sgn.farming.v1.Earnings.prototype.getRewardAmountsList = function () {
+proto.sgn.farming.v1.Earnings.prototype.getRewardAmountsList = function() {
   return /** @type{!Array<!proto.cosmos.base.v1beta1.DecCoin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 3));
 };
+
 
 /**
  * @param {!Array<!proto.cosmos.base.v1beta1.DecCoin>} value
  * @return {!proto.sgn.farming.v1.Earnings} returns this
- */
-proto.sgn.farming.v1.Earnings.prototype.setRewardAmountsList = function (value) {
+*/
+proto.sgn.farming.v1.Earnings.prototype.setRewardAmountsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.cosmos.base.v1beta1.DecCoin=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.Earnings.prototype.addRewardAmounts = function (opt_value, opt_index) {
+proto.sgn.farming.v1.Earnings.prototype.addRewardAmounts = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.cosmos.base.v1beta1.DecCoin, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.Earnings} returns this
  */
-proto.sgn.farming.v1.Earnings.prototype.clearRewardAmountsList = function () {
+proto.sgn.farming.v1.Earnings.prototype.clearRewardAmountsList = function() {
   return this.setRewardAmountsList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.farming.v1.AccountInfo.repeatedFields_ = [1, 2, 3];
+proto.sgn.farming.v1.AccountInfo.repeatedFields_ = [1,2,3];
+
+
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.AccountInfo.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.AccountInfo.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.AccountInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.AccountInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.AccountInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.AccountInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    stakedPoolsList: jspb.Message.toObjectList(msg.getStakedPoolsList(),
+    proto.sgn.farming.v1.FarmingPool.toObject, includeInstance),
+    earningsListList: jspb.Message.toObjectList(msg.getEarningsListList(),
+    proto.sgn.farming.v1.Earnings.toObject, includeInstance),
+    cumulativeRewardAmountsList: jspb.Message.toObjectList(msg.getCumulativeRewardAmountsList(),
+    cosmos_base_v1beta1_coin_pb.DecCoin.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.AccountInfo} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.AccountInfo.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        stakedPoolsList: jspb.Message.toObjectList(
-          msg.getStakedPoolsList(),
-          proto.sgn.farming.v1.FarmingPool.toObject,
-          includeInstance,
-        ),
-        earningsListList: jspb.Message.toObjectList(
-          msg.getEarningsListList(),
-          proto.sgn.farming.v1.Earnings.toObject,
-          includeInstance,
-        ),
-        cumulativeRewardAmountsList: jspb.Message.toObjectList(
-          msg.getCumulativeRewardAmountsList(),
-          cosmos_base_v1beta1_coin_pb.DecCoin.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.AccountInfo}
  */
-proto.sgn.farming.v1.AccountInfo.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.AccountInfo.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.AccountInfo();
+  var msg = new proto.sgn.farming.v1.AccountInfo;
   return proto.sgn.farming.v1.AccountInfo.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2420,45 +2555,47 @@ proto.sgn.farming.v1.AccountInfo.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.AccountInfo}
  */
-proto.sgn.farming.v1.AccountInfo.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.AccountInfo.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = new proto.sgn.farming.v1.FarmingPool();
-        reader.readMessage(value, proto.sgn.farming.v1.FarmingPool.deserializeBinaryFromReader);
-        msg.addStakedPools(value);
-        break;
-      case 2:
-        var value = new proto.sgn.farming.v1.Earnings();
-        reader.readMessage(value, proto.sgn.farming.v1.Earnings.deserializeBinaryFromReader);
-        msg.addEarningsList(value);
-        break;
-      case 3:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.addCumulativeRewardAmounts(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = new proto.sgn.farming.v1.FarmingPool;
+      reader.readMessage(value,proto.sgn.farming.v1.FarmingPool.deserializeBinaryFromReader);
+      msg.addStakedPools(value);
+      break;
+    case 2:
+      var value = new proto.sgn.farming.v1.Earnings;
+      reader.readMessage(value,proto.sgn.farming.v1.Earnings.deserializeBinaryFromReader);
+      msg.addEarningsList(value);
+      break;
+    case 3:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.addCumulativeRewardAmounts(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.AccountInfo.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.AccountInfo.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.AccountInfo.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2467,194 +2604,215 @@ proto.sgn.farming.v1.AccountInfo.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.AccountInfo.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.AccountInfo.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getStakedPoolsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(1, f, proto.sgn.farming.v1.FarmingPool.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.sgn.farming.v1.FarmingPool.serializeBinaryToWriter
+    );
   }
   f = message.getEarningsListList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(2, f, proto.sgn.farming.v1.Earnings.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.sgn.farming.v1.Earnings.serializeBinaryToWriter
+    );
   }
   f = message.getCumulativeRewardAmountsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * repeated FarmingPool staked_pools = 1;
  * @return {!Array<!proto.sgn.farming.v1.FarmingPool>}
  */
-proto.sgn.farming.v1.AccountInfo.prototype.getStakedPoolsList = function () {
+proto.sgn.farming.v1.AccountInfo.prototype.getStakedPoolsList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.FarmingPool>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.FarmingPool, 1)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.FarmingPool, 1));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.FarmingPool>} value
  * @return {!proto.sgn.farming.v1.AccountInfo} returns this
- */
-proto.sgn.farming.v1.AccountInfo.prototype.setStakedPoolsList = function (value) {
+*/
+proto.sgn.farming.v1.AccountInfo.prototype.setStakedPoolsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.FarmingPool=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.FarmingPool}
  */
-proto.sgn.farming.v1.AccountInfo.prototype.addStakedPools = function (opt_value, opt_index) {
+proto.sgn.farming.v1.AccountInfo.prototype.addStakedPools = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.sgn.farming.v1.FarmingPool, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AccountInfo} returns this
  */
-proto.sgn.farming.v1.AccountInfo.prototype.clearStakedPoolsList = function () {
+proto.sgn.farming.v1.AccountInfo.prototype.clearStakedPoolsList = function() {
   return this.setStakedPoolsList([]);
 };
+
 
 /**
  * repeated Earnings earnings_list = 2;
  * @return {!Array<!proto.sgn.farming.v1.Earnings>}
  */
-proto.sgn.farming.v1.AccountInfo.prototype.getEarningsListList = function () {
+proto.sgn.farming.v1.AccountInfo.prototype.getEarningsListList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.Earnings>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.Earnings, 2)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.Earnings, 2));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.Earnings>} value
  * @return {!proto.sgn.farming.v1.AccountInfo} returns this
- */
-proto.sgn.farming.v1.AccountInfo.prototype.setEarningsListList = function (value) {
+*/
+proto.sgn.farming.v1.AccountInfo.prototype.setEarningsListList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.Earnings=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.Earnings}
  */
-proto.sgn.farming.v1.AccountInfo.prototype.addEarningsList = function (opt_value, opt_index) {
+proto.sgn.farming.v1.AccountInfo.prototype.addEarningsList = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sgn.farming.v1.Earnings, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AccountInfo} returns this
  */
-proto.sgn.farming.v1.AccountInfo.prototype.clearEarningsListList = function () {
+proto.sgn.farming.v1.AccountInfo.prototype.clearEarningsListList = function() {
   return this.setEarningsListList([]);
 };
+
 
 /**
  * repeated cosmos.base.v1beta1.DecCoin cumulative_reward_amounts = 3;
  * @return {!Array<!proto.cosmos.base.v1beta1.DecCoin>}
  */
-proto.sgn.farming.v1.AccountInfo.prototype.getCumulativeRewardAmountsList = function () {
+proto.sgn.farming.v1.AccountInfo.prototype.getCumulativeRewardAmountsList = function() {
   return /** @type{!Array<!proto.cosmos.base.v1beta1.DecCoin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 3));
 };
+
 
 /**
  * @param {!Array<!proto.cosmos.base.v1beta1.DecCoin>} value
  * @return {!proto.sgn.farming.v1.AccountInfo} returns this
- */
-proto.sgn.farming.v1.AccountInfo.prototype.setCumulativeRewardAmountsList = function (value) {
+*/
+proto.sgn.farming.v1.AccountInfo.prototype.setCumulativeRewardAmountsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.cosmos.base.v1beta1.DecCoin=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.AccountInfo.prototype.addCumulativeRewardAmounts = function (opt_value, opt_index) {
+proto.sgn.farming.v1.AccountInfo.prototype.addCumulativeRewardAmounts = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.cosmos.base.v1beta1.DecCoin, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AccountInfo} returns this
  */
-proto.sgn.farming.v1.AccountInfo.prototype.clearCumulativeRewardAmountsList = function () {
+proto.sgn.farming.v1.AccountInfo.prototype.clearCumulativeRewardAmountsList = function() {
   return this.setCumulativeRewardAmountsList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.farming.v1.RewardClaimDetails.repeatedFields_ = [2, 4];
+proto.sgn.farming.v1.RewardClaimDetails.repeatedFields_ = [2,4];
+
+
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.RewardClaimDetails.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.RewardClaimDetails.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.RewardClaimDetails.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.RewardClaimDetails.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.RewardClaimDetails} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.RewardClaimDetails.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    chainId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    cumulativeRewardAmountsList: jspb.Message.toObjectList(msg.getCumulativeRewardAmountsList(),
+    cosmos_base_v1beta1_coin_pb.DecCoin.toObject, includeInstance),
+    rewardProtoBytes: msg.getRewardProtoBytes_asB64(),
+    signaturesList: jspb.Message.toObjectList(msg.getSignaturesList(),
+    sgn_common_v1_common_pb.Signature.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.RewardClaimDetails} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.RewardClaimDetails.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        chainId: jspb.Message.getFieldWithDefault(msg, 1, 0),
-        cumulativeRewardAmountsList: jspb.Message.toObjectList(
-          msg.getCumulativeRewardAmountsList(),
-          cosmos_base_v1beta1_coin_pb.DecCoin.toObject,
-          includeInstance,
-        ),
-        rewardProtoBytes: msg.getRewardProtoBytes_asB64(),
-        signaturesList: jspb.Message.toObjectList(
-          msg.getSignaturesList(),
-          sgn_common_v1_common_pb.Signature.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.RewardClaimDetails}
  */
-proto.sgn.farming.v1.RewardClaimDetails.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.RewardClaimDetails.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.RewardClaimDetails();
+  var msg = new proto.sgn.farming.v1.RewardClaimDetails;
   return proto.sgn.farming.v1.RewardClaimDetails.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2663,48 +2821,50 @@ proto.sgn.farming.v1.RewardClaimDetails.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.RewardClaimDetails}
  */
-proto.sgn.farming.v1.RewardClaimDetails.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.RewardClaimDetails.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {number} */ (reader.readUint64());
-        msg.setChainId(value);
-        break;
-      case 2:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.addCumulativeRewardAmounts(value);
-        break;
-      case 3:
-        var value = /** @type {!Uint8Array} */ (reader.readBytes());
-        msg.setRewardProtoBytes(value);
-        break;
-      case 4:
-        var value = new sgn_common_v1_common_pb.Signature();
-        reader.readMessage(value, sgn_common_v1_common_pb.Signature.deserializeBinaryFromReader);
-        msg.addSignatures(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setChainId(value);
+      break;
+    case 2:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.addCumulativeRewardAmounts(value);
+      break;
+    case 3:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setRewardProtoBytes(value);
+      break;
+    case 4:
+      var value = new sgn_common_v1_common_pb.Signature;
+      reader.readMessage(value,sgn_common_v1_common_pb.Signature.deserializeBinaryFromReader);
+      msg.addSignatures(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.RewardClaimDetails.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2713,93 +2873,116 @@ proto.sgn.farming.v1.RewardClaimDetails.prototype.serializeBinary = function () 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.RewardClaimDetails.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.RewardClaimDetails.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getChainId();
   if (f !== 0) {
-    writer.writeUint64(1, f);
+    writer.writeUint64(
+      1,
+      f
+    );
   }
   f = message.getCumulativeRewardAmountsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(2, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
   f = message.getRewardProtoBytes_asU8();
   if (f.length > 0) {
-    writer.writeBytes(3, f);
+    writer.writeBytes(
+      3,
+      f
+    );
   }
   f = message.getSignaturesList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(4, f, sgn_common_v1_common_pb.Signature.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      4,
+      f,
+      sgn_common_v1_common_pb.Signature.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional uint64 chain_id = 1;
  * @return {number}
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.getChainId = function () {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.getChainId = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
+
 
 /**
  * @param {number} value
  * @return {!proto.sgn.farming.v1.RewardClaimDetails} returns this
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.setChainId = function (value) {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.setChainId = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
+
 
 /**
  * repeated cosmos.base.v1beta1.DecCoin cumulative_reward_amounts = 2;
  * @return {!Array<!proto.cosmos.base.v1beta1.DecCoin>}
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.getCumulativeRewardAmountsList = function () {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.getCumulativeRewardAmountsList = function() {
   return /** @type{!Array<!proto.cosmos.base.v1beta1.DecCoin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 2)
-  );
+    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 2));
 };
+
 
 /**
  * @param {!Array<!proto.cosmos.base.v1beta1.DecCoin>} value
  * @return {!proto.sgn.farming.v1.RewardClaimDetails} returns this
- */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.setCumulativeRewardAmountsList = function (value) {
+*/
+proto.sgn.farming.v1.RewardClaimDetails.prototype.setCumulativeRewardAmountsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
+
 
 /**
  * @param {!proto.cosmos.base.v1beta1.DecCoin=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.addCumulativeRewardAmounts = function (opt_value, opt_index) {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.addCumulativeRewardAmounts = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.cosmos.base.v1beta1.DecCoin, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.RewardClaimDetails} returns this
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.clearCumulativeRewardAmountsList = function () {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.clearCumulativeRewardAmountsList = function() {
   return this.setCumulativeRewardAmountsList([]);
 };
+
 
 /**
  * optional bytes reward_proto_bytes = 3;
  * @return {!(string|Uint8Array)}
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.getRewardProtoBytes = function () {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.getRewardProtoBytes = function() {
   return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
+
 
 /**
  * optional bytes reward_proto_bytes = 3;
  * This is a type-conversion wrapper around `getRewardProtoBytes()`
  * @return {string}
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.getRewardProtoBytes_asB64 = function () {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(this.getRewardProtoBytes()));
+proto.sgn.farming.v1.RewardClaimDetails.prototype.getRewardProtoBytes_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getRewardProtoBytes()));
 };
+
 
 /**
  * optional bytes reward_proto_bytes = 3;
@@ -2808,52 +2991,59 @@ proto.sgn.farming.v1.RewardClaimDetails.prototype.getRewardProtoBytes_asB64 = fu
  * This is a type-conversion wrapper around `getRewardProtoBytes()`
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.getRewardProtoBytes_asU8 = function () {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(this.getRewardProtoBytes()));
+proto.sgn.farming.v1.RewardClaimDetails.prototype.getRewardProtoBytes_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getRewardProtoBytes()));
 };
+
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.sgn.farming.v1.RewardClaimDetails} returns this
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.setRewardProtoBytes = function (value) {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.setRewardProtoBytes = function(value) {
   return jspb.Message.setProto3BytesField(this, 3, value);
 };
+
 
 /**
  * repeated sgn.common.v1.Signature signatures = 4;
  * @return {!Array<!proto.sgn.common.v1.Signature>}
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.getSignaturesList = function () {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.getSignaturesList = function() {
   return /** @type{!Array<!proto.sgn.common.v1.Signature>} */ (
-    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.Signature, 4)
-  );
+    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.Signature, 4));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.common.v1.Signature>} value
  * @return {!proto.sgn.farming.v1.RewardClaimDetails} returns this
- */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.setSignaturesList = function (value) {
+*/
+proto.sgn.farming.v1.RewardClaimDetails.prototype.setSignaturesList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
+
 
 /**
  * @param {!proto.sgn.common.v1.Signature=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.common.v1.Signature}
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.addSignatures = function (opt_value, opt_index) {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.addSignatures = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.sgn.common.v1.Signature, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.RewardClaimDetails} returns this
  */
-proto.sgn.farming.v1.RewardClaimDetails.prototype.clearSignaturesList = function () {
+proto.sgn.farming.v1.RewardClaimDetails.prototype.clearSignaturesList = function() {
   return this.setSignaturesList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -2862,62 +3052,62 @@ proto.sgn.farming.v1.RewardClaimDetails.prototype.clearSignaturesList = function
  */
 proto.sgn.farming.v1.RewardClaimInfo.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.RewardClaimInfo.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.RewardClaimInfo.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.RewardClaimInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.RewardClaimInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.RewardClaimInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.RewardClaimInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    recipient: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    lastClaimTime: (f = msg.getLastClaimTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    rewardClaimDetailsListList: jspb.Message.toObjectList(msg.getRewardClaimDetailsListList(),
+    proto.sgn.farming.v1.RewardClaimDetails.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.RewardClaimInfo} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.RewardClaimInfo.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        recipient: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        lastClaimTime:
-          (f = msg.getLastClaimTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        rewardClaimDetailsListList: jspb.Message.toObjectList(
-          msg.getRewardClaimDetailsListList(),
-          proto.sgn.farming.v1.RewardClaimDetails.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.RewardClaimInfo}
  */
-proto.sgn.farming.v1.RewardClaimInfo.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.RewardClaimInfo.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.RewardClaimInfo();
+  var msg = new proto.sgn.farming.v1.RewardClaimInfo;
   return proto.sgn.farming.v1.RewardClaimInfo.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2926,44 +3116,46 @@ proto.sgn.farming.v1.RewardClaimInfo.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.RewardClaimInfo}
  */
-proto.sgn.farming.v1.RewardClaimInfo.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.RewardClaimInfo.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setRecipient(value);
-        break;
-      case 2:
-        var value = new google_protobuf_timestamp_pb.Timestamp();
-        reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-        msg.setLastClaimTime(value);
-        break;
-      case 3:
-        var value = new proto.sgn.farming.v1.RewardClaimDetails();
-        reader.readMessage(value, proto.sgn.farming.v1.RewardClaimDetails.deserializeBinaryFromReader);
-        msg.addRewardClaimDetailsList(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRecipient(value);
+      break;
+    case 2:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setLastClaimTime(value);
+      break;
+    case 3:
+      var value = new proto.sgn.farming.v1.RewardClaimDetails;
+      reader.readMessage(value,proto.sgn.farming.v1.RewardClaimDetails.deserializeBinaryFromReader);
+      msg.addRewardClaimDetailsList(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.RewardClaimInfo.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.RewardClaimInfo.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2972,158 +3164,183 @@ proto.sgn.farming.v1.RewardClaimInfo.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.RewardClaimInfo.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.RewardClaimInfo.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getRecipient();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getLastClaimTime();
   if (f != null) {
-    writer.writeMessage(2, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
   }
   f = message.getRewardClaimDetailsListList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, proto.sgn.farming.v1.RewardClaimDetails.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      proto.sgn.farming.v1.RewardClaimDetails.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional string recipient = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.getRecipient = function () {
+proto.sgn.farming.v1.RewardClaimInfo.prototype.getRecipient = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.RewardClaimInfo} returns this
  */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.setRecipient = function (value) {
+proto.sgn.farming.v1.RewardClaimInfo.prototype.setRecipient = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional google.protobuf.Timestamp last_claim_time = 2;
  * @return {?proto.google.protobuf.Timestamp}
  */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.getLastClaimTime = function () {
+proto.sgn.farming.v1.RewardClaimInfo.prototype.getLastClaimTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2)
-  );
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2));
 };
+
 
 /**
  * @param {?proto.google.protobuf.Timestamp|undefined} value
  * @return {!proto.sgn.farming.v1.RewardClaimInfo} returns this
- */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.setLastClaimTime = function (value) {
+*/
+proto.sgn.farming.v1.RewardClaimInfo.prototype.setLastClaimTime = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.RewardClaimInfo} returns this
  */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.clearLastClaimTime = function () {
+proto.sgn.farming.v1.RewardClaimInfo.prototype.clearLastClaimTime = function() {
   return this.setLastClaimTime(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.hasLastClaimTime = function () {
+proto.sgn.farming.v1.RewardClaimInfo.prototype.hasLastClaimTime = function() {
   return jspb.Message.getField(this, 2) != null;
 };
+
 
 /**
  * repeated RewardClaimDetails reward_claim_details_list = 3;
  * @return {!Array<!proto.sgn.farming.v1.RewardClaimDetails>}
  */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.getRewardClaimDetailsListList = function () {
+proto.sgn.farming.v1.RewardClaimInfo.prototype.getRewardClaimDetailsListList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.RewardClaimDetails>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardClaimDetails, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardClaimDetails, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.RewardClaimDetails>} value
  * @return {!proto.sgn.farming.v1.RewardClaimInfo} returns this
- */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.setRewardClaimDetailsListList = function (value) {
+*/
+proto.sgn.farming.v1.RewardClaimInfo.prototype.setRewardClaimDetailsListList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.RewardClaimDetails=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.RewardClaimDetails}
  */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.addRewardClaimDetailsList = function (opt_value, opt_index) {
+proto.sgn.farming.v1.RewardClaimInfo.prototype.addRewardClaimDetailsList = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.farming.v1.RewardClaimDetails, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.RewardClaimInfo} returns this
  */
-proto.sgn.farming.v1.RewardClaimInfo.prototype.clearRewardClaimDetailsListList = function () {
+proto.sgn.farming.v1.RewardClaimInfo.prototype.clearRewardClaimDetailsListList = function() {
   return this.setRewardClaimDetailsListList([]);
 };
 
+
+
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.RewardAdjustmentInput.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.RewardAdjustmentInput.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.RewardAdjustmentInput.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.RewardAdjustmentInput.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.RewardAdjustmentInput} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.RewardAdjustmentInput.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    addAmount: (f = msg.getAddAmount()) && cosmos_base_v1beta1_coin_pb.DecCoin.toObject(includeInstance, f),
+    rewardStartBlockDelay: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    newRewardAmountPerBlock: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.RewardAdjustmentInput} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.RewardAdjustmentInput.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        addAmount: (f = msg.getAddAmount()) && cosmos_base_v1beta1_coin_pb.DecCoin.toObject(includeInstance, f),
-        rewardStartBlockDelay: jspb.Message.getFieldWithDefault(msg, 2, 0),
-        newRewardAmountPerBlock: jspb.Message.getFieldWithDefault(msg, 3, ""),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput}
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.RewardAdjustmentInput();
+  var msg = new proto.sgn.farming.v1.RewardAdjustmentInput;
   return proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3132,43 +3349,45 @@ proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinary = function (bytes) 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput}
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = new cosmos_base_v1beta1_coin_pb.DecCoin();
-        reader.readMessage(value, cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
-        msg.setAddAmount(value);
-        break;
-      case 2:
-        var value = /** @type {number} */ (reader.readInt64());
-        msg.setRewardStartBlockDelay(value);
-        break;
-      case 3:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setNewRewardAmountPerBlock(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = new cosmos_base_v1beta1_coin_pb.DecCoin;
+      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.DecCoin.deserializeBinaryFromReader);
+      msg.setAddAmount(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setRewardStartBlockDelay(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNewRewardAmountPerBlock(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.RewardAdjustmentInput.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3177,146 +3396,169 @@ proto.sgn.farming.v1.RewardAdjustmentInput.prototype.serializeBinary = function 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getAddAmount();
   if (f != null) {
-    writer.writeMessage(1, f, cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter);
+    writer.writeMessage(
+      1,
+      f,
+      cosmos_base_v1beta1_coin_pb.DecCoin.serializeBinaryToWriter
+    );
   }
   f = message.getRewardStartBlockDelay();
   if (f !== 0) {
-    writer.writeInt64(2, f);
+    writer.writeInt64(
+      2,
+      f
+    );
   }
   f = message.getNewRewardAmountPerBlock();
   if (f.length > 0) {
-    writer.writeString(3, f);
+    writer.writeString(
+      3,
+      f
+    );
   }
 };
+
 
 /**
  * optional cosmos.base.v1beta1.DecCoin add_amount = 1;
  * @return {?proto.cosmos.base.v1beta1.DecCoin}
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.prototype.getAddAmount = function () {
+proto.sgn.farming.v1.RewardAdjustmentInput.prototype.getAddAmount = function() {
   return /** @type{?proto.cosmos.base.v1beta1.DecCoin} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 1)
-  );
+    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.DecCoin, 1));
 };
+
 
 /**
  * @param {?proto.cosmos.base.v1beta1.DecCoin|undefined} value
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput} returns this
- */
-proto.sgn.farming.v1.RewardAdjustmentInput.prototype.setAddAmount = function (value) {
+*/
+proto.sgn.farming.v1.RewardAdjustmentInput.prototype.setAddAmount = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput} returns this
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.prototype.clearAddAmount = function () {
+proto.sgn.farming.v1.RewardAdjustmentInput.prototype.clearAddAmount = function() {
   return this.setAddAmount(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.prototype.hasAddAmount = function () {
+proto.sgn.farming.v1.RewardAdjustmentInput.prototype.hasAddAmount = function() {
   return jspb.Message.getField(this, 1) != null;
 };
+
 
 /**
  * optional int64 reward_start_block_delay = 2;
  * @return {number}
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.prototype.getRewardStartBlockDelay = function () {
+proto.sgn.farming.v1.RewardAdjustmentInput.prototype.getRewardStartBlockDelay = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
+
 
 /**
  * @param {number} value
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput} returns this
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.prototype.setRewardStartBlockDelay = function (value) {
+proto.sgn.farming.v1.RewardAdjustmentInput.prototype.setRewardStartBlockDelay = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
 };
+
 
 /**
  * optional string new_reward_amount_per_block = 3;
  * @return {string}
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.prototype.getNewRewardAmountPerBlock = function () {
+proto.sgn.farming.v1.RewardAdjustmentInput.prototype.getNewRewardAmountPerBlock = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput} returns this
  */
-proto.sgn.farming.v1.RewardAdjustmentInput.prototype.setNewRewardAmountPerBlock = function (value) {
+proto.sgn.farming.v1.RewardAdjustmentInput.prototype.setNewRewardAmountPerBlock = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.repeatedFields_ = [2, 3];
+proto.sgn.farming.v1.FarmingRewardsOnChain.repeatedFields_ = [2,3];
+
+
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.FarmingRewardsOnChain.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.FarmingRewardsOnChain.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.FarmingRewardsOnChain} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.FarmingRewardsOnChain.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    recipient: msg.getRecipient_asB64(),
+    tokenAddressesList: msg.getTokenAddressesList_asB64(),
+    cumulativeRewardAmountsList: msg.getCumulativeRewardAmountsList_asB64()
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.FarmingRewardsOnChain} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.FarmingRewardsOnChain.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        recipient: msg.getRecipient_asB64(),
-        tokenAddressesList: msg.getTokenAddressesList_asB64(),
-        cumulativeRewardAmountsList: msg.getCumulativeRewardAmountsList_asB64(),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.FarmingRewardsOnChain}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.FarmingRewardsOnChain.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.FarmingRewardsOnChain();
+  var msg = new proto.sgn.farming.v1.FarmingRewardsOnChain;
   return proto.sgn.farming.v1.FarmingRewardsOnChain.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3325,42 +3567,44 @@ proto.sgn.farming.v1.FarmingRewardsOnChain.deserializeBinary = function (bytes) 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.FarmingRewardsOnChain}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.FarmingRewardsOnChain.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {!Uint8Array} */ (reader.readBytes());
-        msg.setRecipient(value);
-        break;
-      case 2:
-        var value = /** @type {!Uint8Array} */ (reader.readBytes());
-        msg.addTokenAddresses(value);
-        break;
-      case 3:
-        var value = /** @type {!Uint8Array} */ (reader.readBytes());
-        msg.addCumulativeRewardAmounts(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setRecipient(value);
+      break;
+    case 2:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.addTokenAddresses(value);
+      break;
+    case 3:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.addCumulativeRewardAmounts(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.FarmingRewardsOnChain.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3369,38 +3613,51 @@ proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.serializeBinary = function 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.FarmingRewardsOnChain.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getRecipient_asU8();
   if (f.length > 0) {
-    writer.writeBytes(1, f);
+    writer.writeBytes(
+      1,
+      f
+    );
   }
   f = message.getTokenAddressesList_asU8();
   if (f.length > 0) {
-    writer.writeRepeatedBytes(2, f);
+    writer.writeRepeatedBytes(
+      2,
+      f
+    );
   }
   f = message.getCumulativeRewardAmountsList_asU8();
   if (f.length > 0) {
-    writer.writeRepeatedBytes(3, f);
+    writer.writeRepeatedBytes(
+      3,
+      f
+    );
   }
 };
+
 
 /**
  * optional bytes recipient = 1;
  * @return {!(string|Uint8Array)}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getRecipient = function () {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getRecipient = function() {
   return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * optional bytes recipient = 1;
  * This is a type-conversion wrapper around `getRecipient()`
  * @return {string}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getRecipient_asB64 = function () {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(this.getRecipient()));
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getRecipient_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getRecipient()));
 };
+
 
 /**
  * optional bytes recipient = 1;
@@ -3409,34 +3666,40 @@ proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getRecipient_asB64 = functi
  * This is a type-conversion wrapper around `getRecipient()`
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getRecipient_asU8 = function () {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(this.getRecipient()));
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getRecipient_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getRecipient()));
 };
+
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.sgn.farming.v1.FarmingRewardsOnChain} returns this
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.setRecipient = function (value) {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.setRecipient = function(value) {
   return jspb.Message.setProto3BytesField(this, 1, value);
 };
 
+
 /**
  * repeated bytes token_addresses = 2;
  * @return {!(Array<!Uint8Array>|Array<string>)}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getTokenAddressesList = function () {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getTokenAddressesList = function() {
   return /** @type {!(Array<!Uint8Array>|Array<string>)} */ (jspb.Message.getRepeatedField(this, 2));
 };
 
+
 /**
  * repeated bytes token_addresses = 2;
  * This is a type-conversion wrapper around `getTokenAddressesList()`
  * @return {!Array<string>}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getTokenAddressesList_asB64 = function () {
-  return /** @type {!Array<string>} */ (jspb.Message.bytesListAsB64(this.getTokenAddressesList()));
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getTokenAddressesList_asB64 = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.bytesListAsB64(
+      this.getTokenAddressesList()));
 };
+
 
 /**
  * repeated bytes token_addresses = 2;
@@ -3445,51 +3708,59 @@ proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getTokenAddressesList_asB64
  * This is a type-conversion wrapper around `getTokenAddressesList()`
  * @return {!Array<!Uint8Array>}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getTokenAddressesList_asU8 = function () {
-  return /** @type {!Array<!Uint8Array>} */ (jspb.Message.bytesListAsU8(this.getTokenAddressesList()));
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getTokenAddressesList_asU8 = function() {
+  return /** @type {!Array<!Uint8Array>} */ (jspb.Message.bytesListAsU8(
+      this.getTokenAddressesList()));
 };
+
 
 /**
  * @param {!(Array<!Uint8Array>|Array<string>)} value
  * @return {!proto.sgn.farming.v1.FarmingRewardsOnChain} returns this
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.setTokenAddressesList = function (value) {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.setTokenAddressesList = function(value) {
   return jspb.Message.setField(this, 2, value || []);
 };
+
 
 /**
  * @param {!(string|Uint8Array)} value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.FarmingRewardsOnChain} returns this
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.addTokenAddresses = function (value, opt_index) {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.addTokenAddresses = function(value, opt_index) {
   return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.FarmingRewardsOnChain} returns this
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.clearTokenAddressesList = function () {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.clearTokenAddressesList = function() {
   return this.setTokenAddressesList([]);
 };
+
 
 /**
  * repeated bytes cumulative_reward_amounts = 3;
  * @return {!(Array<!Uint8Array>|Array<string>)}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getCumulativeRewardAmountsList = function () {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getCumulativeRewardAmountsList = function() {
   return /** @type {!(Array<!Uint8Array>|Array<string>)} */ (jspb.Message.getRepeatedField(this, 3));
 };
+
 
 /**
  * repeated bytes cumulative_reward_amounts = 3;
  * This is a type-conversion wrapper around `getCumulativeRewardAmountsList()`
  * @return {!Array<string>}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getCumulativeRewardAmountsList_asB64 = function () {
-  return /** @type {!Array<string>} */ (jspb.Message.bytesListAsB64(this.getCumulativeRewardAmountsList()));
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getCumulativeRewardAmountsList_asB64 = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.bytesListAsB64(
+      this.getCumulativeRewardAmountsList()));
 };
+
 
 /**
  * repeated bytes cumulative_reward_amounts = 3;
@@ -3498,104 +3769,108 @@ proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getCumulativeRewardAmountsL
  * This is a type-conversion wrapper around `getCumulativeRewardAmountsList()`
  * @return {!Array<!Uint8Array>}
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getCumulativeRewardAmountsList_asU8 = function () {
-  return /** @type {!Array<!Uint8Array>} */ (jspb.Message.bytesListAsU8(this.getCumulativeRewardAmountsList()));
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.getCumulativeRewardAmountsList_asU8 = function() {
+  return /** @type {!Array<!Uint8Array>} */ (jspb.Message.bytesListAsU8(
+      this.getCumulativeRewardAmountsList()));
 };
+
 
 /**
  * @param {!(Array<!Uint8Array>|Array<string>)} value
  * @return {!proto.sgn.farming.v1.FarmingRewardsOnChain} returns this
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.setCumulativeRewardAmountsList = function (value) {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.setCumulativeRewardAmountsList = function(value) {
   return jspb.Message.setField(this, 3, value || []);
 };
+
 
 /**
  * @param {!(string|Uint8Array)} value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.FarmingRewardsOnChain} returns this
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.addCumulativeRewardAmounts = function (value, opt_index) {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.addCumulativeRewardAmounts = function(value, opt_index) {
   return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.FarmingRewardsOnChain} returns this
  */
-proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.clearCumulativeRewardAmountsList = function () {
+proto.sgn.farming.v1.FarmingRewardsOnChain.prototype.clearCumulativeRewardAmountsList = function() {
   return this.setCumulativeRewardAmountsList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.farming.v1.AddPoolProposal.repeatedFields_ = [5, 6];
+proto.sgn.farming.v1.AddPoolProposal.repeatedFields_ = [5,6];
+
+
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.AddPoolProposal.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.AddPoolProposal.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.AddPoolProposal.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.AddPoolProposal.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.AddPoolProposal} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.AddPoolProposal.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    stakeToken: (f = msg.getStakeToken()) && sgn_common_v1_common_pb.ERC20Token.toObject(includeInstance, f),
+    rewardTokensList: jspb.Message.toObjectList(msg.getRewardTokensList(),
+    sgn_common_v1_common_pb.ERC20Token.toObject, includeInstance),
+    initialRewardInputsList: jspb.Message.toObjectList(msg.getInitialRewardInputsList(),
+    proto.sgn.farming.v1.RewardAdjustmentInput.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.AddPoolProposal} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.AddPoolProposal.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-        stakeToken: (f = msg.getStakeToken()) && sgn_common_v1_common_pb.ERC20Token.toObject(includeInstance, f),
-        rewardTokensList: jspb.Message.toObjectList(
-          msg.getRewardTokensList(),
-          sgn_common_v1_common_pb.ERC20Token.toObject,
-          includeInstance,
-        ),
-        initialRewardInputsList: jspb.Message.toObjectList(
-          msg.getInitialRewardInputsList(),
-          proto.sgn.farming.v1.RewardAdjustmentInput.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.AddPoolProposal}
  */
-proto.sgn.farming.v1.AddPoolProposal.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.AddPoolProposal.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.AddPoolProposal();
+  var msg = new proto.sgn.farming.v1.AddPoolProposal;
   return proto.sgn.farming.v1.AddPoolProposal.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3604,57 +3879,59 @@ proto.sgn.farming.v1.AddPoolProposal.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.AddPoolProposal}
  */
-proto.sgn.farming.v1.AddPoolProposal.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.AddPoolProposal.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setPoolName(value);
-        break;
-      case 4:
-        var value = new sgn_common_v1_common_pb.ERC20Token();
-        reader.readMessage(value, sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
-        msg.setStakeToken(value);
-        break;
-      case 5:
-        var value = new sgn_common_v1_common_pb.ERC20Token();
-        reader.readMessage(value, sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
-        msg.addRewardTokens(value);
-        break;
-      case 6:
-        var value = new proto.sgn.farming.v1.RewardAdjustmentInput();
-        reader.readMessage(value, proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
-        msg.addInitialRewardInputs(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolName(value);
+      break;
+    case 4:
+      var value = new sgn_common_v1_common_pb.ERC20Token;
+      reader.readMessage(value,sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
+      msg.setStakeToken(value);
+      break;
+    case 5:
+      var value = new sgn_common_v1_common_pb.ERC20Token;
+      reader.readMessage(value,sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
+      msg.addRewardTokens(value);
+      break;
+    case 6:
+      var value = new proto.sgn.farming.v1.RewardAdjustmentInput;
+      reader.readMessage(value,proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
+      msg.addInitialRewardInputs(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.AddPoolProposal.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3663,191 +3940,223 @@ proto.sgn.farming.v1.AddPoolProposal.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.AddPoolProposal.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.AddPoolProposal.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getPoolName();
   if (f.length > 0) {
-    writer.writeString(3, f);
+    writer.writeString(
+      3,
+      f
+    );
   }
   f = message.getStakeToken();
   if (f != null) {
-    writer.writeMessage(4, f, sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter);
+    writer.writeMessage(
+      4,
+      f,
+      sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter
+    );
   }
   f = message.getRewardTokensList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(5, f, sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      5,
+      f,
+      sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter
+    );
   }
   f = message.getInitialRewardInputsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(6, f, proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      6,
+      f,
+      proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.getTitle = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddPoolProposal} returns this
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.AddPoolProposal.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.getDescription = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddPoolProposal} returns this
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.AddPoolProposal.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * optional string pool_name = 3;
  * @return {string}
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.getPoolName = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.getPoolName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddPoolProposal} returns this
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.setPoolName = function (value) {
+proto.sgn.farming.v1.AddPoolProposal.prototype.setPoolName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
+
 
 /**
  * optional sgn.common.v1.ERC20Token stake_token = 4;
  * @return {?proto.sgn.common.v1.ERC20Token}
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.getStakeToken = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.getStakeToken = function() {
   return /** @type{?proto.sgn.common.v1.ERC20Token} */ (
-    jspb.Message.getWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 4)
-  );
+    jspb.Message.getWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 4));
 };
+
 
 /**
  * @param {?proto.sgn.common.v1.ERC20Token|undefined} value
  * @return {!proto.sgn.farming.v1.AddPoolProposal} returns this
- */
-proto.sgn.farming.v1.AddPoolProposal.prototype.setStakeToken = function (value) {
+*/
+proto.sgn.farming.v1.AddPoolProposal.prototype.setStakeToken = function(value) {
   return jspb.Message.setWrapperField(this, 4, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.AddPoolProposal} returns this
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.clearStakeToken = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.clearStakeToken = function() {
   return this.setStakeToken(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.hasStakeToken = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.hasStakeToken = function() {
   return jspb.Message.getField(this, 4) != null;
 };
+
 
 /**
  * repeated sgn.common.v1.ERC20Token reward_tokens = 5;
  * @return {!Array<!proto.sgn.common.v1.ERC20Token>}
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.getRewardTokensList = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.getRewardTokensList = function() {
   return /** @type{!Array<!proto.sgn.common.v1.ERC20Token>} */ (
-    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 5)
-  );
+    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 5));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.common.v1.ERC20Token>} value
  * @return {!proto.sgn.farming.v1.AddPoolProposal} returns this
- */
-proto.sgn.farming.v1.AddPoolProposal.prototype.setRewardTokensList = function (value) {
+*/
+proto.sgn.farming.v1.AddPoolProposal.prototype.setRewardTokensList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 5, value);
 };
+
 
 /**
  * @param {!proto.sgn.common.v1.ERC20Token=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.common.v1.ERC20Token}
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.addRewardTokens = function (opt_value, opt_index) {
+proto.sgn.farming.v1.AddPoolProposal.prototype.addRewardTokens = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.sgn.common.v1.ERC20Token, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AddPoolProposal} returns this
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.clearRewardTokensList = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.clearRewardTokensList = function() {
   return this.setRewardTokensList([]);
 };
+
 
 /**
  * repeated RewardAdjustmentInput initial_reward_inputs = 6;
  * @return {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>}
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.getInitialRewardInputsList = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.getInitialRewardInputsList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 6)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 6));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} value
  * @return {!proto.sgn.farming.v1.AddPoolProposal} returns this
- */
-proto.sgn.farming.v1.AddPoolProposal.prototype.setInitialRewardInputsList = function (value) {
+*/
+proto.sgn.farming.v1.AddPoolProposal.prototype.setInitialRewardInputsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 6, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.RewardAdjustmentInput=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput}
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.addInitialRewardInputs = function (opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(
-    this,
-    6,
-    opt_value,
-    proto.sgn.farming.v1.RewardAdjustmentInput,
-    opt_index,
-  );
+proto.sgn.farming.v1.AddPoolProposal.prototype.addInitialRewardInputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.sgn.farming.v1.RewardAdjustmentInput, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AddPoolProposal} returns this
  */
-proto.sgn.farming.v1.AddPoolProposal.prototype.clearInitialRewardInputsList = function () {
+proto.sgn.farming.v1.AddPoolProposal.prototype.clearInitialRewardInputsList = function() {
   return this.setInitialRewardInputsList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -3856,61 +4165,62 @@ proto.sgn.farming.v1.AddPoolProposal.prototype.clearInitialRewardInputsList = fu
  */
 proto.sgn.farming.v1.BatchAddPoolProposal.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.BatchAddPoolProposal.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.BatchAddPoolProposal.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.BatchAddPoolProposal.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.BatchAddPoolProposal.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.BatchAddPoolProposal} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.BatchAddPoolProposal.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    addPoolInfosList: jspb.Message.toObjectList(msg.getAddPoolInfosList(),
+    proto.sgn.farming.v1.AddPoolInfo.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.BatchAddPoolProposal} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.BatchAddPoolProposal.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        addPoolInfosList: jspb.Message.toObjectList(
-          msg.getAddPoolInfosList(),
-          proto.sgn.farming.v1.AddPoolInfo.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposal}
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.BatchAddPoolProposal.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.BatchAddPoolProposal();
+  var msg = new proto.sgn.farming.v1.BatchAddPoolProposal;
   return proto.sgn.farming.v1.BatchAddPoolProposal.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3919,43 +4229,45 @@ proto.sgn.farming.v1.BatchAddPoolProposal.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposal}
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.BatchAddPoolProposal.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = new proto.sgn.farming.v1.AddPoolInfo();
-        reader.readMessage(value, proto.sgn.farming.v1.AddPoolInfo.deserializeBinaryFromReader);
-        msg.addAddPoolInfos(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = new proto.sgn.farming.v1.AddPoolInfo;
+      reader.readMessage(value,proto.sgn.farming.v1.AddPoolInfo.deserializeBinaryFromReader);
+      msg.addAddPoolInfos(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.BatchAddPoolProposal.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.BatchAddPoolProposal.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3964,156 +4276,173 @@ proto.sgn.farming.v1.BatchAddPoolProposal.prototype.serializeBinary = function (
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.BatchAddPoolProposal.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getAddPoolInfosList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, proto.sgn.farming.v1.AddPoolInfo.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      proto.sgn.farming.v1.AddPoolInfo.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.prototype.getTitle = function () {
+proto.sgn.farming.v1.BatchAddPoolProposal.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposal} returns this
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.BatchAddPoolProposal.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.prototype.getDescription = function () {
+proto.sgn.farming.v1.BatchAddPoolProposal.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposal} returns this
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.BatchAddPoolProposal.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * repeated AddPoolInfo add_pool_infos = 3;
  * @return {!Array<!proto.sgn.farming.v1.AddPoolInfo>}
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.prototype.getAddPoolInfosList = function () {
+proto.sgn.farming.v1.BatchAddPoolProposal.prototype.getAddPoolInfosList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.AddPoolInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.AddPoolInfo, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.AddPoolInfo, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.AddPoolInfo>} value
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposal} returns this
- */
-proto.sgn.farming.v1.BatchAddPoolProposal.prototype.setAddPoolInfosList = function (value) {
+*/
+proto.sgn.farming.v1.BatchAddPoolProposal.prototype.setAddPoolInfosList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.AddPoolInfo=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.AddPoolInfo}
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.prototype.addAddPoolInfos = function (opt_value, opt_index) {
+proto.sgn.farming.v1.BatchAddPoolProposal.prototype.addAddPoolInfos = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.farming.v1.AddPoolInfo, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposal} returns this
  */
-proto.sgn.farming.v1.BatchAddPoolProposal.prototype.clearAddPoolInfosList = function () {
+proto.sgn.farming.v1.BatchAddPoolProposal.prototype.clearAddPoolInfosList = function() {
   return this.setAddPoolInfosList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.farming.v1.AddPoolInfo.repeatedFields_ = [3, 4];
+proto.sgn.farming.v1.AddPoolInfo.repeatedFields_ = [3,4];
+
+
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.AddPoolInfo.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.AddPoolInfo.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.AddPoolInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.AddPoolInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.AddPoolInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.AddPoolInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    poolName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    stakeToken: (f = msg.getStakeToken()) && sgn_common_v1_common_pb.ERC20Token.toObject(includeInstance, f),
+    rewardTokensList: jspb.Message.toObjectList(msg.getRewardTokensList(),
+    sgn_common_v1_common_pb.ERC20Token.toObject, includeInstance),
+    initialRewardInputsList: jspb.Message.toObjectList(msg.getInitialRewardInputsList(),
+    proto.sgn.farming.v1.RewardAdjustmentInput.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.AddPoolInfo} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.AddPoolInfo.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        poolName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        stakeToken: (f = msg.getStakeToken()) && sgn_common_v1_common_pb.ERC20Token.toObject(includeInstance, f),
-        rewardTokensList: jspb.Message.toObjectList(
-          msg.getRewardTokensList(),
-          sgn_common_v1_common_pb.ERC20Token.toObject,
-          includeInstance,
-        ),
-        initialRewardInputsList: jspb.Message.toObjectList(
-          msg.getInitialRewardInputsList(),
-          proto.sgn.farming.v1.RewardAdjustmentInput.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.AddPoolInfo}
  */
-proto.sgn.farming.v1.AddPoolInfo.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.AddPoolInfo.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.AddPoolInfo();
+  var msg = new proto.sgn.farming.v1.AddPoolInfo;
   return proto.sgn.farming.v1.AddPoolInfo.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4122,49 +4451,51 @@ proto.sgn.farming.v1.AddPoolInfo.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.AddPoolInfo}
  */
-proto.sgn.farming.v1.AddPoolInfo.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.AddPoolInfo.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setPoolName(value);
-        break;
-      case 2:
-        var value = new sgn_common_v1_common_pb.ERC20Token();
-        reader.readMessage(value, sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
-        msg.setStakeToken(value);
-        break;
-      case 3:
-        var value = new sgn_common_v1_common_pb.ERC20Token();
-        reader.readMessage(value, sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
-        msg.addRewardTokens(value);
-        break;
-      case 4:
-        var value = new proto.sgn.farming.v1.RewardAdjustmentInput();
-        reader.readMessage(value, proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
-        msg.addInitialRewardInputs(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolName(value);
+      break;
+    case 2:
+      var value = new sgn_common_v1_common_pb.ERC20Token;
+      reader.readMessage(value,sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
+      msg.setStakeToken(value);
+      break;
+    case 3:
+      var value = new sgn_common_v1_common_pb.ERC20Token;
+      reader.readMessage(value,sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
+      msg.addRewardTokens(value);
+      break;
+    case 4:
+      var value = new proto.sgn.farming.v1.RewardAdjustmentInput;
+      reader.readMessage(value,proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
+      msg.addInitialRewardInputs(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.AddPoolInfo.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.AddPoolInfo.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4173,222 +4504,242 @@ proto.sgn.farming.v1.AddPoolInfo.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.AddPoolInfo.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.AddPoolInfo.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getPoolName();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getStakeToken();
   if (f != null) {
-    writer.writeMessage(2, f, sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter);
+    writer.writeMessage(
+      2,
+      f,
+      sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter
+    );
   }
   f = message.getRewardTokensList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter
+    );
   }
   f = message.getInitialRewardInputsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(4, f, proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      4,
+      f,
+      proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional string pool_name = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.getPoolName = function () {
+proto.sgn.farming.v1.AddPoolInfo.prototype.getPoolName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddPoolInfo} returns this
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.setPoolName = function (value) {
+proto.sgn.farming.v1.AddPoolInfo.prototype.setPoolName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional sgn.common.v1.ERC20Token stake_token = 2;
  * @return {?proto.sgn.common.v1.ERC20Token}
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.getStakeToken = function () {
+proto.sgn.farming.v1.AddPoolInfo.prototype.getStakeToken = function() {
   return /** @type{?proto.sgn.common.v1.ERC20Token} */ (
-    jspb.Message.getWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 2)
-  );
+    jspb.Message.getWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 2));
 };
+
 
 /**
  * @param {?proto.sgn.common.v1.ERC20Token|undefined} value
  * @return {!proto.sgn.farming.v1.AddPoolInfo} returns this
- */
-proto.sgn.farming.v1.AddPoolInfo.prototype.setStakeToken = function (value) {
+*/
+proto.sgn.farming.v1.AddPoolInfo.prototype.setStakeToken = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.AddPoolInfo} returns this
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.clearStakeToken = function () {
+proto.sgn.farming.v1.AddPoolInfo.prototype.clearStakeToken = function() {
   return this.setStakeToken(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.hasStakeToken = function () {
+proto.sgn.farming.v1.AddPoolInfo.prototype.hasStakeToken = function() {
   return jspb.Message.getField(this, 2) != null;
 };
+
 
 /**
  * repeated sgn.common.v1.ERC20Token reward_tokens = 3;
  * @return {!Array<!proto.sgn.common.v1.ERC20Token>}
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.getRewardTokensList = function () {
+proto.sgn.farming.v1.AddPoolInfo.prototype.getRewardTokensList = function() {
   return /** @type{!Array<!proto.sgn.common.v1.ERC20Token>} */ (
-    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.common.v1.ERC20Token>} value
  * @return {!proto.sgn.farming.v1.AddPoolInfo} returns this
- */
-proto.sgn.farming.v1.AddPoolInfo.prototype.setRewardTokensList = function (value) {
+*/
+proto.sgn.farming.v1.AddPoolInfo.prototype.setRewardTokensList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.common.v1.ERC20Token=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.common.v1.ERC20Token}
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.addRewardTokens = function (opt_value, opt_index) {
+proto.sgn.farming.v1.AddPoolInfo.prototype.addRewardTokens = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.common.v1.ERC20Token, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AddPoolInfo} returns this
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.clearRewardTokensList = function () {
+proto.sgn.farming.v1.AddPoolInfo.prototype.clearRewardTokensList = function() {
   return this.setRewardTokensList([]);
 };
+
 
 /**
  * repeated RewardAdjustmentInput initial_reward_inputs = 4;
  * @return {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>}
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.getInitialRewardInputsList = function () {
+proto.sgn.farming.v1.AddPoolInfo.prototype.getInitialRewardInputsList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 4)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 4));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} value
  * @return {!proto.sgn.farming.v1.AddPoolInfo} returns this
- */
-proto.sgn.farming.v1.AddPoolInfo.prototype.setInitialRewardInputsList = function (value) {
+*/
+proto.sgn.farming.v1.AddPoolInfo.prototype.setInitialRewardInputsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.RewardAdjustmentInput=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput}
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.addInitialRewardInputs = function (opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(
-    this,
-    4,
-    opt_value,
-    proto.sgn.farming.v1.RewardAdjustmentInput,
-    opt_index,
-  );
+proto.sgn.farming.v1.AddPoolInfo.prototype.addInitialRewardInputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.sgn.farming.v1.RewardAdjustmentInput, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AddPoolInfo} returns this
  */
-proto.sgn.farming.v1.AddPoolInfo.prototype.clearInitialRewardInputsList = function () {
+proto.sgn.farming.v1.AddPoolInfo.prototype.clearInitialRewardInputsList = function() {
   return this.setInitialRewardInputsList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.repeatedFields_ = [5, 6];
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.repeatedFields_ = [5,6];
+
+
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.AddPoolProposalWithDeposit.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.AddPoolProposalWithDeposit.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    stakeToken: (f = msg.getStakeToken()) && sgn_common_v1_common_pb.ERC20Token.toObject(includeInstance, f),
+    rewardTokensList: jspb.Message.toObjectList(msg.getRewardTokensList(),
+    sgn_common_v1_common_pb.ERC20Token.toObject, includeInstance),
+    initialRewardInputsList: jspb.Message.toObjectList(msg.getInitialRewardInputsList(),
+    proto.sgn.farming.v1.RewardAdjustmentInput.toObject, includeInstance),
+    deposit: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.AddPoolProposalWithDeposit.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-        stakeToken: (f = msg.getStakeToken()) && sgn_common_v1_common_pb.ERC20Token.toObject(includeInstance, f),
-        rewardTokensList: jspb.Message.toObjectList(
-          msg.getRewardTokensList(),
-          sgn_common_v1_common_pb.ERC20Token.toObject,
-          includeInstance,
-        ),
-        initialRewardInputsList: jspb.Message.toObjectList(
-          msg.getInitialRewardInputsList(),
-          proto.sgn.farming.v1.RewardAdjustmentInput.toObject,
-          includeInstance,
-        ),
-        deposit: jspb.Message.getFieldWithDefault(msg, 7, ""),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.AddPoolProposalWithDeposit();
+  var msg = new proto.sgn.farming.v1.AddPoolProposalWithDeposit;
   return proto.sgn.farming.v1.AddPoolProposalWithDeposit.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4397,61 +4748,63 @@ proto.sgn.farming.v1.AddPoolProposalWithDeposit.deserializeBinary = function (by
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setPoolName(value);
-        break;
-      case 4:
-        var value = new sgn_common_v1_common_pb.ERC20Token();
-        reader.readMessage(value, sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
-        msg.setStakeToken(value);
-        break;
-      case 5:
-        var value = new sgn_common_v1_common_pb.ERC20Token();
-        reader.readMessage(value, sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
-        msg.addRewardTokens(value);
-        break;
-      case 6:
-        var value = new proto.sgn.farming.v1.RewardAdjustmentInput();
-        reader.readMessage(value, proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
-        msg.addInitialRewardInputs(value);
-        break;
-      case 7:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDeposit(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolName(value);
+      break;
+    case 4:
+      var value = new sgn_common_v1_common_pb.ERC20Token;
+      reader.readMessage(value,sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
+      msg.setStakeToken(value);
+      break;
+    case 5:
+      var value = new sgn_common_v1_common_pb.ERC20Token;
+      reader.readMessage(value,sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
+      msg.addRewardTokens(value);
+      break;
+    case 6:
+      var value = new proto.sgn.farming.v1.RewardAdjustmentInput;
+      reader.readMessage(value,proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
+      msg.addInitialRewardInputs(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDeposit(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.AddPoolProposalWithDeposit.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4460,211 +4813,248 @@ proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.serializeBinary = func
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getPoolName();
   if (f.length > 0) {
-    writer.writeString(3, f);
+    writer.writeString(
+      3,
+      f
+    );
   }
   f = message.getStakeToken();
   if (f != null) {
-    writer.writeMessage(4, f, sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter);
+    writer.writeMessage(
+      4,
+      f,
+      sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter
+    );
   }
   f = message.getRewardTokensList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(5, f, sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      5,
+      f,
+      sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter
+    );
   }
   f = message.getInitialRewardInputsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(6, f, proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      6,
+      f,
+      proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter
+    );
   }
   f = message.getDeposit();
   if (f.length > 0) {
-    writer.writeString(7, f);
+    writer.writeString(
+      7,
+      f
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getTitle = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getDescription = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * optional string pool_name = 3;
  * @return {string}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getPoolName = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getPoolName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setPoolName = function (value) {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setPoolName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
+
 
 /**
  * optional sgn.common.v1.ERC20Token stake_token = 4;
  * @return {?proto.sgn.common.v1.ERC20Token}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getStakeToken = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getStakeToken = function() {
   return /** @type{?proto.sgn.common.v1.ERC20Token} */ (
-    jspb.Message.getWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 4)
-  );
+    jspb.Message.getWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 4));
 };
+
 
 /**
  * @param {?proto.sgn.common.v1.ERC20Token|undefined} value
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} returns this
- */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setStakeToken = function (value) {
+*/
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setStakeToken = function(value) {
   return jspb.Message.setWrapperField(this, 4, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.clearStakeToken = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.clearStakeToken = function() {
   return this.setStakeToken(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.hasStakeToken = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.hasStakeToken = function() {
   return jspb.Message.getField(this, 4) != null;
 };
+
 
 /**
  * repeated sgn.common.v1.ERC20Token reward_tokens = 5;
  * @return {!Array<!proto.sgn.common.v1.ERC20Token>}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getRewardTokensList = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getRewardTokensList = function() {
   return /** @type{!Array<!proto.sgn.common.v1.ERC20Token>} */ (
-    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 5)
-  );
+    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 5));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.common.v1.ERC20Token>} value
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} returns this
- */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setRewardTokensList = function (value) {
+*/
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setRewardTokensList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 5, value);
 };
+
 
 /**
  * @param {!proto.sgn.common.v1.ERC20Token=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.common.v1.ERC20Token}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.addRewardTokens = function (opt_value, opt_index) {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.addRewardTokens = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.sgn.common.v1.ERC20Token, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.clearRewardTokensList = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.clearRewardTokensList = function() {
   return this.setRewardTokensList([]);
 };
+
 
 /**
  * repeated RewardAdjustmentInput initial_reward_inputs = 6;
  * @return {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getInitialRewardInputsList = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getInitialRewardInputsList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 6)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 6));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} value
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} returns this
- */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setInitialRewardInputsList = function (value) {
+*/
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setInitialRewardInputsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 6, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.RewardAdjustmentInput=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.addInitialRewardInputs = function (opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(
-    this,
-    6,
-    opt_value,
-    proto.sgn.farming.v1.RewardAdjustmentInput,
-    opt_index,
-  );
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.addInitialRewardInputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.sgn.farming.v1.RewardAdjustmentInput, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.clearInitialRewardInputsList = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.clearInitialRewardInputsList = function() {
   return this.setInitialRewardInputsList([]);
 };
+
 
 /**
  * optional string deposit = 7;
  * @return {string}
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getDeposit = function () {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.getDeposit = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setDeposit = function (value) {
+proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setDeposit = function(value) {
   return jspb.Message.setProto3StringField(this, 7, value);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -4673,62 +5063,63 @@ proto.sgn.farming.v1.AddPoolProposalWithDeposit.prototype.setDeposit = function 
  */
 proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    addPoolInfosList: jspb.Message.toObjectList(msg.getAddPoolInfosList(),
+    proto.sgn.farming.v1.AddPoolInfo.toObject, includeInstance),
+    deposit: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        addPoolInfosList: jspb.Message.toObjectList(
-          msg.getAddPoolInfosList(),
-          proto.sgn.farming.v1.AddPoolInfo.toObject,
-          includeInstance,
-        ),
-        deposit: jspb.Message.getFieldWithDefault(msg, 4, ""),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit}
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit();
+  var msg = new proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit;
   return proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4737,47 +5128,49 @@ proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.deserializeBinary = functio
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit}
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = new proto.sgn.farming.v1.AddPoolInfo();
-        reader.readMessage(value, proto.sgn.farming.v1.AddPoolInfo.deserializeBinaryFromReader);
-        msg.addAddPoolInfos(value);
-        break;
-      case 4:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDeposit(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = new proto.sgn.farming.v1.AddPoolInfo;
+      reader.readMessage(value,proto.sgn.farming.v1.AddPoolInfo.deserializeBinaryFromReader);
+      msg.addAddPoolInfos(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDeposit(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4786,108 +5179,132 @@ proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.serializeBinary =
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getAddPoolInfosList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, proto.sgn.farming.v1.AddPoolInfo.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      proto.sgn.farming.v1.AddPoolInfo.serializeBinaryToWriter
+    );
   }
   f = message.getDeposit();
   if (f.length > 0) {
-    writer.writeString(4, f);
+    writer.writeString(
+      4,
+      f
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.getTitle = function () {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.getDescription = function () {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * repeated AddPoolInfo add_pool_infos = 3;
  * @return {!Array<!proto.sgn.farming.v1.AddPoolInfo>}
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.getAddPoolInfosList = function () {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.getAddPoolInfosList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.AddPoolInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.AddPoolInfo, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.AddPoolInfo, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.AddPoolInfo>} value
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit} returns this
- */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.setAddPoolInfosList = function (value) {
+*/
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.setAddPoolInfosList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.AddPoolInfo=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.AddPoolInfo}
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.addAddPoolInfos = function (opt_value, opt_index) {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.addAddPoolInfos = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.farming.v1.AddPoolInfo, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.clearAddPoolInfosList = function () {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.clearAddPoolInfosList = function() {
   return this.setAddPoolInfosList([]);
 };
+
 
 /**
  * optional string deposit = 4;
  * @return {string}
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.getDeposit = function () {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.getDeposit = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.setDeposit = function (value) {
+proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.setDeposit = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -4896,62 +5313,63 @@ proto.sgn.farming.v1.BatchAddPoolProposalWithDeposit.prototype.setDeposit = func
  */
 proto.sgn.farming.v1.AdjustRewardProposal.repeatedFields_ = [4];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.AdjustRewardProposal.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.AdjustRewardProposal.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.AdjustRewardProposal.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.AdjustRewardProposal} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.AdjustRewardProposal.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    rewardAdjustmentInputsList: jspb.Message.toObjectList(msg.getRewardAdjustmentInputsList(),
+    proto.sgn.farming.v1.RewardAdjustmentInput.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.AdjustRewardProposal} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.AdjustRewardProposal.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-        rewardAdjustmentInputsList: jspb.Message.toObjectList(
-          msg.getRewardAdjustmentInputsList(),
-          proto.sgn.farming.v1.RewardAdjustmentInput.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.AdjustRewardProposal}
  */
-proto.sgn.farming.v1.AdjustRewardProposal.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.AdjustRewardProposal.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.AdjustRewardProposal();
+  var msg = new proto.sgn.farming.v1.AdjustRewardProposal;
   return proto.sgn.farming.v1.AdjustRewardProposal.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4960,47 +5378,49 @@ proto.sgn.farming.v1.AdjustRewardProposal.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.AdjustRewardProposal}
  */
-proto.sgn.farming.v1.AdjustRewardProposal.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.AdjustRewardProposal.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setPoolName(value);
-        break;
-      case 4:
-        var value = new proto.sgn.farming.v1.RewardAdjustmentInput();
-        reader.readMessage(value, proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
-        msg.addRewardAdjustmentInputs(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolName(value);
+      break;
+    case 4:
+      var value = new proto.sgn.farming.v1.RewardAdjustmentInput;
+      reader.readMessage(value,proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
+      msg.addRewardAdjustmentInputs(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.AdjustRewardProposal.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5009,114 +5429,132 @@ proto.sgn.farming.v1.AdjustRewardProposal.prototype.serializeBinary = function (
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.AdjustRewardProposal.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.AdjustRewardProposal.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getPoolName();
   if (f.length > 0) {
-    writer.writeString(3, f);
+    writer.writeString(
+      3,
+      f
+    );
   }
   f = message.getRewardAdjustmentInputsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(4, f, proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      4,
+      f,
+      proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.getTitle = function () {
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AdjustRewardProposal} returns this
  */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.getDescription = function () {
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AdjustRewardProposal} returns this
  */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * optional string pool_name = 3;
  * @return {string}
  */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.getPoolName = function () {
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.getPoolName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AdjustRewardProposal} returns this
  */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.setPoolName = function (value) {
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.setPoolName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
+
 
 /**
  * repeated RewardAdjustmentInput reward_adjustment_inputs = 4;
  * @return {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>}
  */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.getRewardAdjustmentInputsList = function () {
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.getRewardAdjustmentInputsList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 4)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 4));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} value
  * @return {!proto.sgn.farming.v1.AdjustRewardProposal} returns this
- */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.setRewardAdjustmentInputsList = function (value) {
+*/
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.setRewardAdjustmentInputsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.RewardAdjustmentInput=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput}
  */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.addRewardAdjustmentInputs = function (opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(
-    this,
-    4,
-    opt_value,
-    proto.sgn.farming.v1.RewardAdjustmentInput,
-    opt_index,
-  );
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.addRewardAdjustmentInputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.sgn.farming.v1.RewardAdjustmentInput, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AdjustRewardProposal} returns this
  */
-proto.sgn.farming.v1.AdjustRewardProposal.prototype.clearRewardAdjustmentInputsList = function () {
+proto.sgn.farming.v1.AdjustRewardProposal.prototype.clearRewardAdjustmentInputsList = function() {
   return this.setRewardAdjustmentInputsList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -5125,61 +5563,62 @@ proto.sgn.farming.v1.AdjustRewardProposal.prototype.clearRewardAdjustmentInputsL
  */
 proto.sgn.farming.v1.BatchAdjustRewardProposal.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.BatchAdjustRewardProposal.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.BatchAdjustRewardProposal.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.BatchAdjustRewardProposal} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.BatchAdjustRewardProposal.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    adjustRewardInfosList: jspb.Message.toObjectList(msg.getAdjustRewardInfosList(),
+    proto.sgn.farming.v1.AdjustRewardInfo.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.BatchAdjustRewardProposal} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.BatchAdjustRewardProposal.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        adjustRewardInfosList: jspb.Message.toObjectList(
-          msg.getAdjustRewardInfosList(),
-          proto.sgn.farming.v1.AdjustRewardInfo.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposal}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.BatchAdjustRewardProposal();
+  var msg = new proto.sgn.farming.v1.BatchAdjustRewardProposal;
   return proto.sgn.farming.v1.BatchAdjustRewardProposal.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -5188,43 +5627,45 @@ proto.sgn.farming.v1.BatchAdjustRewardProposal.deserializeBinary = function (byt
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposal}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = new proto.sgn.farming.v1.AdjustRewardInfo();
-        reader.readMessage(value, proto.sgn.farming.v1.AdjustRewardInfo.deserializeBinaryFromReader);
-        msg.addAdjustRewardInfos(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = new proto.sgn.farming.v1.AdjustRewardInfo;
+      reader.readMessage(value,proto.sgn.farming.v1.AdjustRewardInfo.deserializeBinaryFromReader);
+      msg.addAdjustRewardInfos(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.BatchAdjustRewardProposal.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5233,88 +5674,107 @@ proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.serializeBinary = funct
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getAdjustRewardInfosList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, proto.sgn.farming.v1.AdjustRewardInfo.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      proto.sgn.farming.v1.AdjustRewardInfo.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.getTitle = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposal} returns this
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.getDescription = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposal} returns this
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * repeated AdjustRewardInfo adjust_reward_infos = 3;
  * @return {!Array<!proto.sgn.farming.v1.AdjustRewardInfo>}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.getAdjustRewardInfosList = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.getAdjustRewardInfosList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.AdjustRewardInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.AdjustRewardInfo, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.AdjustRewardInfo, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.AdjustRewardInfo>} value
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposal} returns this
- */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.setAdjustRewardInfosList = function (value) {
+*/
+proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.setAdjustRewardInfosList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.AdjustRewardInfo=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.AdjustRewardInfo}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.addAdjustRewardInfos = function (opt_value, opt_index) {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.addAdjustRewardInfos = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.farming.v1.AdjustRewardInfo, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposal} returns this
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.clearAdjustRewardInfosList = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.clearAdjustRewardInfosList = function() {
   return this.setAdjustRewardInfosList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -5323,60 +5783,61 @@ proto.sgn.farming.v1.BatchAdjustRewardProposal.prototype.clearAdjustRewardInfosL
  */
 proto.sgn.farming.v1.AdjustRewardInfo.repeatedFields_ = [2];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.AdjustRewardInfo.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.AdjustRewardInfo.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.AdjustRewardInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.AdjustRewardInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.AdjustRewardInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.AdjustRewardInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    poolName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    rewardAdjustmentInputsList: jspb.Message.toObjectList(msg.getRewardAdjustmentInputsList(),
+    proto.sgn.farming.v1.RewardAdjustmentInput.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.AdjustRewardInfo} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.AdjustRewardInfo.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        poolName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        rewardAdjustmentInputsList: jspb.Message.toObjectList(
-          msg.getRewardAdjustmentInputsList(),
-          proto.sgn.farming.v1.RewardAdjustmentInput.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.AdjustRewardInfo}
  */
-proto.sgn.farming.v1.AdjustRewardInfo.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.AdjustRewardInfo.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.AdjustRewardInfo();
+  var msg = new proto.sgn.farming.v1.AdjustRewardInfo;
   return proto.sgn.farming.v1.AdjustRewardInfo.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -5385,39 +5846,41 @@ proto.sgn.farming.v1.AdjustRewardInfo.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.AdjustRewardInfo}
  */
-proto.sgn.farming.v1.AdjustRewardInfo.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.AdjustRewardInfo.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setPoolName(value);
-        break;
-      case 2:
-        var value = new proto.sgn.farming.v1.RewardAdjustmentInput();
-        reader.readMessage(value, proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
-        msg.addRewardAdjustmentInputs(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolName(value);
+      break;
+    case 2:
+      var value = new proto.sgn.farming.v1.RewardAdjustmentInput;
+      reader.readMessage(value,proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
+      msg.addRewardAdjustmentInputs(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.AdjustRewardInfo.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.AdjustRewardInfo.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.AdjustRewardInfo.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5426,74 +5889,82 @@ proto.sgn.farming.v1.AdjustRewardInfo.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.AdjustRewardInfo.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.AdjustRewardInfo.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getPoolName();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getRewardAdjustmentInputsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(2, f, proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional string pool_name = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.AdjustRewardInfo.prototype.getPoolName = function () {
+proto.sgn.farming.v1.AdjustRewardInfo.prototype.getPoolName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AdjustRewardInfo} returns this
  */
-proto.sgn.farming.v1.AdjustRewardInfo.prototype.setPoolName = function (value) {
+proto.sgn.farming.v1.AdjustRewardInfo.prototype.setPoolName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * repeated RewardAdjustmentInput reward_adjustment_inputs = 2;
  * @return {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>}
  */
-proto.sgn.farming.v1.AdjustRewardInfo.prototype.getRewardAdjustmentInputsList = function () {
+proto.sgn.farming.v1.AdjustRewardInfo.prototype.getRewardAdjustmentInputsList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 2)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 2));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} value
  * @return {!proto.sgn.farming.v1.AdjustRewardInfo} returns this
- */
-proto.sgn.farming.v1.AdjustRewardInfo.prototype.setRewardAdjustmentInputsList = function (value) {
+*/
+proto.sgn.farming.v1.AdjustRewardInfo.prototype.setRewardAdjustmentInputsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.RewardAdjustmentInput=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput}
  */
-proto.sgn.farming.v1.AdjustRewardInfo.prototype.addRewardAdjustmentInputs = function (opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(
-    this,
-    2,
-    opt_value,
-    proto.sgn.farming.v1.RewardAdjustmentInput,
-    opt_index,
-  );
+proto.sgn.farming.v1.AdjustRewardInfo.prototype.addRewardAdjustmentInputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sgn.farming.v1.RewardAdjustmentInput, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AdjustRewardInfo} returns this
  */
-proto.sgn.farming.v1.AdjustRewardInfo.prototype.clearRewardAdjustmentInputsList = function () {
+proto.sgn.farming.v1.AdjustRewardInfo.prototype.clearRewardAdjustmentInputsList = function() {
   return this.setRewardAdjustmentInputsList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -5502,63 +5973,64 @@ proto.sgn.farming.v1.AdjustRewardInfo.prototype.clearRewardAdjustmentInputsList 
  */
 proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.repeatedFields_ = [4];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.AdjustRewardProposalWithDeposit} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    rewardAdjustmentInputsList: jspb.Message.toObjectList(msg.getRewardAdjustmentInputsList(),
+    proto.sgn.farming.v1.RewardAdjustmentInput.toObject, includeInstance),
+    deposit: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.AdjustRewardProposalWithDeposit} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-        rewardAdjustmentInputsList: jspb.Message.toObjectList(
-          msg.getRewardAdjustmentInputsList(),
-          proto.sgn.farming.v1.RewardAdjustmentInput.toObject,
-          includeInstance,
-        ),
-        deposit: jspb.Message.getFieldWithDefault(msg, 5, ""),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.AdjustRewardProposalWithDeposit}
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.AdjustRewardProposalWithDeposit();
+  var msg = new proto.sgn.farming.v1.AdjustRewardProposalWithDeposit;
   return proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -5567,51 +6039,53 @@ proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.deserializeBinary = functio
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.AdjustRewardProposalWithDeposit}
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setPoolName(value);
-        break;
-      case 4:
-        var value = new proto.sgn.farming.v1.RewardAdjustmentInput();
-        reader.readMessage(value, proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
-        msg.addRewardAdjustmentInputs(value);
-        break;
-      case 5:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDeposit(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolName(value);
+      break;
+    case 4:
+      var value = new proto.sgn.farming.v1.RewardAdjustmentInput;
+      reader.readMessage(value,proto.sgn.farming.v1.RewardAdjustmentInput.deserializeBinaryFromReader);
+      msg.addRewardAdjustmentInputs(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDeposit(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5620,137 +6094,157 @@ proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.serializeBinary =
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getPoolName();
   if (f.length > 0) {
-    writer.writeString(3, f);
+    writer.writeString(
+      3,
+      f
+    );
   }
   f = message.getRewardAdjustmentInputsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(4, f, proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      4,
+      f,
+      proto.sgn.farming.v1.RewardAdjustmentInput.serializeBinaryToWriter
+    );
   }
   f = message.getDeposit();
   if (f.length > 0) {
-    writer.writeString(5, f);
+    writer.writeString(
+      5,
+      f
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.getTitle = function () {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AdjustRewardProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.getDescription = function () {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AdjustRewardProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * optional string pool_name = 3;
  * @return {string}
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.getPoolName = function () {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.getPoolName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AdjustRewardProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setPoolName = function (value) {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setPoolName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
+
 
 /**
  * repeated RewardAdjustmentInput reward_adjustment_inputs = 4;
  * @return {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>}
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.getRewardAdjustmentInputsList = function () {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.getRewardAdjustmentInputsList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 4)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.RewardAdjustmentInput, 4));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.RewardAdjustmentInput>} value
  * @return {!proto.sgn.farming.v1.AdjustRewardProposalWithDeposit} returns this
- */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setRewardAdjustmentInputsList = function (value) {
+*/
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setRewardAdjustmentInputsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.RewardAdjustmentInput=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.RewardAdjustmentInput}
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.addRewardAdjustmentInputs = function (
-  opt_value,
-  opt_index,
-) {
-  return jspb.Message.addToRepeatedWrapperField(
-    this,
-    4,
-    opt_value,
-    proto.sgn.farming.v1.RewardAdjustmentInput,
-    opt_index,
-  );
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.addRewardAdjustmentInputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.sgn.farming.v1.RewardAdjustmentInput, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AdjustRewardProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.clearRewardAdjustmentInputsList = function () {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.clearRewardAdjustmentInputsList = function() {
   return this.setRewardAdjustmentInputsList([]);
 };
+
 
 /**
  * optional string deposit = 5;
  * @return {string}
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.getDeposit = function () {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.getDeposit = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AdjustRewardProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setDeposit = function (value) {
+proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setDeposit = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -5759,62 +6253,63 @@ proto.sgn.farming.v1.AdjustRewardProposalWithDeposit.prototype.setDeposit = func
  */
 proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    adjustRewardInfosList: jspb.Message.toObjectList(msg.getAdjustRewardInfosList(),
+    proto.sgn.farming.v1.AdjustRewardInfo.toObject, includeInstance),
+    deposit: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        adjustRewardInfosList: jspb.Message.toObjectList(
-          msg.getAdjustRewardInfosList(),
-          proto.sgn.farming.v1.AdjustRewardInfo.toObject,
-          includeInstance,
-        ),
-        deposit: jspb.Message.getFieldWithDefault(msg, 4, ""),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit();
+  var msg = new proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit;
   return proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -5823,47 +6318,49 @@ proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.deserializeBinary = fu
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = new proto.sgn.farming.v1.AdjustRewardInfo();
-        reader.readMessage(value, proto.sgn.farming.v1.AdjustRewardInfo.deserializeBinaryFromReader);
-        msg.addAdjustRewardInfos(value);
-        break;
-      case 4:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDeposit(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = new proto.sgn.farming.v1.AdjustRewardInfo;
+      reader.readMessage(value,proto.sgn.farming.v1.AdjustRewardInfo.deserializeBinaryFromReader);
+      msg.addAdjustRewardInfos(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDeposit(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5872,163 +6369,188 @@ proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.serializeBin
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getAdjustRewardInfosList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, proto.sgn.farming.v1.AdjustRewardInfo.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      proto.sgn.farming.v1.AdjustRewardInfo.serializeBinaryToWriter
+    );
   }
   f = message.getDeposit();
   if (f.length > 0) {
-    writer.writeString(4, f);
+    writer.writeString(
+      4,
+      f
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.getTitle = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.getDescription = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * repeated AdjustRewardInfo adjust_reward_infos = 3;
  * @return {!Array<!proto.sgn.farming.v1.AdjustRewardInfo>}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.getAdjustRewardInfosList = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.getAdjustRewardInfosList = function() {
   return /** @type{!Array<!proto.sgn.farming.v1.AdjustRewardInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.AdjustRewardInfo, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.farming.v1.AdjustRewardInfo, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.farming.v1.AdjustRewardInfo>} value
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit} returns this
- */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.setAdjustRewardInfosList = function (value) {
+*/
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.setAdjustRewardInfosList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.farming.v1.AdjustRewardInfo=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.farming.v1.AdjustRewardInfo}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.addAdjustRewardInfos = function (
-  opt_value,
-  opt_index,
-) {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.addAdjustRewardInfos = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.farming.v1.AdjustRewardInfo, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.clearAdjustRewardInfosList = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.clearAdjustRewardInfosList = function() {
   return this.setAdjustRewardInfosList([]);
 };
+
 
 /**
  * optional string deposit = 4;
  * @return {string}
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.getDeposit = function () {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.getDeposit = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.setDeposit = function (value) {
+proto.sgn.farming.v1.BatchAdjustRewardProposalWithDeposit.prototype.setDeposit = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 
+
+
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.RemovePoolProposal.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.RemovePoolProposal.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.RemovePoolProposal.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.RemovePoolProposal.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.RemovePoolProposal} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.RemovePoolProposal.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    poolName: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.RemovePoolProposal} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.RemovePoolProposal.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.RemovePoolProposal}
  */
-proto.sgn.farming.v1.RemovePoolProposal.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.RemovePoolProposal.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.RemovePoolProposal();
+  var msg = new proto.sgn.farming.v1.RemovePoolProposal;
   return proto.sgn.farming.v1.RemovePoolProposal.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -6037,42 +6559,44 @@ proto.sgn.farming.v1.RemovePoolProposal.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.RemovePoolProposal}
  */
-proto.sgn.farming.v1.RemovePoolProposal.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.RemovePoolProposal.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setPoolName(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolName(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.RemovePoolProposal.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.RemovePoolProposal.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.RemovePoolProposal.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -6081,122 +6605,143 @@ proto.sgn.farming.v1.RemovePoolProposal.prototype.serializeBinary = function () 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.RemovePoolProposal.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.RemovePoolProposal.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getPoolName();
   if (f.length > 0) {
-    writer.writeString(3, f);
+    writer.writeString(
+      3,
+      f
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.RemovePoolProposal.prototype.getTitle = function () {
+proto.sgn.farming.v1.RemovePoolProposal.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.RemovePoolProposal} returns this
  */
-proto.sgn.farming.v1.RemovePoolProposal.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.RemovePoolProposal.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.RemovePoolProposal.prototype.getDescription = function () {
+proto.sgn.farming.v1.RemovePoolProposal.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.RemovePoolProposal} returns this
  */
-proto.sgn.farming.v1.RemovePoolProposal.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.RemovePoolProposal.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * optional string pool_name = 3;
  * @return {string}
  */
-proto.sgn.farming.v1.RemovePoolProposal.prototype.getPoolName = function () {
+proto.sgn.farming.v1.RemovePoolProposal.prototype.getPoolName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.RemovePoolProposal} returns this
  */
-proto.sgn.farming.v1.RemovePoolProposal.prototype.setPoolName = function (value) {
+proto.sgn.farming.v1.RemovePoolProposal.prototype.setPoolName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
+
+
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.RemovePoolProposalWithDeposit.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.RemovePoolProposalWithDeposit.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.RemovePoolProposalWithDeposit} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    deposit: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.RemovePoolProposalWithDeposit} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.RemovePoolProposalWithDeposit.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        poolName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-        deposit: jspb.Message.getFieldWithDefault(msg, 4, ""),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.RemovePoolProposalWithDeposit}
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.RemovePoolProposalWithDeposit();
+  var msg = new proto.sgn.farming.v1.RemovePoolProposalWithDeposit;
   return proto.sgn.farming.v1.RemovePoolProposalWithDeposit.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -6205,46 +6750,48 @@ proto.sgn.farming.v1.RemovePoolProposalWithDeposit.deserializeBinary = function 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.RemovePoolProposalWithDeposit}
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setPoolName(value);
-        break;
-      case 4:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDeposit(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPoolName(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDeposit(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.RemovePoolProposalWithDeposit.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -6253,89 +6800,111 @@ proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.serializeBinary = f
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getPoolName();
   if (f.length > 0) {
-    writer.writeString(3, f);
+    writer.writeString(
+      3,
+      f
+    );
   }
   f = message.getDeposit();
   if (f.length > 0) {
-    writer.writeString(4, f);
+    writer.writeString(
+      4,
+      f
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.getTitle = function () {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.RemovePoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.getDescription = function () {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.RemovePoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * optional string pool_name = 3;
  * @return {string}
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.getPoolName = function () {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.getPoolName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.RemovePoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.setPoolName = function (value) {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.setPoolName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
+
 
 /**
  * optional string deposit = 4;
  * @return {string}
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.getDeposit = function () {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.getDeposit = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.RemovePoolProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.setDeposit = function (value) {
+proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.setDeposit = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -6344,61 +6913,62 @@ proto.sgn.farming.v1.RemovePoolProposalWithDeposit.prototype.setDeposit = functi
  */
 proto.sgn.farming.v1.AddTokensProposal.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.AddTokensProposal.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.AddTokensProposal.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.AddTokensProposal.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.AddTokensProposal.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.AddTokensProposal} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.AddTokensProposal.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    tokensList: jspb.Message.toObjectList(msg.getTokensList(),
+    sgn_common_v1_common_pb.ERC20Token.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.AddTokensProposal} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.AddTokensProposal.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        tokensList: jspb.Message.toObjectList(
-          msg.getTokensList(),
-          sgn_common_v1_common_pb.ERC20Token.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.AddTokensProposal}
  */
-proto.sgn.farming.v1.AddTokensProposal.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.AddTokensProposal.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.AddTokensProposal();
+  var msg = new proto.sgn.farming.v1.AddTokensProposal;
   return proto.sgn.farming.v1.AddTokensProposal.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -6407,43 +6977,45 @@ proto.sgn.farming.v1.AddTokensProposal.deserializeBinary = function (bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.AddTokensProposal}
  */
-proto.sgn.farming.v1.AddTokensProposal.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.AddTokensProposal.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = new sgn_common_v1_common_pb.ERC20Token();
-        reader.readMessage(value, sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
-        msg.addTokens(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = new sgn_common_v1_common_pb.ERC20Token;
+      reader.readMessage(value,sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
+      msg.addTokens(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.AddTokensProposal.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.AddTokensProposal.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.AddTokensProposal.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -6452,88 +7024,107 @@ proto.sgn.farming.v1.AddTokensProposal.prototype.serializeBinary = function () {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.AddTokensProposal.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.AddTokensProposal.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getTokensList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.AddTokensProposal.prototype.getTitle = function () {
+proto.sgn.farming.v1.AddTokensProposal.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddTokensProposal} returns this
  */
-proto.sgn.farming.v1.AddTokensProposal.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.AddTokensProposal.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.AddTokensProposal.prototype.getDescription = function () {
+proto.sgn.farming.v1.AddTokensProposal.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddTokensProposal} returns this
  */
-proto.sgn.farming.v1.AddTokensProposal.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.AddTokensProposal.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * repeated sgn.common.v1.ERC20Token tokens = 3;
  * @return {!Array<!proto.sgn.common.v1.ERC20Token>}
  */
-proto.sgn.farming.v1.AddTokensProposal.prototype.getTokensList = function () {
+proto.sgn.farming.v1.AddTokensProposal.prototype.getTokensList = function() {
   return /** @type{!Array<!proto.sgn.common.v1.ERC20Token>} */ (
-    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.common.v1.ERC20Token>} value
  * @return {!proto.sgn.farming.v1.AddTokensProposal} returns this
- */
-proto.sgn.farming.v1.AddTokensProposal.prototype.setTokensList = function (value) {
+*/
+proto.sgn.farming.v1.AddTokensProposal.prototype.setTokensList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.common.v1.ERC20Token=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.common.v1.ERC20Token}
  */
-proto.sgn.farming.v1.AddTokensProposal.prototype.addTokens = function (opt_value, opt_index) {
+proto.sgn.farming.v1.AddTokensProposal.prototype.addTokens = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.common.v1.ERC20Token, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AddTokensProposal} returns this
  */
-proto.sgn.farming.v1.AddTokensProposal.prototype.clearTokensList = function () {
+proto.sgn.farming.v1.AddTokensProposal.prototype.clearTokensList = function() {
   return this.setTokensList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -6542,62 +7133,63 @@ proto.sgn.farming.v1.AddTokensProposal.prototype.clearTokensList = function () {
  */
 proto.sgn.farming.v1.AddTokensProposalWithDeposit.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.AddTokensProposalWithDeposit.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.AddTokensProposalWithDeposit.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.AddTokensProposalWithDeposit} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    tokensList: jspb.Message.toObjectList(msg.getTokensList(),
+    sgn_common_v1_common_pb.ERC20Token.toObject, includeInstance),
+    deposit: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.AddTokensProposalWithDeposit} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.AddTokensProposalWithDeposit.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        tokensList: jspb.Message.toObjectList(
-          msg.getTokensList(),
-          sgn_common_v1_common_pb.ERC20Token.toObject,
-          includeInstance,
-        ),
-        deposit: jspb.Message.getFieldWithDefault(msg, 4, ""),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.AddTokensProposalWithDeposit}
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.AddTokensProposalWithDeposit();
+  var msg = new proto.sgn.farming.v1.AddTokensProposalWithDeposit;
   return proto.sgn.farming.v1.AddTokensProposalWithDeposit.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -6606,47 +7198,49 @@ proto.sgn.farming.v1.AddTokensProposalWithDeposit.deserializeBinary = function (
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.AddTokensProposalWithDeposit}
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = new sgn_common_v1_common_pb.ERC20Token();
-        reader.readMessage(value, sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
-        msg.addTokens(value);
-        break;
-      case 4:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDeposit(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = new sgn_common_v1_common_pb.ERC20Token;
+      reader.readMessage(value,sgn_common_v1_common_pb.ERC20Token.deserializeBinaryFromReader);
+      msg.addTokens(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDeposit(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.AddTokensProposalWithDeposit.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -6655,108 +7249,132 @@ proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.serializeBinary = fu
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getTokensList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      sgn_common_v1_common_pb.ERC20Token.serializeBinaryToWriter
+    );
   }
   f = message.getDeposit();
   if (f.length > 0) {
-    writer.writeString(4, f);
+    writer.writeString(
+      4,
+      f
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.getTitle = function () {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddTokensProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.getDescription = function () {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddTokensProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * repeated sgn.common.v1.ERC20Token tokens = 3;
  * @return {!Array<!proto.sgn.common.v1.ERC20Token>}
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.getTokensList = function () {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.getTokensList = function() {
   return /** @type{!Array<!proto.sgn.common.v1.ERC20Token>} */ (
-    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ERC20Token, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.common.v1.ERC20Token>} value
  * @return {!proto.sgn.farming.v1.AddTokensProposalWithDeposit} returns this
- */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.setTokensList = function (value) {
+*/
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.setTokensList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.common.v1.ERC20Token=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.common.v1.ERC20Token}
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.addTokens = function (opt_value, opt_index) {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.addTokens = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.common.v1.ERC20Token, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.AddTokensProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.clearTokensList = function () {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.clearTokensList = function() {
   return this.setTokensList([]);
 };
+
 
 /**
  * optional string deposit = 4;
  * @return {string}
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.getDeposit = function () {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.getDeposit = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.AddTokensProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.setDeposit = function (value) {
+proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.setDeposit = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -6765,61 +7383,62 @@ proto.sgn.farming.v1.AddTokensProposalWithDeposit.prototype.setDeposit = functio
  */
 proto.sgn.farming.v1.SetRewardContractsProposal.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.SetRewardContractsProposal.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.SetRewardContractsProposal.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.SetRewardContractsProposal.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.SetRewardContractsProposal.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.SetRewardContractsProposal} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.SetRewardContractsProposal.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    rewardContractsList: jspb.Message.toObjectList(msg.getRewardContractsList(),
+    sgn_common_v1_common_pb.ContractInfo.toObject, includeInstance)
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.SetRewardContractsProposal} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.SetRewardContractsProposal.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        rewardContractsList: jspb.Message.toObjectList(
-          msg.getRewardContractsList(),
-          sgn_common_v1_common_pb.ContractInfo.toObject,
-          includeInstance,
-        ),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposal}
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.SetRewardContractsProposal.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.SetRewardContractsProposal();
+  var msg = new proto.sgn.farming.v1.SetRewardContractsProposal;
   return proto.sgn.farming.v1.SetRewardContractsProposal.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -6828,43 +7447,45 @@ proto.sgn.farming.v1.SetRewardContractsProposal.deserializeBinary = function (by
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposal}
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.SetRewardContractsProposal.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = new sgn_common_v1_common_pb.ContractInfo();
-        reader.readMessage(value, sgn_common_v1_common_pb.ContractInfo.deserializeBinaryFromReader);
-        msg.addRewardContracts(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = new sgn_common_v1_common_pb.ContractInfo;
+      reader.readMessage(value,sgn_common_v1_common_pb.ContractInfo.deserializeBinaryFromReader);
+      msg.addRewardContracts(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.SetRewardContractsProposal.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.SetRewardContractsProposal.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -6873,88 +7494,107 @@ proto.sgn.farming.v1.SetRewardContractsProposal.prototype.serializeBinary = func
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.SetRewardContractsProposal.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getRewardContractsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, sgn_common_v1_common_pb.ContractInfo.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      sgn_common_v1_common_pb.ContractInfo.serializeBinaryToWriter
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.prototype.getTitle = function () {
+proto.sgn.farming.v1.SetRewardContractsProposal.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposal} returns this
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.SetRewardContractsProposal.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.prototype.getDescription = function () {
+proto.sgn.farming.v1.SetRewardContractsProposal.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposal} returns this
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.SetRewardContractsProposal.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * repeated sgn.common.v1.ContractInfo reward_contracts = 3;
  * @return {!Array<!proto.sgn.common.v1.ContractInfo>}
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.prototype.getRewardContractsList = function () {
+proto.sgn.farming.v1.SetRewardContractsProposal.prototype.getRewardContractsList = function() {
   return /** @type{!Array<!proto.sgn.common.v1.ContractInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ContractInfo, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ContractInfo, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.common.v1.ContractInfo>} value
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposal} returns this
- */
-proto.sgn.farming.v1.SetRewardContractsProposal.prototype.setRewardContractsList = function (value) {
+*/
+proto.sgn.farming.v1.SetRewardContractsProposal.prototype.setRewardContractsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.common.v1.ContractInfo=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.common.v1.ContractInfo}
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.prototype.addRewardContracts = function (opt_value, opt_index) {
+proto.sgn.farming.v1.SetRewardContractsProposal.prototype.addRewardContracts = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.common.v1.ContractInfo, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposal} returns this
  */
-proto.sgn.farming.v1.SetRewardContractsProposal.prototype.clearRewardContractsList = function () {
+proto.sgn.farming.v1.SetRewardContractsProposal.prototype.clearRewardContractsList = function() {
   return this.setRewardContractsList([]);
 };
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -6963,62 +7603,63 @@ proto.sgn.farming.v1.SetRewardContractsProposal.prototype.clearRewardContractsLi
  */
 proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.repeatedFields_ = [3];
 
+
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * Optional fields that are not set will be set to undefined.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-   *     JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.toObject = function (opt_includeInstance) {
-    return proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.toObject(opt_includeInstance, this);
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    rewardContractsList: jspb.Message.toObjectList(msg.getRewardContractsList(),
+    sgn_common_v1_common_pb.ContractInfo.toObject, includeInstance),
+    deposit: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-   *     the JSPB instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-        description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-        rewardContractsList: jspb.Message.toObjectList(
-          msg.getRewardContractsList(),
-          sgn_common_v1_common_pb.ContractInfo.toObject,
-          includeInstance,
-        ),
-        deposit: jspb.Message.getFieldWithDefault(msg, 4, ""),
-      };
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg;
-    }
-    return obj;
-  };
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit}
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.deserializeBinary = function (bytes) {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit();
+  var msg = new proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit;
   return proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -7027,47 +7668,49 @@ proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.deserializeBinary = f
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit}
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.deserializeBinaryFromReader = function (msg, reader) {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setTitle(value);
-        break;
-      case 2:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDescription(value);
-        break;
-      case 3:
-        var value = new sgn_common_v1_common_pb.ContractInfo();
-        reader.readMessage(value, sgn_common_v1_common_pb.ContractInfo.deserializeBinaryFromReader);
-        msg.addRewardContracts(value);
-        break;
-      case 4:
-        var value = /** @type {string} */ (reader.readString());
-        msg.setDeposit(value);
-        break;
-      default:
-        reader.skipField();
-        break;
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = new sgn_common_v1_common_pb.ContractInfo;
+      reader.readMessage(value,sgn_common_v1_common_pb.ContractInfo.deserializeBinaryFromReader);
+      msg.addRewardContracts(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDeposit(value);
+      break;
+    default:
+      reader.skipField();
+      break;
     }
   }
   return msg;
 };
 
+
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.serializeBinary = function () {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -7076,110 +7719,130 @@ proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.serializeBi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.serializeBinaryToWriter = function (message, writer) {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTitle();
   if (f.length > 0) {
-    writer.writeString(1, f);
+    writer.writeString(
+      1,
+      f
+    );
   }
   f = message.getDescription();
   if (f.length > 0) {
-    writer.writeString(2, f);
+    writer.writeString(
+      2,
+      f
+    );
   }
   f = message.getRewardContractsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(3, f, sgn_common_v1_common_pb.ContractInfo.serializeBinaryToWriter);
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      sgn_common_v1_common_pb.ContractInfo.serializeBinaryToWriter
+    );
   }
   f = message.getDeposit();
   if (f.length > 0) {
-    writer.writeString(4, f);
+    writer.writeString(
+      4,
+      f
+    );
   }
 };
+
 
 /**
  * optional string title = 1;
  * @return {string}
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.getTitle = function () {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.getTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.setTitle = function (value) {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.setTitle = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional string description = 2;
  * @return {string}
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.getDescription = function () {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.setDescription = function (value) {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
+
 
 /**
  * repeated sgn.common.v1.ContractInfo reward_contracts = 3;
  * @return {!Array<!proto.sgn.common.v1.ContractInfo>}
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.getRewardContractsList = function () {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.getRewardContractsList = function() {
   return /** @type{!Array<!proto.sgn.common.v1.ContractInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ContractInfo, 3)
-  );
+    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ContractInfo, 3));
 };
+
 
 /**
  * @param {!Array<!proto.sgn.common.v1.ContractInfo>} value
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit} returns this
- */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.setRewardContractsList = function (value) {
+*/
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.setRewardContractsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
+
 
 /**
  * @param {!proto.sgn.common.v1.ContractInfo=} opt_value
  * @param {number=} opt_index
  * @return {!proto.sgn.common.v1.ContractInfo}
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.addRewardContracts = function (
-  opt_value,
-  opt_index,
-) {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.addRewardContracts = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.common.v1.ContractInfo, opt_index);
 };
+
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.clearRewardContractsList = function () {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.clearRewardContractsList = function() {
   return this.setRewardContractsList([]);
 };
+
 
 /**
  * optional string deposit = 4;
  * @return {string}
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.getDeposit = function () {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.getDeposit = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit} returns this
  */
-proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.setDeposit = function (value) {
+proto.sgn.farming.v1.SetRewardContractsProposalWithDeposit.prototype.setDeposit = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
+
 
 goog.object.extend(exports, proto.sgn.farming.v1);

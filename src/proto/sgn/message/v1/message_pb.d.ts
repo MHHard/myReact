@@ -1,11 +1,12 @@
-import * as jspb from "google-protobuf";
+import * as jspb from 'google-protobuf'
 
-import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
-import * as cosmos_base_v1beta1_coin_pb from "../../../cosmos/base/v1beta1/coin_pb";
-import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
-import * as google_protobuf_duration_pb from "google-protobuf/google/protobuf/duration_pb";
-import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
-import * as sgn_common_v1_common_pb from "../../../sgn/common/v1/common_pb";
+import * as cosmos_proto_cosmos_pb from '../../../cosmos_proto/cosmos_pb';
+import * as cosmos_base_v1beta1_coin_pb from '../../../cosmos/base/v1beta1/coin_pb';
+import * as gogoproto_gogo_pb from '../../../gogoproto/gogo_pb';
+import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as sgn_common_v1_common_pb from '../../../sgn/common/v1/common_pb';
+
 
 export class Params extends jspb.Message {
   getTriggerSignCooldown(): google_protobuf_duration_pb.Duration | undefined;
@@ -23,8 +24,8 @@ export class Params extends jspb.Message {
 
 export namespace Params {
   export type AsObject = {
-    triggerSignCooldown?: google_protobuf_duration_pb.Duration.AsObject;
-  };
+    triggerSignCooldown?: google_protobuf_duration_pb.Duration.AsObject,
+  }
 }
 
 export class Message extends jspb.Message {
@@ -72,17 +73,17 @@ export class Message extends jspb.Message {
 
 export namespace Message {
   export type AsObject = {
-    srcChainId: number;
-    sender: string;
-    dstChainId: number;
-    receiver: string;
-    data: Uint8Array | string;
-    fee: string;
-    transferType: TransferType;
-    executionStatus: ExecutionStatus;
-    signaturesList: Array<sgn_common_v1_common_pb.Signature.AsObject>;
-    lastSigReqTime: number;
-  };
+    srcChainId: number,
+    sender: string,
+    dstChainId: number,
+    receiver: string,
+    data: Uint8Array | string,
+    fee: string,
+    transferType: TransferType,
+    executionStatus: ExecutionStatus,
+    signaturesList: Array<sgn_common_v1_common_pb.Signature.AsObject>,
+    lastSigReqTime: number,
+  }
 }
 
 export class Transfer extends jspb.Message {
@@ -112,11 +113,11 @@ export class Transfer extends jspb.Message {
 
 export namespace Transfer {
   export type AsObject = {
-    token: Uint8Array | string;
-    amount: string;
-    seqNum: number;
-    refId: Uint8Array | string;
-  };
+    token: Uint8Array | string,
+    amount: string,
+    seqNum: number,
+    refId: Uint8Array | string,
+  }
 }
 
 export class ExecutionContext extends jspb.Message {
@@ -150,11 +151,11 @@ export class ExecutionContext extends jspb.Message {
 
 export namespace ExecutionContext {
   export type AsObject = {
-    messageId: Uint8Array | string;
-    message?: Message.AsObject;
-    transfer?: Transfer.AsObject;
-    powersList: Array<string>;
-  };
+    messageId: Uint8Array | string,
+    message?: Message.AsObject,
+    transfer?: Transfer.AsObject,
+    powersList: Array<string>,
+  }
 }
 
 export class FeeClaimDetails extends jspb.Message {
@@ -181,10 +182,10 @@ export class FeeClaimDetails extends jspb.Message {
 
 export namespace FeeClaimDetails {
   export type AsObject = {
-    chainId: number;
-    cumulativeFeeAmount?: cosmos_base_v1beta1_coin_pb.DecCoin.AsObject;
-    signaturesList: Array<sgn_common_v1_common_pb.Signature.AsObject>;
-  };
+    chainId: number,
+    cumulativeFeeAmount?: cosmos_base_v1beta1_coin_pb.DecCoin.AsObject,
+    signaturesList: Array<sgn_common_v1_common_pb.Signature.AsObject>,
+  }
 }
 
 export class FeeClaimInfo extends jspb.Message {
@@ -211,10 +212,10 @@ export class FeeClaimInfo extends jspb.Message {
 
 export namespace FeeClaimInfo {
   export type AsObject = {
-    recipient: string;
-    lastClaimTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
-    feeClaimDetailsListList: Array<FeeClaimDetails.AsObject>;
-  };
+    recipient: string,
+    lastClaimTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    feeClaimDetailsListList: Array<FeeClaimDetails.AsObject>,
+  }
 }
 
 export class MessageBusInfo extends jspb.Message {
@@ -236,9 +237,9 @@ export class MessageBusInfo extends jspb.Message {
 
 export namespace MessageBusInfo {
   export type AsObject = {
-    contractInfo?: sgn_common_v1_common_pb.ContractInfo.AsObject;
-    feeTokenSymbol: string;
-  };
+    contractInfo?: sgn_common_v1_common_pb.ContractInfo.AsObject,
+    feeTokenSymbol: string,
+  }
 }
 
 export class MsgProposal extends jspb.Message {
@@ -266,27 +267,27 @@ export class MsgProposal extends jspb.Message {
 
 export namespace MsgProposal {
   export type AsObject = {
-    title: string;
-    description: string;
-    messageBusesList: Array<MessageBusInfo.AsObject>;
-    deposit: string;
-  };
+    title: string,
+    description: string,
+    messageBusesList: Array<MessageBusInfo.AsObject>,
+    deposit: string,
+  }
 }
 
-export enum TransferType {
+export enum TransferType { 
   TRANSFER_TYPE_NULL = 0,
   TRANSFER_TYPE_LIQUIDITY_SEND = 1,
   TRANSFER_TYPE_LIQUIDITY_WITHDRAW = 2,
   TRANSFER_TYPE_PEG_MINT = 3,
   TRANSFER_TYPE_PEG_WITHDRAW = 4,
 }
-export enum ExecutionStatus {
+export enum ExecutionStatus { 
   EXECUTION_STATUS_PENDING = 0,
   EXECUTION_STATUS_SUCCESS = 1,
   EXECUTION_STATUS_FAILURE = 2,
   EXECUTION_STATUS_FALLBACK = 3,
 }
-export enum MsgType {
+export enum MsgType { 
   MSG_TYPE_MESSAGE_WITH_TRANSFER = 0,
   MSG_TYPE_MESSAGE = 1,
 }

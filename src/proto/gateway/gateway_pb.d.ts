@@ -11,597 +11,7 @@ import * as sgn_pegbridge_v1_pegbridge_pb from '../sgn/pegbridge/v1/pegbridge_pb
 import * as sgn_pegbridge_v1_tx_pb from '../sgn/pegbridge/v1/tx_pb';
 import * as cosmos_base_v1beta1_coin_pb from '../cosmos/base/v1beta1/coin_pb';
 import * as sgn_health_v1_health_pb from '../sgn/health/v1/health_pb';
-import * as sdk_service_rfq_user_pb from '../sdk/service/rfq/user_pb';
-import * as sdk_service_rfq_model_pb from '../sdk/service/rfq/model_pb';
 
-
-export class GetDataByTimeRangeAndBridgeTypeRequest extends jspb.Message {
-  getBegin(): number;
-  setBegin(value: number): GetDataByTimeRangeAndBridgeTypeRequest;
-
-  getEnd(): number;
-  setEnd(value: number): GetDataByTimeRangeAndBridgeTypeRequest;
-
-  getBridgeType(): number;
-  setBridgeType(value: number): GetDataByTimeRangeAndBridgeTypeRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetDataByTimeRangeAndBridgeTypeRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetDataByTimeRangeAndBridgeTypeRequest): GetDataByTimeRangeAndBridgeTypeRequest.AsObject;
-  static serializeBinaryToWriter(message: GetDataByTimeRangeAndBridgeTypeRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetDataByTimeRangeAndBridgeTypeRequest;
-  static deserializeBinaryFromReader(message: GetDataByTimeRangeAndBridgeTypeRequest, reader: jspb.BinaryReader): GetDataByTimeRangeAndBridgeTypeRequest;
-}
-
-export namespace GetDataByTimeRangeAndBridgeTypeRequest {
-  export type AsObject = {
-    begin: number,
-    end: number,
-    bridgeType: number,
-  }
-}
-
-export class GetDataByTimeRangeAndBridgeTypeResponse extends jspb.Message {
-  getErr(): ErrMsg | undefined;
-  setErr(value?: ErrMsg): GetDataByTimeRangeAndBridgeTypeResponse;
-  hasErr(): boolean;
-  clearErr(): GetDataByTimeRangeAndBridgeTypeResponse;
-
-  getVolume(): number;
-  setVolume(value: number): GetDataByTimeRangeAndBridgeTypeResponse;
-
-  getTxCount(): number;
-  setTxCount(value: number): GetDataByTimeRangeAndBridgeTypeResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetDataByTimeRangeAndBridgeTypeResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: GetDataByTimeRangeAndBridgeTypeResponse): GetDataByTimeRangeAndBridgeTypeResponse.AsObject;
-  static serializeBinaryToWriter(message: GetDataByTimeRangeAndBridgeTypeResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetDataByTimeRangeAndBridgeTypeResponse;
-  static deserializeBinaryFromReader(message: GetDataByTimeRangeAndBridgeTypeResponse, reader: jspb.BinaryReader): GetDataByTimeRangeAndBridgeTypeResponse;
-}
-
-export namespace GetDataByTimeRangeAndBridgeTypeResponse {
-  export type AsObject = {
-    err?: ErrMsg.AsObject,
-    volume: number,
-    txCount: number,
-  }
-}
-
-export class GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest extends jspb.Message {
-  getBegin(): number;
-  setBegin(value: number): GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest;
-
-  getEnd(): number;
-  setEnd(value: number): GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest;
-
-  getBridgeType(): number;
-  setBridgeType(value: number): GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest): GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest.AsObject;
-  static serializeBinaryToWriter(message: GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest;
-  static deserializeBinaryFromReader(message: GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest, reader: jspb.BinaryReader): GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest;
-}
-
-export namespace GetUniqueUserAddrByTimeRangeAndBridgeTypeRequest {
-  export type AsObject = {
-    begin: number,
-    end: number,
-    bridgeType: number,
-  }
-}
-
-export class GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse extends jspb.Message {
-  getErr(): ErrMsg | undefined;
-  setErr(value?: ErrMsg): GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse;
-  hasErr(): boolean;
-  clearErr(): GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse;
-
-  getUsersList(): Array<string>;
-  setUsersList(value: Array<string>): GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse;
-  clearUsersList(): GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse;
-  addUsers(value: string, index?: number): GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse): GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse.AsObject;
-  static serializeBinaryToWriter(message: GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse;
-  static deserializeBinaryFromReader(message: GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse, reader: jspb.BinaryReader): GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse;
-}
-
-export namespace GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse {
-  export type AsObject = {
-    err?: ErrMsg.AsObject,
-    usersList: Array<string>,
-  }
-}
-
-export class GetRiskSeverityLevelRequest extends jspb.Message {
-  getUsrAddr(): string;
-  setUsrAddr(value: string): GetRiskSeverityLevelRequest;
-
-  getChainId(): number;
-  setChainId(value: number): GetRiskSeverityLevelRequest;
-
-  getDisableTrm(): boolean;
-  setDisableTrm(value: boolean): GetRiskSeverityLevelRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetRiskSeverityLevelRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetRiskSeverityLevelRequest): GetRiskSeverityLevelRequest.AsObject;
-  static serializeBinaryToWriter(message: GetRiskSeverityLevelRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetRiskSeverityLevelRequest;
-  static deserializeBinaryFromReader(message: GetRiskSeverityLevelRequest, reader: jspb.BinaryReader): GetRiskSeverityLevelRequest;
-}
-
-export namespace GetRiskSeverityLevelRequest {
-  export type AsObject = {
-    usrAddr: string,
-    chainId: number,
-    disableTrm: boolean,
-  }
-}
-
-export class GetRiskSeverityLevelResponse extends jspb.Message {
-  getErr(): ErrMsg | undefined;
-  setErr(value?: ErrMsg): GetRiskSeverityLevelResponse;
-  hasErr(): boolean;
-  clearErr(): GetRiskSeverityLevelResponse;
-
-  getIsBlocked(): boolean;
-  setIsBlocked(value: boolean): GetRiskSeverityLevelResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetRiskSeverityLevelResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: GetRiskSeverityLevelResponse): GetRiskSeverityLevelResponse.AsObject;
-  static serializeBinaryToWriter(message: GetRiskSeverityLevelResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetRiskSeverityLevelResponse;
-  static deserializeBinaryFromReader(message: GetRiskSeverityLevelResponse, reader: jspb.BinaryReader): GetRiskSeverityLevelResponse;
-}
-
-export namespace GetRiskSeverityLevelResponse {
-  export type AsObject = {
-    err?: ErrMsg.AsObject,
-    isBlocked: boolean,
-  }
-}
-
-export class GetBalanceDetailRequest extends jspb.Message {
-  getUsrAddr(): string;
-  setUsrAddr(value: string): GetBalanceDetailRequest;
-
-  getTokenSymbol(): string;
-  setTokenSymbol(value: string): GetBalanceDetailRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetBalanceDetailRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetBalanceDetailRequest): GetBalanceDetailRequest.AsObject;
-  static serializeBinaryToWriter(message: GetBalanceDetailRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetBalanceDetailRequest;
-  static deserializeBinaryFromReader(message: GetBalanceDetailRequest, reader: jspb.BinaryReader): GetBalanceDetailRequest;
-}
-
-export namespace GetBalanceDetailRequest {
-  export type AsObject = {
-    usrAddr: string,
-    tokenSymbol: string,
-  }
-}
-
-export class GetBalanceDetailResponse extends jspb.Message {
-  getWithdraw(): string;
-  setWithdraw(value: string): GetBalanceDetailResponse;
-
-  getDeposit(): string;
-  setDeposit(value: string): GetBalanceDetailResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetBalanceDetailResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: GetBalanceDetailResponse): GetBalanceDetailResponse.AsObject;
-  static serializeBinaryToWriter(message: GetBalanceDetailResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetBalanceDetailResponse;
-  static deserializeBinaryFromReader(message: GetBalanceDetailResponse, reader: jspb.BinaryReader): GetBalanceDetailResponse;
-}
-
-export namespace GetBalanceDetailResponse {
-  export type AsObject = {
-    withdraw: string,
-    deposit: string,
-  }
-}
-
-export class UpdateRiskSeverityLevelForCsToolRequest extends jspb.Message {
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): UpdateRiskSeverityLevelForCsToolRequest;
-
-  getSigAddr(): string;
-  setSigAddr(value: string): UpdateRiskSeverityLevelForCsToolRequest;
-
-  getUsrAddr(): string;
-  setUsrAddr(value: string): UpdateRiskSeverityLevelForCsToolRequest;
-
-  getIsWhitelist(): boolean;
-  setIsWhitelist(value: boolean): UpdateRiskSeverityLevelForCsToolRequest;
-
-  getWhitelistReason(): string;
-  setWhitelistReason(value: string): UpdateRiskSeverityLevelForCsToolRequest;
-
-  getIsBlacklist(): boolean;
-  setIsBlacklist(value: boolean): UpdateRiskSeverityLevelForCsToolRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UpdateRiskSeverityLevelForCsToolRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UpdateRiskSeverityLevelForCsToolRequest): UpdateRiskSeverityLevelForCsToolRequest.AsObject;
-  static serializeBinaryToWriter(message: UpdateRiskSeverityLevelForCsToolRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UpdateRiskSeverityLevelForCsToolRequest;
-  static deserializeBinaryFromReader(message: UpdateRiskSeverityLevelForCsToolRequest, reader: jspb.BinaryReader): UpdateRiskSeverityLevelForCsToolRequest;
-}
-
-export namespace UpdateRiskSeverityLevelForCsToolRequest {
-  export type AsObject = {
-    sig: Uint8Array | string,
-    sigAddr: string,
-    usrAddr: string,
-    isWhitelist: boolean,
-    whitelistReason: string,
-    isBlacklist: boolean,
-  }
-}
-
-export class UpdateRiskSeverityLevelForCsToolResponse extends jspb.Message {
-  getErr(): ErrMsg | undefined;
-  setErr(value?: ErrMsg): UpdateRiskSeverityLevelForCsToolResponse;
-  hasErr(): boolean;
-  clearErr(): UpdateRiskSeverityLevelForCsToolResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UpdateRiskSeverityLevelForCsToolResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: UpdateRiskSeverityLevelForCsToolResponse): UpdateRiskSeverityLevelForCsToolResponse.AsObject;
-  static serializeBinaryToWriter(message: UpdateRiskSeverityLevelForCsToolResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UpdateRiskSeverityLevelForCsToolResponse;
-  static deserializeBinaryFromReader(message: UpdateRiskSeverityLevelForCsToolResponse, reader: jspb.BinaryReader): UpdateRiskSeverityLevelForCsToolResponse;
-}
-
-export namespace UpdateRiskSeverityLevelForCsToolResponse {
-  export type AsObject = {
-    err?: ErrMsg.AsObject,
-  }
-}
-
-export class GetRiskSeverityLevelForCsToolRequest extends jspb.Message {
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): GetRiskSeverityLevelForCsToolRequest;
-
-  getSigAddr(): string;
-  setSigAddr(value: string): GetRiskSeverityLevelForCsToolRequest;
-
-  getUsrAddrsList(): Array<string>;
-  setUsrAddrsList(value: Array<string>): GetRiskSeverityLevelForCsToolRequest;
-  clearUsrAddrsList(): GetRiskSeverityLevelForCsToolRequest;
-  addUsrAddrs(value: string, index?: number): GetRiskSeverityLevelForCsToolRequest;
-
-  getPageNo(): number;
-  setPageNo(value: number): GetRiskSeverityLevelForCsToolRequest;
-
-  getPageSize(): number;
-  setPageSize(value: number): GetRiskSeverityLevelForCsToolRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetRiskSeverityLevelForCsToolRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetRiskSeverityLevelForCsToolRequest): GetRiskSeverityLevelForCsToolRequest.AsObject;
-  static serializeBinaryToWriter(message: GetRiskSeverityLevelForCsToolRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetRiskSeverityLevelForCsToolRequest;
-  static deserializeBinaryFromReader(message: GetRiskSeverityLevelForCsToolRequest, reader: jspb.BinaryReader): GetRiskSeverityLevelForCsToolRequest;
-}
-
-export namespace GetRiskSeverityLevelForCsToolRequest {
-  export type AsObject = {
-    sig: Uint8Array | string,
-    sigAddr: string,
-    usrAddrsList: Array<string>,
-    pageNo: number,
-    pageSize: number,
-  }
-}
-
-export class GetRiskSeverityLevelForCsToolResponse extends jspb.Message {
-  getErr(): ErrMsg | undefined;
-  setErr(value?: ErrMsg): GetRiskSeverityLevelForCsToolResponse;
-  hasErr(): boolean;
-  clearErr(): GetRiskSeverityLevelForCsToolResponse;
-
-  getElementsList(): Array<RiskSeverityLevelDataElement>;
-  setElementsList(value: Array<RiskSeverityLevelDataElement>): GetRiskSeverityLevelForCsToolResponse;
-  clearElementsList(): GetRiskSeverityLevelForCsToolResponse;
-  addElements(value?: RiskSeverityLevelDataElement, index?: number): RiskSeverityLevelDataElement;
-
-  getCount(): number;
-  setCount(value: number): GetRiskSeverityLevelForCsToolResponse;
-
-  getPageNo(): number;
-  setPageNo(value: number): GetRiskSeverityLevelForCsToolResponse;
-
-  getPageSize(): number;
-  setPageSize(value: number): GetRiskSeverityLevelForCsToolResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetRiskSeverityLevelForCsToolResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: GetRiskSeverityLevelForCsToolResponse): GetRiskSeverityLevelForCsToolResponse.AsObject;
-  static serializeBinaryToWriter(message: GetRiskSeverityLevelForCsToolResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetRiskSeverityLevelForCsToolResponse;
-  static deserializeBinaryFromReader(message: GetRiskSeverityLevelForCsToolResponse, reader: jspb.BinaryReader): GetRiskSeverityLevelForCsToolResponse;
-}
-
-export namespace GetRiskSeverityLevelForCsToolResponse {
-  export type AsObject = {
-    err?: ErrMsg.AsObject,
-    elementsList: Array<RiskSeverityLevelDataElement.AsObject>,
-    count: number,
-    pageNo: number,
-    pageSize: number,
-  }
-}
-
-export class RiskSeverityLevelDataElement extends jspb.Message {
-  getUsrAddr(): string;
-  setUsrAddr(value: string): RiskSeverityLevelDataElement;
-
-  getIpAddr(): string;
-  setIpAddr(value: string): RiskSeverityLevelDataElement;
-
-  getRiskCategory(): string;
-  setRiskCategory(value: string): RiskSeverityLevelDataElement;
-
-  getRiskType(): string;
-  setRiskType(value: string): RiskSeverityLevelDataElement;
-
-  getRiskSeverity(): string;
-  setRiskSeverity(value: string): RiskSeverityLevelDataElement;
-
-  getIsWhitelist(): boolean;
-  setIsWhitelist(value: boolean): RiskSeverityLevelDataElement;
-
-  getWhitelistReason(): string;
-  setWhitelistReason(value: string): RiskSeverityLevelDataElement;
-
-  getLastUpdateTimeInSecond(): number;
-  setLastUpdateTimeInSecond(value: number): RiskSeverityLevelDataElement;
-
-  getIsBlacklist(): boolean;
-  setIsBlacklist(value: boolean): RiskSeverityLevelDataElement;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RiskSeverityLevelDataElement.AsObject;
-  static toObject(includeInstance: boolean, msg: RiskSeverityLevelDataElement): RiskSeverityLevelDataElement.AsObject;
-  static serializeBinaryToWriter(message: RiskSeverityLevelDataElement, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RiskSeverityLevelDataElement;
-  static deserializeBinaryFromReader(message: RiskSeverityLevelDataElement, reader: jspb.BinaryReader): RiskSeverityLevelDataElement;
-}
-
-export namespace RiskSeverityLevelDataElement {
-  export type AsObject = {
-    usrAddr: string,
-    ipAddr: string,
-    riskCategory: string,
-    riskType: string,
-    riskSeverity: string,
-    isWhitelist: boolean,
-    whitelistReason: string,
-    lastUpdateTimeInSecond: number,
-    isBlacklist: boolean,
-  }
-}
-
-export class TrmScreenRequestElement extends jspb.Message {
-  getAddress(): string;
-  setAddress(value: string): TrmScreenRequestElement;
-
-  getChain(): string;
-  setChain(value: string): TrmScreenRequestElement;
-
-  getAccountExternalId(): string;
-  setAccountExternalId(value: string): TrmScreenRequestElement;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TrmScreenRequestElement.AsObject;
-  static toObject(includeInstance: boolean, msg: TrmScreenRequestElement): TrmScreenRequestElement.AsObject;
-  static serializeBinaryToWriter(message: TrmScreenRequestElement, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TrmScreenRequestElement;
-  static deserializeBinaryFromReader(message: TrmScreenRequestElement, reader: jspb.BinaryReader): TrmScreenRequestElement;
-}
-
-export namespace TrmScreenRequestElement {
-  export type AsObject = {
-    address: string,
-    chain: string,
-    accountExternalId: string,
-  }
-}
-
-export class TrmScreenResponseElement extends jspb.Message {
-  getAccountExternalId(): string;
-  setAccountExternalId(value: string): TrmScreenResponseElement;
-
-  getAddress(): string;
-  setAddress(value: string): TrmScreenResponseElement;
-
-  getAddressSubmitted(): string;
-  setAddressSubmitted(value: string): TrmScreenResponseElement;
-
-  getChain(): string;
-  setChain(value: string): TrmScreenResponseElement;
-
-  getTrmAppUrl(): string;
-  setTrmAppUrl(value: string): TrmScreenResponseElement;
-
-  getAddressRiskIndicatorsList(): Array<TrmScreenAddressRiskIndicator>;
-  setAddressRiskIndicatorsList(value: Array<TrmScreenAddressRiskIndicator>): TrmScreenResponseElement;
-  clearAddressRiskIndicatorsList(): TrmScreenResponseElement;
-  addAddressRiskIndicators(value?: TrmScreenAddressRiskIndicator, index?: number): TrmScreenAddressRiskIndicator;
-
-  getEntitiesList(): Array<TrmScreenEntity>;
-  setEntitiesList(value: Array<TrmScreenEntity>): TrmScreenResponseElement;
-  clearEntitiesList(): TrmScreenResponseElement;
-  addEntities(value?: TrmScreenEntity, index?: number): TrmScreenEntity;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TrmScreenResponseElement.AsObject;
-  static toObject(includeInstance: boolean, msg: TrmScreenResponseElement): TrmScreenResponseElement.AsObject;
-  static serializeBinaryToWriter(message: TrmScreenResponseElement, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TrmScreenResponseElement;
-  static deserializeBinaryFromReader(message: TrmScreenResponseElement, reader: jspb.BinaryReader): TrmScreenResponseElement;
-}
-
-export namespace TrmScreenResponseElement {
-  export type AsObject = {
-    accountExternalId: string,
-    address: string,
-    addressSubmitted: string,
-    chain: string,
-    trmAppUrl: string,
-    addressRiskIndicatorsList: Array<TrmScreenAddressRiskIndicator.AsObject>,
-    entitiesList: Array<TrmScreenEntity.AsObject>,
-  }
-}
-
-export class TrmScreenAddressRiskIndicator extends jspb.Message {
-  getCategory(): string;
-  setCategory(value: string): TrmScreenAddressRiskIndicator;
-
-  getCategoryId(): string;
-  setCategoryId(value: string): TrmScreenAddressRiskIndicator;
-
-  getCategoryRiskScoreLevel(): number;
-  setCategoryRiskScoreLevel(value: number): TrmScreenAddressRiskIndicator;
-
-  getCategoryRiskScoreLevelLabel(): string;
-  setCategoryRiskScoreLevelLabel(value: string): TrmScreenAddressRiskIndicator;
-
-  getIncomingVolumeUsd(): string;
-  setIncomingVolumeUsd(value: string): TrmScreenAddressRiskIndicator;
-
-  getOutgoingVolumeUsd(): string;
-  setOutgoingVolumeUsd(value: string): TrmScreenAddressRiskIndicator;
-
-  getRiskType(): string;
-  setRiskType(value: string): TrmScreenAddressRiskIndicator;
-
-  getTotalVolumeUsd(): string;
-  setTotalVolumeUsd(value: string): TrmScreenAddressRiskIndicator;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TrmScreenAddressRiskIndicator.AsObject;
-  static toObject(includeInstance: boolean, msg: TrmScreenAddressRiskIndicator): TrmScreenAddressRiskIndicator.AsObject;
-  static serializeBinaryToWriter(message: TrmScreenAddressRiskIndicator, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TrmScreenAddressRiskIndicator;
-  static deserializeBinaryFromReader(message: TrmScreenAddressRiskIndicator, reader: jspb.BinaryReader): TrmScreenAddressRiskIndicator;
-}
-
-export namespace TrmScreenAddressRiskIndicator {
-  export type AsObject = {
-    category: string,
-    categoryId: string,
-    categoryRiskScoreLevel: number,
-    categoryRiskScoreLevelLabel: string,
-    incomingVolumeUsd: string,
-    outgoingVolumeUsd: string,
-    riskType: string,
-    totalVolumeUsd: string,
-  }
-}
-
-export class TrmScreenEntity extends jspb.Message {
-  getCategory(): string;
-  setCategory(value: string): TrmScreenEntity;
-
-  getCategoryId(): string;
-  setCategoryId(value: string): TrmScreenEntity;
-
-  getEntity(): string;
-  setEntity(value: string): TrmScreenEntity;
-
-  getRiskScoreLevel(): number;
-  setRiskScoreLevel(value: number): TrmScreenEntity;
-
-  getRiskScoreLevelLabel(): string;
-  setRiskScoreLevelLabel(value: string): TrmScreenEntity;
-
-  getTrmAppUrl(): string;
-  setTrmAppUrl(value: string): TrmScreenEntity;
-
-  getTrmUrn(): string;
-  setTrmUrn(value: string): TrmScreenEntity;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TrmScreenEntity.AsObject;
-  static toObject(includeInstance: boolean, msg: TrmScreenEntity): TrmScreenEntity.AsObject;
-  static serializeBinaryToWriter(message: TrmScreenEntity, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TrmScreenEntity;
-  static deserializeBinaryFromReader(message: TrmScreenEntity, reader: jspb.BinaryReader): TrmScreenEntity;
-}
-
-export namespace TrmScreenEntity {
-  export type AsObject = {
-    category: string,
-    categoryId: string,
-    entity: string,
-    riskScoreLevel: number,
-    riskScoreLevelLabel: string,
-    trmAppUrl: string,
-    trmUrn: string,
-  }
-}
-
-export class TrmScreenResponse extends jspb.Message {
-  getName(): string;
-  setName(value: string): TrmScreenResponse;
-
-  getClassName(): string;
-  setClassName(value: string): TrmScreenResponse;
-
-  getCode(): number;
-  setCode(value: number): TrmScreenResponse;
-
-  getMessage(): string;
-  setMessage(value: string): TrmScreenResponse;
-
-  getData(): TrmScreenRequestElement | undefined;
-  setData(value?: TrmScreenRequestElement): TrmScreenResponse;
-  hasData(): boolean;
-  clearData(): TrmScreenResponse;
-
-  getElementsList(): Array<TrmScreenResponseElement>;
-  setElementsList(value: Array<TrmScreenResponseElement>): TrmScreenResponse;
-  clearElementsList(): TrmScreenResponse;
-  addElements(value?: TrmScreenResponseElement, index?: number): TrmScreenResponseElement;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TrmScreenResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: TrmScreenResponse): TrmScreenResponse.AsObject;
-  static serializeBinaryToWriter(message: TrmScreenResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TrmScreenResponse;
-  static deserializeBinaryFromReader(message: TrmScreenResponse, reader: jspb.BinaryReader): TrmScreenResponse;
-}
-
-export namespace TrmScreenResponse {
-  export type AsObject = {
-    name: string,
-    className: string,
-    code: number,
-    message: string,
-    data?: TrmScreenRequestElement.AsObject,
-    elementsList: Array<TrmScreenResponseElement.AsObject>,
-  }
-}
 
 export class PingRequest extends jspb.Message {
   getAddr(): string;
@@ -636,48 +46,6 @@ export class PingResponse extends jspb.Message {
 }
 
 export namespace PingResponse {
-  export type AsObject = {
-    err?: ErrMsg.AsObject,
-  }
-}
-
-export class PingLpRequest extends jspb.Message {
-  getAddr(): string;
-  setAddr(value: string): PingLpRequest;
-
-  getLpType(): LPType;
-  setLpType(value: LPType): PingLpRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PingLpRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: PingLpRequest): PingLpRequest.AsObject;
-  static serializeBinaryToWriter(message: PingLpRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PingLpRequest;
-  static deserializeBinaryFromReader(message: PingLpRequest, reader: jspb.BinaryReader): PingLpRequest;
-}
-
-export namespace PingLpRequest {
-  export type AsObject = {
-    addr: string,
-    lpType: LPType,
-  }
-}
-
-export class PingLpResponse extends jspb.Message {
-  getErr(): ErrMsg | undefined;
-  setErr(value?: ErrMsg): PingLpResponse;
-  hasErr(): boolean;
-  clearErr(): PingLpResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PingLpResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: PingLpResponse): PingLpResponse.AsObject;
-  static serializeBinaryToWriter(message: PingLpResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PingLpResponse;
-  static deserializeBinaryFromReader(message: PingLpResponse, reader: jspb.BinaryReader): PingLpResponse;
-}
-
-export namespace PingLpResponse {
   export type AsObject = {
     err?: ErrMsg.AsObject,
   }
@@ -1110,9 +478,6 @@ export class SignAgainRequest extends jspb.Message {
   getNonce(): number;
   setNonce(value: number): SignAgainRequest;
 
-  getTransferId(): string;
-  setTransferId(value: string): SignAgainRequest;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SignAgainRequest.AsObject;
   static toObject(includeInstance: boolean, msg: SignAgainRequest): SignAgainRequest.AsObject;
@@ -1129,7 +494,6 @@ export namespace SignAgainRequest {
     refundId: string,
     seqNum: number,
     nonce: number,
-    transferId: string,
   }
 }
 
@@ -1265,12 +629,6 @@ export class TransferData extends jspb.Message {
   getRefundTx(): string;
   setRefundTx(value: string): TransferData;
 
-  getDstChainId(): number;
-  setDstChainId(value: number): TransferData;
-
-  getDstTokenAddr(): string;
-  setDstTokenAddr(value: string): TransferData;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TransferData.AsObject;
   static toObject(includeInstance: boolean, msg: TransferData): TransferData.AsObject;
@@ -1288,8 +646,6 @@ export namespace TransferData {
     dstAmt: string,
     dstTx: string,
     refundTx: string,
-    dstChainId: number,
-    dstTokenAddr: string,
   }
 }
 
@@ -1777,9 +1133,6 @@ export class Chain extends jspb.Message {
   getFarmingRewardContractAddr(): string;
   setFarmingRewardContractAddr(value: string): Chain;
 
-  getTransferAgentContractAddr(): string;
-  setTransferAgentContractAddr(value: string): Chain;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Chain.AsObject;
   static toObject(includeInstance: boolean, msg: Chain): Chain.AsObject;
@@ -1803,69 +1156,6 @@ export namespace Chain {
     suggestedGasCost: number,
     flatUsdFee: number,
     farmingRewardContractAddr: string,
-    transferAgentContractAddr: string,
-  }
-}
-
-export class RfqChainToken extends jspb.Message {
-  getTokeninfo(): ChainToken | undefined;
-  setTokeninfo(value?: ChainToken): RfqChainToken;
-  hasTokeninfo(): boolean;
-  clearTokeninfo(): RfqChainToken;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RfqChainToken.AsObject;
-  static toObject(includeInstance: boolean, msg: RfqChainToken): RfqChainToken.AsObject;
-  static serializeBinaryToWriter(message: RfqChainToken, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RfqChainToken;
-  static deserializeBinaryFromReader(message: RfqChainToken, reader: jspb.BinaryReader): RfqChainToken;
-}
-
-export namespace RfqChainToken {
-  export type AsObject = {
-    tokeninfo?: ChainToken.AsObject,
-  }
-}
-
-export class ChainToken extends jspb.Message {
-  getChainId(): number;
-  setChainId(value: number): ChainToken;
-
-  getSymbol(): string;
-  setSymbol(value: string): ChainToken;
-
-  getAddress(): string;
-  setAddress(value: string): ChainToken;
-
-  getDecimals(): number;
-  setDecimals(value: number): ChainToken;
-
-  getName(): string;
-  setName(value: string): ChainToken;
-
-  getLogoUri(): string;
-  setLogoUri(value: string): ChainToken;
-
-  getDisabled(): boolean;
-  setDisabled(value: boolean): ChainToken;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ChainToken.AsObject;
-  static toObject(includeInstance: boolean, msg: ChainToken): ChainToken.AsObject;
-  static serializeBinaryToWriter(message: ChainToken, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ChainToken;
-  static deserializeBinaryFromReader(message: ChainToken, reader: jspb.BinaryReader): ChainToken;
-}
-
-export namespace ChainToken {
-  export type AsObject = {
-    chainId: number,
-    symbol: string,
-    address: string,
-    decimals: number,
-    name: string,
-    logoUri: string,
-    disabled: boolean,
   }
 }
 
@@ -1919,12 +1209,6 @@ export class TokenInfo extends jspb.Message {
   getLiqAggRmSrcDisabled(): boolean;
   setLiqAggRmSrcDisabled(value: boolean): TokenInfo;
 
-  getDelayThreshold(): string;
-  setDelayThreshold(value: string): TokenInfo;
-
-  getDelayPeriod(): number;
-  setDelayPeriod(value: number): TokenInfo;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TokenInfo.AsObject;
   static toObject(includeInstance: boolean, msg: TokenInfo): TokenInfo.AsObject;
@@ -1944,8 +1228,6 @@ export namespace TokenInfo {
     liqAddDisabled: boolean,
     liqRmDisabled: boolean,
     liqAggRmSrcDisabled: boolean,
-    delayThreshold: string,
-    delayPeriod: number,
   }
 }
 
@@ -2104,9 +1386,6 @@ export class GetTransferStatusResponse extends jspb.Message {
   getDstBlockTxLink(): string;
   setDstBlockTxLink(value: string): GetTransferStatusResponse;
 
-  getBridgeType(): BridgeType;
-  setBridgeType(value: BridgeType): GetTransferStatusResponse;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetTransferStatusResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetTransferStatusResponse): GetTransferStatusResponse.AsObject;
@@ -2127,7 +1406,6 @@ export namespace GetTransferStatusResponse {
     blockDelay: number,
     srcBlockTxLink: string,
     dstBlockTxLink: string,
-    bridgeType: BridgeType,
   }
 }
 
@@ -2182,96 +1460,6 @@ export namespace GetTransferConfigsResponse {
     chainTokenMap: Array<[number, ChainTokenInfo.AsObject]>,
     farmingRewardContractAddr: string,
     peggedPairConfigsList: Array<PeggedPairConfig.AsObject>,
-  }
-}
-
-export class GetRfqConfigsRequest extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetRfqConfigsRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetRfqConfigsRequest): GetRfqConfigsRequest.AsObject;
-  static serializeBinaryToWriter(message: GetRfqConfigsRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetRfqConfigsRequest;
-  static deserializeBinaryFromReader(message: GetRfqConfigsRequest, reader: jspb.BinaryReader): GetRfqConfigsRequest;
-}
-
-export namespace GetRfqConfigsRequest {
-  export type AsObject = {
-  }
-}
-
-export class GetRfqConfigsResponse extends jspb.Message {
-  getErr(): ErrMsg | undefined;
-  setErr(value?: ErrMsg): GetRfqConfigsResponse;
-  hasErr(): boolean;
-  clearErr(): GetRfqConfigsResponse;
-
-  getChaintokensList(): Array<RfqChainToken>;
-  setChaintokensList(value: Array<RfqChainToken>): GetRfqConfigsResponse;
-  clearChaintokensList(): GetRfqConfigsResponse;
-  addChaintokens(value?: RfqChainToken, index?: number): RfqChainToken;
-
-  getRfqContractAddressesMap(): jspb.Map<number, string>;
-  clearRfqContractAddressesMap(): GetRfqConfigsResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetRfqConfigsResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: GetRfqConfigsResponse): GetRfqConfigsResponse.AsObject;
-  static serializeBinaryToWriter(message: GetRfqConfigsResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetRfqConfigsResponse;
-  static deserializeBinaryFromReader(message: GetRfqConfigsResponse, reader: jspb.BinaryReader): GetRfqConfigsResponse;
-}
-
-export namespace GetRfqConfigsResponse {
-  export type AsObject = {
-    err?: ErrMsg.AsObject,
-    chaintokensList: Array<RfqChainToken.AsObject>,
-    rfqContractAddressesMap: Array<[number, string]>,
-  }
-}
-
-export class RfqPrice extends jspb.Message {
-  getSendToken(): ChainToken | undefined;
-  setSendToken(value?: ChainToken): RfqPrice;
-  hasSendToken(): boolean;
-  clearSendToken(): RfqPrice;
-
-  getSendAmount(): string;
-  setSendAmount(value: string): RfqPrice;
-
-  getReceiveToken(): ChainToken | undefined;
-  setReceiveToken(value?: ChainToken): RfqPrice;
-  hasReceiveToken(): boolean;
-  clearReceiveToken(): RfqPrice;
-
-  getReceiveAmount(): string;
-  setReceiveAmount(value: string): RfqPrice;
-
-  getValidThru(): number;
-  setValidThru(value: number): RfqPrice;
-
-  getMmAddr(): string;
-  setMmAddr(value: string): RfqPrice;
-
-  getSig(): string;
-  setSig(value: string): RfqPrice;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RfqPrice.AsObject;
-  static toObject(includeInstance: boolean, msg: RfqPrice): RfqPrice.AsObject;
-  static serializeBinaryToWriter(message: RfqPrice, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RfqPrice;
-  static deserializeBinaryFromReader(message: RfqPrice, reader: jspb.BinaryReader): RfqPrice;
-}
-
-export namespace RfqPrice {
-  export type AsObject = {
-    sendToken?: ChainToken.AsObject,
-    sendAmount: string,
-    receiveToken?: ChainToken.AsObject,
-    receiveAmount: string,
-    validThru: number,
-    mmAddr: string,
-    sig: string,
   }
 }
 
@@ -2330,48 +1518,6 @@ export namespace PeggedPairConfig {
     vaultVersion: number,
     bridgeVersion: number,
     migrationPegBurnContractAddr: string,
-  }
-}
-
-export class RfqMarkRequest extends jspb.Message {
-  getTransferId(): string;
-  setTransferId(value: string): RfqMarkRequest;
-
-  getSrcTxHash(): string;
-  setSrcTxHash(value: string): RfqMarkRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RfqMarkRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RfqMarkRequest): RfqMarkRequest.AsObject;
-  static serializeBinaryToWriter(message: RfqMarkRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RfqMarkRequest;
-  static deserializeBinaryFromReader(message: RfqMarkRequest, reader: jspb.BinaryReader): RfqMarkRequest;
-}
-
-export namespace RfqMarkRequest {
-  export type AsObject = {
-    transferId: string,
-    srcTxHash: string,
-  }
-}
-
-export class RfqMarkResponse extends jspb.Message {
-  getErr(): ErrMsg | undefined;
-  setErr(value?: ErrMsg): RfqMarkResponse;
-  hasErr(): boolean;
-  clearErr(): RfqMarkResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RfqMarkResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: RfqMarkResponse): RfqMarkResponse.AsObject;
-  static serializeBinaryToWriter(message: RfqMarkResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RfqMarkResponse;
-  static deserializeBinaryFromReader(message: RfqMarkResponse, reader: jspb.BinaryReader): RfqMarkResponse;
-}
-
-export namespace RfqMarkResponse {
-  export type AsObject = {
-    err?: ErrMsg.AsObject,
   }
 }
 
@@ -2445,9 +1591,6 @@ export class EstimateAmtRequest extends jspb.Message {
   getIsPegged(): boolean;
   setIsPegged(value: boolean): EstimateAmtRequest;
 
-  getNeedDetailInfo(): boolean;
-  setNeedDetailInfo(value: boolean): EstimateAmtRequest;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): EstimateAmtRequest.AsObject;
   static toObject(includeInstance: boolean, msg: EstimateAmtRequest): EstimateAmtRequest.AsObject;
@@ -2465,7 +1608,6 @@ export namespace EstimateAmtRequest {
     usrAddr: string,
     slippageTolerance: number,
     isPegged: boolean,
-    needDetailInfo: boolean,
   }
 }
 
@@ -2499,15 +1641,6 @@ export class EstimateAmtResponse extends jspb.Message {
   getDropGasAmt(): string;
   setDropGasAmt(value: string): EstimateAmtResponse;
 
-  getOpFeeRebate(): number;
-  setOpFeeRebate(value: number): EstimateAmtResponse;
-
-  getOpFeeRebatePortion(): number;
-  setOpFeeRebatePortion(value: number): EstimateAmtResponse;
-
-  getOpFeeRebateEndTime(): number;
-  setOpFeeRebateEndTime(value: number): EstimateAmtResponse;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): EstimateAmtResponse.AsObject;
   static toObject(includeInstance: boolean, msg: EstimateAmtResponse): EstimateAmtResponse.AsObject;
@@ -2527,9 +1660,6 @@ export namespace EstimateAmtResponse {
     maxSlippage: number,
     estimatedReceiveAmt: string,
     dropGasAmt: string,
-    opFeeRebate: number,
-    opFeeRebatePortion: number,
-    opFeeRebateEndTime: number,
   }
 }
 
@@ -2975,18 +2105,6 @@ export class TransferHistory extends jspb.Message {
   getUpdateTs(): number;
   setUpdateTs(value: number): TransferHistory;
 
-  getBridgeType(): BridgeType;
-  setBridgeType(value: BridgeType): TransferHistory;
-
-  getDstDeadline(): number;
-  setDstDeadline(value: number): TransferHistory;
-
-  getSender(): string;
-  setSender(value: string): TransferHistory;
-
-  getReceiver(): string;
-  setReceiver(value: string): TransferHistory;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TransferHistory.AsObject;
   static toObject(includeInstance: boolean, msg: TransferHistory): TransferHistory.AsObject;
@@ -3006,10 +2124,6 @@ export namespace TransferHistory {
     status: sgn_cbridge_v1_query_pb.TransferHistoryStatus,
     refundReason: sgn_cbridge_v1_cbridge_pb.XferStatus,
     updateTs: number,
-    bridgeType: BridgeType,
-    dstDeadline: number,
-    sender: string,
-    receiver: string,
   }
 }
 
@@ -3126,70 +2240,6 @@ export namespace ClaimHistory {
     seqNum: number,
     nonce: number,
     withdrawId: string,
-  }
-}
-
-export class PendingHistoryRequest extends jspb.Message {
-  getAddrList(): Array<string>;
-  setAddrList(value: Array<string>): PendingHistoryRequest;
-  clearAddrList(): PendingHistoryRequest;
-  addAddr(value: string, index?: number): PendingHistoryRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PendingHistoryRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: PendingHistoryRequest): PendingHistoryRequest.AsObject;
-  static serializeBinaryToWriter(message: PendingHistoryRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PendingHistoryRequest;
-  static deserializeBinaryFromReader(message: PendingHistoryRequest, reader: jspb.BinaryReader): PendingHistoryRequest;
-}
-
-export namespace PendingHistoryRequest {
-  export type AsObject = {
-    addrList: Array<string>,
-  }
-}
-
-export class PendingHistoryResponse extends jspb.Message {
-  getErr(): ErrMsg | undefined;
-  setErr(value?: ErrMsg): PendingHistoryResponse;
-  hasErr(): boolean;
-  clearErr(): PendingHistoryResponse;
-
-  getActionTransferHistoryList(): Array<TransferHistory>;
-  setActionTransferHistoryList(value: Array<TransferHistory>): PendingHistoryResponse;
-  clearActionTransferHistoryList(): PendingHistoryResponse;
-  addActionTransferHistory(value?: TransferHistory, index?: number): TransferHistory;
-
-  getPendingTransferHistoryList(): Array<TransferHistory>;
-  setPendingTransferHistoryList(value: Array<TransferHistory>): PendingHistoryResponse;
-  clearPendingTransferHistoryList(): PendingHistoryResponse;
-  addPendingTransferHistory(value?: TransferHistory, index?: number): TransferHistory;
-
-  getActionLpHistoryList(): Array<LPHistory>;
-  setActionLpHistoryList(value: Array<LPHistory>): PendingHistoryResponse;
-  clearActionLpHistoryList(): PendingHistoryResponse;
-  addActionLpHistory(value?: LPHistory, index?: number): LPHistory;
-
-  getPendingLpHistoryList(): Array<LPHistory>;
-  setPendingLpHistoryList(value: Array<LPHistory>): PendingHistoryResponse;
-  clearPendingLpHistoryList(): PendingHistoryResponse;
-  addPendingLpHistory(value?: LPHistory, index?: number): LPHistory;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PendingHistoryResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: PendingHistoryResponse): PendingHistoryResponse.AsObject;
-  static serializeBinaryToWriter(message: PendingHistoryResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PendingHistoryResponse;
-  static deserializeBinaryFromReader(message: PendingHistoryResponse, reader: jspb.BinaryReader): PendingHistoryResponse;
-}
-
-export namespace PendingHistoryResponse {
-  export type AsObject = {
-    err?: ErrMsg.AsObject,
-    actionTransferHistoryList: Array<TransferHistory.AsObject>,
-    pendingTransferHistoryList: Array<TransferHistory.AsObject>,
-    actionLpHistoryList: Array<LPHistory.AsObject>,
-    pendingLpHistoryList: Array<LPHistory.AsObject>,
   }
 }
 
@@ -3518,9 +2568,6 @@ export class Reward extends jspb.Message {
   hasToken(): boolean;
   clearToken(): Reward;
 
-  getChainId(): number;
-  setChainId(value: number): Reward;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Reward.AsObject;
   static toObject(includeInstance: boolean, msg: Reward): Reward.AsObject;
@@ -3533,7 +2580,6 @@ export namespace Reward {
   export type AsObject = {
     amt: number,
     token?: sgn_cbridge_v1_query_pb.Token.AsObject,
-    chainId: number,
   }
 }
 
@@ -3556,16 +2602,6 @@ export class RewardingDataResponse extends jspb.Message {
   clearUnlockedCumulativeRewardsList(): RewardingDataResponse;
   addUnlockedCumulativeRewards(value?: Reward, index?: number): Reward;
 
-  getHistoricalCumulativeRewardAmountsList(): Array<cosmos_base_v1beta1_coin_pb.DecCoin>;
-  setHistoricalCumulativeRewardAmountsList(value: Array<cosmos_base_v1beta1_coin_pb.DecCoin>): RewardingDataResponse;
-  clearHistoricalCumulativeRewardAmountsList(): RewardingDataResponse;
-  addHistoricalCumulativeRewardAmounts(value?: cosmos_base_v1beta1_coin_pb.DecCoin, index?: number): cosmos_base_v1beta1_coin_pb.DecCoin;
-
-  getUnlockedRewardDetailsList(): Array<sgn_farming_v1_farming_pb.RewardClaimDetails>;
-  setUnlockedRewardDetailsList(value: Array<sgn_farming_v1_farming_pb.RewardClaimDetails>): RewardingDataResponse;
-  clearUnlockedRewardDetailsList(): RewardingDataResponse;
-  addUnlockedRewardDetails(value?: sgn_farming_v1_farming_pb.RewardClaimDetails, index?: number): sgn_farming_v1_farming_pb.RewardClaimDetails;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RewardingDataResponse.AsObject;
   static toObject(includeInstance: boolean, msg: RewardingDataResponse): RewardingDataResponse.AsObject;
@@ -3580,8 +2616,6 @@ export namespace RewardingDataResponse {
     usdPriceMap: Array<[string, number]>,
     historicalCumulativeRewardsList: Array<Reward.AsObject>,
     unlockedCumulativeRewardsList: Array<Reward.AsObject>,
-    historicalCumulativeRewardAmountsList: Array<cosmos_base_v1beta1_coin_pb.DecCoin.AsObject>,
-    unlockedRewardDetailsList: Array<sgn_farming_v1_farming_pb.RewardClaimDetails.AsObject>,
   }
 }
 
@@ -4268,9 +3302,6 @@ export class TXOperations extends jspb.Message {
   getDstTxLink(): string;
   setDstTxLink(value: string): TXOperations;
 
-  getBridgeType(): BridgeType;
-  setBridgeType(value: BridgeType): TXOperations;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TXOperations.AsObject;
   static toObject(includeInstance: boolean, msg: TXOperations): TXOperations.AsObject;
@@ -4295,7 +3326,6 @@ export namespace TXOperations {
     status: sgn_cbridge_v1_query_pb.TransferHistoryStatus,
     refId: string,
     dstTxLink: string,
-    bridgeType: BridgeType,
   }
 }
 
@@ -4404,62 +3434,6 @@ export namespace GetInfoByTxHashResponse {
     status: UserCaseStatus,
     memo: string,
     info: string,
-  }
-}
-
-export class GetTransferBySrcTxRequest extends jspb.Message {
-  getSrcTxHash(): string;
-  setSrcTxHash(value: string): GetTransferBySrcTxRequest;
-
-  getBridgeType(): BridgeType;
-  setBridgeType(value: BridgeType): GetTransferBySrcTxRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetTransferBySrcTxRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetTransferBySrcTxRequest): GetTransferBySrcTxRequest.AsObject;
-  static serializeBinaryToWriter(message: GetTransferBySrcTxRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetTransferBySrcTxRequest;
-  static deserializeBinaryFromReader(message: GetTransferBySrcTxRequest, reader: jspb.BinaryReader): GetTransferBySrcTxRequest;
-}
-
-export namespace GetTransferBySrcTxRequest {
-  export type AsObject = {
-    srcTxHash: string,
-    bridgeType: BridgeType,
-  }
-}
-
-export class GetTransferBySrcTxResponse extends jspb.Message {
-  getErr(): ErrMsg | undefined;
-  setErr(value?: ErrMsg): GetTransferBySrcTxResponse;
-  hasErr(): boolean;
-  clearErr(): GetTransferBySrcTxResponse;
-
-  getTransfer(): TransferHistory | undefined;
-  setTransfer(value?: TransferHistory): GetTransferBySrcTxResponse;
-  hasTransfer(): boolean;
-  clearTransfer(): GetTransferBySrcTxResponse;
-
-  getRefundTx(): string;
-  setRefundTx(value: string): GetTransferBySrcTxResponse;
-
-  getUsrAddr(): string;
-  setUsrAddr(value: string): GetTransferBySrcTxResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetTransferBySrcTxResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: GetTransferBySrcTxResponse): GetTransferBySrcTxResponse.AsObject;
-  static serializeBinaryToWriter(message: GetTransferBySrcTxResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetTransferBySrcTxResponse;
-  static deserializeBinaryFromReader(message: GetTransferBySrcTxResponse, reader: jspb.BinaryReader): GetTransferBySrcTxResponse;
-}
-
-export namespace GetTransferBySrcTxResponse {
-  export type AsObject = {
-    err?: ErrMsg.AsObject,
-    transfer?: TransferHistory.AsObject,
-    refundTx: string,
-    usrAddr: string,
   }
 }
 
@@ -4616,94 +3590,6 @@ export class GetCbrConfigsOnChainRequest extends jspb.Message {
 export namespace GetCbrConfigsOnChainRequest {
   export type AsObject = {
     chainId: number,
-  }
-}
-
-export class RfqFilterOrdersRequest extends jspb.Message {
-  getStartTime(): number;
-  setStartTime(value: number): RfqFilterOrdersRequest;
-
-  getEndTime(): number;
-  setEndTime(value: number): RfqFilterOrdersRequest;
-
-  getLimit(): number;
-  setLimit(value: number): RfqFilterOrdersRequest;
-
-  getOffset(): number;
-  setOffset(value: number): RfqFilterOrdersRequest;
-
-  getStatusesList(): Array<OrderStatus>;
-  setStatusesList(value: Array<OrderStatus>): RfqFilterOrdersRequest;
-  clearStatusesList(): RfqFilterOrdersRequest;
-  addStatuses(value: OrderStatus, index?: number): RfqFilterOrdersRequest;
-
-  getMmIdsList(): Array<string>;
-  setMmIdsList(value: Array<string>): RfqFilterOrdersRequest;
-  clearMmIdsList(): RfqFilterOrdersRequest;
-  addMmIds(value: string, index?: number): RfqFilterOrdersRequest;
-
-  getMmAddrsList(): Array<string>;
-  setMmAddrsList(value: Array<string>): RfqFilterOrdersRequest;
-  clearMmAddrsList(): RfqFilterOrdersRequest;
-  addMmAddrs(value: string, index?: number): RfqFilterOrdersRequest;
-
-  getUsrAddrsList(): Array<string>;
-  setUsrAddrsList(value: Array<string>): RfqFilterOrdersRequest;
-  clearUsrAddrsList(): RfqFilterOrdersRequest;
-  addUsrAddrs(value: string, index?: number): RfqFilterOrdersRequest;
-
-  getSrcChainIdsList(): Array<number>;
-  setSrcChainIdsList(value: Array<number>): RfqFilterOrdersRequest;
-  clearSrcChainIdsList(): RfqFilterOrdersRequest;
-  addSrcChainIds(value: number, index?: number): RfqFilterOrdersRequest;
-
-  getDstChainIdsList(): Array<number>;
-  setDstChainIdsList(value: Array<number>): RfqFilterOrdersRequest;
-  clearDstChainIdsList(): RfqFilterOrdersRequest;
-  addDstChainIds(value: number, index?: number): RfqFilterOrdersRequest;
-
-  getSrcTokenSymbolsList(): Array<string>;
-  setSrcTokenSymbolsList(value: Array<string>): RfqFilterOrdersRequest;
-  clearSrcTokenSymbolsList(): RfqFilterOrdersRequest;
-  addSrcTokenSymbols(value: string, index?: number): RfqFilterOrdersRequest;
-
-  getDstTokenSymbolsList(): Array<string>;
-  setDstTokenSymbolsList(value: Array<string>): RfqFilterOrdersRequest;
-  clearDstTokenSymbolsList(): RfqFilterOrdersRequest;
-  addDstTokenSymbols(value: string, index?: number): RfqFilterOrdersRequest;
-
-  getSigAddr(): string;
-  setSigAddr(value: string): RfqFilterOrdersRequest;
-
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): RfqFilterOrdersRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RfqFilterOrdersRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RfqFilterOrdersRequest): RfqFilterOrdersRequest.AsObject;
-  static serializeBinaryToWriter(message: RfqFilterOrdersRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RfqFilterOrdersRequest;
-  static deserializeBinaryFromReader(message: RfqFilterOrdersRequest, reader: jspb.BinaryReader): RfqFilterOrdersRequest;
-}
-
-export namespace RfqFilterOrdersRequest {
-  export type AsObject = {
-    startTime: number,
-    endTime: number,
-    limit: number,
-    offset: number,
-    statusesList: Array<OrderStatus>,
-    mmIdsList: Array<string>,
-    mmAddrsList: Array<string>,
-    usrAddrsList: Array<string>,
-    srcChainIdsList: Array<number>,
-    dstChainIdsList: Array<number>,
-    srcTokenSymbolsList: Array<string>,
-    dstTokenSymbolsList: Array<string>,
-    sigAddr: string,
-    sig: Uint8Array | string,
   }
 }
 
@@ -5332,15 +4218,6 @@ export class GetFeeRebateInfoResponse extends jspb.Message {
   getSoFarSumReward(): number;
   setSoFarSumReward(value: number): GetFeeRebateInfoResponse;
 
-  getRewardTokenSymbol(): string;
-  setRewardTokenSymbol(value: string): GetFeeRebateInfoResponse;
-
-  getRewardAmt(): number;
-  setRewardAmt(value: number): GetFeeRebateInfoResponse;
-
-  getPerUserMaxRewardCap(): number;
-  setPerUserMaxRewardCap(value: number): GetFeeRebateInfoResponse;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetFeeRebateInfoResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetFeeRebateInfoResponse): GetFeeRebateInfoResponse.AsObject;
@@ -5361,9 +4238,6 @@ export namespace GetFeeRebateInfoResponse {
     signature?: sgn_common_v1_common_pb.Signature.AsObject,
     eventMaxRewardCap: number,
     soFarSumReward: number,
-    rewardTokenSymbol: string,
-    rewardAmt: number,
-    perUserMaxRewardCap: number,
   }
 }
 
@@ -6226,17 +5100,6 @@ export enum ClaimStatus {
   CLM_COMPLETED = 4,
   CLM_FAILED = 5,
 }
-export enum OrderStatus { 
-  STATUS_PENDING = 0,
-  STATUS_SRC_DEPOSITED = 10,
-  STATUS_MM_REJECTED = 20,
-  STATUS_MM_DST_EXECUTED = 30,
-  STATUS_DST_TRANSFERRED = 40,
-  STATUS_MM_SRC_EXECUTED = 50,
-  STATUS_REFUND_INITIATED = 60,
-  STATUS_SRC_RELEASED = 70,
-  STATUS_REFUNDED = 80,
-}
 export enum CSType { 
   CT_UNKNOWN = 0,
   CT_TX = 1,
@@ -6300,7 +5163,6 @@ export enum SignAgainType {
   SAT_LIQUIDITY = 1,
   SAT_CANONICAL = 2,
   SAT_REFUND = 3,
-  SAT_TRANSFER_MSG = 4,
 }
 export enum ErrCode { 
   ERROR_CODE_UNDEFINED = 0,
@@ -6316,7 +5178,6 @@ export enum ErrCode {
   ERROR_CODE_TRANSFER_DISABLED = 1009,
   ERROR_CODE_LIQ_RM_DISABLED = 1010,
   ERROR_CODE_LIQ_AGG_RM_SRC_DISABLED = 1011,
-  ERROR_CODE_BAD_LIQ_SLIPPAGE = 1012,
 }
 export enum BridgeType { 
   BRIDGETYPE_UNKNOWN = 0,
@@ -6324,5 +5185,4 @@ export enum BridgeType {
   BRIDGETYPE_DEPOSIT_MINT = 2,
   BRIDGETYPE_BURN_WITHDRAW = 3,
   BRIDGETYPE_BURN_MINT = 4,
-  BRIDGETYPE_RFQ = 5,
 }

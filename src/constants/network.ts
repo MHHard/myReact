@@ -1,32 +1,33 @@
 // import { TypeOfTag } from "typescript";
-import { basTestNetworks } from "./chains_bas_testnet";
+// import { mainnetNetworks } from "./chains_mainnet";
+// import { stagingNetworks } from "./chains_staging_mainnet";
 import { mainnetNetworks } from "./chains_mainnet";
 import { stagingNetworks } from "./chains_staging_mainnet";
+import { preMainnetNetworks } from "./chains_pre_mainnet";
 import { testNetworks } from "./chains_testnet";
-import { aptosNetwork } from "./chains_aptos";
-import { LocalChainConfigType } from "./type";
 
 export interface NetworkInfo {
   name: string;
-  chainId: number | string;
+  color: string;
+  chainId: number;
   rpcUrl: string;
-  walletRpcUrl?: string; // specific RPC for wallets.
+  walletRpcUrl?: string;
   iconUrl: string;
   symbol: string;
+  wrapTokenAddress: string;
   blockExplorerUrl: string;
-  tokenSymbolList: string[];
-  lqMintTokenSymbolBlackList: string[];
 }
 
 export const INFURA_ID = process.env.REACT_APP_INFURA_ID;
 export const type = process.env.REACT_APP_ENV_TYPE;
-
-export const isTestNet = process.env.REACT_APP_ENV_TYPE === "test";
 // type NetType = typeof stagingNetworks;
-let newNetworks: LocalChainConfigType;
+let newNetworks;
 switch (type) {
   case "staging":
     newNetworks = stagingNetworks;
+    break;
+  case "preMainnet":
+    newNetworks = preMainnetNetworks;
     break;
   case "mainnet":
     newNetworks = mainnetNetworks;
@@ -34,25 +35,30 @@ switch (type) {
   case "test":
     newNetworks = testNetworks;
     break;
-  case "basTest":
-    newNetworks = basTestNetworks;
-    break;
-  case "aptos":
-    newNetworks = aptosNetwork;
-    break;
   default:
-    newNetworks = mainnetNetworks;
-    break;
+  // newNetworks = mainnetNetworks;
+  // break;
 }
-export const NETWORKS: LocalChainConfigType = newNetworks;
-export const CHAIN_LIST: NetworkInfo[] = Object.values(NETWORKS) as NetworkInfo[];
-export const getNetworkById: (chainId: number | string) => NetworkInfo = (chainId: number | string) => {
+export const NETWORKS = newNetworks;
+export const CHAIN_LIST: NetworkInfo[] = Object.values(
+  NETWORKS
+) as NetworkInfo[];
+export const getNetworkById: (chainId: number | undefined) => NetworkInfo = (
+  chainId: number | undefined
+) => {
+  if (!chainId) {
+    return NETWORKS.localhost;
+  }
+  /* eslint-disable-next-line no-restricted-syntax */
   for (let i = 0; i < CHAIN_LIST.length; i++) {
-    if (CHAIN_LIST[i]?.chainId === chainId || CHAIN_LIST[i].chainId === Number(chainId)) {
+    if (
+      CHAIN_LIST[i]?.chainId === chainId ||
+      CHAIN_LIST[i].chainId === Number(chainId)
+    ) {
       return CHAIN_LIST[i];
     }
   }
-  return NETWORKS.mainnet;
+  return NETWORKS.localhost;
 };
 
 export const USD_TOKENS = {
@@ -64,11 +70,11 @@ export const USD_TOKENS = {
 
 export const isGasToken = (chainId: number, tokenSymbol: string) => {
   const localChainWithGasToken = Object.values(NETWORKS).find(
-    localChain => chainId === localChain.chainId && tokenSymbol === localChain.symbol,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (localChain: any) =>
+      chainId === localChain.chainId && tokenSymbol === localChain.symbol
   );
-  if (chainId === 999999998) {
-    return isSeiChainNativeToken(chainId, tokenSymbol);
-  }
+
   /// Remote config uses TUS as WTUS.
   /// Treat TUS not gas token for Swimmer for this special case
   if (chainId === 73772 && tokenSymbol === "TUS") {
@@ -78,16 +84,5 @@ export const isGasToken = (chainId: number, tokenSymbol: string) => {
   if (localChainWithGasToken) {
     return true;
   }
-  return false;
-};
-
-export const isSeiChainNativeToken = (chainId: number, tokenSymbol: string) => {
-  if (chainId !== 999999998) {
-    return false;
-  }
-  if (tokenSymbol === "usei" || tokenSymbol === "uceler" || tokenSymbol === "WBTC") {
-    return true;
-  }
-
   return false;
 };

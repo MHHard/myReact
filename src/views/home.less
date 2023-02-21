@@ -1,0 +1,45 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .content {
+    flex: 1;
+    padding: 0 0px;
+    min-height: 100vh;
+    max-width: 100%;
+  }
+}
+.notifi {
+  color: #ffffff !important;
+  background: rgba(40, 57, 68, 0.9) !important;
+  border-radius: 12px !important;
+  width: 310px !important;
+  padding: 12px 10px !important;
+  .ant-notification-notice-message {
+    color: #ffffff !important;
+    margin-top: 5px !important;
+  }
+  .ant-notification-notice-description {
+    color: #86898c !important;
+  }
+  .ant-notification-close-x {
+    color: #ffffff !important;
+  }
+}
+
+.loadbg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.5) !important;
+
+  .loadgif {
+    width: 100px;
+    height: 100px;
+  }
+}

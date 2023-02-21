@@ -1,4 +1,6 @@
-import * as jspb from "google-protobuf";
+import * as jspb from 'google-protobuf'
+
+
 
 export class ReportSgnAnalyticsRequest extends jspb.Message {
   getReport(): Uint8Array | string;
@@ -16,17 +18,14 @@ export class ReportSgnAnalyticsRequest extends jspb.Message {
   static toObject(includeInstance: boolean, msg: ReportSgnAnalyticsRequest): ReportSgnAnalyticsRequest.AsObject;
   static serializeBinaryToWriter(message: ReportSgnAnalyticsRequest, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): ReportSgnAnalyticsRequest;
-  static deserializeBinaryFromReader(
-    message: ReportSgnAnalyticsRequest,
-    reader: jspb.BinaryReader,
-  ): ReportSgnAnalyticsRequest;
+  static deserializeBinaryFromReader(message: ReportSgnAnalyticsRequest, reader: jspb.BinaryReader): ReportSgnAnalyticsRequest;
 }
 
 export namespace ReportSgnAnalyticsRequest {
   export type AsObject = {
-    report: Uint8Array | string;
-    sig: Uint8Array | string;
-  };
+    report: Uint8Array | string,
+    sig: Uint8Array | string,
+  }
 }
 
 export class SgnAnalyticsReport extends jspb.Message {
@@ -55,12 +54,12 @@ export class SgnAnalyticsReport extends jspb.Message {
 
 export namespace SgnAnalyticsReport {
   export type AsObject = {
-    timestamp: number;
-    blockNumsMap: Array<[string, number]>;
-    sgndVersion: string;
-    lpFeeEarningHistoriesMap: Array<[number, LPFeeEarningHistory.AsObject]>;
-    baseFeeDistributionHistoriesMap: Array<[number, BaseFeeDistributionHistory.AsObject]>;
-  };
+    timestamp: number,
+    blockNumsMap: Array<[string, number]>,
+    sgndVersion: string,
+    lpFeeEarningHistoriesMap: Array<[number, LPFeeEarningHistory.AsObject]>,
+    baseFeeDistributionHistoriesMap: Array<[number, BaseFeeDistributionHistory.AsObject]>,
+  }
 }
 
 export class BaseFeeDistributionHistory extends jspb.Message {
@@ -90,22 +89,19 @@ export class BaseFeeDistributionHistory extends jspb.Message {
   static toObject(includeInstance: boolean, msg: BaseFeeDistributionHistory): BaseFeeDistributionHistory.AsObject;
   static serializeBinaryToWriter(message: BaseFeeDistributionHistory, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): BaseFeeDistributionHistory;
-  static deserializeBinaryFromReader(
-    message: BaseFeeDistributionHistory,
-    reader: jspb.BinaryReader,
-  ): BaseFeeDistributionHistory;
+  static deserializeBinaryFromReader(message: BaseFeeDistributionHistory, reader: jspb.BinaryReader): BaseFeeDistributionHistory;
 }
 
 export namespace BaseFeeDistributionHistory {
   export type AsObject = {
-    bridgeType: BridgeType;
-    baseFeeReceiverAddr: string;
-    baseFeeAmt: string;
-    tokenSymbol: string;
-    tokenDecimal: number;
-    srcChainId: number;
-    dstChainId: number;
-  };
+    bridgeType: BridgeType,
+    baseFeeReceiverAddr: string,
+    baseFeeAmt: string,
+    tokenSymbol: string,
+    tokenDecimal: number,
+    srcChainId: number,
+    dstChainId: number,
+  }
 }
 
 export class LPFeeEarningHistory extends jspb.Message {
@@ -128,10 +124,10 @@ export class LPFeeEarningHistory extends jspb.Message {
 
 export namespace LPFeeEarningHistory {
   export type AsObject = {
-    dstTokenAddr: string;
-    dstChainId: number;
-    logsMap: Array<[string, LPFeeEarningLog.AsObject]>;
-  };
+    dstTokenAddr: string,
+    dstChainId: number,
+    logsMap: Array<[string, LPFeeEarningLog.AsObject]>,
+  }
 }
 
 export class LPFeeEarningLog extends jspb.Message {
@@ -154,10 +150,10 @@ export class LPFeeEarningLog extends jspb.Message {
 
 export namespace LPFeeEarningLog {
   export type AsObject = {
-    dstChainLiquidityUsed: string;
-    earnedFee: string;
-    dstChainLiquidityRemained: string;
-  };
+    dstChainLiquidityUsed: string,
+    earnedFee: string,
+    dstChainLiquidityRemained: string,
+  }
 }
 
 export class ReportSgnAnalyticsResponse extends jspb.Message {
@@ -171,16 +167,13 @@ export class ReportSgnAnalyticsResponse extends jspb.Message {
   static toObject(includeInstance: boolean, msg: ReportSgnAnalyticsResponse): ReportSgnAnalyticsResponse.AsObject;
   static serializeBinaryToWriter(message: ReportSgnAnalyticsResponse, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): ReportSgnAnalyticsResponse;
-  static deserializeBinaryFromReader(
-    message: ReportSgnAnalyticsResponse,
-    reader: jspb.BinaryReader,
-  ): ReportSgnAnalyticsResponse;
+  static deserializeBinaryFromReader(message: ReportSgnAnalyticsResponse, reader: jspb.BinaryReader): ReportSgnAnalyticsResponse;
 }
 
 export namespace ReportSgnAnalyticsResponse {
   export type AsObject = {
-    err?: ErrMsg.AsObject;
-  };
+    err?: ErrMsg.AsObject,
+  }
 }
 
 export class ErrMsg extends jspb.Message {
@@ -200,17 +193,17 @@ export class ErrMsg extends jspb.Message {
 
 export namespace ErrMsg {
   export type AsObject = {
-    code: ErrCode;
-    msg: string;
-  };
+    code: ErrCode,
+    msg: string,
+  }
 }
 
-export enum BridgeType {
+export enum BridgeType { 
   BRIDGE_TYPE_UNDEFINED = 0,
   BRIDGE_TYPE_LIQUIDITY = 1,
   BRIDGE_TYPE_PEGGED = 2,
 }
-export enum ErrCode {
+export enum ErrCode { 
   ERROR_CODE_UNDEFINED = 0,
   ERROR_CODE_COMMON = 500,
   ERROR_NO_TOKEN_ON_DST_CHAIN = 1001,

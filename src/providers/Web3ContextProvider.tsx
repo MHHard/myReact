@@ -1,18 +1,30 @@
 import { message } from "antd";
-import { createContext, ReactChild, ReactChildren, useCallback, useContext, useEffect, useState } from "react";
-import { useAsync } from "react-use";
-import { useHistory } from "react-router-dom";
+import {
+  createContext,
+  ReactChild,
+  ReactChildren,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { useAsync, useToggle } from "react-use";
 
 import Web3Modal from "@celer-network/web3modal";
-import { JsonRpcProvider, JsonRpcSigner, Web3Provider } from "@ethersproject/providers"; // InfuraProvider,
+import {
+  JsonRpcProvider,
+  JsonRpcSigner,
+  Web3Provider,
+} from "@ethersproject/providers"; // InfuraProvider,
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { getNetworkById, CHAIN_LIST } from "../constants/network"; // INFURA_ID
+
+import { CHAIN_LIST, getNetworkById } from "../constants/network"; // INFURA_ID
+import { setRpcUrl as setLsRpcUrl } from "../helpers/env";
 import { storageConstants } from "../constants/const";
-import { TabKeys, generateTabKey } from "../helpers/viewTabKeyGeneration";
+import { closeModal, ModalName } from "../redux/modalSlice";
+import { useAppDispatch } from "../redux/store";
 
 const targetNetworkId = Number(process.env.REACT_APP_NETWORK_ID) || 3;
-
-const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 export const rpcUrls = () => {
   const rpcMap = {};
@@ -61,7 +73,8 @@ interface Web3ContextProps {
   chainId: number;
   web3Modal: Web3Modal;
   connecting: boolean;
-  loadWeb3Modal: (providerName: string, catchMethod?: () => void) => Promise<void>;
+  reload: boolean;
+  loadWeb3Modal: (providerName: string) => Promise<void>;
   logoutOfWeb3Modal: () => Promise<void>;
 }
 
@@ -78,11 +91,15 @@ export const Web3Context = createContext<Web3ContextProps>({
   chainId: 0,
   web3Modal,
   connecting: false,
+  reload: false,
   loadWeb3Modal: async () => {},
   logoutOfWeb3Modal: async () => {},
 });
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX.Element => {
+export const Web3ContextProvider = ({
+  children,
+}: Web3ContextProviderProps): JSX.Element => {
   const networkObject = getNetworkById(targetNetworkId);
   const [provider, setProvider] = useState<JsonRpcProvider>();
   const [signer, setSigner] = useState<JsonRpcSigner>();
@@ -92,64 +109,41 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
   const [chainId, setChainId] = useState(0);
   const [connectName, setConnectName] = useState("injected");
   const [connecting, setConnecting] = useState(false);
+  const [reload, setReload] = useToggle(false);
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const [web3Connection, setWeb3Connection] = useState<any>();
-  const [shouldReload, setShouldReload] = useState(false);
-  const [newChainId, setNewChainId] = useState(0);
-  const history = useHistory();
-
+  const dispatch = useAppDispatch();
   useAsync(async () => {
     if (!web3Connection) {
       return;
     }
-    web3Connection.on("accountsChanged", () => {
-      window.location.reload();
-    });
-
-    web3Connection.on("chainChanged", web3ChainId => {
-      setNewChainId(parseInt(web3ChainId, 16));
-      setShouldReload(true);
-    });
-
-    web3Connection.on("disconnect", () => {
-      if (web3Modal.cachedProvider && web3Modal.cachedProvider === "walletconnect") {
+    web3Connection.on("accountsChanged", (accounts) => {
+      if (web3Connection && web3Connection.close) {
+        web3Connection.close();
+      }
+      // dispatch(closeModal(ModalName.confrimSwapModal));
+      // setReload(true);
+      if (accounts?.length === 0) {
         web3Modal.clearCachedProvider();
-        window.location.reload();
+        localStorage.setItem("tabkey", "transfer");
+        localStorage.removeItem(storageConstants.KEY_IS_CLOVER_WALLET);
+      }
+      window.location.reload();
+    });
+    web3Connection.on("chainChanged", () => {
+      dispatch(closeModal(ModalName.confrimSwapModal));
+      setReload();
+    });
+    web3Connection.on("disconnect", () => {
+      if (
+        web3Modal.cachedProvider &&
+        web3Modal.cachedProvider === "walletconnect"
+      ) {
+        web3Modal.clearCachedProvider();
+        setReload();
       }
     });
-  }, [web3Connection, shouldReload]);
-
-  useEffect(() => {
-    if (shouldReload) {
-      const sessionRefId = sessionStorage.getItem("refId") ?? "";
-      let refIdSuffix = "";
-
-      if (sessionRefId.length > 0) {
-        refIdSuffix = "?ref=" + sessionRefId;
-      }
-
-      if (generateTabKey(history.location.pathname.toLowerCase()) === TabKeys.Transfer) {
-        history.push(
-          `/${newChainId}/${localStorage.getItem(storageConstants.KEY_TO_CHAIN_ID) ?? 0}/${localStorage.getItem(
-            storageConstants.KEY_SELECTED_TOKEN_SYMBOL,
-          )}${refIdSuffix}`,
-        );
-      }
-
-      window.location.reload();
-    }
-    // eslint-disable-next-line
-  }, [shouldReload, newChainId]);
-
-  // useAsync(async () => {
-  //   if (web3Modal.cachedProvider && localStorage.getItem("loginReload") === "false") {
-  //     localStorage.setItem("loginReload", "true");
-  //     window.location.reload();
-  //   }
-  //   if (!web3Modal.cachedProvider) {
-  //     localStorage.setItem("loginReload", "false");
-  //   }
-  // }, [web3Modal.cachedProvider]);
+  }, [web3Connection]);
 
   useAsync(async () => {
     if (!provider) {
@@ -157,40 +151,47 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
     }
 
     const networkData = await provider.getNetwork();
-    console.debug("provider", provider, networkData);
     setChainId(networkData.chainId);
     setNetwork(networkData.name);
     const url = getNetworkById(networkData.chainId).rpcUrl;
     setRpcUrl(url);
+    setLsRpcUrl(url);
   }, [provider]);
 
-  const loadWeb3Modal = useCallback(async (providerName: string, catchMethod?: () => void) => {
+  const loadWeb3Modal = useCallback(async (providerName: string) => {
     setConnecting(true);
     setConnectName(providerName);
-    const cachedIsClover = localStorage.getItem(storageConstants.KEY_IS_CLOVER_WALLET) === "true";
+    const cachedIsClover =
+      localStorage.getItem(storageConstants.KEY_IS_CLOVER_WALLET) === "true";
     if (cachedIsClover) {
       await sleep(500);
     }
 
-    const connection = await web3Modal.connectTo(providerName).catch(() => setConnecting(false));
-    if (!connection) {
-      if (catchMethod) {
-        catchMethod();
-      } else {
+    try {
+      const connection = await web3Modal.connectTo(providerName);
+      if (!connection) {
+        web3Modal.clearCachedProvider();
         message.error("connection failed!");
+        return;
       }
-      return;
-    }
-    setConnecting(false);
-    setWeb3Connection(connection);
-    const newProvider = new Web3Provider(connection);
-    setProvider(newProvider);
-    const newSigner = newProvider.getSigner();
-    setSigner(newSigner);
+      setConnecting(false);
 
-    const walletAddress = await newSigner.getAddress();
-    setAddress(walletAddress);
-    localStorage.setItem(storageConstants.KEY_WEB3_PROVIDER_NAME, providerName);
+      setWeb3Connection(connection);
+      if (connection.isImToken) {
+        connection.request = undefined;
+      }
+      const newProvider = new Web3Provider(connection);
+      setProvider(newProvider);
+      const newSigner = newProvider.getSigner();
+      setSigner(newSigner);
+
+      const walletAddress = await newSigner.getAddress();
+      setAddress(walletAddress);
+    } catch (error) {
+      web3Modal.clearCachedProvider();
+      console.log("connection error", error);
+      setConnecting(false);
+    }
   }, []);
 
   const logoutOfWeb3Modal = useCallback(async () => {
@@ -198,9 +199,8 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
       web3Connection.close();
     }
     web3Modal.clearCachedProvider();
-    localStorage.setItem(storageConstants.KEY_TAB_KEY, "transfer");
+    localStorage.setItem("tabkey", "transfer");
     localStorage.removeItem(storageConstants.KEY_IS_CLOVER_WALLET);
-    localStorage.setItem(storageConstants.KEY_CONNECTED_WALLET_NAME, "");
     window.location.reload();
   }, [web3Connection]);
 
@@ -208,7 +208,7 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
     if (web3Modal.cachedProvider) {
       loadWeb3Modal(web3Modal.cachedProvider);
     }
-  }, [loadWeb3Modal, connectName]);
+  }, [loadWeb3Modal, connectName, reload]);
 
   // useEffect(() => {
   //   let infuraProvider: JsonRpcProvider | undefined;
@@ -231,6 +231,7 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
         chainId,
         web3Modal,
         connecting,
+        reload,
         loadWeb3Modal,
         logoutOfWeb3Modal,
       }}
@@ -240,4 +241,5 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
   );
 };
 
-export const useWeb3Context: () => Web3ContextProps = () => useContext(Web3Context);
+export const useWeb3Context: () => Web3ContextProps = () =>
+  useContext(Web3Context);

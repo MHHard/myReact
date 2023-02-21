@@ -1,8 +1,11 @@
+/* eslint-disable no-shadow */
 import { useEffect, useState } from "react";
 
 import { Provider } from "@ethersproject/abstract-provider";
 import { Signer } from "@ethersproject/abstract-signer";
 import { Contract } from "@ethersproject/contracts";
+import { JsonRpcProvider } from "@ethersproject/providers";
+import { getNetworkById } from "../constants/network";
 
 /**
  * Loads a custom contract in read-only mode.
@@ -13,19 +16,23 @@ import { Contract } from "@ethersproject/contracts";
  * @returns The contract.
  */
 export default function useReadOnlyCustomContractLoader(
-  signerOrProvider: Signer | Provider | undefined,
-  address: string,
-  factory: { connect(addressParameter: string, signerOrProviderParameter: Signer | Provider): Contract },
+  chainId: number | undefined,
+  address: string | undefined,
+  factory: {
+    connect(address: string, signerOrProvider: Signer | Provider): Contract;
+  }
 ): Contract | undefined {
   const [contract, setContract] = useState<Contract>();
   useEffect(() => {
     async function loadContract() {
-      if (typeof signerOrProvider !== "undefined" && factory && address) {
+      if (chainId && factory && address) {
         try {
-          console.log("render OP fee rebate")
-
-          const customContract = factory.connect(address, signerOrProvider);
-          setContract(customContract);
+          const rpcUrl = getNetworkById(chainId)?.rpcUrl;
+          if (rpcUrl) {
+            const provider = await new JsonRpcProvider(rpcUrl);
+            const customContract = await factory.connect(address, provider);
+            setContract(customContract);
+          }
         } catch (e) {
           console.log("Error loading custom contract", e);
         }
@@ -33,20 +40,19 @@ export default function useReadOnlyCustomContractLoader(
     }
     loadContract();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [address, signerOrProvider]);
+  }, [address, chainId]);
   return contract;
 }
 
 export const readOnlyContract = async (
-  signerOrJsonRpcProvider: Signer | Provider | undefined,
-  contractAddress: string,
+  signerOrProvider: Signer | Provider | undefined,
+  address: string,
   factory: {
-    // eslint-disable-next-line
     connect(address: string, signerOrProvider: Signer | Provider): Contract;
-  },
+  }
 ) => {
-  if (typeof signerOrJsonRpcProvider !== "undefined" && factory && contractAddress) {
-    const customContract = await factory.connect(contractAddress, signerOrJsonRpcProvider);
+  if (typeof signerOrProvider !== "undefined" && factory && address) {
+    const customContract = await factory.connect(address, signerOrProvider);
     return customContract;
   }
   return undefined;

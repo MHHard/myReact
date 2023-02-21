@@ -10,56 +10,56 @@ export class LogHelper {
     const log = console.log;
     console.log = function (message: any, ...args: any[]) {
       const stackInfoStr = LogHelper.stackInfo();
-      const info = `%c[${moment().format("YYYY-MM-DD HH:mm:ss.SSS")}][log][${stackInfoStr.file}:${stackInfoStr.line} (${
-        stackInfoStr.method
-      })] %c`;
+      const info = `%c[${moment().format("YYYY-MM-DD HH:mm:ss.SSS")}][log][${
+        stackInfoStr.file
+      }:${stackInfoStr.line} (${stackInfoStr.method})] %c`;
       log(info, "color: #48d1cc", "color: white", message, ...args);
     };
 
     console.debug = function (message: any, ...args: any[]) {
-      if (process.env.REACT_APP_ENV_TYPE === "aptos") {
-        return;
-      }
-      if (process.env.REACT_APP_ENV === "MAINNET" && process.env.NODE_ENV === "production") {
+      if (
+        process.env.REACT_APP_ENV_TYPE === "mainnet" &&
+        process.env.NODE_ENV === "production"
+      ) {
         return;
       }
       const stackInfoStr = LogHelper.stackInfo();
-      const info = `%c[${moment().format("YYYY-MM-DD HH:mm:ss.SSS")}][debug][${stackInfoStr.file}:${
-        stackInfoStr.line
-      } (${stackInfoStr.method})] %c`;
+      const info = `%c[${moment().format("YYYY-MM-DD HH:mm:ss.SSS")}][debug][${
+        stackInfoStr.file
+      }:${stackInfoStr.line} (${stackInfoStr.method})] %c`;
       log(info, "color: #48d1cc", "color: white", message, ...args);
     };
 
     const loginfo = console.info;
     console.info = function (message: any, ...args: any[]) {
-      if (process.env.REACT_APP_ENV_TYPE === "aptos") {
-        return;
-      }
-      if (process.env.REACT_APP_ENV === "MAINNET" && process.env.NODE_ENV === "production") {
+      if (
+        process.env.REACT_APP_ENV === "MAINNET" &&
+        process.env.NODE_ENV === "production"
+      ) {
         return;
       }
       const stackInfoStr = LogHelper.stackInfo();
-      const info = `%c[${moment().format("YYYY-MM-DD HH:mm:ss.SSS")}][info][${stackInfoStr.file}:${
-        stackInfoStr.line
-      } (${stackInfoStr.method})] %c`;
+      const info = `%c[${moment().format("YYYY-MM-DD HH:mm:ss.SSS")}][info][${
+        stackInfoStr.file
+      }:${stackInfoStr.line} (${stackInfoStr.method})] %c`;
       loginfo(info, "color: #3ebe3e", "color: white", message, ...args);
     };
 
     const warn = console.warn;
     console.warn = function (message: any, ...args: any[]) {
       const stackInfoStr = LogHelper.stackInfo();
-      const info = `%c[${moment().format("YYYY-MM-DD HH:mm:ss.SSS")}][warn][${stackInfoStr.file}:${
-        stackInfoStr.line
-      } (${stackInfoStr.method})] %c`;
+      const info = `%c[${moment().format("YYYY-MM-DD HH:mm:ss.SSS")}][warn][${
+        stackInfoStr.file
+      }:${stackInfoStr.line} (${stackInfoStr.method})] %c`;
       warn(info, "color: #dbd172", "color: #dbd172", message, ...args);
     };
 
     const error = console.error;
     console.error = function (message: any, ...args: any[]) {
       const stackInfoStr = LogHelper.stackInfo();
-      const info = `[${moment().format("YYYY-MM-DD HH:mm:ss.SSS")}][error][${stackInfoStr.file}:${stackInfoStr.line} (${
-        stackInfoStr.method
-      })] `;
+      const info = `[${moment().format("YYYY-MM-DD HH:mm:ss.SSS")}][error][${
+        stackInfoStr.file
+      }:${stackInfoStr.line} (${stackInfoStr.method})] `;
       error(info, message, ...args);
     };
   }

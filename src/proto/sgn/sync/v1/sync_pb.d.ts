@@ -1,6 +1,7 @@
-import * as jspb from "google-protobuf";
+import * as jspb from 'google-protobuf'
 
-import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
+import * as gogoproto_gogo_pb from '../../../gogoproto/gogo_pb';
+
 
 export class Vote extends jspb.Message {
   getVoter(): string;
@@ -19,9 +20,9 @@ export class Vote extends jspb.Message {
 
 export namespace Vote {
   export type AsObject = {
-    voter: string;
-    option: VoteOption;
-  };
+    voter: string,
+    option: VoteOption,
+  }
 }
 
 export class PendingUpdate extends jspb.Message {
@@ -66,16 +67,16 @@ export class PendingUpdate extends jspb.Message {
 
 export namespace PendingUpdate {
   export type AsObject = {
-    id: number;
-    type: DataType;
-    data: Uint8Array | string;
-    chainId: number;
-    chainBlock: number;
-    proposer: string;
-    votesList: Array<Vote.AsObject>;
-    proposeTs: number;
-    closingTs: number;
-  };
+    id: number,
+    type: DataType,
+    data: Uint8Array | string,
+    chainId: number,
+    chainBlock: number,
+    proposer: string,
+    votesList: Array<Vote.AsObject>,
+    proposeTs: number,
+    closingTs: number,
+  }
 }
 
 export class Params extends jspb.Message {
@@ -97,12 +98,12 @@ export class Params extends jspb.Message {
 
 export namespace Params {
   export type AsObject = {
-    votingPeriod: number;
-    tallyThreshold: Uint8Array | string;
-  };
+    votingPeriod: number,
+    tallyThreshold: Uint8Array | string,
+  }
 }
 
-export enum DataType {
+export enum DataType { 
   INVALID = 0,
   VALIDATORSGNADDR = 1,
   VALIDATORPARAMS = 2,
@@ -113,7 +114,7 @@ export enum DataType {
   PEGBRONCHAINEVENT = 7,
   MSGBRONCHAINEVENT = 8,
 }
-export enum VoteOption {
+export enum VoteOption { 
   EMPTY = 0,
   YES = 1,
   ABSTAIN = 2,

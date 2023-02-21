@@ -79,15 +79,29 @@ module.exports = {
           chunks: "initial", // 只提取初始化就能获取到的模块,不管异步的
           minSize: 0, // 提取代码体积大于0就提取出来
         },
-        // terraMoney: {
-        //   name: "terraMoney",
-        //   test: (module) => {
-        //     return /terra-money/.test(module.context);
-        //   },
-        //   chunks: "all",
-        //   priority: 13,
-        //   enforce: true,//为true时，忽略minSize，minChunks，maxAsyncRequests和maxInitialRequests外面选项
-        // },
+        echarts: {
+          name: "chunk-echarts",
+          test: (module) => {
+            return /echarts/.test(module.context);
+          },
+          chunks: "all",
+          priority: 13,
+          enforce: true,//为true时，忽略minSize，minChunks，maxAsyncRequests和maxInitialRequests外面选项
+        },
+        antd: {
+          name: "chunk-antd",
+          chunks: "all",
+          test: /[\\/]node_modules[\\/](@ant-design|antd|moment|mathjs|immutable\/dist|rc-calendar\/es|braft-finder\/dist|lodash|rc-tree\/es)[\\/]/,
+          priority: 11,
+        },
+        proto: {
+          name: "chunk-proto",
+          chunks: "all",
+          test: (module) => {
+            return /proto/.test(module.context);
+          },
+          priority: 11,
+        },
       },
     },
   },

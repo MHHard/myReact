@@ -1,6 +1,7 @@
-import * as jspb from "google-protobuf";
+import * as jspb from 'google-protobuf'
 
-import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
+import * as gogoproto_gogo_pb from '../../../gogoproto/gogo_pb';
+
 
 export class MsgSignMessage extends jspb.Message {
   getMessageId(): string;
@@ -24,10 +25,10 @@ export class MsgSignMessage extends jspb.Message {
 
 export namespace MsgSignMessage {
   export type AsObject = {
-    messageId: string;
-    sender: string;
-    signature: Uint8Array | string;
-  };
+    messageId: string,
+    sender: string,
+    signature: Uint8Array | string,
+  }
 }
 
 export class MsgSignMessageResponse extends jspb.Message {
@@ -36,14 +37,12 @@ export class MsgSignMessageResponse extends jspb.Message {
   static toObject(includeInstance: boolean, msg: MsgSignMessageResponse): MsgSignMessageResponse.AsObject;
   static serializeBinaryToWriter(message: MsgSignMessageResponse, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): MsgSignMessageResponse;
-  static deserializeBinaryFromReader(
-    message: MsgSignMessageResponse,
-    reader: jspb.BinaryReader,
-  ): MsgSignMessageResponse;
+  static deserializeBinaryFromReader(message: MsgSignMessageResponse, reader: jspb.BinaryReader): MsgSignMessageResponse;
 }
 
 export namespace MsgSignMessageResponse {
-  export type AsObject = {};
+  export type AsObject = {
+  }
 }
 
 export class MsgTriggerSignMessage extends jspb.Message {
@@ -63,9 +62,9 @@ export class MsgTriggerSignMessage extends jspb.Message {
 
 export namespace MsgTriggerSignMessage {
   export type AsObject = {
-    messageId: string;
-    sender: string;
-  };
+    messageId: string,
+    sender: string,
+  }
 }
 
 export class MsgTriggerSignMessageResponse extends jspb.Message {
@@ -74,14 +73,12 @@ export class MsgTriggerSignMessageResponse extends jspb.Message {
   static toObject(includeInstance: boolean, msg: MsgTriggerSignMessageResponse): MsgTriggerSignMessageResponse.AsObject;
   static serializeBinaryToWriter(message: MsgTriggerSignMessageResponse, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): MsgTriggerSignMessageResponse;
-  static deserializeBinaryFromReader(
-    message: MsgTriggerSignMessageResponse,
-    reader: jspb.BinaryReader,
-  ): MsgTriggerSignMessageResponse;
+  static deserializeBinaryFromReader(message: MsgTriggerSignMessageResponse, reader: jspb.BinaryReader): MsgTriggerSignMessageResponse;
 }
 
 export namespace MsgTriggerSignMessageResponse {
-  export type AsObject = {};
+  export type AsObject = {
+  }
 }
 
 export class MsgClaimAllFees extends jspb.Message {
@@ -101,9 +98,9 @@ export class MsgClaimAllFees extends jspb.Message {
 
 export namespace MsgClaimAllFees {
   export type AsObject = {
-    delegatorAddress: string;
-    sender: string;
-  };
+    delegatorAddress: string,
+    sender: string,
+  }
 }
 
 export class MsgClaimAllFeesResponse extends jspb.Message {
@@ -112,14 +109,12 @@ export class MsgClaimAllFeesResponse extends jspb.Message {
   static toObject(includeInstance: boolean, msg: MsgClaimAllFeesResponse): MsgClaimAllFeesResponse.AsObject;
   static serializeBinaryToWriter(message: MsgClaimAllFeesResponse, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): MsgClaimAllFeesResponse;
-  static deserializeBinaryFromReader(
-    message: MsgClaimAllFeesResponse,
-    reader: jspb.BinaryReader,
-  ): MsgClaimAllFeesResponse;
+  static deserializeBinaryFromReader(message: MsgClaimAllFeesResponse, reader: jspb.BinaryReader): MsgClaimAllFeesResponse;
 }
 
 export namespace MsgClaimAllFeesResponse {
-  export type AsObject = {};
+  export type AsObject = {
+  }
 }
 
 export class SignatureDetails extends jspb.Message {
@@ -141,9 +136,9 @@ export class SignatureDetails extends jspb.Message {
 
 export namespace SignatureDetails {
   export type AsObject = {
-    chainId: number;
-    signature: Uint8Array | string;
-  };
+    chainId: number,
+    signature: Uint8Array | string,
+  }
 }
 
 export class MsgSignFees extends jspb.Message {
@@ -168,10 +163,10 @@ export class MsgSignFees extends jspb.Message {
 
 export namespace MsgSignFees {
   export type AsObject = {
-    address: string;
-    sender: string;
-    signatureDetailsListList: Array<SignatureDetails.AsObject>;
-  };
+    address: string,
+    sender: string,
+    signatureDetailsListList: Array<SignatureDetails.AsObject>,
+  }
 }
 
 export class MsgSignFeesResponse extends jspb.Message {
@@ -184,5 +179,7 @@ export class MsgSignFeesResponse extends jspb.Message {
 }
 
 export namespace MsgSignFeesResponse {
-  export type AsObject = {};
+  export type AsObject = {
+  }
 }
+

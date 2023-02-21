@@ -1,40 +1,52 @@
+/* eslint-disable camelcase */
 import { useEffect, useState } from "react";
-import { Chain, TokenInfo } from "../constants/type";
+import { useToggle } from "react-use";
 import { useWeb3Context } from "../providers/Web3ContextProvider";
-import { useEthBalance } from ".";
-import { isGasToken } from "../constants/network";
+import useEthBalance from "./ethBalance";
+import { getNetworkById } from "../constants/network";
+import { useAppSelector } from "../redux/store";
+import { Chain, Token } from "../proto/chainhop/common_pb";
 
-export const useNativeETHToken = (srcChain: Chain | undefined, tokenInfo: TokenInfo | undefined) => {
+export const useNativeETHToken = (
+  srcChain: Chain.AsObject | undefined,
+  tokenInfo: Token.AsObject | undefined
+) => {
   const [isNativeToken, setIsNativeToken] = useState(false);
-  const { provider, address } = useWeb3Context();
-
-  const [ETHBalance] = useEthBalance(provider, address, isGasToken(srcChain?.id ?? 0, tokenInfo?.token.display_symbol ?? tokenInfo?.token.symbol ?? "" ));
-
+  const [reloadETH, refreshETH] = useToggle(false);
+  const [tokenDisplayName, setTokenDisplayName] = useState(
+    tokenInfo?.name ?? ""
+  );
+  const { address } = useWeb3Context();
+  const [ETHBalance, loading, , reload] = useEthBalance(
+    srcChain?.chainId,
+    address
+  );
+  const { transferInfo } = useAppSelector((state) => state);
+  const { transferConfig } = transferInfo;
+  const { chainToken } = transferConfig;
   useEffect(() => {
-    if (!srcChain || !tokenInfo || !provider) {
+    reload();
+    if (!srcChain || !tokenInfo) {
       return;
     }
-    const chainIds = [
-      1, // Ethereum
-      42161, // Arbitrum
-      10, // Optimism
-      5, // Goerli
-      288, // BOBA,
-      42170, // Arbitrum Nova
-    ];
-
-    let isNativeGasToken = false;
-
-    if (chainIds.includes(srcChain.id) && tokenInfo.token.display_symbol === "ETH") {
-      isNativeGasToken = true;
-    } else if (isGasToken(srcChain.id, tokenInfo.token.symbol)) {
-      isNativeGasToken = true;
+    let nativeETHToken = false;
+    const LocalChain = getNetworkById(srcChain?.chainId);
+    if (tokenInfo.symbol === LocalChain?.symbol) {
+      nativeETHToken = true;
     }
+    setIsNativeToken(nativeETHToken);
+    if (nativeETHToken && tokenInfo?.symbol === "ETH") {
+      setTokenDisplayName("Ethereum Token");
+    } else {
+      setTokenDisplayName(tokenInfo?.name ?? "");
+    }
+  }, [srcChain, tokenInfo, chainToken, reloadETH, reload]);
 
-    setIsNativeToken(isNativeGasToken);
-
-  }, [srcChain, tokenInfo, provider]);
-
-  return { isNativeToken, ETHBalance };
+  return {
+    isNativeToken,
+    ETHBalance,
+    refreshETH,
+    tokenDisplayName,
+    nativeTokenLoading: loading,
+  };
 };
-

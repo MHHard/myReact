@@ -1,9 +1,10 @@
-import * as jspb from "google-protobuf";
+import * as jspb from 'google-protobuf'
 
-import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
-import * as google_api_annotations_pb from "../../../google/api/annotations_pb";
-import * as sgn_common_v1_common_pb from "../../../sgn/common/v1/common_pb";
-import * as sgn_message_v1_message_pb from "../../../sgn/message/v1/message_pb";
+import * as gogoproto_gogo_pb from '../../../gogoproto/gogo_pb';
+import * as google_api_annotations_pb from '../../../google/api/annotations_pb';
+import * as sgn_common_v1_common_pb from '../../../sgn/common/v1/common_pb';
+import * as sgn_message_v1_message_pb from '../../../sgn/message/v1/message_pb';
+
 
 export class QueryParamsRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
@@ -15,7 +16,8 @@ export class QueryParamsRequest extends jspb.Message {
 }
 
 export namespace QueryParamsRequest {
-  export type AsObject = {};
+  export type AsObject = {
+  }
 }
 
 export class QueryParamsResponse extends jspb.Message {
@@ -34,8 +36,8 @@ export class QueryParamsResponse extends jspb.Message {
 
 export namespace QueryParamsResponse {
   export type AsObject = {
-    params?: sgn_message_v1_message_pb.Params.AsObject;
-  };
+    params?: sgn_message_v1_message_pb.Params.AsObject,
+  }
 }
 
 export class QueryExecutionContextsRequest extends jspb.Message {
@@ -49,45 +51,33 @@ export class QueryExecutionContextsRequest extends jspb.Message {
   static toObject(includeInstance: boolean, msg: QueryExecutionContextsRequest): QueryExecutionContextsRequest.AsObject;
   static serializeBinaryToWriter(message: QueryExecutionContextsRequest, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): QueryExecutionContextsRequest;
-  static deserializeBinaryFromReader(
-    message: QueryExecutionContextsRequest,
-    reader: jspb.BinaryReader,
-  ): QueryExecutionContextsRequest;
+  static deserializeBinaryFromReader(message: QueryExecutionContextsRequest, reader: jspb.BinaryReader): QueryExecutionContextsRequest;
 }
 
 export namespace QueryExecutionContextsRequest {
   export type AsObject = {
-    contractInfosList: Array<sgn_common_v1_common_pb.ContractInfo.AsObject>;
-  };
+    contractInfosList: Array<sgn_common_v1_common_pb.ContractInfo.AsObject>,
+  }
 }
 
 export class QueryExecutionContextsResponse extends jspb.Message {
   getExecutionContextsList(): Array<sgn_message_v1_message_pb.ExecutionContext>;
   setExecutionContextsList(value: Array<sgn_message_v1_message_pb.ExecutionContext>): QueryExecutionContextsResponse;
   clearExecutionContextsList(): QueryExecutionContextsResponse;
-  addExecutionContexts(
-    value?: sgn_message_v1_message_pb.ExecutionContext,
-    index?: number,
-  ): sgn_message_v1_message_pb.ExecutionContext;
+  addExecutionContexts(value?: sgn_message_v1_message_pb.ExecutionContext, index?: number): sgn_message_v1_message_pb.ExecutionContext;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryExecutionContextsResponse.AsObject;
-  static toObject(
-    includeInstance: boolean,
-    msg: QueryExecutionContextsResponse,
-  ): QueryExecutionContextsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryExecutionContextsResponse): QueryExecutionContextsResponse.AsObject;
   static serializeBinaryToWriter(message: QueryExecutionContextsResponse, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): QueryExecutionContextsResponse;
-  static deserializeBinaryFromReader(
-    message: QueryExecutionContextsResponse,
-    reader: jspb.BinaryReader,
-  ): QueryExecutionContextsResponse;
+  static deserializeBinaryFromReader(message: QueryExecutionContextsResponse, reader: jspb.BinaryReader): QueryExecutionContextsResponse;
 }
 
 export namespace QueryExecutionContextsResponse {
   export type AsObject = {
-    executionContextsList: Array<sgn_message_v1_message_pb.ExecutionContext.AsObject>;
-  };
+    executionContextsList: Array<sgn_message_v1_message_pb.ExecutionContext.AsObject>,
+  }
 }
 
 export class IsMessageActiveRequest extends jspb.Message {
@@ -99,16 +89,13 @@ export class IsMessageActiveRequest extends jspb.Message {
   static toObject(includeInstance: boolean, msg: IsMessageActiveRequest): IsMessageActiveRequest.AsObject;
   static serializeBinaryToWriter(message: IsMessageActiveRequest, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): IsMessageActiveRequest;
-  static deserializeBinaryFromReader(
-    message: IsMessageActiveRequest,
-    reader: jspb.BinaryReader,
-  ): IsMessageActiveRequest;
+  static deserializeBinaryFromReader(message: IsMessageActiveRequest, reader: jspb.BinaryReader): IsMessageActiveRequest;
 }
 
 export namespace IsMessageActiveRequest {
   export type AsObject = {
-    messageId: string;
-  };
+    messageId: string,
+  }
 }
 
 export class IsMessageActiveResponse extends jspb.Message {
@@ -120,16 +107,13 @@ export class IsMessageActiveResponse extends jspb.Message {
   static toObject(includeInstance: boolean, msg: IsMessageActiveResponse): IsMessageActiveResponse.AsObject;
   static serializeBinaryToWriter(message: IsMessageActiveResponse, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): IsMessageActiveResponse;
-  static deserializeBinaryFromReader(
-    message: IsMessageActiveResponse,
-    reader: jspb.BinaryReader,
-  ): IsMessageActiveResponse;
+  static deserializeBinaryFromReader(message: IsMessageActiveResponse, reader: jspb.BinaryReader): IsMessageActiveResponse;
 }
 
 export namespace IsMessageActiveResponse {
   export type AsObject = {
-    exists: boolean;
-  };
+    exists: boolean,
+  }
 }
 
 export class QueryMessageExistsRequest extends jspb.Message {
@@ -141,16 +125,13 @@ export class QueryMessageExistsRequest extends jspb.Message {
   static toObject(includeInstance: boolean, msg: QueryMessageExistsRequest): QueryMessageExistsRequest.AsObject;
   static serializeBinaryToWriter(message: QueryMessageExistsRequest, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): QueryMessageExistsRequest;
-  static deserializeBinaryFromReader(
-    message: QueryMessageExistsRequest,
-    reader: jspb.BinaryReader,
-  ): QueryMessageExistsRequest;
+  static deserializeBinaryFromReader(message: QueryMessageExistsRequest, reader: jspb.BinaryReader): QueryMessageExistsRequest;
 }
 
 export namespace QueryMessageExistsRequest {
   export type AsObject = {
-    messageId: string;
-  };
+    messageId: string,
+  }
 }
 
 export class QueryMessageExistsResponse extends jspb.Message {
@@ -162,16 +143,13 @@ export class QueryMessageExistsResponse extends jspb.Message {
   static toObject(includeInstance: boolean, msg: QueryMessageExistsResponse): QueryMessageExistsResponse.AsObject;
   static serializeBinaryToWriter(message: QueryMessageExistsResponse, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): QueryMessageExistsResponse;
-  static deserializeBinaryFromReader(
-    message: QueryMessageExistsResponse,
-    reader: jspb.BinaryReader,
-  ): QueryMessageExistsResponse;
+  static deserializeBinaryFromReader(message: QueryMessageExistsResponse, reader: jspb.BinaryReader): QueryMessageExistsResponse;
 }
 
 export namespace QueryMessageExistsResponse {
   export type AsObject = {
-    exists: boolean;
-  };
+    exists: boolean,
+  }
 }
 
 export class QueryRefundExistsRequest extends jspb.Message {
@@ -183,16 +161,13 @@ export class QueryRefundExistsRequest extends jspb.Message {
   static toObject(includeInstance: boolean, msg: QueryRefundExistsRequest): QueryRefundExistsRequest.AsObject;
   static serializeBinaryToWriter(message: QueryRefundExistsRequest, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): QueryRefundExistsRequest;
-  static deserializeBinaryFromReader(
-    message: QueryRefundExistsRequest,
-    reader: jspb.BinaryReader,
-  ): QueryRefundExistsRequest;
+  static deserializeBinaryFromReader(message: QueryRefundExistsRequest, reader: jspb.BinaryReader): QueryRefundExistsRequest;
 }
 
 export namespace QueryRefundExistsRequest {
   export type AsObject = {
-    srcTransferId: string;
-  };
+    srcTransferId: string,
+  }
 }
 
 export class QueryRefundExistsResponse extends jspb.Message {
@@ -204,16 +179,13 @@ export class QueryRefundExistsResponse extends jspb.Message {
   static toObject(includeInstance: boolean, msg: QueryRefundExistsResponse): QueryRefundExistsResponse.AsObject;
   static serializeBinaryToWriter(message: QueryRefundExistsResponse, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): QueryRefundExistsResponse;
-  static deserializeBinaryFromReader(
-    message: QueryRefundExistsResponse,
-    reader: jspb.BinaryReader,
-  ): QueryRefundExistsResponse;
+  static deserializeBinaryFromReader(message: QueryRefundExistsResponse, reader: jspb.BinaryReader): QueryRefundExistsResponse;
 }
 
 export namespace QueryRefundExistsResponse {
   export type AsObject = {
-    exists: boolean;
-  };
+    exists: boolean,
+  }
 }
 
 export class QueryMessageRequest extends jspb.Message {
@@ -230,8 +202,8 @@ export class QueryMessageRequest extends jspb.Message {
 
 export namespace QueryMessageRequest {
   export type AsObject = {
-    messageId: string;
-  };
+    messageId: string,
+  }
 }
 
 export class QueryMessageResponse extends jspb.Message {
@@ -250,8 +222,8 @@ export class QueryMessageResponse extends jspb.Message {
 
 export namespace QueryMessageResponse {
   export type AsObject = {
-    message?: sgn_message_v1_message_pb.Message.AsObject;
-  };
+    message?: sgn_message_v1_message_pb.Message.AsObject,
+  }
 }
 
 export class QueryTransferRequest extends jspb.Message {
@@ -268,8 +240,8 @@ export class QueryTransferRequest extends jspb.Message {
 
 export namespace QueryTransferRequest {
   export type AsObject = {
-    messageId: string;
-  };
+    messageId: string,
+  }
 }
 
 export class QueryTransferResponse extends jspb.Message {
@@ -288,8 +260,8 @@ export class QueryTransferResponse extends jspb.Message {
 
 export namespace QueryTransferResponse {
   export type AsObject = {
-    transfer?: sgn_message_v1_message_pb.Transfer.AsObject;
-  };
+    transfer?: sgn_message_v1_message_pb.Transfer.AsObject,
+  }
 }
 
 export class QueryMessageBusRequest extends jspb.Message {
@@ -301,16 +273,13 @@ export class QueryMessageBusRequest extends jspb.Message {
   static toObject(includeInstance: boolean, msg: QueryMessageBusRequest): QueryMessageBusRequest.AsObject;
   static serializeBinaryToWriter(message: QueryMessageBusRequest, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): QueryMessageBusRequest;
-  static deserializeBinaryFromReader(
-    message: QueryMessageBusRequest,
-    reader: jspb.BinaryReader,
-  ): QueryMessageBusRequest;
+  static deserializeBinaryFromReader(message: QueryMessageBusRequest, reader: jspb.BinaryReader): QueryMessageBusRequest;
 }
 
 export namespace QueryMessageBusRequest {
   export type AsObject = {
-    chainId: number;
-  };
+    chainId: number,
+  }
 }
 
 export class QueryMessageBusResponse extends jspb.Message {
@@ -324,16 +293,13 @@ export class QueryMessageBusResponse extends jspb.Message {
   static toObject(includeInstance: boolean, msg: QueryMessageBusResponse): QueryMessageBusResponse.AsObject;
   static serializeBinaryToWriter(message: QueryMessageBusResponse, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): QueryMessageBusResponse;
-  static deserializeBinaryFromReader(
-    message: QueryMessageBusResponse,
-    reader: jspb.BinaryReader,
-  ): QueryMessageBusResponse;
+  static deserializeBinaryFromReader(message: QueryMessageBusResponse, reader: jspb.BinaryReader): QueryMessageBusResponse;
 }
 
 export namespace QueryMessageBusResponse {
   export type AsObject = {
-    messageBus?: sgn_message_v1_message_pb.MessageBusInfo.AsObject;
-  };
+    messageBus?: sgn_message_v1_message_pb.MessageBusInfo.AsObject,
+  }
 }
 
 export class QueryFeeClaimInfoRequest extends jspb.Message {
@@ -345,16 +311,13 @@ export class QueryFeeClaimInfoRequest extends jspb.Message {
   static toObject(includeInstance: boolean, msg: QueryFeeClaimInfoRequest): QueryFeeClaimInfoRequest.AsObject;
   static serializeBinaryToWriter(message: QueryFeeClaimInfoRequest, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): QueryFeeClaimInfoRequest;
-  static deserializeBinaryFromReader(
-    message: QueryFeeClaimInfoRequest,
-    reader: jspb.BinaryReader,
-  ): QueryFeeClaimInfoRequest;
+  static deserializeBinaryFromReader(message: QueryFeeClaimInfoRequest, reader: jspb.BinaryReader): QueryFeeClaimInfoRequest;
 }
 
 export namespace QueryFeeClaimInfoRequest {
   export type AsObject = {
-    address: string;
-  };
+    address: string,
+  }
 }
 
 export class QueryFeeClaimInfoResponse extends jspb.Message {
@@ -368,14 +331,12 @@ export class QueryFeeClaimInfoResponse extends jspb.Message {
   static toObject(includeInstance: boolean, msg: QueryFeeClaimInfoResponse): QueryFeeClaimInfoResponse.AsObject;
   static serializeBinaryToWriter(message: QueryFeeClaimInfoResponse, writer: jspb.BinaryWriter): void;
   static deserializeBinary(bytes: Uint8Array): QueryFeeClaimInfoResponse;
-  static deserializeBinaryFromReader(
-    message: QueryFeeClaimInfoResponse,
-    reader: jspb.BinaryReader,
-  ): QueryFeeClaimInfoResponse;
+  static deserializeBinaryFromReader(message: QueryFeeClaimInfoResponse, reader: jspb.BinaryReader): QueryFeeClaimInfoResponse;
 }
 
 export namespace QueryFeeClaimInfoResponse {
   export type AsObject = {
-    feeClaimInfo?: sgn_message_v1_message_pb.FeeClaimInfo.AsObject;
-  };
+    feeClaimInfo?: sgn_message_v1_message_pb.FeeClaimInfo.AsObject,
+  }
 }
+

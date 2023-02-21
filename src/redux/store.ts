@@ -1,35 +1,27 @@
-import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { PERSIST, persistReducer, persistStore } from "redux-persist";
 import createMigrate from "redux-persist/es/createMigrate";
 import storage from "redux-persist/lib/storage";
 import modalSlice from "./modalSlice";
-import assetSlice from "./assetSlice";
-import lpSlice from "./lpSlice";
 import globalInfoSlice from "./globalInfoSlice";
-import tokenToggleSlice from "./tokenToggleSlice";
 import transferSlice from "./transferSlice";
-import windowWidthSlice from "./windowWidthSlice";
-import configSlice from "./configSlice";
-import rewardSectionSlice from "./rewardSectionSlice";
-import serviceInfoSlice from "./serviceInfoSlice";
+import multicall from "../helpers/multicall"
 
 const rootReducer = combineReducers({
   modal: modalSlice,
-  asset: assetSlice,
   transferInfo: transferSlice,
-  lp: lpSlice,
   globalInfo: globalInfoSlice,
-  tokenToggle: tokenToggleSlice,
-  windowWidth: windowWidthSlice,
-  config: configSlice,
-  rewardSection: rewardSectionSlice,
-  serviceInfo: serviceInfoSlice
+  [multicall.reducerPath]: multicall.reducer
 });
 
 const migrations = {
   // rename layer1Transactions to persistedTx
-  0: state => {
+  0: (state) => {
     const { layer1Transactions, ...otherState } = state;
     return {
       ...otherState,
@@ -39,7 +31,7 @@ const migrations = {
     };
   },
   // change withdrawConfirmationTimes type
-  1: state => {
+  1: (state) => {
     return {
       ...state,
       persistedTx: {
@@ -55,7 +47,9 @@ const persistConfig = {
   storage,
   version: 2,
   whitelist: ["persistedTx"],
-  migrate: createMigrate(migrations, { debug: process.env.REACT_APP_NETWORK_ID !== "1" }),
+  migrate: createMigrate(migrations, {
+    debug: process.env.REACT_APP_NETWORK_ID !== "1",
+  }),
 };
 
 const store = configureStore({

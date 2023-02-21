@@ -1,16 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Notify from "bnc-notify";
 import { notification } from "antd";
 import { ClockCircleOutlined, WarningOutlined } from "@ant-design/icons";
 
 import { BigNumber, BigNumberish, ethers } from "ethers";
 
-import { JsonRpcProvider, TransactionRequest, TransactionResponse } from "@ethersproject/providers";
+import {
+  JsonRpcProvider,
+  TransactionRequest,
+  TransactionResponse,
+} from "@ethersproject/providers";
 import { parseUnits } from "@ethersproject/units";
-import { storageConstants } from "../constants/const";
-import { isSignerMisMatchErr } from "../utils/errorCheck";
+// import { storageConstants } from "../constants/const";
 
 export type Transactor<T extends ethers.Transaction> = (
-  tx: Promise<T> | ethers.utils.Deferrable<TransactionRequest>,
+  tx: Promise<T> | ethers.utils.Deferrable<TransactionRequest>
 ) => Promise<T | TransactionResponse>;
 
 /**
@@ -23,13 +27,21 @@ export type Transactor<T extends ethers.Transaction> = (
 export default function transactorWithNotifier<T extends ethers.Transaction>(
   provider?: JsonRpcProvider | undefined,
   gasPrice?: BigNumberish | undefined,
-  etherscanUrl?: string,
+  etherscanUrl?: string
 ): Transactor<T> | undefined {
   if (typeof provider !== "undefined") {
-    return async (tx: Promise<T> | ethers.utils.Deferrable<TransactionRequest>): Promise<T | TransactionResponse> => {
+    return async (
+      tx: Promise<T> | ethers.utils.Deferrable<TransactionRequest>
+    ): Promise<T | TransactionResponse> => {
       const signer = provider.getSigner();
       const network = await provider.getNetwork();
-      const localChainName = localStorage.getItem(storageConstants.KEY_CHAIN_NAME);
+      // const local = localStorage.getItem(
+      //   storageConstants.KEY_CHACHE_FROM_CHAIN_INFO
+      // );
+      // let localFromChin;
+      // if (local) {
+      //   localFromChin = JSON.parse(local);
+      // }
 
       const options = {
         dappId: "0b58206a-f3c0-4701-a62f-73c7243e8c77", // GET YOUR OWN KEY AT https://account.blocknative.com
@@ -70,50 +82,59 @@ export default function transactorWithNotifier<T extends ethers.Transaction>(
         }
 
         // if it is a valid Notify.js network, use that, if not, just send a default notification
-        if ([1, 3, 4, 5, 42, 100].indexOf(network.chainId) >= 0) {
-          if (result.hash) {
-            const { emitter } = notify.hash(result.hash);
-            emitter.on("all", transaction => ({
-              onclick: () => window.open((etherscanUrl || etherscanTxUrl) + transaction.hash),
-            }));
-          }
-        } else {
-          notification.info({
-            message: (
-              <div style={{ fontSize: 14 }}>
-                Your transaction has been
-                {localChainName && <div>sent to {localChainName}</div>}
-              </div>
-            ),
-            description: new Date().toLocaleTimeString(),
-            placement: "topRight",
-            className: "notifi",
-            key: "notifi",
-            icon: <ClockCircleOutlined spin style={{ color: "#eec05a" }} />,
-          });
-        }
+        // if ([1, 3, 4, 5, 42, 100].indexOf(network.chainId) >= 0) {
+        //   if (result.hash) {
+        //     const { emitter } = notify.hash(result.hash);
+        //     emitter.on("all", (transaction) => ({
+        //       onclick: () =>
+        //         window.open(
+        //           (etherscanUrl || etherscanTxUrl) + transaction.hash
+        //         ),
+        //     }));
+        //   }
+        // } else {
+        //   notification.info({
+        //     message: (
+        //       <div style={{ fontSize: 14 }}>
+        //         Your transaction has been
+        //         <div>send to network</div>
+        //       </div>
+        //     ),
+        //     description: new Date().toLocaleTimeString(),
+        //     placement: "topRight",
+        //     className: "notifi",
+        //     key: "notifi",
+        //     duration: 10,
+        //     icon: <ClockCircleOutlined spin style={{ color: "#eec05a" }} />,
+        //   });
+        // }
         return result;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (e: any) {
+      } catch (e) {
+        console.log(e);
         const err = e as GenericError;
         const message = err.message;
         if (message) {
           console.log(
             "Transaction Error:",
             message,
-            message.indexOf("MetaMask Tx Signature: User denied transaction signature"),
+            message.indexOf(
+              "MetaMask Tx Signature: User denied transaction signature"
+            )
           );
-          if (!isSignerMisMatchErr(e.data || e) && message.indexOf("MetaMask Tx Signature: User denied transaction signature") === -1 &&
-              message.indexOf("User rejected the transaction") === -1) {
-            notification.error({
-              message: "Your transaction has failed",
-              description: new Date().toLocaleTimeString(),
-              placement: "topRight",
-              className: "notifi",
-              key: "notifi",
-              icon: <WarningOutlined style={{ color: "#d94549" }} />,
-            });
-          }
+          // if (
+          //   message.indexOf(
+          //     "MetaMask Tx Signature: User denied transaction signature"
+          //   ) === -1
+          // ) {
+          //   notification.error({
+          //     message: "Your transaction has failed",
+          //     description: new Date().toLocaleTimeString(),
+          //     placement: "topRight",
+          //     className: "notifi",
+          //     key: "notifi",
+          //     icon: <WarningOutlined style={{ color: "#d94549" }} />,
+          //   });
+          // }
         }
         throw e;
         // return e;

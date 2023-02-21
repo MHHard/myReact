@@ -1,3 +1,11 @@
-import React from 'react';
+import React from "react";
 
-export const ColorThemeContext = React.createContext<{themeType: "dark" | "light", toggleTheme: ()=>void}>({themeType: "dark", toggleTheme: ()=>{}});
+export const ColorThemeContext = React.createContext<{
+  themeType: "dark" | "light";
+  toggleTheme: () => void;
+  isMobile: boolean;
+}>({
+  themeType: "dark",
+  toggleTheme: () => {},
+  isMobile: document.documentElement.clientWidth <= 768,
+});
