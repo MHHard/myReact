@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer"); // 引入分析打包结果插件
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
 console.log(8888, process.env.NODE_ENV);
@@ -18,6 +18,21 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          "thread-loader",
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true,
+              happyPackMode: true,
+            },
+          },
+        ],
+        include: [path.resolve(__dirname, "../src")],
+        exclude: /node_modules/,
+      },
       {
         include: [path.resolve(__dirname, "../src")], //只对项目src文件的ts,tsx进行loader解析
         test: /.(ts|tsx)$/, // 匹配.ts, tsx文件
@@ -127,7 +142,7 @@ module.exports = {
       Buffer: ['buffer', 'Buffer'],
       React: "react",
     }),
-    new BundleAnalyzerPlugin(), // 配置分析打包结果插件
+    // new BundleAnalyzerPlugin(), // 配置分析打包结果插件
     // new webpack.NamedModulesPlugin(),
     // new HardSourceWebpackPlugin(),
     // new HardSourceWebpackPlugin.ParallelModulePlugin({
@@ -145,5 +160,6 @@ module.exports = {
   ],
   cache: {
     type: "filesystem", // 使用文件缓存
+    allowCollectingMemory: true,
   },
 };
