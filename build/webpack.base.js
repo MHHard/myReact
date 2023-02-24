@@ -2,12 +2,14 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer"); // 引入分析打包结果插件
-// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer"); // 引入分析打包结果插件
+const WeedsWebpackPlugin = require("weeds-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
-console.log(8888, process.env.NODE_ENV);
+// console.log(8888, process.env.NODE_ENV);
+
 module.exports = {
+
   entry: path.join(__dirname, "../src/index.tsx"), // 入口文件
   // 打包文件出口
   output: {
@@ -143,19 +145,9 @@ module.exports = {
       React: "react",
     }),
     // new BundleAnalyzerPlugin(), // 配置分析打包结果插件
-    // new webpack.NamedModulesPlugin(),
-    // new HardSourceWebpackPlugin(),
-    // new HardSourceWebpackPlugin.ParallelModulePlugin({
-    //   // How to launch the extra processes. Default:
-    //   fork: (fork, compiler, webpackBin) => fork(
-    //     webpackBin(),
-    //     ['--config', __filename], {
-    //       silent: true,
-    //     }
-    //   ),
-    //   numWorkers: () => 4,
-    //   minModules: 20,
-    // }),
+    new WeedsWebpackPlugin({
+      writeType: "json", // default cli log, value: json or ''
+    }),
 
   ],
   cache: {
