@@ -7,8 +7,7 @@ import { useSafeguardInfo } from "./useSafeguardInfo";
 export interface SafeGuardParmeters {
   chainDelayThresholds: string;
   chainDelayTimeInMinutes: string;
-  maxSendValue: BigNumber | undefined;
-  minSendValue: BigNumber | undefined;
+  epochVolumCaps: BigNumber | undefined;
   isBigAmountDelayed: boolean;
   currentEpochVolume: BigNumber | undefined;
   lastOpTimestamps: BigNumber | undefined;
@@ -61,8 +60,6 @@ export function useAsyncChecker(checkPair: LPCheckpair): SafeGuardResult {
     }
 
     const getTransferInfoConfigs = async () => {
-      let chainMinAmount = BigNumber.from(0);
-      let chainMaxAmount = BigNumber.from(0);
       let chainEpochVolumeCaps = BigNumber.from(0);
       let safeguardInfoPromise: Promise<ChainSafeguardInfo>;
       let delayInfoPromise: Promise<ChainDelayInfo>;
@@ -71,8 +68,6 @@ export function useAsyncChecker(checkPair: LPCheckpair): SafeGuardResult {
         safeguardInfoPromise = chainSafeguardInfoCallback();
       } else {
         safeguardInfoPromise = Promise.resolve({
-          minAmount: BigNumber.from(0),
-          maxAmount: BigNumber.from(0),
           epochVolumeCaps: BigNumber.from(0),
           epochVolumes: BigNumber.from(0),
           lastOpTimestamps: BigNumber.from(0),
@@ -94,32 +89,20 @@ export function useAsyncChecker(checkPair: LPCheckpair): SafeGuardResult {
         .then(value => {
           const safeguardChainInfo = value[0];
           const delayChainInfo = value[1];
-          chainMinAmount = safeguardChainInfo.minAmount;
-          chainMaxAmount = safeguardChainInfo.maxAmount;
           chainEpochVolumeCaps = safeguardChainInfo.epochVolumeCaps.mul(98).div(100);
 
-          let minSend: BigNumber | undefined;
-          let maxSend: BigNumber | undefined;
+          let volumeCap: BigNumber | undefined;
 
-          if (chainMinAmount.gt(0)) {
-            minSend = safeguardChainInfo?.minAmount;
-          }
-
-          if (chainMaxAmount.gt(0) && chainEpochVolumeCaps.gt(0)) {
-            maxSend = chainMaxAmount.lte(chainEpochVolumeCaps) ? chainMaxAmount : chainEpochVolumeCaps;
-          } else if (chainMaxAmount.gt(0)) {
-            maxSend = chainMaxAmount;
-          } else if (chainEpochVolumeCaps.gt(0)) {
-            maxSend = chainEpochVolumeCaps;
+          if (chainEpochVolumeCaps.gt(0)) {
+            volumeCap = chainEpochVolumeCaps;
           } else {
-            maxSend = undefined;
+            volumeCap = undefined;
           }
 
           const parameters: SafeGuardParmeters = {
             chainDelayThresholds: delayChainInfo.delayThresholds,
             chainDelayTimeInMinutes: delayChainInfo.delayPeriod.toString(),
-            maxSendValue: maxSend,
-            minSendValue: minSend,
+            epochVolumCaps: volumeCap,
             isBigAmountDelayed: delayChainInfo.isBigAmountDelayed,
             currentEpochVolume: safeguardChainInfo.epochVolumes,
             lastOpTimestamps: safeguardChainInfo.lastOpTimestamps,
@@ -130,6 +113,14 @@ export function useAsyncChecker(checkPair: LPCheckpair): SafeGuardResult {
             safeguardException: undefined,
             isSafeGuardTaskInProgress: false,
           });
+
+          console.log(`withdraw safeguard results, chainDelayThresholds:${parameters.chainDelayThresholds},\n
+            chainDelayTimeInMinutes: ${parameters.chainDelayTimeInMinutes},\n
+            epochVolumCaps: ${parameters.epochVolumCaps?.toString()},\n
+            currentEpochVolume: ${parameters.currentEpochVolume?.toString()},\n
+            isBigAmountDelayed: ${parameters.isBigAmountDelayed},\n
+            lastOpTimestamps: ${parameters.lastOpTimestamps},\n
+          `)
 
           const checkSafeguardFinished = new Date().getTime();
           console.debug("[performance][safeguardCheck]", checkSafeguardFinished - checkSafeguardStart);

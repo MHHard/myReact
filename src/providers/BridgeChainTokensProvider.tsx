@@ -1,12 +1,12 @@
 import { ethers } from "ethers";
 import { createContext, ReactChild, ReactChildren, useContext } from "react";
 import { BridgeType, TransferPair } from "../constants/type";
-import { getTransferPairFunction } from "../helpers/destinationRelayChecker";
+import { getTransferPairFunction } from "../helpers/transferPairGeneration";
 
 /* eslint-disable*/
 
 interface BridgeChainTokensContextProps {
-  getTransferPair: (transferConfig, sourceChainId, destinationChainId, tokenSymbol) => TransferPair;
+  getTransferPair: (transferConfig, sourceChainId, destinationChainId, tokenSymbol, getNetworkById) => TransferPair;
   getTransferSnapshot: (transferPair: TransferPair) => string;
 }
 

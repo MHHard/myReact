@@ -15,7 +15,6 @@ import * as grpcWeb from 'grpc-web';
 
 import * as sdk_service_rfq_user_pb from '../sdk/service/rfq/user_pb';
 import * as gateway_gateway_pb from '../gateway/gateway_pb';
-import * as sgn_health_v1_health_pb from '../sgn/health/v1/health_pb';
 
 
 export class WebClient {
@@ -121,6 +120,49 @@ export class WebClient {
     request,
     metadata || {},
     this.methodInfoGetTransferConfigsForAll);
+  }
+
+  methodInfoCircleUsdcConfig = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/CircleUsdcConfig',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.CircleUsdcConfigRequest,
+    gateway_gateway_pb.CircleUsdcConfigResponse,
+    (request: gateway_gateway_pb.CircleUsdcConfigRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.CircleUsdcConfigResponse.deserializeBinary
+  );
+
+  circleUsdcConfig(
+    request: gateway_gateway_pb.CircleUsdcConfigRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.CircleUsdcConfigResponse>;
+
+  circleUsdcConfig(
+    request: gateway_gateway_pb.CircleUsdcConfigRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.CircleUsdcConfigResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.CircleUsdcConfigResponse>;
+
+  circleUsdcConfig(
+    request: gateway_gateway_pb.CircleUsdcConfigRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.CircleUsdcConfigResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/CircleUsdcConfig',
+        request,
+        metadata || {},
+        this.methodInfoCircleUsdcConfig,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/CircleUsdcConfig',
+    request,
+    metadata || {},
+    this.methodInfoCircleUsdcConfig);
   }
 
   methodInfoGetRfqConfigs = new grpcWeb.MethodDescriptor(
@@ -1456,6 +1498,49 @@ export class WebClient {
     this.methodInfoGetCampaignScores);
   }
 
+  methodInfoGetQualification = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetQualification',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetQualificationRequest,
+    gateway_gateway_pb.GetQualificationResponse,
+    (request: gateway_gateway_pb.GetQualificationRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetQualificationResponse.deserializeBinary
+  );
+
+  getQualification(
+    request: gateway_gateway_pb.GetQualificationRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetQualificationResponse>;
+
+  getQualification(
+    request: gateway_gateway_pb.GetQualificationRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetQualificationResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetQualificationResponse>;
+
+  getQualification(
+    request: gateway_gateway_pb.GetQualificationRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetQualificationResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetQualification',
+        request,
+        metadata || {},
+        this.methodInfoGetQualification,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetQualification',
+    request,
+    metadata || {},
+    this.methodInfoGetQualification);
+  }
+
   methodInfoGetInfoByTxHash = new grpcWeb.MethodDescriptor(
     '/sgn.gateway.v1.Web/GetInfoByTxHash',
     grpcWeb.MethodType.UNARY,
@@ -2142,135 +2227,6 @@ export class WebClient {
     request,
     metadata || {},
     this.methodInfoSaveSystemAnnouncement);
-  }
-
-  methodInfoReportCurrentBlockNumber = new grpcWeb.MethodDescriptor(
-    '/sgn.gateway.v1.Web/ReportCurrentBlockNumber',
-    grpcWeb.MethodType.UNARY,
-    sgn_health_v1_health_pb.ReportSgnAnalyticsRequest,
-    sgn_health_v1_health_pb.ReportSgnAnalyticsResponse,
-    (request: sgn_health_v1_health_pb.ReportSgnAnalyticsRequest) => {
-      return request.serializeBinary();
-    },
-    sgn_health_v1_health_pb.ReportSgnAnalyticsResponse.deserializeBinary
-  );
-
-  reportCurrentBlockNumber(
-    request: sgn_health_v1_health_pb.ReportSgnAnalyticsRequest,
-    metadata: grpcWeb.Metadata | null): Promise<sgn_health_v1_health_pb.ReportSgnAnalyticsResponse>;
-
-  reportCurrentBlockNumber(
-    request: sgn_health_v1_health_pb.ReportSgnAnalyticsRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: sgn_health_v1_health_pb.ReportSgnAnalyticsResponse) => void): grpcWeb.ClientReadableStream<sgn_health_v1_health_pb.ReportSgnAnalyticsResponse>;
-
-  reportCurrentBlockNumber(
-    request: sgn_health_v1_health_pb.ReportSgnAnalyticsRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: sgn_health_v1_health_pb.ReportSgnAnalyticsResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/sgn.gateway.v1.Web/ReportCurrentBlockNumber',
-        request,
-        metadata || {},
-        this.methodInfoReportCurrentBlockNumber,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/sgn.gateway.v1.Web/ReportCurrentBlockNumber',
-    request,
-    metadata || {},
-    this.methodInfoReportCurrentBlockNumber);
-  }
-
-  methodInfoReportSgnConsensusLog = new grpcWeb.MethodDescriptor(
-    '/sgn.gateway.v1.Web/ReportSgnConsensusLog',
-    grpcWeb.MethodType.UNARY,
-    sgn_health_v1_health_pb.SgnConsensusLogReport,
-    sgn_health_v1_health_pb.ReportSgnAnalyticsResponse,
-    (request: sgn_health_v1_health_pb.SgnConsensusLogReport) => {
-      return request.serializeBinary();
-    },
-    sgn_health_v1_health_pb.ReportSgnAnalyticsResponse.deserializeBinary
-  );
-
-  reportSgnConsensusLog(
-    request: sgn_health_v1_health_pb.SgnConsensusLogReport,
-    metadata: grpcWeb.Metadata | null): Promise<sgn_health_v1_health_pb.ReportSgnAnalyticsResponse>;
-
-  reportSgnConsensusLog(
-    request: sgn_health_v1_health_pb.SgnConsensusLogReport,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: sgn_health_v1_health_pb.ReportSgnAnalyticsResponse) => void): grpcWeb.ClientReadableStream<sgn_health_v1_health_pb.ReportSgnAnalyticsResponse>;
-
-  reportSgnConsensusLog(
-    request: sgn_health_v1_health_pb.SgnConsensusLogReport,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: sgn_health_v1_health_pb.ReportSgnAnalyticsResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/sgn.gateway.v1.Web/ReportSgnConsensusLog',
-        request,
-        metadata || {},
-        this.methodInfoReportSgnConsensusLog,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/sgn.gateway.v1.Web/ReportSgnConsensusLog',
-    request,
-    metadata || {},
-    this.methodInfoReportSgnConsensusLog);
-  }
-
-  methodInfoGetCurrentBlockNumberByNode = new grpcWeb.MethodDescriptor(
-    '/sgn.gateway.v1.Web/GetCurrentBlockNumberByNode',
-    grpcWeb.MethodType.UNARY,
-    gateway_gateway_pb.GetCurrentBlockNumberByNodeRequest,
-    gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse,
-    (request: gateway_gateway_pb.GetCurrentBlockNumberByNodeRequest) => {
-      return request.serializeBinary();
-    },
-    gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse.deserializeBinary
-  );
-
-  getCurrentBlockNumberByNode(
-    request: gateway_gateway_pb.GetCurrentBlockNumberByNodeRequest,
-    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse>;
-
-  getCurrentBlockNumberByNode(
-    request: gateway_gateway_pb.GetCurrentBlockNumberByNodeRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse>;
-
-  getCurrentBlockNumberByNode(
-    request: gateway_gateway_pb.GetCurrentBlockNumberByNodeRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: gateway_gateway_pb.GetCurrentBlockNumberByNodeResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/sgn.gateway.v1.Web/GetCurrentBlockNumberByNode',
-        request,
-        metadata || {},
-        this.methodInfoGetCurrentBlockNumberByNode,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/sgn.gateway.v1.Web/GetCurrentBlockNumberByNode',
-    request,
-    metadata || {},
-    this.methodInfoGetCurrentBlockNumberByNode);
   }
 
   methodInfoGetRetentionRewardsInfo = new grpcWeb.MethodDescriptor(
@@ -3606,6 +3562,221 @@ export class WebClient {
     this.methodInfoGetRiskSeverityLevelForCsTool);
   }
 
+  methodInfoGetIpListByWalletForCsTool = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetIpListByWalletForCsTool',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetIpListByWalletForCsToolRequest,
+    gateway_gateway_pb.GetIpListByWalletForCsToolResponse,
+    (request: gateway_gateway_pb.GetIpListByWalletForCsToolRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetIpListByWalletForCsToolResponse.deserializeBinary
+  );
+
+  getIpListByWalletForCsTool(
+    request: gateway_gateway_pb.GetIpListByWalletForCsToolRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetIpListByWalletForCsToolResponse>;
+
+  getIpListByWalletForCsTool(
+    request: gateway_gateway_pb.GetIpListByWalletForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetIpListByWalletForCsToolResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetIpListByWalletForCsToolResponse>;
+
+  getIpListByWalletForCsTool(
+    request: gateway_gateway_pb.GetIpListByWalletForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetIpListByWalletForCsToolResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetIpListByWalletForCsTool',
+        request,
+        metadata || {},
+        this.methodInfoGetIpListByWalletForCsTool,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetIpListByWalletForCsTool',
+    request,
+    metadata || {},
+    this.methodInfoGetIpListByWalletForCsTool);
+  }
+
+  methodInfoGetWalletsByIpForCsTool = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetWalletsByIpForCsTool',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetWalletsByIpForCsToolRequest,
+    gateway_gateway_pb.GetWalletsByIpForCsToolResponse,
+    (request: gateway_gateway_pb.GetWalletsByIpForCsToolRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetWalletsByIpForCsToolResponse.deserializeBinary
+  );
+
+  getWalletsByIpForCsTool(
+    request: gateway_gateway_pb.GetWalletsByIpForCsToolRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetWalletsByIpForCsToolResponse>;
+
+  getWalletsByIpForCsTool(
+    request: gateway_gateway_pb.GetWalletsByIpForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetWalletsByIpForCsToolResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetWalletsByIpForCsToolResponse>;
+
+  getWalletsByIpForCsTool(
+    request: gateway_gateway_pb.GetWalletsByIpForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetWalletsByIpForCsToolResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetWalletsByIpForCsTool',
+        request,
+        metadata || {},
+        this.methodInfoGetWalletsByIpForCsTool,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetWalletsByIpForCsTool',
+    request,
+    metadata || {},
+    this.methodInfoGetWalletsByIpForCsTool);
+  }
+
+  methodInfoGetAllOnChainLimitForCsTool = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetAllOnChainLimitForCsTool',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetAllOnChainLimitForCsToolRequest,
+    gateway_gateway_pb.GetAllOnChainLimitForCsToolResponse,
+    (request: gateway_gateway_pb.GetAllOnChainLimitForCsToolRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetAllOnChainLimitForCsToolResponse.deserializeBinary
+  );
+
+  getAllOnChainLimitForCsTool(
+    request: gateway_gateway_pb.GetAllOnChainLimitForCsToolRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetAllOnChainLimitForCsToolResponse>;
+
+  getAllOnChainLimitForCsTool(
+    request: gateway_gateway_pb.GetAllOnChainLimitForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetAllOnChainLimitForCsToolResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetAllOnChainLimitForCsToolResponse>;
+
+  getAllOnChainLimitForCsTool(
+    request: gateway_gateway_pb.GetAllOnChainLimitForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetAllOnChainLimitForCsToolResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetAllOnChainLimitForCsTool',
+        request,
+        metadata || {},
+        this.methodInfoGetAllOnChainLimitForCsTool,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetAllOnChainLimitForCsTool',
+    request,
+    metadata || {},
+    this.methodInfoGetAllOnChainLimitForCsTool);
+  }
+
+  methodInfoGetBlockBridgeDirectListForCsTool = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/GetBlockBridgeDirectListForCsTool',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetBlockBridgeDirectListForCsToolRequest,
+    gateway_gateway_pb.GetBlockBridgeDirectListForCsToolResponse,
+    (request: gateway_gateway_pb.GetBlockBridgeDirectListForCsToolRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetBlockBridgeDirectListForCsToolResponse.deserializeBinary
+  );
+
+  getBlockBridgeDirectListForCsTool(
+    request: gateway_gateway_pb.GetBlockBridgeDirectListForCsToolRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetBlockBridgeDirectListForCsToolResponse>;
+
+  getBlockBridgeDirectListForCsTool(
+    request: gateway_gateway_pb.GetBlockBridgeDirectListForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetBlockBridgeDirectListForCsToolResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetBlockBridgeDirectListForCsToolResponse>;
+
+  getBlockBridgeDirectListForCsTool(
+    request: gateway_gateway_pb.GetBlockBridgeDirectListForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetBlockBridgeDirectListForCsToolResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/GetBlockBridgeDirectListForCsTool',
+        request,
+        metadata || {},
+        this.methodInfoGetBlockBridgeDirectListForCsTool,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/GetBlockBridgeDirectListForCsTool',
+    request,
+    metadata || {},
+    this.methodInfoGetBlockBridgeDirectListForCsTool);
+  }
+
+  methodInfoSetBlockBridgeDirectListForCsTool = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.Web/SetBlockBridgeDirectListForCsTool',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.SetBlockBridgeDirectListForCsToolRequest,
+    gateway_gateway_pb.SetBlockBridgeDirectListForCsToolResponse,
+    (request: gateway_gateway_pb.SetBlockBridgeDirectListForCsToolRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.SetBlockBridgeDirectListForCsToolResponse.deserializeBinary
+  );
+
+  setBlockBridgeDirectListForCsTool(
+    request: gateway_gateway_pb.SetBlockBridgeDirectListForCsToolRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.SetBlockBridgeDirectListForCsToolResponse>;
+
+  setBlockBridgeDirectListForCsTool(
+    request: gateway_gateway_pb.SetBlockBridgeDirectListForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.SetBlockBridgeDirectListForCsToolResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.SetBlockBridgeDirectListForCsToolResponse>;
+
+  setBlockBridgeDirectListForCsTool(
+    request: gateway_gateway_pb.SetBlockBridgeDirectListForCsToolRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.SetBlockBridgeDirectListForCsToolResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.Web/SetBlockBridgeDirectListForCsTool',
+        request,
+        metadata || {},
+        this.methodInfoSetBlockBridgeDirectListForCsTool,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.Web/SetBlockBridgeDirectListForCsTool',
+    request,
+    metadata || {},
+    this.methodInfoSetBlockBridgeDirectListForCsTool);
+  }
+
 }
 
 export class InternalWebClient {
@@ -3711,6 +3882,49 @@ export class InternalWebClient {
     request,
     metadata || {},
     this.methodInfoGetUniqueUserAddrByTimeRangeAndBridgeType);
+  }
+
+  methodInfoGetChainTableRefundTxCount = new grpcWeb.MethodDescriptor(
+    '/sgn.gateway.v1.InternalWeb/GetChainTableRefundTxCount',
+    grpcWeb.MethodType.UNARY,
+    gateway_gateway_pb.GetChainTableRefundTxCountRequest,
+    gateway_gateway_pb.GetChainTableRefundTxCountResponse,
+    (request: gateway_gateway_pb.GetChainTableRefundTxCountRequest) => {
+      return request.serializeBinary();
+    },
+    gateway_gateway_pb.GetChainTableRefundTxCountResponse.deserializeBinary
+  );
+
+  getChainTableRefundTxCount(
+    request: gateway_gateway_pb.GetChainTableRefundTxCountRequest,
+    metadata: grpcWeb.Metadata | null): Promise<gateway_gateway_pb.GetChainTableRefundTxCountResponse>;
+
+  getChainTableRefundTxCount(
+    request: gateway_gateway_pb.GetChainTableRefundTxCountRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetChainTableRefundTxCountResponse) => void): grpcWeb.ClientReadableStream<gateway_gateway_pb.GetChainTableRefundTxCountResponse>;
+
+  getChainTableRefundTxCount(
+    request: gateway_gateway_pb.GetChainTableRefundTxCountRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: gateway_gateway_pb.GetChainTableRefundTxCountResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.gateway.v1.InternalWeb/GetChainTableRefundTxCount',
+        request,
+        metadata || {},
+        this.methodInfoGetChainTableRefundTxCount,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.gateway.v1.InternalWeb/GetChainTableRefundTxCount',
+    request,
+    metadata || {},
+    this.methodInfoGetChainTableRefundTxCount);
   }
 
 }

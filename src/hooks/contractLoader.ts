@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Provider } from "@ethersproject/abstract-provider";
 import { Signer } from "@ethersproject/abstract-signer";
 import { Contract, ContractFactory } from "@ethersproject/contracts";
-import { InfuraProvider, JsonRpcProvider } from "@ethersproject/providers";
+import { InfuraProvider, StaticJsonRpcProvider } from "@ethersproject/providers";
 
 import { Bridge } from "../typechain/typechain";
 import { Bridge__factory } from "../typechain/typechain/factories/Bridge__factory";
@@ -26,6 +26,8 @@ import { RFQ } from "../typechain/typechain/RFQ";
 import { RFQ__factory } from "../typechain/typechain/factories/RFQ__factory";
 import { TransferAgent } from "../typechain/typechain/TransferAgent";
 import { TransferAgent__factory } from "../typechain/typechain/factories/TransferAgent__factory";
+import { PeggedNativeTokenBridge } from "../typechain/typechain/PeggedNativeTokenBridge";
+import { PeggedNativeTokenBridge__factory } from "../typechain/typechain/factories/PeggedNativeTokenBridge__factory";
 
 export type BridgeContracts = {
   bridge: Bridge | undefined;
@@ -40,6 +42,7 @@ export type BridgeContracts = {
   originalTokenVaultV2: OriginalTokenVaultV2 | undefined;
   peggedTokenBridge: PeggedTokenBridge | undefined;
   peggedTokenBridgeV2: PeggedTokenBridgeV2 | undefined;
+  peggedNativeTokenBridge: PeggedNativeTokenBridge | undefined;
   rfqContract: RFQ | undefined;
   transferAgent: TransferAgent | undefined;
 };
@@ -60,6 +63,7 @@ export const bridgeContractFactories: BridgeContractFactoryClasses = {
   originalTokenVaultV2: OriginalTokenVaultV2__factory,
   peggedTokenBridge: PeggedTokenBridge__factory,
   peggedTokenBridgeV2: PeggedTokenBridgeV2__factory,
+  peggedNativeTokenBridge: PeggedNativeTokenBridge__factory,
   rfqContract: RFQ__factory,
   transferAgent: TransferAgent__factory,
 };
@@ -77,6 +81,7 @@ export const bridgeContracts: BridgeContracts = {
   originalTokenVaultV2: undefined,
   peggedTokenBridge: undefined,
   peggedTokenBridgeV2: undefined,
+  peggedNativeTokenBridge: undefined,
   rfqContract: undefined,
   transferAgent: undefined,
 };
@@ -103,12 +108,12 @@ function loadContract(
 export async function ensureSigner(signerOrProvider: Signer | Provider): Promise<Signer | undefined> {
   let signer: Signer;
   let accounts: string[] = [];
-  if (signerOrProvider && typeof (signerOrProvider as JsonRpcProvider).listAccounts === "function") {
-    accounts = await (signerOrProvider as JsonRpcProvider).listAccounts();
+  if (signerOrProvider && typeof (signerOrProvider as StaticJsonRpcProvider).listAccounts === "function") {
+    accounts = await (signerOrProvider as StaticJsonRpcProvider).listAccounts();
   }
 
   if (accounts && accounts.length > 0) {
-    signer = (signerOrProvider as JsonRpcProvider).getSigner();
+    signer = (signerOrProvider as StaticJsonRpcProvider).getSigner();
   } else if (signerOrProvider instanceof InfuraProvider) {
     return undefined;
   } else {

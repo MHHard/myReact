@@ -1,11 +1,11 @@
 import { Modal, Button, message } from "antd";
-import { FC, useEffect, useState, useContext, useRef } from "react";
+import { FC, useEffect, useState, useContext } from "react";
 import { createUseStyles } from "react-jss";
 import { WarningFilled, CloseCircleFilled } from "@ant-design/icons";
 import { BigNumber } from "@ethersproject/bignumber";
 import { formatUnits } from "@ethersproject/units";
 import { formatDecimalPart, safeParseUnits } from "celer-web-utils/lib/format";
-import moment from "moment";
+import moment from "dayjs";
 import { useContractsContext } from "../../providers/ContractsContextProvider";
 import { useWeb3Context } from "../../providers/Web3ContextProvider";
 
@@ -16,10 +16,10 @@ import { Theme } from "../../theme";
 import { ERC20 } from "../../typechain/typechain/ERC20";
 import { ERC20__factory } from "../../typechain/typechain/factories/ERC20__factory";
 import { ColorThemeContext } from "../../providers/ThemeProvider";
-import { useCustomContractLoader, useNativeETHToken } from "../../hooks";
+import { useCustomContractLoader } from "../../hooks";
 import arrTop from "../../images/arrTop.svg";
 import TransDetail from "./TransDetail";
-import { TransferHistoryStatus, LPHistoryStatus, TransferHistory } from "../../constants/type";
+import { TransferHistoryStatus, LPHistoryStatus, TransferHistory, TokenInfo } from "../../constants/type";
 import arrTopLightIcon from "../../images/arrTopLight.svg";
 import clockPng from "../../images/clockIcon.png";
 
@@ -32,24 +32,14 @@ import {
   BridgeType,
 } from "../../proto/gateway/gateway_pb";
 import { isGasToken, isTestNet } from "../../constants/network";
-import { PeggedChainMode, usePeggedPairConfig } from "../../hooks/usePeggedPairConfig";
-import {
-  isNonEVMChain,
-  convertNonEVMAddressToEVMCompatible,
-  useNonEVMContext,
-  NonEVMMode,
-  getNonEVMMode,
-  isSeiChain,
-  isAptosChain,
-  isInjChain,
-} from "../../providers/NonEVMContextProvider";
+import { getTokenBalanceAddress, PeggedChainMode, usePeggedPairConfig } from "../../hooks/usePeggedPairConfig";
+
 import { storageConstants } from "../../constants/const";
-import { useNonEVMBigAmountDelay } from "../../hooks/useNonEVMBigAmountDelay";
 import { useMultiBurnConfig } from "../../hooks/useMultiBurnConfig";
 import { PegTokenSupply } from "../../hooks/usePegV2Transition";
 import { gatewayServiceWithGrpcUrlClient } from "../../redux/grpcClients";
 import transferFactory from "./transferFactory";
-import { ITransfer, IRfqTransfer } from "../../constants/transferAdatper";
+import { MaxITransfer } from "../../constants/transferAdatper";
 import { checkContractAddress } from "../../utils/contractAddressChecker";
 import { getRfqPrice, getRfqQuote, getUserIsBlocked, pingUserAddress } from "../../redux/gateway";
 import { PriceRequest, QuoteRequest, QuoteResponse } from "../../proto/sdk/service/rfq/user_pb";
@@ -57,7 +47,14 @@ import { Token } from "../../proto/sdk/common/token_pb";
 import RfqTransDetail from "./RfqTransDetail";
 import { ModalName, openModal } from "../../redux/modalSlice";
 import { Price } from "../../proto/sdk/service/rfqmm/api_pb";
-import AptosOnboardingTransferModal from "./AptosOnboardingTransferModal";
+import getReceivedToken from "../../utils/getReceivedToken";
+import warning from "../../images/warning.svg";
+import {
+  findCircleBridgeProxyContractAddress,
+  shouldUseCircleUSDCBridge,
+} from "../../helpers/circleUSDCTransferHelper";
+import { loadContract } from "../../hooks/customContractLoader";
+import { CircleBridgeProxy, CircleBridgeProxy__factory } from "../../typechain/typechain";
 
 const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: Theme) => ({
   balanceText: {
@@ -154,6 +151,16 @@ const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: 
     marginBottom: 20,
     fontWeight: 600,
     color: theme.surfacePrimary,
+  },
+  addrCheckWarning: {
+    backgroundColor: "#fff",
+    borderRadius: 4,
+    color: "#17171A",
+    fontSize: 14,
+    padding: "8px 15px",
+    marginBottom: 40,
+    display: "flex",
+    alignItems: "center",
   },
   transferdes: {
     fontSize: 12,
@@ -345,6 +352,7 @@ interface IProps {
   feeRebateDescription: string | undefined;
   isRfq: boolean;
   shouldShowAptosOnboardingFlow: boolean;
+  selectedDestinationChainToken: TokenInfo | undefined;
 }
 
 let countDownInterval;
@@ -361,14 +369,15 @@ const TransferModal: FC<IProps> = props => {
     delayMinutes,
     feeRebateDescription,
     isRfq,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     shouldShowAptosOnboardingFlow,
+    selectedDestinationChainToken,
   } = props;
   const { isMobile } = useAppSelector(state => state.windowWidth);
   const classes = useStyles({ isMobile });
   const { contracts, transactor } = useContractsContext();
   const { bridge, rfqContract } = contracts;
-  const { provider, address, chainId } = useWeb3Context();
-  const { nonEVMAddress, seiProvider, signAndSubmitTransaction } = useNonEVMContext();
+  const { provider, address, chainId, signer, getNetworkById } = useWeb3Context();
   const dispatch = useAppDispatch();
   const { transferInfo, modal } = useAppSelector(state => state);
   const { showTransferModal } = modal;
@@ -383,6 +392,8 @@ const TransferModal: FC<IProps> = props => {
     isFromSEO,
     rfqConfig,
     priceResponse,
+    circleUSDCConfig,
+    disableTransferAddlqAggregatelqAction,
   } = transferInfo;
   const [leftTimes, setLeftTimes] = useState<number>(0);
 
@@ -401,32 +412,25 @@ const TransferModal: FC<IProps> = props => {
       ? estimateAmtInfoInState?.dropGasAmt
       : "0";
   const arrivalGasTokenAmount = BigNumber.from(dropGasAmt);
-  let arrivalGasTokenDecimal =
+  const arrivalGasTokenDecimal =
     getTokenByChainAndTokenSymbol(toChainInConfig?.id ?? 0, toChainInConfig?.gas_token_symbol)?.token.decimal ?? 18;
-  if (isAptosChain(toChainInConfig?.id ?? 0)) {
-    arrivalGasTokenDecimal = 8;
-  }
+
   const arrivalGasTokenAmountValue = formatUnits(arrivalGasTokenAmount, arrivalGasTokenDecimal);
   const arrivalGasTokenAmountDisplay = formatDecimalPart(arrivalGasTokenAmountValue || "0", 6, "round", true);
   const arrivalGasTokenSymbol = toChainInConfig?.gas_token_symbol;
-  const { aptosAddress, seiAddress, injAddress } = useNonEVMContext();
 
   // token contract: param address is selected token's address
   const pegConfig = usePeggedPairConfig();
   const { multiBurnConfig } = useMultiBurnConfig();
 
-  const tokenAddress = pegConfig?.getTokenBalanceAddress(
+  const tokenAddress = getTokenBalanceAddress(
     selectedToken?.token?.address || "",
     fromChain?.id,
     selectedToken?.token?.symbol,
     transferConfig.pegged_pair_configs,
   );
 
-  const tokenContract = useCustomContractLoader(
-    provider,
-    isNonEVMChain(fromChain?.id ?? 0) ? "" : tokenAddress || "",
-    ERC20__factory,
-  ) as ERC20 | undefined;
+  const tokenContract = useCustomContractLoader(provider, tokenAddress || "", ERC20__factory) as ERC20 | undefined;
   const [transferSuccess, setTransferSuccess] = useState<boolean>(false);
   const [transfState, setTransfState] = useState<
     TransferHistoryStatus | LPHistoryStatus | "bridgeRateUpdated" | "transfer" | "bridgeNoRoute" | "showAptosOnboarding"
@@ -447,21 +451,10 @@ const TransferModal: FC<IProps> = props => {
   });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [quoteInfoInState, setQuetoInfoInState] = useState<QuoteResponse.AsObject | null>();
-  const { isNativeToken } = useNativeETHToken(fromChain, selectedToken);
-  const { nonEVMBigAmountDelayed, nonEVMDelayTimeInMinute } = useNonEVMBigAmountDelay(receiveAmount);
 
-  const [aptosOnboardingSourceChainTransferId, setAptosOnboardingSourceChainTransferId] = useState("");
-  const [aptosOnboardingSourceChainTransactionHashLink, setAptosOnboardingSourceChainTransactionHashLink] =
-    useState("");
-  const [showAptosOnboardingResult, setShowAptosOnboardingResult] = useState(shouldShowAptosOnboardingFlow);
-
-  // eslint-disable-next-line
-  const aptosOnboardingModalRef = useRef<any>(null);
-  const stopAptosOnboardingQuery = () => {
-    if (aptosOnboardingModalRef.current) {
-      aptosOnboardingModalRef.current?.stopAptosOnboardingQuery();
-    }
-  };
+  const receivedToken = getReceivedToken(fromChain?.id, toChain?.id, pegConfig, multiBurnConfig);
+  const showAddrCheckWarning =
+    toChain && selectedToken && !isGasToken(toChain.id, selectedToken.token.symbol) && !!receivedToken;
 
   let detailInter;
   const { themeType } = useContext(ColorThemeContext);
@@ -484,7 +477,6 @@ const TransferModal: FC<IProps> = props => {
   const onHandleCancel = () => {
     clearInterval(countDownInterval);
     clearInterval(detailInter);
-    stopAptosOnboardingQuery();
     if (transferSuccess) {
       onSuccess();
       onCancel();
@@ -557,8 +549,6 @@ const TransferModal: FC<IProps> = props => {
 
     if (isBigAmountDelayed) {
       time = `up to ${delayMinutes} minutes`;
-    } else if (nonEVMBigAmountDelayed) {
-      time = `up to ${nonEVMDelayTimeInMinute} minutes`;
     }
     return `Please allow ${time} for the funds to arrive at your wallet on ${toChain?.name}.`;
   };
@@ -586,22 +576,33 @@ const TransferModal: FC<IProps> = props => {
 
     return true;
   };
+  const handleOpenDisabledModal = () => {
+    dispatch(openModal(ModalName.disabledModal));
+  };
 
   const handleAction = async () => {
+    if (disableTransferAddlqAggregatelqAction) {
+      handleOpenDisabledModal();
+      return;
+    }
     if (!fromChain || !toChain || !selectedToken) {
       return;
     }
 
     setLoading(true);
-    const isNonEVM = isNonEVMChain(fromChain?.id ?? 0);
-    const isBlocked = await getUserIsBlocked(isNonEVM ? nonEVMAddress : address, fromChain?.id);
+    const isBlocked = (await getUserIsBlocked(address, fromChain?.id)).getIsBlocked();
     if (isBlocked) {
-      dispatch(openModal(ModalName.userIsBlocked));
+      dispatch(openModal(ModalName.userIsBlockedModal));
       setLoading(false);
       return;
     }
 
-    let transferParams: IRfqTransfer | ITransfer;
+    let transferParams: MaxITransfer;
+    const useCircleUSDCBridgeAdapter = shouldUseCircleUSDCBridge(
+      circleUSDCConfig,
+      selectedToken,
+      selectedDestinationChainToken,
+    );
 
     if (isRfq && validateRfqData()) {
       let quote = quoteInfoInState?.quote;
@@ -667,19 +668,70 @@ const TransferModal: FC<IProps> = props => {
       const msgFee = BigNumber.from(priceResponse?.txMsgFee).toHexString();
 
       transferParams = {
-        isTestNet,
-        isNativeToken,
+        fromChain,
+        toChain,
+        isNativeToken: selectedToken?.token.isNative,
+        address,
+        value,
+        selectedToken,
+        contracts,
+        transactor,
+        chainId,
+        amount,
+        quote,
+        msgFee,
+        type: "RfqITransfer",
+        // no use in this case
+        pegConfig,
+        pegSupply,
+        selectedToChain,
+        maxSlippage: 0,
+        receiverEVMCompatibleAddress: "",
+        toAccount: "",
+        dstAddress: "",
+        flowTokenPathConfigs,
+        nonEVMReceiverAddress,
+        circleBridgeProxy: undefined,
+        getNetworkById,
+      };
+    } else if (useCircleUSDCBridgeAdapter) {
+      if (address.length > 0) {
+        pingUserAddress(address).then(_ => {});
+      }
+
+      const receiverEVMCompatibleAddress = nonEVMReceiverAddress;
+      const toAccount = address;
+      const dstAddress = address;
+
+      const circleBridgeProxy = (await loadContract(
+        signer,
+        findCircleBridgeProxyContractAddress(circleUSDCConfig, selectedToken.token.chainId ?? 0),
+        CircleBridgeProxy__factory,
+      )) as CircleBridgeProxy | undefined;
+
+      transferParams = {
+        isNativeToken: selectedToken?.token.isNative,
         chainId,
         address,
         fromChain,
         toChain,
+        pegConfig,
+        pegSupply,
         amount,
+        selectedToken,
+        selectedToChain,
         value,
+        maxSlippage: 0,
+        type: "CircleUSDCITransfer",
+        receiverEVMCompatibleAddress,
+        toAccount,
+        dstAddress,
+        flowTokenPathConfigs,
+        nonEVMReceiverAddress,
         transactor,
         contracts,
-        quote,
-        msgFee,
-        type: "IRfqTransfer",
+        circleBridgeProxy,
+        getNetworkById,
       };
     } else {
       const estimateRequest = new EstimateAmtRequest();
@@ -710,83 +762,43 @@ const TransferModal: FC<IProps> = props => {
       if (address.length > 0) {
         pingUserAddress(address).then(_ => {});
       }
-
-      if (nonEVMAddress.length > 0) {
-        pingUserAddress(nonEVMAddress).then(_ => {});
-      }
-
-      const isToChainNonEVM = isNonEVMChain(toChain.id ?? 0);
-      const fromChainNonEVMMode = getNonEVMMode(fromChain?.id ?? 0);
-      if (
-        fromChainNonEVMMode === NonEVMMode.off &&
-        (!transactor || !bridge || !tokenContract || !selectedToken?.token?.address || fromChain.id !== chainId)
-      )
+      if (!transactor || !bridge || !tokenContract || !selectedToken?.token?.address || fromChain.id !== chainId)
         return;
 
-      const destinationChainNonEVMMode = getNonEVMMode(toChain.id ?? 0);
-      const receiverEVMCompatibleAddress = await convertNonEVMAddressToEVMCompatible(
-        nonEVMReceiverAddress,
-        destinationChainNonEVMMode,
-      );
-      const toAccount = isToChainNonEVM ? receiverEVMCompatibleAddress : address;
-      const dstAddress = isToChainNonEVM ? nonEVMReceiverAddress : address;
+      const receiverEVMCompatibleAddress = nonEVMReceiverAddress;
+      const toAccount = receiverEVMCompatibleAddress;
+      const dstAddress = address;
       const walletAddress = () => {
-        let addr = address;
-        switch (fromChainNonEVMMode) {
-          case NonEVMMode.aptosMainnet:
-          case NonEVMMode.aptosTest:
-          case NonEVMMode.aptosDevnet: {
-            addr = aptosAddress;
-            break;
-          }
-          case NonEVMMode.seiMainnet:
-          case NonEVMMode.seiDevnet:
-          case NonEVMMode.seiTestnet: {
-            addr = seiAddress;
-            break;
-          }
-          case NonEVMMode.injectiveTestnet:
-          case NonEVMMode.injectiveMainnet: {
-            addr = injAddress;
-            break;
-          }
-          default:
-            break;
-        }
+        const addr = address;
         return addr;
       };
 
       transferParams = {
-        isTestNet,
-        isNativeToken,
-        chainId,
-        address: walletAddress(),
         fromChain,
         toChain,
-        multiBurnConfig,
+        isNativeToken: selectedToken.token.isNative,
+        address: walletAddress(),
+        value,
+        selectedToken,
+        contracts,
+        transactor,
+        chainId,
         pegConfig,
         pegSupply,
         amount,
-        selectedToken,
         selectedToChain,
-        value,
         maxSlippage: res.getMaxSlippage(),
         receiverEVMCompatibleAddress,
         toAccount,
         dstAddress,
-        transferConfig,
         flowTokenPathConfigs,
-        nonEVMAddress,
         nonEVMReceiverAddress,
-        transactor,
-        signAndSubmitTransaction,
-        contracts,
-        seiProvider,
-        fee: 0,
+        circleBridgeProxy: undefined,
+        getNetworkById,
       };
     }
 
-    const transferAdapter = transferFactory(transferParams);
+    const transferAdapter = transferFactory(transferParams, transferConfig, multiBurnConfig);
     try {
       if (!transferAdapter) return;
       setLoading(true);
@@ -803,21 +815,15 @@ const TransferModal: FC<IProps> = props => {
       transferAdapter
         .transfer()
         ?.then(async transferResponse => {
-          let checkSuccess = transferAdapter.isResponseValid(transferResponse);
-          if (isSeiChain(fromChain?.id || 1)) {
-            checkSuccess = transferResponse.transactionHash;
-          }
-          if (isInjChain(fromChain?.id || 1)) {
-            checkSuccess = transferResponse.txHash;
-          }
+          const checkSuccess = transferAdapter.isResponseValid(transferResponse);
+
           if (!checkSuccess) {
             setLoading(false);
           } else {
             transferAdapter.onSuccess(transferResponse);
-            const selectedToChainToken = getTokenByChainAndTokenSymbol(
-              toChain?.id,
-              selectedToken?.token?.symbol,
-            )?.token;
+            const selectedToChainToken =
+              selectedDestinationChainToken?.token ??
+              getTokenByChainAndTokenSymbol(toChain?.id, selectedToken?.token?.symbol)?.token;
             if (selectedToChainToken) {
               const transferJson: TransferHistory = {
                 dst_block_tx_link: "",
@@ -832,18 +838,17 @@ const TransferModal: FC<IProps> = props => {
                   chain: toChain,
                   token: selectedToChainToken,
                 },
-                srcAddress: transferAdapter.srcAddress,
-                dstAddress: transferAdapter.dstAddress,
+                srcAddress: transferAdapter.senderAddress,
+                dstAddress: transferAdapter.receiverAddress,
                 status: TransferHistoryStatus.TRANSFER_SUBMITTING,
                 bridge_type: isRfq ? BridgeType.BRIDGETYPE_RFQ : BridgeType.BRIDGETYPE_UNKNOWN,
                 transfer_id: transferAdapter.transferId,
-                ts: transferAdapter.nonce,
+                ts: useCircleUSDCBridgeAdapter ? new Date().getTime() : transferAdapter.nonce,
                 updateTime: transferAdapter.nonce,
                 nonce: transferAdapter.nonce,
                 isLocal: true,
                 txIsFailed: false,
               };
-
               const localTransferListJsonStr = localStorage.getItem(storageConstants.KEY_TRANSFER_LIST_JSON);
               let localTransferList: TransferHistory[] = [];
               if (localTransferListJsonStr) {
@@ -851,13 +856,6 @@ const TransferModal: FC<IProps> = props => {
               }
               localTransferList.unshift(transferJson);
               localStorage.setItem(storageConstants.KEY_TRANSFER_LIST_JSON, JSON.stringify(localTransferList));
-            }
-            if (shouldShowAptosOnboardingFlow) {
-              setAptosOnboardingSourceChainTransferId(transferAdapter.transferId);
-              setAptosOnboardingSourceChainTransactionHashLink(transferAdapter.srcBlockTxLink);
-              setTransfState(SHOW_APTOS_ONBOARDING);
-              markRefRelation(transferAdapter.transferId);
-              return;
             }
             setTransferSuccess(true);
             setTransfState(TransferHistoryStatus?.TRANSFER_COMPLETED);
@@ -939,6 +937,7 @@ const TransferModal: FC<IProps> = props => {
             delayMinutes={delayMinutes}
             feeRebateDescription={feeRebateDescription}
             gasOnArrival={undefined}
+            selectedDestinationChainToken={selectedDestinationChainToken}
           />
         )}
         <div className={classes.modalTop}>
@@ -998,6 +997,7 @@ const TransferModal: FC<IProps> = props => {
             delayMinutes={delayMinutes}
             feeRebateDescription={feeRebateDescription}
             gasOnArrival={undefined}
+            selectedDestinationChainToken={selectedDestinationChainToken}
           />
         )}
         <div className={classes.modalTop}>
@@ -1037,29 +1037,6 @@ const TransferModal: FC<IProps> = props => {
       </>
     );
   } else if (transfState === SHOW_APTOS_ONBOARDING) {
-    const destinationTokenInfo = transferConfig.chain_token[toChain?.id ?? 0].token.find(tokenInfo => {
-      return tokenInfo.token.symbol === selectedToken?.token.symbol;
-    });
-
-    const peggedTokenBridgeContractAddress =
-      multiBurnConfig?.burn_config_as_dst.burn_contract_addr ?? pegConfig.config.pegged_burn_contract_addr;
-
-    content = (
-      <AptosOnboardingTransferModal
-        nonEVMReceiverAddress={nonEVMReceiverAddress}
-        sourceChainInfo={fromChain}
-        sourceChainTransferId={aptosOnboardingSourceChainTransferId}
-        sourceChainTransactionHashLink={aptosOnboardingSourceChainTransactionHashLink}
-        destinationTokenInfo={destinationTokenInfo}
-        aptosPeggedBridgeContractAddress={peggedTokenBridgeContractAddress}
-        ref={aptosOnboardingModalRef}
-        onFinish={() => {
-          setShowAptosOnboardingResult(true);
-          setTransferSuccess(true);
-          setTransfState(TransferHistoryStatus?.TRANSFER_COMPLETED);
-        }}
-      />
-    );
     titleText = "";
   } else if (transfState === TransferHistoryStatus?.TRANSFER_COMPLETED) {
     // Relay - check your fund
@@ -1068,16 +1045,10 @@ const TransferModal: FC<IProps> = props => {
         <div className={classes.modalTopIcon} style={{ marginTop: 80 }}>
           <img src={themeType === "dark" ? arrTop : arrTopLightIcon} height="120" alt="" />
         </div>
-        {showAptosOnboardingResult ? (
-          <div>
-            <div className={classes.modalToptext2}>Transfer completed</div>
-          </div>
-        ) : (
-          <div>
-            <div className={classes.modalToptext2}>Transfer Submitted.</div>
-            <div className={classes.modaldes}>{getBigAmountModalMsg()}</div>
-          </div>
-        )}
+        <div>
+          <div className={classes.modalToptext2}>Transfer Submitted.</div>
+          <div className={classes.modaldes}>{getBigAmountModalMsg()}</div>
+        </div>
         <Button
           type="primary"
           size="large"
@@ -1115,7 +1086,15 @@ const TransferModal: FC<IProps> = props => {
             delayMinutes={delayMinutes}
             feeRebateDescription={feeRebateDescription}
             gasOnArrival={undefined}
+            selectedDestinationChainToken={selectedDestinationChainToken}
           />
+        )}
+
+        {showAddrCheckWarning && (
+          <div className={classes.addrCheckWarning}>
+            <img style={{ width: 18, marginRight: 10 }} src={warning} alt="warning" />
+            <div>Please double check the received token address before making the transfer.</div>
+          </div>
         )}
 
         <div className={classes.modalTop} hidden={arrivalGasTokenAmount.lte(0)}>

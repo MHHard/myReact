@@ -11,10 +11,10 @@ import { useWeb3Context } from "../../providers/Web3ContextProvider";
 
 import ActionTitle from "../common/ActionTitle";
 import { Theme } from "../../theme";
-import { getNetworkById } from "../../constants/network";
 import { useAppSelector } from "../../redux/store";
 
-const faucetTokens = ["USDC", "USDT", "DAI", "WBTC", "WETH"];
+const commonList = ["USDC", "USDT", "DAI", "WBTC", "WETH", "BUSD"];
+const faucetTokensMap = { 97: ["BUSD"] };
 
 export interface FaucetTokenInfo {
   address: string;
@@ -133,21 +133,24 @@ export default function FaucetModal({ tokenInfos, onClose }: FaucetModalProps): 
     contracts: { faucet },
     transactor,
   } = useContractsContext();
-  const { provider, address, chainId } = useWeb3Context();
-
+  const { provider, address, chainId, getNetworkById } = useWeb3Context();
   const [ethBalance] = useEthBalance(provider, address, true);
 
   const [resultMsg, setResultMsg] = useState("");
   const [loading, setLoadig] = useState(false);
+  let faucetTokenList = commonList;
+  if (Object.keys(faucetTokensMap)?.includes(`${chainId}`)) {
+    faucetTokenList = faucetTokensMap[chainId];
+  }
   const tokenAddresses = tokenInfos
-  .filter(item => faucetTokens.includes(item.symbol))
+    .filter(item => faucetTokenList.includes(item.symbol))
     .map(tokenInfo => tokenInfo.address);
 
   const drip = async () => {
     if (!transactor || !faucet) {
       message.error("Please check seleceted chain in your wallet and try again");
       return;
-    } 
+    }
     if (!tokenInfos || tokenInfos.length === 0) {
       message.error("It looks like something went wrong");
       return;
@@ -160,7 +163,6 @@ export default function FaucetModal({ tokenInfos, onClose }: FaucetModalProps): 
       setLoadig(false);
       return;
     }
-
     try {
       const dripTx = await transactor(faucet.drip(tokenAddresses));
       await dripTx.wait();
@@ -176,7 +178,7 @@ export default function FaucetModal({ tokenInfos, onClose }: FaucetModalProps): 
     return <FaucetResultModal resultText={resultMsg} onCancel={onClose} />;
   }
 
-  const tokenSymbols = tokenInfos.filter(item => faucetTokens.includes(item.symbol)).map(token => token.symbol);
+  const tokenSymbols = tokenInfos.filter(item => faucetTokenList.includes(item.symbol)).map(token => token.symbol);
   const tokensText = "Test Tokens (" + tokenSymbols.join(", ") + ")";
   const tokenSymbolName = getNetworkById(chainId).symbol;
   const faucetUrl = process.env.REACT_APP_ENV_TYPE === "aptos" ? FAUCET_URL[5] : FAUCET_URL[chainId];

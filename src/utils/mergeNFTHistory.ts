@@ -101,7 +101,7 @@ const handleLocalHistory = (historyList, localHistory, comparePageToken) => {
     });
   });
 
-  copyedLocalHistoryList.forEach(localItem => {
+  copyedLocalHistoryList?.forEach(localItem => {
     const combinedTransferIds = combineHistoryList.map(it => it.srcTx);
     if (!combinedTransferIds.includes(localItem.srcTx)) {
       localKeepHistoryList.push(localItem);
@@ -111,7 +111,7 @@ const handleLocalHistory = (historyList, localHistory, comparePageToken) => {
     }
   });
 
-  copyedRemoteHistoryList.forEach(remoteItem => {
+  copyedRemoteHistoryList?.forEach(remoteItem => {
     const combinedTransferIds = combineHistoryList.map(it => it.srcTx);
     if (!combinedTransferIds.includes(remoteItem.srcTx)) {
       remainingRemoteHistoryList.push(remoteItem);

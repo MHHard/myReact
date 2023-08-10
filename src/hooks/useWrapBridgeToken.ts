@@ -1,9 +1,11 @@
+import { clone } from "lodash";
 import { useMemo } from "react";
 import { useAppSelector } from "../redux/store";
+import { Token } from "../constants/type";
 
 interface WrapBridgeTokens {
   wrapBridgeTokenAddr: string | undefined;
-  canonicalTokenArr: string | undefined;
+  canonicalToken: Token | undefined;
 }
 
 export function useWrapBridgeToken(selectedChainId: number, selectedTokenSymbol: string): WrapBridgeTokens {
@@ -13,7 +15,7 @@ export function useWrapBridgeToken(selectedChainId: number, selectedTokenSymbol:
 
   return useMemo(() => {
     if (!selectedChainId || !selectedTokenSymbol || !pegConfigs) {
-      return { wrapBridgeTokenAddr: undefined, canonicalTokenArr: undefined };
+      return { wrapBridgeTokenAddr: undefined, canonicalToken: undefined };
     }
 
     const pegConfig = pegConfigs.find(
@@ -24,13 +26,15 @@ export function useWrapBridgeToken(selectedChainId: number, selectedTokenSymbol:
     );
 
     if (pegConfig) {
+      const newToken = clone(pegConfig.pegged_token.token);
+      newToken.address = pegConfig.canonical_token_contract_addr
       const result: WrapBridgeTokens = {
         wrapBridgeTokenAddr: pegConfig.pegged_token.token.address,
-        canonicalTokenArr: pegConfig.canonical_token_contract_addr,
+        canonicalToken: newToken,
       };
       return result;
     }
 
-    return { wrapBridgeTokenAddr: undefined, canonicalTokenArr: undefined };
+    return { wrapBridgeTokenAddr: undefined, canonicalToken: undefined };
   }, [selectedChainId, selectedTokenSymbol, pegConfigs]);
 }

@@ -1,3 +1,4 @@
+import { clone } from "lodash";
 import { storageConstants } from "../constants/const";
 import { TransferHistory } from "../constants/type";
 
@@ -39,3 +40,32 @@ export const filteredLocalTransferHistory = (addresses: string[]) => {
     return [];
   }
 };
+
+export const updateTransferId = (
+  previousTransferId: string, 
+  updatedTransferId: string
+) => {
+    try {
+      const localTransferListStr = localStorage.getItem(storageConstants.KEY_TRANSFER_LIST_JSON);
+      let transferHistoryList: TransferHistory[] = [];
+      if (localTransferListStr) {
+        transferHistoryList = JSON.parse(localTransferListStr) as TransferHistory[];
+      }
+    
+      const existingHistoryItem = transferHistoryList.find(transferHistory => {
+        return transferHistory.transfer_id === previousTransferId
+      })
+      if (existingHistoryItem) {
+        const index = transferHistoryList.indexOf(existingHistoryItem)
+        const updatedHistoryItem = clone(existingHistoryItem)
+        // eslint-disable-next-line
+        updatedHistoryItem.transfer_id = updatedTransferId
+        transferHistoryList[index] = updatedHistoryItem
+      }
+
+      localStorage.setItem(storageConstants.KEY_TRANSFER_LIST_JSON, JSON.stringify(transferHistoryList));
+    } catch (error) {
+      console.debug("error", error)
+    }
+}
+

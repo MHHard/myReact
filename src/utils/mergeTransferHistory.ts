@@ -15,6 +15,7 @@ interface TransactionHistoryMergeRequest {
   onChainResult: any[];
   transferConfig: GetTransferConfigsResponse;
   onlyshowPending: boolean;
+  getNetworkById;
 }
 
 interface TransactionHistroryMerge {
@@ -33,6 +34,7 @@ export const mergeTransactionHistory = async (
     onChainResult,
     transferConfig,
     onlyshowPending = false,
+    getNetworkById,
   } = payload;
   if (pageToken === undefined) {
     return { mergedHistoryList: [], fetchedTransferHistory: true };
@@ -57,6 +59,7 @@ export const mergeTransactionHistory = async (
   const mergeListWithFundReleaseCheck = await queryWaitingForFundReleaseHistoryRelay(
     transferConfig,
     remoteAndLocalMergeList,
+    getNetworkById,
   );
   if (mergeListWithFundReleaseCheck.length > 0) {
     const paginationList: TransferHistory[][] = _.chunk(mergeListWithFundReleaseCheck, pageSize);
@@ -150,13 +153,21 @@ const handleLocalHistory = (historyList, localHistory, comparePageToken) => {
         } else {
           combineHistoryList.push(remoteItem);
         }
+      } else if (remoteItem.src_block_tx_link === localItem.src_block_tx_link) {
+        /// Remote item has the same source block transaction link with different transfer id
+        /// Local item uses the wrong transfer id and should be removed
+        combineHistoryList.push(remoteItem);
       }
     });
   });
 
-  copyedLocalHistoryList.forEach(localItem => {
+  copyedLocalHistoryList?.forEach(localItem => {
     const combinedTransferIds = combineHistoryList.map(it => it.transfer_id);
-    if (!combinedTransferIds.includes(localItem.transfer_id)) {
+    const combinedSourceChainTransactionHash = combineHistoryList.map(it => it.src_block_tx_link);
+    if (
+      !combinedTransferIds.includes(localItem.transfer_id) &&
+      !combinedSourceChainTransactionHash.includes(localItem.src_block_tx_link)
+    ) {
       localKeepHistoryList.push(localItem);
       if (Number(localItem.ts) < Number(comparePageToken)) {
         remainingLocalHistoryList.push(localItem);
@@ -164,7 +175,7 @@ const handleLocalHistory = (historyList, localHistory, comparePageToken) => {
     }
   });
 
-  copyedRemoteHistoryList.forEach(remoteItem => {
+  copyedRemoteHistoryList?.forEach(remoteItem => {
     const combinedTransferIds = combineHistoryList.map(it => it.transfer_id);
     if (!combinedTransferIds.includes(remoteItem.transfer_id)) {
       remainingRemoteHistoryList.push(remoteItem);

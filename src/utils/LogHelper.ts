@@ -3,8 +3,8 @@
 /* eslint-disable*/
 /* eslint-disable camelcase */
 import "source-map-support/register";
-import path from "path";
-import moment from "moment";
+import path from "path-browserify";
+import moment from "dayjs";
 export class LogHelper {
   static Init() {
     const log = console.log;

@@ -7,14 +7,9 @@ export enum ModalName {
   transfer = "showTransferModal",
   rate = "showRateModal",
   menu = "showMenuModal",
+  userIsBlockedModal = "showUserIsBlockedModal",
   unclaimedRewards = "showUnclaimedRewardsModal",
-  yourLiquidity = "showYourLiquidity",
-  flowProvider = "showFlowProviderModal",
-  terraProvider = "showTerraProviderModal",
-  aptosProvider = "showAptosProviderModal",
-  seiProvider = "showSeiProviderModal",
-  userIsBlocked = "userIsBlockedModal",
-  injProvider = "showInjProviderModal",
+  disabledModal = "showDisabledModal",
 }
 
 interface IModalState {
@@ -24,13 +19,8 @@ interface IModalState {
   showRateModal: boolean;
   showMenuModal: boolean;
   showUnclaimedRewardsModal: boolean;
-  showYourLiquidity: boolean;
-  showFlowProviderModal: boolean;
-  showTerraProviderModal: boolean;
-  showAptosProviderModal: boolean;
-  showSeiProviderModal: boolean;
-  userIsBlockedModal: boolean;
-  showInjProviderModal: boolean;
+  showDisabledModal: boolean;
+  showUserIsBlockedModal: boolean;
 }
 
 const initialState: IModalState = {
@@ -40,13 +30,8 @@ const initialState: IModalState = {
   showRateModal: false,
   showMenuModal: false,
   showUnclaimedRewardsModal: false,
-  showYourLiquidity: false,
-  showFlowProviderModal: false,
-  showTerraProviderModal: false,
-  showAptosProviderModal: false,
-  showSeiProviderModal: false,
-  userIsBlockedModal: false,
-  showInjProviderModal: false,
+  showDisabledModal: false,
+  showUserIsBlockedModal: false,
 };
 
 const modalSlice = createSlice({

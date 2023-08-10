@@ -1,12 +1,8 @@
 import { useMemo } from "react";
-import { JsonRpcProvider } from "@ethersproject/providers";
 import { BigNumber } from "@ethersproject/bignumber";
-import { safeParseUnits } from "celer-web-utils/lib/format";
 import { ERC20, ERC20__factory, MultiBridgeToken, MultiBridgeToken__factory } from "../typechain/typechain";
-import { getNonEVMMode, NonEVMMode } from "../providers/NonEVMContextProvider";
 import { validateTransferPair } from "../helpers/transferPairValidation";
 import { TransferPair, BridgeType } from "../constants/type";
-import { getNetworkById } from "../constants/network";
 import { GetTokenBoundRequest } from "../proto/gateway/gateway_pb";
 import { getTokenBound } from "../redux/gateway";
 import { readOnlyContract } from "./customReadyOnlyContractLoader";
@@ -14,14 +10,13 @@ import { UpgradeableERC20__factory } from "../typechain/typechain/conflux/Upgrad
 import { UpgradeableERC20 } from "../typechain/typechain/conflux/UpgradeableERC20";
 import { BridgedERC20__factory } from "../typechain/typechain/REI/BridgedERC20__factory";
 import { BridgedERC20 } from "../typechain/typechain/REI/BridgedERC20";
-import { getAptosBurnTotalSupply } from "../redux/NonEVMAPIs/aptosAPIs";
-import { getFlowBurnTotalSupply } from "../redux/NonEVMAPIs/flowAPIs";
-import { getSeiBurnTotalSupply } from "../redux/NonEVMAPIs/seiAPI";
-import { getInjBurnTotalSupply } from "../redux/NonEVMAPIs/injectiveAPI";
+import { useWeb3Context } from "../providers/Web3ContextProvider";
 
 export function useBurnTotalSupply(transferPair: TransferPair): {
   burnTotalSupplyCallback: null | (() => Promise<BigNumber | undefined>);
 } {
+  const { getNetworkById } = useWeb3Context();
+
   return useMemo(() => {
     switch (transferPair.bridgeType) {
       case BridgeType.PegBurn:
@@ -31,65 +26,6 @@ export function useBurnTotalSupply(transferPair: TransferPair): {
       }
       default: {
         return { burnTotalSupplyCallback: null };
-      }
-    }
-
-    const sourceChainNonEVMMode = getNonEVMMode(transferPair.sourceChainInfo?.id ?? 0);
-
-    switch (sourceChainNonEVMMode) {
-      case NonEVMMode.aptosMainnet:
-      case NonEVMMode.aptosTest:
-      case NonEVMMode.aptosDevnet: {
-        return {
-          burnTotalSupplyCallback: async function onBurnSwapTotalSupplyFound(): Promise<BigNumber | undefined> {
-            const totalSupply = await getAptosBurnTotalSupply(
-              transferPair.sourceChainContractAddress ?? "",
-              transferPair.sourceChainToken?.token.address ?? "",
-            );
-            return BigNumber.from(totalSupply);
-          },
-        };
-      }
-      case NonEVMMode.flowMainnet:
-      case NonEVMMode.flowTest: {
-        return {
-          burnTotalSupplyCallback: async function onBurnSwapTotalSupplyFound(): Promise<BigNumber | undefined> {
-            const totalSupply = await getFlowBurnTotalSupply(transferPair.sourceChainToken?.token.address ?? "");
-            const delayThresholds = safeParseUnits(
-              totalSupply.toString() || "0",
-              transferPair.sourceChainToken?.token.decimal ?? 8,
-            );
-            return delayThresholds;
-          },
-        };
-      }
-      case NonEVMMode.seiDevnet:
-      case NonEVMMode.seiMainnet:
-      case NonEVMMode.seiTestnet: {
-        return {
-          burnTotalSupplyCallback: async function onBurnSwapTotalSupplyFound(): Promise<BigNumber | undefined> {
-            const totalSupply = await getSeiBurnTotalSupply(
-              transferPair.sourceChainContractAddress ?? "",
-              transferPair.sourceChainToken?.token.address ?? "",
-            );
-            return BigNumber.from(totalSupply);
-          },
-        };
-      }
-      case NonEVMMode.injectiveTestnet:
-      case NonEVMMode.injectiveMainnet: {
-        return {
-          burnTotalSupplyCallback: async function onBurnSwapTotalSupplyFound(): Promise<BigNumber | undefined> {
-            const totalSupply = await getInjBurnTotalSupply(
-              transferPair.sourceChainContractAddress ?? "",
-              transferPair.sourceChainToken?.token.address ?? "",
-            );
-            return BigNumber.from(totalSupply);
-          },
-        };
-      }
-      default: {
-        break;
       }
     }
 
@@ -111,10 +47,12 @@ export function useBurnTotalSupply(transferPair: TransferPair): {
 
       return {
         burnTotalSupplyCallback: async function onBurnSwapTotalSupplyFound(): Promise<BigNumber | undefined> {
-          const provider = new JsonRpcProvider(getNetworkById(sourceChainInfo.id).rpcUrl);
-          const tokenContract = (await readOnlyContract(provider, sourceChainToken.token.address, ERC20__factory)) as
-            | ERC20
-            | undefined;
+          const tokenContract = (await readOnlyContract(
+            sourceChainInfo.id,
+            sourceChainToken.token.address,
+            ERC20__factory,
+            getNetworkById,
+          )) as ERC20 | undefined;
           const maxAmount = await tokenContract?.totalSupply();
           return maxAmount;
         },
@@ -136,12 +74,11 @@ export function useBurnTotalSupply(transferPair: TransferPair): {
       if (sourceChainInfo.id === 58) {
         return {
           burnTotalSupplyCallback: async function onBurnSwapTotalSupplyFound(): Promise<BigNumber | undefined> {
-            const provider = new JsonRpcProvider(getNetworkById(sourceChainInfo.id).rpcUrl);
-
             const tokenContract = (await readOnlyContract(
-              provider,
+              sourceChainInfo.id,
               sourceChainToken.token.address,
               UpgradeableERC20__factory,
+              getNetworkById,
             )) as UpgradeableERC20;
             const maxAmount = await tokenContract?.totalSupply();
             return maxAmount;
@@ -152,12 +89,11 @@ export function useBurnTotalSupply(transferPair: TransferPair): {
       if (sourceChainInfo.id === 1030) {
         return {
           burnTotalSupplyCallback: async function onBurnSwapTotalSupplyFound(): Promise<BigNumber | undefined> {
-            const provider = new JsonRpcProvider(getNetworkById(sourceChainInfo.id).rpcUrl);
-
             const tokenContract = (await readOnlyContract(
-              provider,
+              sourceChainInfo.id,
               sourceChainToken.token.address,
               UpgradeableERC20__factory,
+              getNetworkById,
             )) as UpgradeableERC20;
             const maxAmount = await tokenContract?.minterSupply(sourceChainContractAddress);
             return maxAmount?.total;
@@ -168,12 +104,11 @@ export function useBurnTotalSupply(transferPair: TransferPair): {
       if (sourceChainInfo.id === 47805) {
         return {
           burnTotalSupplyCallback: async function onBurnSwapTotalSupplyFound(): Promise<BigNumber | undefined> {
-            const provider = new JsonRpcProvider(getNetworkById(sourceChainInfo.id).rpcUrl);
-
             const tokenContract = (await readOnlyContract(
-              provider,
+              sourceChainInfo.id,
               sourceChainToken.token.address,
               BridgedERC20__factory,
+              getNetworkById,
             )) as BridgedERC20;
             const maxAmount = await tokenContract?.minterSupply(sourceChainContractAddress);
             return maxAmount?.total;
@@ -183,11 +118,11 @@ export function useBurnTotalSupply(transferPair: TransferPair): {
 
       return {
         burnTotalSupplyCallback: async function onBurnSwapTotalSupplyFound(): Promise<BigNumber | undefined> {
-          const provider = new JsonRpcProvider(getNetworkById(sourceChainInfo.id).rpcUrl);
           const tokenContract = (await readOnlyContract(
-            provider,
+            sourceChainInfo.id,
             sourceChainToken.token.address,
             MultiBridgeToken__factory,
+            getNetworkById,
           )) as MultiBridgeToken | undefined;
           const maxAmount = await tokenContract?.bridges(sourceChainContractAddress);
           return maxAmount?.total;
@@ -196,7 +131,7 @@ export function useBurnTotalSupply(transferPair: TransferPair): {
     }
 
     return { burnTotalSupplyCallback: null };
-  }, [transferPair]);
+  }, [getNetworkById, transferPair]);
 }
 
 export function useInBoundTokenLimit(transferPair: TransferPair): {

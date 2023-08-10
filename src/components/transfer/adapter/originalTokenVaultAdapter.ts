@@ -1,145 +1,113 @@
-
-import { BigNumber, ethers } from "ethers";
-import { PeggedPair } from "../../../hooks/usePeggedPairConfig";
-import { Chain, TokenInfo } from "../../../constants/type";
-import { Transactor } from "../../../helpers/transactorWithNotifier";
+import { ethers } from "ethers";
 import { sgnOpsDataCheck } from "../../../sgn-ops-data-check/sgn-ops-data-check";
 import { OriginalTokenVault } from "../../../typechain/typechain";
-import { getNetworkById } from "../../../constants/network";
 import { ITransfer, ITransferAdapter } from "../../../constants/transferAdatper";
 
-export default class OriginalTokenVaultAdapter implements ITransferAdapter{
-    value: BigNumber;
+export default class OriginalTokenVaultAdapter extends ITransferAdapter<ITransfer> {
+  originalTokenVault: OriginalTokenVault | undefined = this.transferData.contracts.originalTokenVault;
 
-    address: string;
-
-    fromChain: Chain;
-
-    toChain: Chain;
-
-    selectedToken: TokenInfo;
-
-    toAccount: string;
-
-    nonce = new Date().getTime();
-
-    pegConfig: PeggedPair;
-
-    originalTokenVault: OriginalTokenVault | undefined;
-
-    transactor: Transactor<ethers.ContractTransaction> | undefined;
-
-    transferId = '';
-
-    srcBlockTxLink = '';
- 
-    srcAddress = '';
-
-    dstAddress = '';
-
-    constructor(params: ITransfer) {
-      this.value = params.value;
-      this.address = params.address;
-      this.toChain = params.toChain;
-      this.fromChain = params.fromChain;
-      this.selectedToken = params.selectedToken;
-      this.toAccount = params.toAccount;
-      this.dstAddress = params.dstAddress 
-      this.pegConfig = params.pegConfig;
-      this.originalTokenVault = params.contracts.originalTokenVault;
-      this.transactor = params.transactor;
+  getTransferId(): string {
+    return ethers.utils.solidityKeccak256(
+      ["address", "address", "uint256", "uint64", "address", "uint64", "uint64"],
+      [
+        this.transferData.address,
+        this.transferData.selectedToken?.token?.address,
+        this.transferData.value.toString(),
+        this.transferData.toChain?.id.toString(),
+        this.transferData.toAccount,
+        this.nonce.toString(),
+        this.transferData.fromChain?.id.toString(),
+      ],
+    );
   }
 
-    getTransferId(): string {
-        return ethers.utils.solidityKeccak256(
-            ["address", "address", "uint256", "uint64", "address", "uint64", "uint64"],
-            [
-              this.address,
-              this.selectedToken?.token?.address,
-              this.value.toString(),
-              this.toChain?.id.toString(),
-              this.toAccount,
-              this.nonce.toString(),
-              this.fromChain?.id.toString(),
-            ],
-        );
-    }
+  getInteractContract(): string[] {
+    return [sgnOpsDataCheck[this.transferData.fromChain.id]?.otvault, this.originalTokenVault?.address];
+  }
 
-    getInteractContract(): string[] {
-      return [sgnOpsDataCheck[this.fromChain.id]?.otvault, this.originalTokenVault?.address];
-    }
+  transfer = async () => {
+    if (!this.transferData.transactor || !this.originalTokenVault) return;
+    const gasLimit = sessionStorage.getItem("bot") ? { gasLimit: 50000000 } : {};
 
-    transfer = async () => {
-        if(!this.transactor || !this.originalTokenVault) return;
-        let wrapTokenAddress;
-        try {
-            wrapTokenAddress = await this.originalTokenVault?.nativeWrap();
-        } catch (e) {
-            console.log("wrap token not support");
-        }
-        if (
-            wrapTokenAddress === this.pegConfig.config.org_token.token.address &&
-            (this.fromChain.id !== 1 && this.fromChain.id !== 42220, this.fromChain.id !== 288)
-        ) {
-            // eslint-disable-next-line consistent-return
-            return this.transactor(this.originalTokenVault.depositNative(
-                this.value,
-                this.pegConfig.config.pegged_chain_id,
-                this.toAccount,
-                this.nonce,
-                { value: this.value },
-            ))
-        } 
-        // eslint-disable-next-line consistent-return
-        return this.transactor(this.originalTokenVault.deposit(
-            this.pegConfig.config.org_token.token.address,
-            this.value,
-            this.pegConfig.config.pegged_chain_id,
-            this.toAccount,
-            this.nonce,
-        ))
-    };
-
-    isResponseValid = (response) => {
-      const newtxStr = JSON.stringify(response);
-      const newtx = JSON.parse(newtxStr);
-      return !newtx.code;
+    let wrapTokenAddress;
+    try {
+      wrapTokenAddress = await this.originalTokenVault?.nativeWrap();
+    } catch (e) {
+      console.log("wrap token not support");
     }
-
-    onSuccess(response) {
-      this.transferId = this.getTransferId();
-      this.srcBlockTxLink = `${getNetworkById(this.fromChain.id).blockExplorerUrl}/tx/${response.hash}`;
-      this.srcAddress = this.address;
+    if (
+      wrapTokenAddress === this.transferData.pegConfig.config.org_token.token.address &&
+      (this.transferData.fromChain.id !== 1 && this.transferData.fromChain.id !== 42220,
+      this.transferData.fromChain.id !== 288)
+    ) {
+      // eslint-disable-next-line consistent-return
+      return this.transferData.transactor(
+        this.originalTokenVault.depositNative(
+          this.transferData.value,
+          this.transferData.pegConfig.config.pegged_chain_id,
+          this.transferData.toAccount,
+          this.nonce,
+          { value: this.transferData.value, ...gasLimit },
+        ),
+      );
     }
+    // eslint-disable-next-line consistent-return
+    return this.transferData.transactor(
+      this.originalTokenVault.deposit(
+        this.transferData.pegConfig.config.org_token.token.address,
+        this.transferData.value,
+        this.transferData.pegConfig.config.pegged_chain_id,
+        this.transferData.toAccount,
+        this.nonce,
+        gasLimit,
+      ),
+    );
+  };
 
-    estimateGas = async () => {
-        if(!this.transactor || !this.originalTokenVault) return;
-        let wrapTokenAddress;
-        try {
-            wrapTokenAddress = await this.originalTokenVault?.nativeWrap();
-        } catch (e) {
-            console.log("wrap token not support");
-        }
-        if (
-            wrapTokenAddress === this.pegConfig.config.org_token.token.address &&
-            (this.fromChain.id !== 1 && this.fromChain.id !== 42220, this.fromChain.id !== 288)
-        ) {
-            // eslint-disable-next-line consistent-return
-            return this.originalTokenVault.estimateGas.depositNative(
-                this.value,
-                this.pegConfig.config.pegged_chain_id,
-                this.toAccount,
-                this.nonce,
-                { value: this.value },
-            );
-        } 
-        // eslint-disable-next-line consistent-return
-        return this.originalTokenVault.estimateGas.deposit(
-            this.pegConfig.config.org_token.token.address,
-            this.value,
-            this.pegConfig.config.pegged_chain_id,
-            this.toAccount,
-            this.nonce,
-        );
+  isResponseValid = response => {
+    const newtxStr = JSON.stringify(response);
+    const newtx = JSON.parse(newtxStr);
+    return !newtx.code;
+  };
+
+  onSuccess = response => {
+    this.transferId = this.getTransferId();
+    this.srcBlockTxLink = `${this.transferData.getNetworkById(this.transferData.fromChain.id).blockExplorerUrl}/tx/${
+      response.hash
+    }`;
+    this.senderAddress = this.transferData.address;
+    this.receiverAddress = this.transferData.dstAddress;
+  };
+
+  estimateGas = async () => {
+    if (!this.transferData.transactor || !this.originalTokenVault) return;
+    let wrapTokenAddress;
+    try {
+      wrapTokenAddress = await this.originalTokenVault?.nativeWrap();
+    } catch (e) {
+      console.log("wrap token not support");
     }
+    if (
+      wrapTokenAddress === this.transferData.pegConfig.config.org_token.token.address &&
+      (this.transferData.fromChain.id !== 1 && this.transferData.fromChain.id !== 42220,
+      this.transferData.fromChain.id !== 288)
+    ) {
+      // eslint-disable-next-line consistent-return
+      return this.originalTokenVault.estimateGas.depositNative(
+        this.transferData.value,
+        this.transferData.pegConfig.config.pegged_chain_id,
+        this.transferData.toAccount,
+        this.nonce,
+        { value: this.transferData.value },
+      );
+    }
+    // eslint-disable-next-line consistent-return
+    return this.originalTokenVault.estimateGas.deposit(
+      this.transferData.pegConfig.config.org_token.token.address,
+      this.transferData.value,
+      this.transferData.pegConfig.config.pegged_chain_id,
+      this.transferData.toAccount,
+      this.nonce,
+    );
+  };
 }

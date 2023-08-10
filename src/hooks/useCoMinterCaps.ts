@@ -1,15 +1,15 @@
 import { useMemo } from "react";
-import { JsonRpcProvider } from "@ethersproject/providers";
-import { getNetworkById } from "../constants/network";
 import { BridgeType, CoMinterCap, TransferPair } from "../constants/type";
 import { readOnlyContract } from "./customReadyOnlyContractLoader";
 import { validateTransferPair } from "../helpers/transferPairValidation";
 import { PeggedTokenBridgeV2__factory } from "../typechain/typechain/factories/PeggedTokenBridgeV2__factory";
 import { PeggedTokenBridgeV2 } from "../typechain/typechain/PeggedTokenBridgeV2";
+import { useWeb3Context } from "../providers/Web3ContextProvider";
 
 export function useCoMinterCaps(transferPair: TransferPair): {
   coMinterCapCallback: null | (() => Promise<CoMinterCap>);
 } {
+  const { getNetworkById } = useWeb3Context();
   return useMemo(() => {
     let tokenAddress = "";
     let burnBridgeContractAddress = "";
@@ -45,9 +45,10 @@ export function useCoMinterCaps(transferPair: TransferPair): {
         }
         if (chainId === 73772) {
           const confluxTokenContract = (await readOnlyContract(
-            new JsonRpcProvider(rpcUrl),
+            73772,
             transferPair.sourceChainContractAddress || "",
             PeggedTokenBridgeV2__factory,
+            getNetworkById,
           )) as PeggedTokenBridgeV2;
           const minterSupply = await confluxTokenContract.supplies(tokenAddress);
           return { minterSupply };
@@ -55,7 +56,7 @@ export function useCoMinterCaps(transferPair: TransferPair): {
         // if (chainId === 1030) {
         //   // conflux
         //   const confluxTokenContract = (await readOnlyContract(
-        //     new JsonRpcProvider(rpcUrl),
+        //     new StaticJsonRpcProvider(rpcUrl),
         //     tokenAddress,
         //     UpgradeableERC20__factory,
         //   )) as UpgradeableERC20;
@@ -66,7 +67,7 @@ export function useCoMinterCaps(transferPair: TransferPair): {
         // if (chainId === 47805) {
         //   // REI
         //   const tokenContract = (await readOnlyContract(
-        //     new JsonRpcProvider(rpcUrl),
+        //     new StaticJsonRpcProvider(rpcUrl),
         //     tokenAddress,
         //     BridgedERC20__factory,
         //   )) as BridgedERC20;
@@ -77,5 +78,5 @@ export function useCoMinterCaps(transferPair: TransferPair): {
         return { minterSupply: undefined };
       },
     };
-  }, [transferPair]);
+  }, [getNetworkById, transferPair]);
 }

@@ -5,7 +5,7 @@
 // import { Bytes } from "ethers";
 import { BigNumber } from "ethers";
 import { MapLike } from "typescript";
-import { BridgeType as gatewayBridgeType } from "../proto/gateway/gateway_pb";
+import { BlockBridgeDirect, BridgeType as gatewayBridgeType } from "../proto/gateway/gateway_pb";
 
 interface ErrMsg {
   code: ErrCode;
@@ -60,7 +60,8 @@ interface Token {
   address: string;
   decimal: number;
   xfer_disabled: boolean;
-  display_symbol?: string; /// FOR ETH <=====> WETH
+  chainId: number;
+  isNative: boolean; // Native token on this chain
 }
 
 interface GetAdvancedInfoRequest {
@@ -85,6 +86,7 @@ interface GetTransferConfigsResponse {
   chains: Array<Chain>;
   chain_token: MapLike<ChainTokenInfo>;
   pegged_pair_configs: Array<PeggedPairConfig>;
+  blocked_bridge_direct_list: Array<BlockBridgeDirect.AsObject>;
 }
 
 interface EstimateAmtRequest {
@@ -667,8 +669,6 @@ interface ChainDelayInfo {
 }
 
 interface ChainSafeguardInfo {
-  minAmount: BigNumber;
-  maxAmount: BigNumber;
   epochVolumes: BigNumber;
   epochVolumeCaps: BigNumber;
   lastOpTimestamps: BigNumber;
@@ -680,6 +680,8 @@ interface PingRequest {
 
 interface PingResponse {
   err: ErrMsg;
+  is_anonymous: boolean;
+  is_white_list: boolean;
 }
 
 interface PingLPRequest {

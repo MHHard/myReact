@@ -74,8 +74,8 @@ const handleLocalLPList = (lpList: LPHistory[], localLpList: LPHistory[], compar
   // keep the items can't ne clear in local storage
   const localKeepList: LPHistory[] = [];
 
-  copyedRemoteLpHistory.forEach(remoteItem => {
-    copyedLocalHistory.forEach(localItem => {
+  copyedRemoteLpHistory?.forEach(remoteItem => {
+    copyedLocalHistory?.forEach(localItem => {
       // resolve the confict data bettween remote and local
       if (
         (Number(remoteItem.nonce) === Number(localItem.nonce) && remoteItem.type === LPType.LP_TYPE_ADD) ||
@@ -103,7 +103,7 @@ const handleLocalLPList = (lpList: LPHistory[], localLpList: LPHistory[], compar
   // get the remaining valid local history records
   const remainingLocalHistory: LPHistory[] = [];
   // collect record which not valid in current page
-  copyedLocalHistory.forEach(localItem => {
+  copyedLocalHistory?.forEach(localItem => {
     if (localItem.type === LPType.LP_TYPE_ADD) {
       const nonceList = combineList.map(it => Number(it.nonce));
       if (!nonceList.includes(Number(localItem.nonce))) {
@@ -128,7 +128,7 @@ const handleLocalLPList = (lpList: LPHistory[], localLpList: LPHistory[], compar
   // get the remaining remote history records
   const remainingRemoteHistory: LPHistory[] = [];
 
-  copyedRemoteLpHistory.forEach(remoteItem => {
+  copyedRemoteLpHistory?.forEach(remoteItem => {
     if (remoteItem.type === LPType.LP_TYPE_ADD) {
       const nonceList = combineList.map(it => Number(it.nonce));
       if (!nonceList.includes(Number(remoteItem.nonce))) {

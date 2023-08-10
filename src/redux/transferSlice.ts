@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getNetworkById } from "../constants/network";
 import {
   Chain,
   TokenInfo,
@@ -12,17 +11,19 @@ import {
   TransferHistory,
   LPHistory,
 } from "../constants/type";
-import { EstimateAmtResponse, GetRfqConfigsResponse } from "../proto/gateway/gateway_pb";
-import { storageConstants } from "../constants/const";
+import { EstimateAmtResponse, GetRfqConfigsResponse, CircleUsdcConfigResponse } from "../proto/gateway/gateway_pb";
+import { kavaPegTokens, storageConstants } from "../constants/const";
 import { PriceResponse } from "../proto/sdk/service/rfq/user_pb";
-import { twoChainBridged } from "../hooks/transferSupportedInfoList";
-import { isAptosChain } from "../providers/NonEVMContextProvider";
+import { saveTokenSymbolIntoLocalStorage } from "../utils/saveSelectedTokenSymbolToLocalStorage";
+import { ethSupportedChainIds } from "../helpers/tokenInfo";
+import { GetPeggedMode, PeggedChainMode } from "../hooks/usePeggedPairConfig";
 
 /* eslint-disable camelcase */
 /* eslint-disable no-debugger */
 interface TransferIState {
   transferConfig: GetTransferConfigsResponse;
   rfqConfig: GetRfqConfigsResponse.AsObject;
+  circleUSDCConfig: CircleUsdcConfigResponse.AsObject;
   supportTransferChains: Array<number>;
   slippageTolerance: number;
   isChainShow: boolean;
@@ -56,6 +57,8 @@ interface TransferIState {
   historyPendingNum: number;
   lpActionNum: number;
   lpPendingNum: number;
+  disableTransferAddlqAggregatelqAction: boolean;
+  disableTransferAddlqAggregatelqActionLoading: boolean;
 }
 
 const initialState: TransferIState = {
@@ -63,10 +66,14 @@ const initialState: TransferIState = {
     chains: [],
     chain_token: {},
     pegged_pair_configs: [],
+    blocked_bridge_direct_list: [],
   },
   rfqConfig: {
     chaintokensList: [],
     rfqContractAddressesMap: [],
+  },
+  circleUSDCConfig: {
+    chaintokensList: [],
   },
   supportTransferChains: [],
   slippageTolerance: 5000,
@@ -105,6 +112,8 @@ const initialState: TransferIState = {
   historyPendingNum: 0,
   lpActionNum: 0,
   lpPendingNum: 0,
+  disableTransferAddlqAggregatelqAction: false,
+  disableTransferAddlqAggregatelqActionLoading: false,
 };
 
 const transferSlice = createSlice({
@@ -112,200 +121,19 @@ const transferSlice = createSlice({
   initialState,
   reducers: {
     setTransferConfig: (state, { payload }: PayloadAction<GetTransferConfigsResponse>) => {
-      const configsWithETH = payload;
-
-      const chainIds = [
-        1, // Ethereum
-        42161, // Arbitrum
-        10, // Optimism
-        5, // Goerli
-        288, // BOBA,
-        42170, // Arbitrum Nova
-      ];
-
-      chainIds.forEach(chainId => {
-        const chainToken = payload.chain_token[chainId];
-
-        if (!chainToken) {
-          return;
-        }
-        const currentChainTokens = chainToken.token;
-        const wethTokens = currentChainTokens.filter(token => {
-          return token.token.symbol === "WETH";
-        });
-
-        if (wethTokens.length > 0) {
-          const wethToken = wethTokens[0];
-          wethToken.icon = "https://get.celer.app/cbridge-icons/WETH.png";
-          const wethTokenInfo = wethToken.token;
-          currentChainTokens.push({
-            token: {
-              symbol: "WETH",
-              address: wethTokenInfo.address,
-              decimal: wethTokenInfo.decimal,
-              xfer_disabled: wethTokenInfo.xfer_disabled,
-              display_symbol: "ETH",
-            },
-            name: "ETH",
-            icon: "https://get.celer.app/cbridge-icons/ETH.png",
-            max_amt: wethToken.max_amt,
-            transfer_disabled: wethToken.transfer_disabled,
-            liq_add_disabled: wethToken.liq_add_disabled,
-            liq_rm_disabled: wethToken.liq_rm_disabled,
-            liq_agg_rm_src_disabled: wethToken.liq_agg_rm_src_disabled,
-          });
-        }
-        configsWithETH[chainId] = currentChainTokens;
-      });
-
-      const configsLength = payload.pegged_pair_configs.length;
-      const multiBurnConfigs: MultiBurnPairConfig[] = [];
-
-      for (let i = 0; i < configsLength; i++) {
-        for (let j = i + 1; j < configsLength; j++) {
-          const peggedConfigI = payload.pegged_pair_configs[i];
-          const peggedConfigJ = payload.pegged_pair_configs[j];
-          if (
-            peggedConfigI.org_chain_id === peggedConfigJ.org_chain_id &&
-            peggedConfigI.org_token.token.symbol === peggedConfigJ.org_token.token.symbol
-          ) {
-            /// Only upgraded PegBridge can support multi burn to other pegged chain
-            /// Meanwhile, burn mint mode are disabled for Aptos chain
-            const peggedConfigIPegChainIsAptosChain = isAptosChain(peggedConfigI.pegged_chain_id);
-            const peggedConfigJPegChainIsAptosChain = isAptosChain(peggedConfigJ.pegged_chain_id);
-            if (
-              peggedConfigI.bridge_version === 2 &&
-              peggedConfigJ.bridge_version === 2 &&
-              !peggedConfigIPegChainIsAptosChain &&
-              !peggedConfigJPegChainIsAptosChain
-            ) {
-              multiBurnConfigs.push({
-                burn_config_as_org: {
-                  chain_id: peggedConfigI.pegged_chain_id,
-                  token: peggedConfigI.pegged_token,
-                  burn_contract_addr: peggedConfigI.pegged_burn_contract_addr,
-                  canonical_token_contract_addr: peggedConfigI.canonical_token_contract_addr,
-                  burn_contract_version: peggedConfigI.bridge_version,
-                },
-                burn_config_as_dst: {
-                  chain_id: peggedConfigJ.pegged_chain_id,
-                  token: peggedConfigJ.pegged_token,
-                  burn_contract_addr: peggedConfigJ.pegged_burn_contract_addr,
-                  canonical_token_contract_addr: peggedConfigJ.canonical_token_contract_addr,
-                  burn_contract_version: peggedConfigJ.bridge_version,
-                },
-              });
-              multiBurnConfigs.push({
-                burn_config_as_org: {
-                  chain_id: peggedConfigJ.pegged_chain_id,
-                  token: peggedConfigJ.pegged_token,
-                  burn_contract_addr: peggedConfigJ.pegged_burn_contract_addr,
-                  canonical_token_contract_addr: peggedConfigJ.canonical_token_contract_addr,
-                  burn_contract_version: peggedConfigJ.bridge_version,
-                },
-                burn_config_as_dst: {
-                  chain_id: peggedConfigI.pegged_chain_id,
-                  token: peggedConfigI.pegged_token,
-                  burn_contract_addr: peggedConfigI.pegged_burn_contract_addr,
-                  canonical_token_contract_addr: peggedConfigI.canonical_token_contract_addr,
-                  burn_contract_version: peggedConfigI.bridge_version,
-                },
-              });
-            }
-          }
-        }
-      }
-
-      const ethPeggedPairConfigs: PeggedPairConfig[] = [];
-
-      payload.pegged_pair_configs.forEach(peggedPairConfig => {
-        if (
-          chainIds.includes(peggedPairConfig.org_chain_id) &&
-          peggedPairConfig.org_token.token.symbol === "WETH" &&
-          peggedPairConfig.vault_version > 0
-        ) {
-          const wethToken = peggedPairConfig.org_token;
-          const wethTokenInfo = wethToken.token;
-          const ethToken: TokenInfo = {
-            token: {
-              symbol: "WETH",
-              address: wethTokenInfo.address,
-              decimal: wethTokenInfo.decimal,
-              xfer_disabled: wethTokenInfo.xfer_disabled,
-              display_symbol: "ETH",
-            },
-            name: "ETH",
-            icon: "https://get.celer.app/cbridge-icons/ETH.png",
-            max_amt: wethToken.max_amt,
-          };
-
-          ethPeggedPairConfigs.push({
-            org_chain_id: peggedPairConfig.org_chain_id,
-            org_token: ethToken,
-            pegged_chain_id: peggedPairConfig.pegged_chain_id,
-            pegged_token: peggedPairConfig.pegged_token,
-            pegged_burn_contract_addr: peggedPairConfig.pegged_burn_contract_addr,
-            pegged_deposit_contract_addr: peggedPairConfig.pegged_deposit_contract_addr,
-            canonical_token_contract_addr: peggedPairConfig.canonical_token_contract_addr,
-            bridge_version: peggedPairConfig.bridge_version,
-            vault_version: peggedPairConfig.vault_version,
-            migration_peg_burn_contract_addr: peggedPairConfig.migration_peg_burn_contract_addr,
-          });
-        }
-      });
-
-      payload.pegged_pair_configs = payload.pegged_pair_configs
-        .concat(ethPeggedPairConfigs)
-        .filter(peggedPairConfig => {
-          return !(
-            peggedPairConfig.org_chain_id === 5 &&
-            peggedPairConfig.pegged_chain_id === 647 &&
-            peggedPairConfig.org_token.name === "Wrapped Ether"
-          );
-        });
-
-      const chainToken = payload.chain_token;
-
-      const bridgedIds = new Set<number>();
-      const allChainIds = payload.chains.map(chainInfo => {
-        return chainInfo.id;
-      });
-
-      allChainIds.forEach(id1 => {
-        if (bridgedIds.has(id1)) {
-          return;
-        }
-        allChainIds.forEach(id2 => {
-          if (id1 === id2) {
-            return;
-          }
-
-          if (twoChainBridged(id1, id2, payload, multiBurnConfigs)) {
-            bridgedIds.add(id1);
-            bridgedIds.add(id2);
-          }
-        });
-      });
-
-      state.supportTransferChains = Array.from(bridgedIds);
-
-      if (process.env.REACT_APP_ENV_TYPE === "staging") {
-        const allValues = Object.values(chainToken);
-        allValues.forEach(tokenInfo => {
-          tokenInfo.token.forEach(tokenItem => {
-            tokenItem.transfer_disabled = false;
-            tokenItem.liq_add_disabled = false;
-            tokenItem.liq_rm_disabled = false;
-            tokenItem.liq_agg_rm_src_disabled = false;
-          });
-        });
-      }
-
       state.transferConfig = payload;
-      state.multiBurnConfigs = multiBurnConfigs;
+    },
+    setSupportTransferChains: (state, { payload }: PayloadAction<number[]>) => {
+      state.supportTransferChains = payload;
+    },
+    setMultiBurnConfigs: (state, { payload }: PayloadAction<Array<MultiBurnPairConfig>>) => {
+      state.multiBurnConfigs = payload;
     },
     setRfqConfig: (state, { payload }: PayloadAction<GetRfqConfigsResponse.AsObject>) => {
       state.rfqConfig = payload;
+    },
+    setCircleUSDCConfig: (state, { payload }: PayloadAction<CircleUsdcConfigResponse.AsObject>) => {
+      state.circleUSDCConfig = payload;
     },
     setSlippageTolerance: (state, { payload }: PayloadAction<number>) => {
       state.slippageTolerance = payload;
@@ -326,7 +154,7 @@ const transferSlice = createSlice({
       state.tokenList = payload;
     },
     setFromChain: (state, { payload }: PayloadAction<Chain>) => {
-      localStorage.setItem(storageConstants.KEY_FROM_CHAIN_ID, JSON.stringify(payload.id));
+      localStorage.setItem(storageConstants.KEY_FROM_CHAIN_ID, JSON.stringify(payload?.id));
       state.fromChain = payload;
     },
     setToChain: (state, { payload }: PayloadAction<Chain>) => {
@@ -335,10 +163,7 @@ const transferSlice = createSlice({
     },
     setSelectedToken: (state, { payload }: PayloadAction<TokenInfo>) => {
       state.selectedToken = payload;
-      localStorage.setItem(
-        storageConstants.KEY_SELECTED_TOKEN_SYMBOL,
-        payload.token.display_symbol ?? payload.token.symbol,
-      );
+      saveTokenSymbolIntoLocalStorage(payload);
     },
     setSelectedTokenSymbol: (state, { payload }: PayloadAction<string>) => {
       state.selectedTokenSymbol = payload;
@@ -407,12 +232,19 @@ const transferSlice = createSlice({
     setLpPendingNum: (state, { payload }: PayloadAction<number>) => {
       state.lpPendingNum = payload;
     },
+    setDisableTransferAddlqAggregatelqAction: (state, { payload }: PayloadAction<boolean>) => {
+      state.disableTransferAddlqAggregatelqAction = payload;
+    },
+    setDisableTransferAddlqAggregatelqActionLoading: (state, { payload }: PayloadAction<boolean>) => {
+      state.disableTransferAddlqAggregatelqActionLoading = payload;
+    },
   },
 });
 
 export const {
   setTransferConfig,
   setRfqConfig,
+  setCircleUSDCConfig,
   setSlippageTolerance,
   setIsChainShow,
   setChainSource,
@@ -444,6 +276,10 @@ export const {
   setHistoryPendingNum,
   setLpActionNum,
   setLpPendingNum,
+  setDisableTransferAddlqAggregatelqAction,
+  setDisableTransferAddlqAggregatelqActionLoading,
+  setSupportTransferChains,
+  setMultiBurnConfigs,
 } = transferSlice.actions;
 
 export default transferSlice.reducer;
@@ -452,7 +288,12 @@ interface SwitchChainSuccessCallback {
   (id: number): void;
 }
 
-export const switchChain = async (id, atoken, switchChainSuccessCallback: SwitchChainSuccessCallback) => {
+export const switchChain = async (
+  id,
+  atoken,
+  switchChainSuccessCallback: SwitchChainSuccessCallback,
+  getNetworkById,
+) => {
   const inId = Number(id);
 
   const providerName = localStorage.getItem(storageConstants.KEY_WEB3_PROVIDER_NAME);
@@ -462,7 +303,7 @@ export const switchChain = async (id, atoken, switchChainSuccessCallback: Switch
 
   try {
     if (window.clover) {
-      const walletRpcUrl = getNetworkById(inId).walletRpcUrl ?? getNetworkById(inId).rpcUrl
+      const walletRpcUrl = getNetworkById(inId).walletRpcUrl ?? getNetworkById(inId).rpcUrl;
       await window.ethereum.request({
         method: "wallet_addEthereumChain",
         params: [
@@ -497,13 +338,13 @@ export const switchChain = async (id, atoken, switchChainSuccessCallback: Switch
     const errorCode = (switchError as { code: number }).code;
     if (errorCode === 4902 || errorCode === -32603) {
       try {
-        const walletRpcUrl = getNetworkById(inId).walletRpcUrl ?? getNetworkById(inId).rpcUrl
+        const walletRpcUrl = getNetworkById(inId).walletRpcUrl ?? getNetworkById(inId).rpcUrl;
         await window.ethereum.request({
           method: "wallet_addEthereumChain",
           params: [
             {
               chainId: `0x${inId.toString(16)}`,
-              rpcUrls: [ walletRpcUrl ],
+              rpcUrls: [walletRpcUrl],
               chainName: getNetworkById(inId).name,
               blockExplorerUrls: [getNetworkById(inId).blockExplorerUrl],
               nativeCurrency: {
@@ -554,3 +395,372 @@ export interface BigAmountDelayInfo {
   period: string;
   thresholds: string;
 }
+export const getTokenSymbolWithAddress = (
+  tokenSymbol: string,
+  tokenAddress: string,
+  chainId: number,
+  circleUSDCAddress: string,
+) => {
+  if (tokenSymbol === "USDC") {
+    if (chainId === 43114) {
+      return tokenAddress === circleUSDCAddress ? "USDC" : "USDC.e";
+    }
+    if (chainId === 43113) {
+      return tokenAddress === circleUSDCAddress ? "USDC" : "USDC.e";
+    }
+    if (chainId === 42161) {
+      return tokenAddress === circleUSDCAddress ? "USDC" : "USDC.e";
+    }
+    if (chainId === 421613) {
+      return tokenAddress === circleUSDCAddress ? "USDC" : "USDC.e";
+    }
+  }
+
+  return getTokenSymbol(tokenSymbol, chainId);
+};
+
+export const getTokenSymbol = (symbol, chId) => {
+  let name = getTokenListSymbol(symbol, chId);
+  // if dst chain are these, convert WETH to ETH
+  if (ethSupportedChainIds?.includes(chId)) {
+    if (symbol === "WETH") {
+      name = "ETH";
+    }
+  }
+  return name;
+};
+
+export const getTokenListSymbol = (symbol, chId) => {
+  let name = symbol;
+  const chainId = Number(chId);
+  if (chainId === 43114) {
+    // 43114
+    if (symbol === "USDT") {
+      name = "USDT.e";
+    }
+    if (symbol === "DAI") {
+      name = "DAI.e";
+    }
+    if (symbol === "USDC") {
+      name = "USDC.e";
+    }
+    if (symbol === "WETH") {
+      name = "WETH.e";
+    }
+    if (symbol === "IMX") {
+      name = "IMX.a";
+    }
+    if (symbol === "WOO") {
+      name = "WOO.e";
+    }
+    if (symbol === "avaxUSDC") {
+      name = "USDC";
+    }
+  }
+  if (chainId === 250) {
+    if (symbol === "USDT") {
+      name = "fUSDT";
+    }
+    if (symbol === "WETH") {
+      name = "ETH";
+    }
+  }
+  if (chainId === 56) {
+    if (symbol === "WETH") {
+      name = "ETH";
+    }
+  }
+  if (chainId === 1666600000) {
+    if (symbol === "WETH") {
+      name = "ETH";
+    }
+  }
+
+  if (chainId === 42220) {
+    if (symbol === "USDC") {
+      name = "openUSDC";
+    }
+    if (symbol === "USDT") {
+      name = "openUSDT";
+    }
+    if (symbol === "WETH") {
+      name = "openWETH";
+    }
+  }
+
+  if (chainId === 42262) {
+    if (symbol === "USDC") {
+      name = "ceUSDC";
+    }
+    if (symbol === "USDT") {
+      name = "ceUSDT";
+    }
+    if (symbol === "WETH") {
+      name = "ceWETH";
+    }
+    if (symbol === "BNB") {
+      name = "cbBNB";
+    }
+    if (symbol === "AVAX") {
+      name = "caAVAX";
+    }
+    if (symbol === "FTM") {
+      name = "cfFTM";
+    }
+    if (symbol === "DAI") {
+      name = "ceDAI";
+    }
+  }
+
+  if (chainId === 1284) {
+    if (symbol === "USDC") {
+      name = "ceUSDC";
+    }
+    if (symbol === "USDT") {
+      name = "ceUSDT";
+    }
+  }
+
+  if (chainId === 1 || chainId === 56) {
+    if (symbol === "SYS") {
+      name = "WSYS";
+    }
+  }
+
+  if (chainId === 9001) {
+    if (symbol === "WETH") {
+      name = "ceWETH";
+    }
+
+    if (symbol === "USDC") {
+      name = "ceUSDC";
+    }
+
+    if (symbol === "USDT") {
+      name = "ceUSDT";
+    }
+
+    if (symbol === "DAI") {
+      name = "ceDAI";
+    }
+
+    if (symbol === "WBTC") {
+      name = "ceWBTC";
+    }
+
+    if (symbol === "BNB") {
+      name = "ceBNB";
+    }
+
+    if (symbol === "BUSD") {
+      name = "ceBUSD";
+    }
+
+    if (symbol === "AVAX") {
+      name = "ceAVAX";
+    }
+
+    if (symbol === "FTM") {
+      name = "ceFTM";
+    }
+
+    if (symbol === "AURORA") {
+      name = "ceAURORA";
+    }
+
+    if (symbol === "FTM") {
+      name = "ceFTM";
+    }
+  }
+
+  if (chainId === 12340001) {
+    if (symbol === "AVAX") {
+      name = "ceAVAX";
+    }
+
+    if (symbol === "BNB") {
+      name = "ceBNB";
+    }
+
+    if (symbol === "BUSD") {
+      name = "ceBUSD";
+    }
+
+    if (symbol === "DAI") {
+      name = "ceDAI";
+    }
+
+    if (symbol === "FTM") {
+      name = "ceFTM";
+    }
+
+    if (symbol === "MATIC") {
+      name = "ceMATIC";
+    }
+
+    if (symbol === "USDT") {
+      name = "ceUSDT";
+    }
+
+    if (symbol === "WBTC") {
+      name = "ceWBTC";
+    }
+
+    if (symbol === "WETH") {
+      name = "ceWETH";
+    }
+  }
+
+  if (chainId === 73772) {
+    if (symbol === "TUS") {
+      name = "WTUS";
+    }
+    if (symbol === "avaxUSDC") {
+      name = "USDC";
+    }
+  }
+
+  if (chainId === 12340002) {
+    if (symbol === "FLOWUSDC") {
+      name = "USDC";
+    }
+  }
+
+  if (chainId === 80001) {
+    if (symbol === "FLOWUSDC") {
+      name = "USDC";
+    }
+  }
+  if (chainId === 12340001) {
+    if (symbol === "cfUSDC") {
+      name = "USDC";
+    }
+    if (symbol === "celrWFLOW") {
+      name = "Flow";
+    }
+  }
+
+  if (chainId === 1) {
+    if (symbol === "cfUSDC") {
+      name = "USDC";
+    }
+
+    if (symbol === "celrWFLOW") {
+      name = "WFLOW";
+    }
+
+    if (symbol === "WING") {
+      name = "pWING";
+    }
+  }
+
+  if (chainId === 58) {
+    if (symbol === "WETH") {
+      name = "ETH";
+    }
+  }
+
+  if (chainId === 8217) {
+    if (symbol === "USDC") {
+      name = "ceUSDC";
+    }
+    if (symbol === "USDT") {
+      name = "ceUSDT";
+    }
+    if (symbol === "DAI") {
+      name = "ceDAI";
+    }
+    if (symbol === "WBTC") {
+      name = "ceWBTC";
+    }
+    if (symbol === "WETH") {
+      name = "ceWETH";
+    }
+  }
+
+  if (chainId === 592) {
+    if (symbol === "USDC") {
+      name = "ceUSDC";
+    }
+
+    if (symbol === "USDT") {
+      name = "ceUSDT";
+    }
+  }
+
+  if (chainId === 2222) {
+    if (kavaPegTokens.includes(symbol)) {
+      name = "ce" + name;
+    }
+  }
+
+  /// Local defined symbol for cirlce USDC
+  if (symbol === "USDC_CIRCLE") {
+    name = "USDC";
+  }
+
+  /// Differ USDC.e and Circle USDC for Avalanchee, Avalanchee Fuji,
+  if (chainId === 43113 || chainId === 43114) {
+    if (symbol === "USDC") {
+      name = "USDC.e";
+    }
+  }
+
+  if (chainId === 42161 || chainId === 421613) {
+    if (symbol === "USDC") {
+      name = "USDC.e";
+    }
+  }
+
+  return name;
+};
+
+export const getTokenSymbolWithPeggedMode = (
+  fromChainId: number | undefined,
+  toChainId: number | undefined,
+  tokenSymbol: string,
+  pegged_pair_configs: Array<PeggedPairConfig>,
+) => {
+  const peggedMode = GetPeggedMode(fromChainId, toChainId, tokenSymbol, pegged_pair_configs);
+  if (peggedMode === PeggedChainMode.Off) {
+    return getTokenSymbol(tokenSymbol, toChainId);
+  }
+
+  const vaultV2BurnForWETH = pegged_pair_configs.find(peggedPairConfig => {
+    return (
+      peggedPairConfig.org_chain_id === toChainId &&
+      peggedPairConfig.pegged_chain_id === fromChainId &&
+      peggedPairConfig.vault_version > 0 &&
+      peggedPairConfig.org_token.token.symbol === tokenSymbol &&
+      tokenSymbol === "WETH"
+    );
+  });
+
+  if (vaultV2BurnForWETH) {
+    return "ETH";
+  }
+
+  return getTokenListSymbol(tokenSymbol, toChainId);
+};
+
+export const getTxLink = (chainId: string | number, txLink: string, getNetworkById) => {
+  if (!txLink) {
+    return txLink;
+  }
+  try {
+    if (chainId === 999999998) {
+      const txhash = txLink?.split("/transaction/")[1].replace("0x", "").toUpperCase();
+      return `${getNetworkById(chainId).blockExplorerUrl}transaction/${txhash}`;
+    }
+
+    if (chainId === 999999996) {
+      const txhash = txLink?.split("transaction")[1].replace("0x", "").toUpperCase();
+      return `${getNetworkById(chainId).blockExplorerUrl}/transaction${txhash}`;
+    }
+
+    return txLink;
+  } catch (error) {
+    console.error(error);
+    return "";
+  }
+};

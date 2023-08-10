@@ -1,44 +1,38 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createUseStyles } from "react-jss";
 import { Button, Tooltip } from "antd";
-import { LinkOutlined, InfoCircleOutlined, WarningFilled, LoadingOutlined } from "@ant-design/icons";
-import moment from "moment";
-import { base64 } from "ethers/lib/utils";
-// import { useAsync } from "react-use";
-
+import { LinkOutlined, InfoCircleOutlined, WarningFilled } from "@ant-design/icons";
+import moment from "dayjs";
 import { BigNumber } from "ethers";
 import { TransferHistory, TransferHistoryStatus } from "../../constants/type";
 import { formatDecimal } from "../../helpers/format";
-import { getTokenSymbol, getTxLink } from "../../redux/assetSlice";
+import {
+  getTokenSymbol,
+  getTxLink,
+  getTokenSymbolWithAddress,
+  switchChain,
+  addChainToken,
+  setFromChain,
+} from "../../redux/transferSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { Theme } from "../../theme";
 import { getRelayTimeMap, setLocalRelayTime } from "../../hooks/useHistoryRelay";
-import { switchChain, addChainToken, setFromChain } from "../../redux/transferSlice";
 import { getTokenDisplaySymbol, needToChangeTokenDisplaySymbol } from "../transfer/TransferOverview";
 import { isToBeConfirmRefund } from "../../utils/mergeTransferHistory";
 import { GetPeggedMode, PeggedChainMode, usePeggedPairConfig } from "../../hooks/usePeggedPairConfig";
-import {
-  getNonEVMMode,
-  isAptosChain,
-  isNonEVMChain,
-  NonEVMMode,
-  useNonEVMContext,
-} from "../../providers/NonEVMContextProvider";
 import { ColorThemeContext } from "../../providers/ThemeProvider";
 import runRightIconDark from "../../images/runRightDark.svg";
 import runRightIconLight from "../../images/runRightLight.svg";
 import meta from "../../images/meta.svg";
-import errorMessages from "../../constants/errorMessage";
 import SpeedUpStatus from "../../components/history/SpeedUpStatus";
 import { useWeb3Context } from "../../providers/Web3ContextProvider";
-import { getRfqRefundExecMsgCallData, getTransferRelayInfo } from "../../redux/gateway";
-import { storageConstants } from "../../constants/const";
+import { getRfqRefundExecMsgCallData } from "../../redux/gateway";
+import { errorMessages, storageConstants } from "../../constants/const";
 import { isGasToken } from "../../constants/network";
-import { BridgeType, GetTransferRelayInfoRequest, GetTransferRelayInfoResponse } from "../../proto/gateway/gateway_pb";
+import { BridgeType } from "../../proto/gateway/gateway_pb";
 import { useContractsContext } from "../../providers/ContractsContextProvider";
 import { GetRefundExecMsgCallDataRequest } from "../../proto/sdk/service/rfq/user_pb";
 import { formatBlockExplorerUrlWithTxHash } from "../../utils/formatUrl";
-import { getAptosResources, submitAptosProxyRegisterAndMintRequest } from "../../redux/NonEVMAPIs/aptosAPIs";
 
 const tooltipShowTime = process.env.REACT_APP_ENV === "TEST" ? 1 : 15;
 const speedUpShowTime = process.env.REACT_APP_ENV === "TEST" ? 8000 : 30 * 60 * 1000; // millisecond
@@ -411,7 +405,7 @@ const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: 
 
 export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.Element => {
   const { item, clearHistoryLocalData, onItemSelected, handleSpeedUp, onRefundSubmit, onRefreshWholeList } = props;
-  const { chainId, address } = useWeb3Context();
+  const { chainId, address, getNetworkById } = useWeb3Context();
   const { themeType } = useContext(ColorThemeContext);
   const {
     contracts: { rfqContract },
@@ -419,7 +413,7 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
   } = useContractsContext();
   const dispatch = useAppDispatch();
   const { isMobile } = useAppSelector(state => state.windowWidth);
-  const { transferConfig } = useAppSelector(state => state.transferInfo);
+  const { transferConfig, circleUSDCConfig } = useAppSelector(state => state.transferInfo);
   const { transferRelatedFeatureDisabled } = useAppSelector(state => state.serviceInfo);
   const classes = useStyles({ isMobile });
   const [sourceChainAmountDisplayString, setSourceChainAmountDisplayString] = useState("");
@@ -432,17 +426,6 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
   const [shouldShowSupportButton, setShouldShowSupportButton] = useState(false);
   const [shouldShowSpeedUpButton, setShouldShowSpeedUpButton] = useState(false);
   const [shouldShowMetaMaskIcon, setShouldShowMetaMaskIcon] = useState(false);
-
-  const [shouldShowLoadingAptosOnboardingClaimStatus, setShouldShowLoadingAptosOnboardingClaimStatus] = useState(false);
-  const [shouldShowClaimAptosChainToken, setShouldShowClaimAptosChainToken] = useState(false);
-  const [shouldShowClaimAptosChainTokenLoading, setShouldShowClaimAptosChainTokenLoading] = useState(false);
-  const { aptosAddress, aptosConnected, signAndSubmitTransaction } = useNonEVMContext();
-  const [shouldStartAptosOnboardingQuery, setShouldStartAptosOnboardingQuery] = useState(false);
-  const [aptosResources, setAptosResources] = useState<any | undefined>(undefined);
-  const [aptosRelayInfo, setAptosRelayInfo] = useState<GetTransferRelayInfoResponse | undefined>();
-  const [aptosResourceRegistered, setAptosResourceRegistered] = useState(false);
-  const [showSupportButtonForAptos, setShowSupportButtonForAptos] = useState(false);
-
   const [peggedMode, setPeggedMode] = useState<string | PeggedChainMode>("");
   const [refundLoading, setRefundLoading] = useState(false);
   const isRfq = props.item.bridge_type && props.item.bridge_type === BridgeType.BRIDGETYPE_RFQ;
@@ -452,21 +435,48 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
       formatDecimal(item.src_send_info?.amount, item.src_send_info?.token?.decimal)?.split(",").join("") ?? "";
     setSourceChainAmountDisplayString(sourceSendAmount);
 
-    setSourceChainTokenSymbol(getTokenSymbol(item?.src_send_info.token.symbol, item?.src_send_info.chain.id));
-
+    setSourceChainTokenSymbol(
+      getTokenSymbolWithAddress(
+        item?.src_send_info.token.symbol,
+        item?.src_send_info.token.address,
+        item?.src_send_info.chain.id,
+        circleUSDCConfig.chaintokensList.find(tokenInfo => {
+          return tokenInfo.chainId === item?.src_send_info.chain.id;
+        })?.tokenAddr ?? "",
+      ),
+    );
     const receivedAmount = formatDecimal(item?.dst_received_info.amount, item?.dst_received_info?.token?.decimal)
       ?.split(",")
       .join("");
     setDestinationChainAmountDisplayString(receivedAmount);
 
-    setDestinationChainTokenSymbol(
-      getTokenDisplaySymbol(
-        item?.dst_received_info?.token,
-        item?.src_send_info?.chain,
-        item?.dst_received_info?.chain,
-        transferConfig.pegged_pair_configs,
-      ),
+    let destinationChainTokenSymbol = getTokenDisplaySymbol(
+      item?.dst_received_info?.token,
+      item?.src_send_info?.chain,
+      item?.dst_received_info?.chain,
+      transferConfig.pegged_pair_configs,
+      false,
     );
+
+    if (item?.dst_received_info?.token.symbol === "USDC") {
+      const destinationChainId = item?.dst_received_info.chain.id ?? 0;
+      const destinationChainCircleUSDC = circleUSDCConfig.chaintokensList.find(tokenInfo => {
+        return tokenInfo.chainId === destinationChainId;
+      });
+      if (
+        destinationChainId === 43113 ||
+        destinationChainId === 43114 ||
+        destinationChainId === 42161 ||
+        destinationChainId === 421613
+      ) {
+        if (item?.dst_received_info.token.address === destinationChainCircleUSDC?.tokenAddr) {
+          destinationChainTokenSymbol = "USDC";
+        } else {
+          destinationChainTokenSymbol = "USDC.e";
+        }
+      }
+    }
+    setDestinationChainTokenSymbol(destinationChainTokenSymbol);
 
     setLocalRelayTime(item);
 
@@ -501,14 +511,9 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
       shouldDisplayMetaMaskIcon = false;
     }
 
-    if (isNonEVMChain(item?.dst_received_info?.chain.id ?? 0)) {
-      shouldDisplayMetaMaskIcon = false;
-    }
-
     setShouldShowMetaMaskIcon(shouldDisplayMetaMaskIcon);
 
     setSourceChainTransactionLink(item.src_block_tx_link);
-
     setDestinationChainTransactionLink(item.dst_block_tx_link);
   }, [item, transferConfig]);
 
@@ -516,7 +521,6 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
     if (!item.status) {
       setShouldShowSupportButton(false);
       setShouldShowSpeedUpButton(false);
-      setShowSupportButtonForAptos(false);
       return;
     }
 
@@ -537,10 +541,7 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
     const hash = item.src_block_tx_link.match("[^/]+(?!.*/)") || [];
     const delayedTimeout = new Date().getTime() - (map.get(hash[0]) || Number(item.update_ts)) > speedUpShowTime;
     const shouldShowSpeedUp =
-      item.status === TransferHistoryStatus.TRANSFER_WAITING_FOR_FUND_RELEASE &&
-      delayedTimeout &&
-      !isNonEVMChain(item?.dst_received_info?.chain?.id) &&
-      !transferDisabled;
+      item.status === TransferHistoryStatus.TRANSFER_WAITING_FOR_FUND_RELEASE && delayedTimeout && !transferDisabled;
     setShouldShowSpeedUpButton(shouldShowSpeedUp);
   }, [item.status]);
 
@@ -551,8 +552,6 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
       itemStatus === TransferHistoryStatus.TRANSFER_REFUNDED
     ) {
       setShouldShowSupportButton(false);
-      setShowSupportButtonForAptos(false);
-      setShouldShowSpeedUpButton(false);
     }
   }, [itemStatus]);
 
@@ -575,77 +574,24 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
     if (chainId === toChainId) {
       addChainToken(addtoken);
     } else {
-      switchChain(toChainId, addtoken, (switchSuccessChainId: number) => {
-        const chain = transferConfig.chains.find(chainInfo => {
-          return chainInfo.id === switchSuccessChainId;
-        });
-        if (chain !== undefined) {
-          dispatch(setFromChain(chain));
-        }
-      });
+      switchChain(
+        toChainId,
+        addtoken,
+        (switchSuccessChainId: number) => {
+          const chain = transferConfig.chains.find(chainInfo => {
+            return chainInfo.id === switchSuccessChainId;
+          });
+          if (chain !== undefined) {
+            dispatch(setFromChain(chain));
+          }
+        },
+        getNetworkById,
+      );
     }
   };
 
   useEffect(() => {
     if (item.status !== TransferHistoryStatus.TRANSFER_WAITING_FOR_FUND_RELEASE) {
-      return;
-    }
-    if (!isAptosChain(item.dst_received_info.chain.id)) {
-      return;
-    }
-
-    if (!aptosConnected) {
-      return;
-    }
-
-    setShouldStartAptosOnboardingQuery(true);
-  }, [item, aptosConnected]);
-
-  useEffect(() => {
-    if (!shouldStartAptosOnboardingQuery) {
-      return;
-    }
-
-    setShouldShowLoadingAptosOnboardingClaimStatus(true);
-    setShouldShowSupportButton(false);
-    setShowSupportButtonForAptos(false);
-
-    let relayInfoPromise = queryAptosMintTokenParameters(item.transfer_id);
-    let aptosResourcesPromise = queryAptosResources(aptosAddress);
-
-    Promise.all([relayInfoPromise, aptosResourcesPromise]).then(result => {
-      setAptosRelayInfo(result[0]);
-      setAptosResources(result[1]);
-    });
-  }, [shouldStartAptosOnboardingQuery]);
-
-  useEffect(() => {
-    if (aptosResources !== undefined && aptosRelayInfo !== undefined) {
-      const resourcesReady = aptosResourcesValidation(aptosResources);
-      const tokenNeedRegistration = tokenNotRegistered(aptosResources, item.dst_received_info.token.address);
-      const relayInfoReady = relayInfoValidation(aptosRelayInfo);
-      if (resourcesReady && relayInfoReady && tokenNeedRegistration) {
-        setShouldShowClaimAptosChainToken(true);
-        setShouldShowLoadingAptosOnboardingClaimStatus(false);
-        setShowSupportButtonForAptos(false);
-      } else if (resourcesReady && !tokenNeedRegistration) {
-        setAptosResourceRegistered(true);
-        setShouldShowLoadingAptosOnboardingClaimStatus(false);
-        setShowSupportButtonForAptos(true);
-      } else {
-        setShouldShowLoadingAptosOnboardingClaimStatus(false);
-      }
-    } else {
-      setShouldShowLoadingAptosOnboardingClaimStatus(false);
-      if (aptosResources === undefined && aptosRelayInfo === undefined) {
-        return;
-      }
-      setShowSupportButtonForAptos(true);
-    }
-  }, [aptosResources, aptosRelayInfo]);
-
-  useEffect(() => {
-    if (!aptosResourceRegistered || item.status !== TransferHistoryStatus.TRANSFER_WAITING_FOR_FUND_RELEASE) {
       return;
     }
 
@@ -658,55 +604,7 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
     const delayedTimeout = new Date().getTime() - (map.get(hash[0]) || Number(item.update_ts)) > speedUpShowTime;
     const shouldShowSpeedUp = delayedTimeout && !transferDisabled;
     setShouldShowSpeedUpButton(shouldShowSpeedUp);
-  }, [aptosResourceRegistered, item.status]);
-
-  const submitAptosClaim = useCallback(
-    (localAptosRelayInfo: GetTransferRelayInfoResponse | undefined) => {
-      setShouldShowClaimAptosChainTokenLoading(true);
-
-      if (localAptosRelayInfo === undefined) {
-        return;
-      }
-
-      try {
-        const wdmsg = base64.decode(localAptosRelayInfo.toObject().request.toString());
-        const sigs = localAptosRelayInfo.toObject().sortedSigsList.map(item => {
-          return base64.decode(item.toString());
-        });
-        const signers = localAptosRelayInfo.toObject().signersList.map(item => {
-          return base64.decode(item.toString());
-        });
-        const powers = localAptosRelayInfo.toObject().powersList.map(item => {
-          return BigNumber.from(base64.decode(item.toString())).toString();
-        });
-
-        submitAptosProxyRegisterAndMintRequest(
-          item.dst_received_info.chain.contract_addr.replace("0x", ""),
-          item.dst_received_info.token.address,
-          wdmsg,
-          sigs,
-          signers,
-          powers,
-          signAndSubmitTransaction,
-        )
-          .then(_ => {
-            setShouldShowClaimAptosChainTokenLoading(false);
-            setShouldShowClaimAptosChainToken(false);
-            setItemStatus(TransferHistoryStatus.TRANSFER_COMPLETED);
-            onRefreshWholeList();
-          })
-          .catch(error => {
-            console.log("Submit aptos transaction error", error);
-            setShouldShowClaimAptosChainTokenLoading(false);
-          });
-      } catch (error) {
-        setShouldShowClaimAptosChainTokenLoading(false);
-        console.debug("error", error);
-      }
-      // eslint-disable-next-line
-    },
-    [aptosRelayInfo],
-  );
+  }, [item.status]);
 
   const tipsStatus = transferHistoryItemPeggedMode => {
     let lab;
@@ -1010,34 +908,6 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
   };
 
   const waitingForFundReleaseElement = () => {
-    if (shouldShowLoadingAptosOnboardingClaimStatus) {
-      return (
-        <div>
-          <div className={classes.waring}>
-            <LoadingOutlined style={{ fontSize: 20, fontWeight: "bold", color: "#3366FF" }} />
-          </div>
-        </div>
-      );
-    } else if (shouldShowClaimAptosChainToken) {
-      return (
-        <div>
-          <Button
-            type="primary"
-            loading={shouldShowClaimAptosChainTokenLoading}
-            onClick={e => {
-              e.stopPropagation();
-              submitAptosClaim(aptosRelayInfo);
-            }}
-            className={classes.submitBtn}
-            disabled={transferRelatedFeatureDisabled}
-          >
-            Claim {item.dst_received_info.token.symbol}
-          </Button>
-          <div style={{ height: 3 }} />
-        </div>
-      );
-    }
-
     return (
       <Tooltip
         overlayClassName={isMobile ? classes.mobileTooltipOverlayStyle : undefined}
@@ -1125,8 +995,7 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
   };
 
   const confirmRfqRefund = async record => {
-    const srcSendChainNonEVMMode = getNonEVMMode(record?.src_send_info?.chain.id ?? 0);
-    if (srcSendChainNonEVMMode === NonEVMMode.off && record?.src_send_info?.chain.id !== chainId) {
+    if (record?.src_send_info?.chain.id !== chainId) {
       onItemSelected(record);
       return;
     }
@@ -1183,10 +1052,13 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
         const transferJson: TransferHistory = {
           dst_block_tx_link: record.dst_block_tx_link,
           src_send_info: record.src_send_info,
-          src_block_tx_link: formatBlockExplorerUrlWithTxHash({
-            chainId: record.src_send_info.chain.id,
-            txHash: res.hash,
-          }),
+          src_block_tx_link: formatBlockExplorerUrlWithTxHash(
+            {
+              chainId: record.src_send_info.chain.id,
+              txHash: res.hash,
+            },
+            getNetworkById,
+          ),
           srcAddress: address,
           dstAddress: address,
           dst_received_info: record.dst_received_info,
@@ -1210,10 +1082,13 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
             isHave = true;
             item.updateTime = new Date().getTime();
             item.txIsFailed = false;
-            item.src_block_tx_link = formatBlockExplorerUrlWithTxHash({
-              chainId: record.src_send_info.chain.id,
-              txHash: res.hash,
-            });
+            item.src_block_tx_link = formatBlockExplorerUrlWithTxHash(
+              {
+                chainId: record.src_send_info.chain.id,
+                txHash: res.hash,
+              },
+              getNetworkById,
+            );
           }
           return item;
         });
@@ -1245,7 +1120,7 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
               {sourceChainTransactionLink.length > 0 ? (
                 <a
                   className={classes.chainName}
-                  href={getTxLink(item.src_send_info?.chain.id, sourceChainTransactionLink)}
+                  href={getTxLink(item.src_send_info?.chain.id, sourceChainTransactionLink, getNetworkById)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -1271,7 +1146,7 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
               {destinationChainTransactionLink ? (
                 <a
                   className={classes.linktitle}
-                  href={getTxLink(item.dst_received_info?.chain.id, destinationChainTransactionLink)}
+                  href={getTxLink(item.dst_received_info?.chain.id, destinationChainTransactionLink, getNetworkById)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -1323,11 +1198,11 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
           </div>
         </div>
         <div className={isMobile ? classes.mobileItemRight : classes.itemRight}>
-          <div className={shouldShowSupportButton || showSupportButtonForAptos ? classes.showSupport : ""}>
+          <div className={shouldShowSupportButton ? classes.showSupport : ""}>
             <div>{tipsStatus(peggedMode)}</div>
             <div className={classes.itemTime}>{moment(Number(item.ts)).format("YYYY-MM-DD HH:mm:ss")}</div>
             <div>
-              {(shouldShowSupportButton || showSupportButtonForAptos) && (
+              {shouldShowSupportButton && (
                 <a
                   href={`https://form.typeform.com/to/Q4LMjUaK#srctx=${item.src_block_tx_link}&transferid=${item.transfer_id}`}
                   target="_blank"
@@ -1347,37 +1222,4 @@ export const TransferHistoryItem = (props: TransferHistoryItemProps, ref): JSX.E
       <div>{btnChange(item)}</div>
     </div>
   );
-};
-
-const queryAptosMintTokenParameters = async (transferId: string) => {
-  const request = new GetTransferRelayInfoRequest();
-  request.setTransferId(transferId);
-  return getTransferRelayInfo(request);
-};
-
-const queryAptosResources = async (walletAddress: string) => {
-  return getAptosResources(walletAddress);
-};
-
-const relayInfoValidation = (relayInfo: GetTransferRelayInfoResponse): boolean => {
-  return (
-    relayInfo.getRequest().length > 0 &&
-    relayInfo.getSignersList().length > 0 &&
-    relayInfo.getSortedSigsList().length > 0 &&
-    relayInfo.getPowersList().length > 0
-  );
-};
-
-// eslint-disable-next-line
-const aptosResourcesValidation = (resources: any): boolean => {
-  const aptosTokenTypeTag = `0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>`;
-  const aptosToken = resources.find(r => r.type === aptosTokenTypeTag);
-  const aptosTokenValue = (aptosToken?.data?.coin?.value ?? 0) / 10 ** 8;
-  return aptosTokenValue > 0;
-};
-
-// eslint-disable-next-line
-const tokenNotRegistered = (resources: any, tokenAddress: string): boolean => {
-  const aptosChainReceivingTokenTypeTag = `0x1::coin::CoinStore<${tokenAddress}>`;
-  return resources.find(r => r.type === aptosChainReceivingTokenTypeTag) === undefined;
 };

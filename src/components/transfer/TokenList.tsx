@@ -1,24 +1,21 @@
 import { Input, Modal, Spin } from "antd";
-import { FC, useState, useEffect, useMemo } from "react";
+import { FC, useState, useEffect } from "react";
 import { createUseStyles } from "react-jss";
-import { debounce } from "lodash";
-import { JsonRpcProvider } from "@ethersproject/providers";
+import { StaticJsonRpcProvider } from "@ethersproject/providers";
 import { ContractCallContext, ContractCallResults, Multicall } from "ethereum-multicall";
 import { useWeb3Context } from "../../providers/Web3ContextProvider";
 import { useAppSelector } from "../../redux/store";
 import { Theme } from "../../theme";
 import TokenItem from "./TokenItem";
 
-// import { useMergedTokenList } from "../../hooks/useMergedTokenList";
-import { ensureSigner } from "../../hooks/contractLoader";
-import { usePeggedPairConfig } from "../../hooks/usePeggedPairConfig";
+import { getTokenBalanceAddress } from "../../hooks/usePeggedPairConfig";
 import { TokenInfo } from "../../constants/type";
 import { ERC20__factory } from "../../typechain/typechain/factories/ERC20__factory";
 import { formatDecimal } from "../../helpers/format";
 import { SupportTokenListResult, useTransferSupportedTokenList } from "../../hooks/transferSupportedInfoList";
 import ringBell from "../../images/ringBell.svg";
-import { getNonEVMMode, NonEVMMode, useNonEVMContext } from "../../providers/NonEVMContextProvider";
 import { isGasToken } from "../../constants/network";
+import { isETH, unambiguousTokenSymbol } from "../../helpers/tokenInfo";
 
 /* eslint-disable camelcase */
 
@@ -192,23 +189,20 @@ const erc20ABI = [
 ];
 
 interface IProps {
-  onSelectToken: (symbol: string) => void;
+  onSelectToken: (tokenInfo: TokenInfo) => void;
   visible: boolean;
   onCancel: () => void;
 }
 
 const TokenList: FC<IProps> = ({ onSelectToken, visible, onCancel }) => {
-  const { provider, address, chainId } = useWeb3Context();
+  const { address, chainId, getNetworkById } = useWeb3Context();
   const { isMobile } = useAppSelector(state => state.windowWidth);
   const classes = useStyles({ isMobile });
   const { fromChain, toChain, transferConfig } = useAppSelector(state => state.transferInfo);
 
   const transferSupportedTokensResult = useTransferSupportedTokenList();
 
-  // const { fromChainId, supportTokenList } = transferSupportedTokensResult;
-
   const [searchText, setSearchText] = useState("");
-  const pegConfig = usePeggedPairConfig();
 
   const [tokenListWithBalance, setTokenListWithBalance] = useState(transferSupportedTokensResult.supportTokenList);
 
@@ -218,106 +212,14 @@ const TokenList: FC<IProps> = ({ onSelectToken, visible, onCancel }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const { nonEVMAddress } = useNonEVMContext();
-
-  const sortExclusiveTokenSymbols = ["USDT", "USDC", "ETH", "WETH"];
-
-  useEffect(() => {
-    updateTokenListBalance();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [transferSupportedTokensResult, address, provider, nonEVMAddress, chainId]);
-
-  const updateTokenListBalance = useMemo(
-    () =>
-      debounce(async () => {
-        if (transferSupportedTokensResult.fromChainId !== fromChain?.id) {
-          return;
-        }
-
-        const fromChainNonEVMMode = getNonEVMMode(transferSupportedTokensResult.fromChainId);
-
-        switch (fromChainNonEVMMode) {
-          case NonEVMMode.flowMainnet:
-          case NonEVMMode.flowTest:
-          case NonEVMMode.aptosMainnet:
-          case NonEVMMode.aptosTest:
-          case NonEVMMode.aptosDevnet:
-          case NonEVMMode.seiMainnet:
-          case NonEVMMode.seiDevnet:
-          case NonEVMMode.seiTestnet:
-          case NonEVMMode.injectiveTestnet:
-          case NonEVMMode.injectiveMainnet: {
-            break;
-          }
-          case NonEVMMode.off: {
-            if (chainId !== transferSupportedTokensResult.fromChainId) {
-              /// Don't get balance if metamask chain id and from chain id are different
-              addBalancePlaceHolderForTokenList(transferSupportedTokensResult.supportTokenList);
-            } else if (provider === undefined) {
-              /// Don't get balance if provider is not ready
-              console.debug("provider is not ready for balance");
-              addBalancePlaceHolderForTokenList(transferSupportedTokensResult.supportTokenList);
-            } else if (!address) {
-              /// Don't get balance if address is not ready
-              console.debug("address is not ready for balance");
-              addBalancePlaceHolderForTokenList(transferSupportedTokensResult.supportTokenList);
-            } else {
-              await getEVMTokenListBalance(provider, address, transferSupportedTokensResult);
-            }
-            break;
-          }
-          default: {
-            console.error("Unsupported NonEVM mode", fromChainNonEVMMode);
-          }
-        }
-      }, 300),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [transferSupportedTokensResult, address, provider, pegConfig, nonEVMAddress, chainId, fromChain?.id],
-  );
-
-  // aggregate to get all tokens balance
-  const multicallERC20Balances = async (supportTokenList: TokenInfo[], jsonProvider: JsonRpcProvider) => {
-    const multicall = new Multicall({ ethersProvider: jsonProvider, tryAggregate: true });
-    const balanceContractContext: ContractCallContext[] = [];
-
-    supportTokenList.forEach((token, index) => {
-      const contractCallContext: ContractCallContext = {
-        reference: "ERC20Contract" + index,
-        contractAddress: token.token.address,
-        abi: erc20ABI,
-        calls: [{ reference: "balanceOf", methodName: "balanceOf", methodParameters: [address] }],
-      };
-      balanceContractContext.push(contractCallContext);
-    });
-
-    const multiCallResults: ContractCallResults = await multicall.call(balanceContractContext);
-    // eslint-disable-next-line
-    const balanceList = new Array<any>();
-    supportTokenList.forEach(tokenInfo => {
-      Object.entries(multiCallResults.results).forEach(multiCallResult => {
-        if (multiCallResult[1].originalContractCallContext.contractAddress === tokenInfo.token.address) {
-          if (multiCallResult[1].callsReturnContext[0].success) {
-            const balanceInfo = multiCallResult[1].callsReturnContext[0].returnValues[0];
-            const { hex } = balanceInfo;
-            balanceList.push({
-              ...tokenInfo,
-              balance: formatDecimal(hex, tokenInfo?.token?.decimal),
-            });
-          } else {
-            balanceList.push({
-              ...tokenInfo,
-              balance: "--",
-            });
-          }
-        }
-      });
-    });
-    return balanceList;
-  };
+  const sortExclusiveTokenSymbols = ["USDT", "USDC", "USDC_CIRCLE", "ETH", "WETH"];
 
   // get an native token balance
-  const getNativeTokenBalance = async (userAddress: string, tokenInfo: TokenInfo, jsonProvider: JsonRpcProvider) => {
+  const getNativeTokenBalance = async (
+    userAddress: string,
+    tokenInfo: TokenInfo,
+    jsonProvider: StaticJsonRpcProvider,
+  ) => {
     try {
       const nativeTokenBalance = await jsonProvider.getBalance(userAddress);
       return {
@@ -325,6 +227,7 @@ const TokenList: FC<IProps> = ({ onSelectToken, visible, onCancel }) => {
         balance: formatDecimal(nativeTokenBalance.toString(), tokenInfo?.token?.decimal),
       };
     } catch (e) {
+      console.error("getNativeTokenBalanceErr:", e);
       return {
         ...tokenInfo,
         balance: "--",
@@ -338,7 +241,7 @@ const TokenList: FC<IProps> = ({ onSelectToken, visible, onCancel }) => {
     tokenChainId: number,
     tokenContractAddr: string,
     tokenInfo: TokenInfo,
-    jsonProvider: JsonRpcProvider,
+    jsonProvider: StaticJsonRpcProvider,
   ) => {
     const tokenContract = await ERC20__factory.connect(tokenContractAddr, jsonProvider);
 
@@ -365,71 +268,6 @@ const TokenList: FC<IProps> = ({ onSelectToken, visible, onCancel }) => {
     }
   };
 
-  const getEVMTokenListBalance = async (
-    jsProvider: JsonRpcProvider,
-    walletAddress: string,
-    result: SupportTokenListResult,
-  ) => {
-    const signer = await ensureSigner(jsProvider);
-    if (!signer || !chainId) {
-      /// Don't get balance if singer is not ready
-      console.debug("signer is not ready for balance");
-      addBalancePlaceHolderForTokenList(result.supportTokenList);
-      return;
-    }
-
-    if (multiCallSupportChains.includes(chainId)) {
-      console.debug("get erc20 token balance via multi-call");
-      setLoading(true);
-      const balanceList = await multicallERC20Balances(result.supportTokenList, jsProvider);
-      const nativeToken = result.supportTokenList.find(_ =>
-        isGasToken(result.fromChainId, _.token.display_symbol ?? _.token.symbol),
-      );
-      if (nativeToken) {
-        const nativeTokenBalance = await getNativeTokenBalance(address, nativeToken, jsProvider);
-        balanceList.map(_ => {
-          if (isGasToken(chainId, _.token.display_symbol ?? _.token.symbol)) {
-            _.balance = nativeTokenBalance.balance;
-          }
-          return _;
-        });
-      }
-      setTokenListWithBalance(balanceList);
-      setLoading(false);
-      return;
-    }
-
-    console.debug("get erc20 token balance one by one");
-
-    const promiseList: Array<Promise<TokenInfo>> = [];
-    result.supportTokenList.forEach(tokenInfo => {
-      const tokenIsNativeToken = isNativeToken(
-        tokenInfo.token.symbol,
-        tokenInfo.token.display_symbol ?? "",
-        result.fromChainId,
-      );
-      if (tokenIsNativeToken) {
-        promiseList.push(getNativeTokenBalance(walletAddress, tokenInfo, jsProvider));
-      } else {
-        const tokenFinalAddress = pegConfig?.getTokenBalanceAddress(
-          tokenInfo.token.address || "",
-          result.fromChainId,
-          tokenInfo.token.symbol,
-          transferConfig.pegged_pair_configs,
-        );
-        promiseList.push(
-          getERC20TokenBalance(walletAddress, result.fromChainId, tokenFinalAddress, tokenInfo, jsProvider),
-        );
-      }
-    });
-
-    setLoading(true);
-    const balanceList = await Promise.all(promiseList);
-
-    setLoading(false);
-    setTokenListWithBalance(balanceList);
-  };
-
   const addBalancePlaceHolderForTokenList = (supportedTokenList: TokenInfo[]) => {
     const balanceList = supportedTokenList.map(tokenInfo => {
       return {
@@ -441,33 +279,121 @@ const TokenList: FC<IProps> = ({ onSelectToken, visible, onCancel }) => {
     setTokenListWithBalance(balanceList);
   };
 
-  const isNativeToken = (tokenSymbol: string, tokenDisplaySymbol: string, targetChainId: number): boolean => {
-    const ethSupportedChainIds: number[] = [
-      1, // Ethereum
-      42161, // Arbitrum
-      10, // Optimism
-      5, // Goerli
-      288, // BOBA,
-      42170, // Arbitrum Nova
-    ];
-
-    if (tokenDisplaySymbol === "ETH" && ethSupportedChainIds.includes(targetChainId)) {
-      return true;
-    }
-
-    if (isGasToken(targetChainId, tokenSymbol)) {
-      return true;
-    }
-
-    return false;
-  };
-
   const onInputChange = e => {
     setSearchText(e.target.value);
   };
   const onEnter = e => {
     setSearchText(e.target.value);
   };
+
+  useEffect(() => {
+    if (transferSupportedTokensResult.fromChainId !== fromChain?.id) {
+      return;
+    }
+    // aggregate to get all tokens balance
+    const multicallERC20Balances = async (supportTokenList: TokenInfo[], jsonProvider: StaticJsonRpcProvider) => {
+      const multicall = new Multicall({ ethersProvider: jsonProvider, tryAggregate: true });
+      const balanceContractContext: ContractCallContext[] = [];
+
+      supportTokenList?.forEach((token, index) => {
+        const contractCallContext: ContractCallContext = {
+          reference: "ERC20Contract" + index,
+          contractAddress: token.token.address,
+          abi: erc20ABI,
+          calls: [{ reference: "balanceOf", methodName: "balanceOf", methodParameters: [address] }],
+        };
+        balanceContractContext.push(contractCallContext);
+      });
+
+      const multiCallResults: ContractCallResults = await multicall.call(balanceContractContext);
+      // eslint-disable-next-line
+      const balanceList = new Array<any>();
+      supportTokenList?.forEach(tokenInfo => {
+        let tokenInfoHasNeverBeenAdded = true;
+        Object.entries(multiCallResults.results)?.forEach(multiCallResult => {
+          if (
+            multiCallResult[1].originalContractCallContext.contractAddress === tokenInfo.token.address &&
+            tokenInfoHasNeverBeenAdded
+          ) {
+            if (multiCallResult[1].callsReturnContext[0].success) {
+              const balanceInfo = multiCallResult[1].callsReturnContext[0].returnValues[0];
+              const { hex } = balanceInfo;
+              balanceList.push({
+                ...tokenInfo,
+                balance: formatDecimal(hex, tokenInfo?.token?.decimal),
+              });
+            } else {
+              balanceList.push({
+                ...tokenInfo,
+                balance: "--",
+              });
+            }
+
+            tokenInfoHasNeverBeenAdded = false;
+          }
+        });
+      });
+
+      return balanceList;
+    };
+
+    const getEVMTokenListBalance = async (walletAddress: string, result: SupportTokenListResult) => {
+      const jsonPRCProvider = new StaticJsonRpcProvider(getNetworkById(result.fromChainId).rpcUrl);
+      if (multiCallSupportChains.includes(result.fromChainId)) {
+        console.debug("get erc20 token balance via multi-call");
+        setLoading(true);
+        const balanceList = await multicallERC20Balances(result.supportTokenList, jsonPRCProvider);
+        const nativeToken = result.supportTokenList.find(_ => _.token.isNative);
+        if (nativeToken) {
+          const nativeTokenBalance = await getNativeTokenBalance(address, nativeToken, jsonPRCProvider);
+          balanceList.map(_ => {
+            if (isGasToken(chainId, unambiguousTokenSymbol(_.token))) {
+              _.balance = nativeTokenBalance.balance;
+            }
+            return _;
+          });
+        }
+        setTokenListWithBalance(balanceList);
+        setLoading(false);
+        return;
+      }
+
+      console.debug("get erc20 token balance one by one");
+
+      const promiseList: Array<Promise<TokenInfo>> = [];
+      result.supportTokenList?.forEach(tokenInfo => {
+        if (tokenInfo.token.isNative) {
+          promiseList.push(getNativeTokenBalance(walletAddress, tokenInfo, jsonPRCProvider));
+        } else {
+          const tokenFinalAddress = getTokenBalanceAddress(
+            tokenInfo.token.address || "",
+            result.fromChainId,
+            tokenInfo.token.symbol,
+            transferConfig.pegged_pair_configs,
+          );
+          promiseList.push(
+            getERC20TokenBalance(walletAddress, result.fromChainId, tokenFinalAddress, tokenInfo, jsonPRCProvider),
+          );
+        }
+      });
+
+      setLoading(true);
+      const balanceList = await Promise.all(promiseList);
+
+      setLoading(false);
+      setTokenListWithBalance(balanceList);
+    };
+
+    const updateTokenListBalance = async () => {
+      if (!address) {
+        addBalancePlaceHolderForTokenList(transferSupportedTokensResult.supportTokenList);
+      } else {
+        await getEVMTokenListBalance(address, transferSupportedTokensResult);
+      }
+    };
+    updateTokenListBalance();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [transferSupportedTokensResult, address, chainId, fromChain?.id, transferConfig.pegged_pair_configs]);
 
   useEffect(() => {
     if (!fromChain) {
@@ -502,7 +428,7 @@ const TokenList: FC<IProps> = ({ onSelectToken, visible, onCancel }) => {
     const highPriorityTokenList: TokenInfo[] = [];
     const normalTokenList: TokenInfo[] = [];
 
-    list.forEach(item => {
+    list?.forEach(item => {
       if (sortExclusiveTokenSymbols.includes(item.token.symbol)) {
         highPriorityTokenList.push(item);
       } else {
@@ -511,13 +437,14 @@ const TokenList: FC<IProps> = ({ onSelectToken, visible, onCancel }) => {
     });
     // sort hardToken
     const sortedHighPriorityTokenList: TokenInfo[] = [];
-    sortExclusiveTokenSymbols.forEach(symbol => {
-      const targetToken = highPriorityTokenList.find(
-        item => item.token.symbol === symbol || item.token.display_symbol === symbol,
-      );
-      if (targetToken && !sortedHighPriorityTokenList.includes(targetToken)) {
-        sortedHighPriorityTokenList.push(targetToken);
-      }
+    sortExclusiveTokenSymbols?.forEach(symbol => {
+      highPriorityTokenList
+        .filter(item => item.token.symbol === symbol)
+        ?.forEach(tokenInfo => {
+          if (!sortedHighPriorityTokenList.includes(tokenInfo)) {
+            sortedHighPriorityTokenList.push(tokenInfo);
+          }
+        });
     });
 
     // sort normalToken
@@ -574,7 +501,7 @@ const TokenList: FC<IProps> = ({ onSelectToken, visible, onCancel }) => {
               return (
                 <TokenItem
                   // eslint-disable-next-line
-                  key={`${item?.token?.symbol}-${item?.token?.display_symbol}-${index}`}
+                  key={`${item?.token?.symbol}-${isETH(item?.token) ? "ETH" : ""}-${index}`}
                   onSelectToken={onSelectToken}
                   tokenInfo={item}
                 />

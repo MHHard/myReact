@@ -2,15 +2,24 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
+/* eslint-disable */
+// @ts-nocheck
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() {
+  if (this) { return this; }
+  if (typeof window !== 'undefined') { return window; }
+  if (typeof global !== 'undefined') { return global; }
+  if (typeof self !== 'undefined') { return self; }
+  return Function('return this')();
+}.call(null));
 
 var gogoproto_gogo_pb = require('../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
@@ -39,6 +48,10 @@ goog.object.extend(proto, sdk_service_rfq_user_pb);
 var sdk_service_rfq_model_pb = require('../sdk/service/rfq/model_pb.js');
 goog.object.extend(proto, sdk_service_rfq_model_pb);
 goog.exportSymbol('proto.sgn.gateway.v1.AbnormalStatusInfo', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.BlockBridgeDirect', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.BridgeContractLimitType', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.BridgeContractPerTokenLimitType', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.BridgeContractType', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.BridgeType', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.BscCampaignEventConfig', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.BscCampaignInfo', null, global);
@@ -48,8 +61,12 @@ goog.exportSymbol('proto.sgn.gateway.v1.CSOperation', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.CSType', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.CampaignScore', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.Chain', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.ChainTableRefundTxCountElement', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.ChainToken', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.ChainTokenInfo', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.CircleUSDC', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.CircleUsdcConfigRequest', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.CircleUsdcConfigResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.ClaimFeeRebateRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.ClaimFeeRebateResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.ClaimGetBscCampaignRewardRequest', null, global);
@@ -87,16 +104,22 @@ goog.exportSymbol('proto.sgn.gateway.v1.GetAllConfigsRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetAllConfigsResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetAllLPInfoRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetAllLPInfoResponse', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetAllTXInfoRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetAllTXInfoResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetBalanceDetailRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetBalanceDetailResponse', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetBscCampaignInfoRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetBscCampaignInfoResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetCampaignScoresRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetCampaignScoresResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetCbrConfigsOnChainRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetCbrConfigsOnChainResponse', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetCurrentBlockNumberByNodeRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetCurrentBlockNumberByNodeResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetDataByTimeRangeAndBridgeTypeRequest', null, global);
@@ -111,6 +134,8 @@ goog.exportSymbol('proto.sgn.gateway.v1.GetIncentiveCampaignCelrRankRequest', nu
 goog.exportSymbol('proto.sgn.gateway.v1.GetIncentiveCampaignCelrRankResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetInfoByTxHashRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetInfoByTxHashResponse', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetLPInfoListRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetLPInfoListResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetLPOriginRequest', null, global);
@@ -119,6 +144,8 @@ goog.exportSymbol('proto.sgn.gateway.v1.GetLatest24HourTransferLatencyForInterna
 goog.exportSymbol('proto.sgn.gateway.v1.GetLatest24HourTransferLatencyForInternalDashboardResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetLatest7DayTransferLatencyForQueryRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetLatest7DayTransferLatencyForQueryResponse', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetQualificationRequest', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetQualificationResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetRetentionRewardsInfoRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetRetentionRewardsInfoResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetRfqConfigsRequest', null, global);
@@ -165,6 +192,8 @@ goog.exportSymbol('proto.sgn.gateway.v1.GetUniqueUserAddrByTimeRangeAndBridgeTyp
 goog.exportSymbol('proto.sgn.gateway.v1.GetUniqueUserAddrByTimeRangeAndBridgeTypeResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetUsrBalanceRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetUsrBalanceResponse', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetWithdrawInfoRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.GetWithdrawInfoResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.InIncentiveCampaignBnbWhiteListRequest', null, global);
@@ -174,6 +203,7 @@ goog.exportSymbol('proto.sgn.gateway.v1.InitPegRefundRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.InitPegRefundResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.InitWithdrawRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.InitWithdrawResponse', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.IpInfo', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.IpLog', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.IpLogs', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.LPHistory', null, global);
@@ -185,6 +215,8 @@ goog.exportSymbol('proto.sgn.gateway.v1.LPType', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.LpActionType', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.MarkRefRelationRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.MarkRefRelationResponse', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.OnChainContractLimit', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.OnChainTokenLimit', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.OrderStatus', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.PegClaimHistoryRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.PegClaimHistoryResponse', null, global);
@@ -195,6 +227,8 @@ goog.exportSymbol('proto.sgn.gateway.v1.PingLpRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.PingLpResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.PingRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.PingResponse', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.QualiData', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.QualiErrMsg', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.QueryLiquidityProviderTokenBalanceRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.QueryLiquidityProviderTokenBalanceResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.QueryLiquidityStatusRequest', null, global);
@@ -217,9 +251,12 @@ goog.exportSymbol('proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest', nu
 goog.exportSymbol('proto.sgn.gateway.v1.SaveServicePoolToggleConfigsResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.SaveSystemAnnouncementRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.SaveSystemAnnouncementResponse', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.SignAgainRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.SignAgainResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.SignAgainType', null, global);
+goog.exportSymbol('proto.sgn.gateway.v1.SlowMistInfo', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.StakingConfigRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.StakingConfigResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.TXOperations', null, global);
@@ -254,6 +291,216 @@ goog.exportSymbol('proto.sgn.gateway.v1.WithdrawInfo', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.WithdrawLiquidityRequest', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.WithdrawLiquidityResponse', null, global);
 goog.exportSymbol('proto.sgn.gateway.v1.WithdrawMethodType', null, global);
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.displayName = 'proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.repeatedFields_, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.displayName = 'proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.displayName = 'proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.displayName = 'proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.BlockBridgeDirect, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.BlockBridgeDirect.displayName = 'proto.sgn.gateway.v1.BlockBridgeDirect';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.displayName = 'proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.repeatedFields_, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.displayName = 'proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.displayName = 'proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.repeatedFields_, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.displayName = 'proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.IpInfo = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.IpInfo, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.IpInfo.displayName = 'proto.sgn.gateway.v1.IpInfo';
+}
 /**
  * Generated by JsPbCodeGenerator.
  * @param {Array=} opt_data Optional initial data array, typically from a
@@ -526,6 +773,27 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.sgn.gateway.v1.RiskSeverityLevelDataElement.displayName = 'proto.sgn.gateway.v1.RiskSeverityLevelDataElement';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.SlowMistInfo = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.SlowMistInfo, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.SlowMistInfo.displayName = 'proto.sgn.gateway.v1.SlowMistInfo';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -1587,6 +1855,90 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.sgn.gateway.v1.GetQualificationRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetQualificationRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetQualificationRequest.displayName = 'proto.sgn.gateway.v1.GetQualificationRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetQualificationResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetQualificationResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetQualificationResponse.displayName = 'proto.sgn.gateway.v1.GetQualificationResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.QualiErrMsg = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.QualiErrMsg, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.QualiErrMsg.displayName = 'proto.sgn.gateway.v1.QualiErrMsg';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.QualiData = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.QualiData, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.QualiData.displayName = 'proto.sgn.gateway.v1.QualiData';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.sgn.gateway.v1.QueryLiquidityStatusResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.gateway.v1.QueryLiquidityStatusResponse.repeatedFields_, null);
 };
@@ -1891,6 +2243,69 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.sgn.gateway.v1.GetRfqConfigsResponse.displayName = 'proto.sgn.gateway.v1.GetRfqConfigsResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.CircleUsdcConfigRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.CircleUsdcConfigRequest.displayName = 'proto.sgn.gateway.v1.CircleUsdcConfigRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.gateway.v1.CircleUsdcConfigResponse.repeatedFields_, null);
+};
+goog.inherits(proto.sgn.gateway.v1.CircleUsdcConfigResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.CircleUsdcConfigResponse.displayName = 'proto.sgn.gateway.v1.CircleUsdcConfigResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.CircleUSDC = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.CircleUSDC, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.CircleUSDC.displayName = 'proto.sgn.gateway.v1.CircleUSDC';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -4538,6 +4953,2028 @@ if (goog.DEBUG && !COMPILED) {
    */
   proto.sgn.gateway.v1.IpLog.displayName = 'proto.sgn.gateway.v1.IpLog';
 }
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.displayName = 'proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.repeatedFields_, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.displayName = 'proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.ChainTableRefundTxCountElement, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.ChainTableRefundTxCountElement.displayName = 'proto.sgn.gateway.v1.ChainTableRefundTxCountElement';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.displayName = 'proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.repeatedFields_, null);
+};
+goog.inherits(proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.displayName = 'proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.OnChainContractLimit = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.OnChainContractLimit, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.OnChainContractLimit.displayName = 'proto.sgn.gateway.v1.OnChainContractLimit';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sgn.gateway.v1.OnChainTokenLimit, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sgn.gateway.v1.OnChainTokenLimit.displayName = 'proto.sgn.gateway.v1.OnChainTokenLimit';
+}
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest;
+  return proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest} returns this
+*/
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest} returns this
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f),
+    blockedBridgeDirectList: jspb.Message.toObjectList(msg.getBlockedBridgeDirectList(),
+    proto.sgn.gateway.v1.BlockBridgeDirect.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse;
+  return proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.ErrMsg;
+      reader.readMessage(value,proto.sgn.gateway.v1.ErrMsg.deserializeBinaryFromReader);
+      msg.setErr(value);
+      break;
+    case 2:
+      var value = new proto.sgn.gateway.v1.BlockBridgeDirect;
+      reader.readMessage(value,proto.sgn.gateway.v1.BlockBridgeDirect.deserializeBinaryFromReader);
+      msg.addBlockedBridgeDirect(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getErr();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.ErrMsg.serializeBinaryToWriter
+    );
+  }
+  f = message.getBlockedBridgeDirectList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.sgn.gateway.v1.BlockBridgeDirect.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional ErrMsg err = 1;
+ * @return {?proto.sgn.gateway.v1.ErrMsg}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.prototype.getErr = function() {
+  return /** @type{?proto.sgn.gateway.v1.ErrMsg} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.ErrMsg, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.ErrMsg|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse} returns this
+*/
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.prototype.setErr = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.prototype.clearErr = function() {
+  return this.setErr(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.prototype.hasErr = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated BlockBridgeDirect blocked_bridge_direct = 2;
+ * @return {!Array<!proto.sgn.gateway.v1.BlockBridgeDirect>}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.prototype.getBlockedBridgeDirectList = function() {
+  return /** @type{!Array<!proto.sgn.gateway.v1.BlockBridgeDirect>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.BlockBridgeDirect, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.sgn.gateway.v1.BlockBridgeDirect>} value
+ * @return {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse} returns this
+*/
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.prototype.setBlockedBridgeDirectList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.BlockBridgeDirect=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sgn.gateway.v1.BlockBridgeDirect}
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.prototype.addBlockedBridgeDirect = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sgn.gateway.v1.BlockBridgeDirect, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetBlockBridgeDirectListForCsToolResponse.prototype.clearBlockedBridgeDirectList = function() {
+  return this.setBlockedBridgeDirectList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
+    newConfig: (f = msg.getNewConfig()) && proto.sgn.gateway.v1.BlockBridgeDirect.toObject(includeInstance, f),
+    addNew: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest;
+  return proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
+      break;
+    case 2:
+      var value = new proto.sgn.gateway.v1.BlockBridgeDirect;
+      reader.readMessage(value,proto.sgn.gateway.v1.BlockBridgeDirect.deserializeBinaryFromReader);
+      msg.setNewConfig(value);
+      break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setAddNew(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
+    );
+  }
+  f = message.getNewConfig();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.sgn.gateway.v1.BlockBridgeDirect.serializeBinaryToWriter
+    );
+  }
+  f = message.getAddNew();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest} returns this
+*/
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest} returns this
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional BlockBridgeDirect new_config = 2;
+ * @return {?proto.sgn.gateway.v1.BlockBridgeDirect}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.getNewConfig = function() {
+  return /** @type{?proto.sgn.gateway.v1.BlockBridgeDirect} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.BlockBridgeDirect, 2));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.BlockBridgeDirect|undefined} value
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest} returns this
+*/
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.setNewConfig = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest} returns this
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.clearNewConfig = function() {
+  return this.setNewConfig(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.hasNewConfig = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional bool add_new = 3;
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.getAddNew = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest} returns this
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolRequest.prototype.setAddNew = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 3, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse;
+  return proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.ErrMsg;
+      reader.readMessage(value,proto.sgn.gateway.v1.ErrMsg.deserializeBinaryFromReader);
+      msg.setErr(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getErr();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.ErrMsg.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional ErrMsg err = 1;
+ * @return {?proto.sgn.gateway.v1.ErrMsg}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.prototype.getErr = function() {
+  return /** @type{?proto.sgn.gateway.v1.ErrMsg} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.ErrMsg, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.ErrMsg|undefined} value
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse} returns this
+*/
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.prototype.setErr = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.prototype.clearErr = function() {
+  return this.setErr(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.SetBlockBridgeDirectListForCsToolResponse.prototype.hasErr = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.BlockBridgeDirect.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.BlockBridgeDirect} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    symbol: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    srcChainId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    dstChainId: jspb.Message.getFieldWithDefault(msg, 3, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.BlockBridgeDirect}
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.BlockBridgeDirect;
+  return proto.sgn.gateway.v1.BlockBridgeDirect.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.BlockBridgeDirect} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.BlockBridgeDirect}
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSymbol(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setSrcChainId(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setDstChainId(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.BlockBridgeDirect.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.BlockBridgeDirect} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSymbol();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getSrcChainId();
+  if (f !== 0) {
+    writer.writeUint64(
+      2,
+      f
+    );
+  }
+  f = message.getDstChainId();
+  if (f !== 0) {
+    writer.writeUint64(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string symbol = 1;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.prototype.getSymbol = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.BlockBridgeDirect} returns this
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.prototype.setSymbol = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional uint64 src_chain_id = 2;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.prototype.getSrcChainId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.BlockBridgeDirect} returns this
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.prototype.setSrcChainId = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional uint64 dst_chain_id = 3;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.prototype.getDstChainId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.BlockBridgeDirect} returns this
+ */
+proto.sgn.gateway.v1.BlockBridgeDirect.prototype.setDstChainId = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
+    ip: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest;
+  return proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIp(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
+    );
+  }
+  f = message.getIp();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest} returns this
+*/
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest} returns this
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string ip = 2;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.prototype.getIp = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest} returns this
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolRequest.prototype.setIp = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f),
+    walletsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse;
+  return proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.ErrMsg;
+      reader.readMessage(value,proto.sgn.gateway.v1.ErrMsg.deserializeBinaryFromReader);
+      msg.setErr(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addWallets(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getErr();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.ErrMsg.serializeBinaryToWriter
+    );
+  }
+  f = message.getWalletsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional ErrMsg err = 1;
+ * @return {?proto.sgn.gateway.v1.ErrMsg}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.prototype.getErr = function() {
+  return /** @type{?proto.sgn.gateway.v1.ErrMsg} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.ErrMsg, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.ErrMsg|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse} returns this
+*/
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.prototype.setErr = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.prototype.clearErr = function() {
+  return this.setErr(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.prototype.hasErr = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated string wallets = 2;
+ * @return {!Array<string>}
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.prototype.getWalletsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.prototype.setWalletsList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.prototype.addWallets = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetWalletsByIpForCsToolResponse.prototype.clearWalletsList = function() {
+  return this.setWalletsList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
+    walletAddr: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest;
+  return proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setWalletAddr(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
+    );
+  }
+  f = message.getWalletAddr();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest} returns this
+*/
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest} returns this
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string wallet_addr = 2;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.prototype.getWalletAddr = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest} returns this
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolRequest.prototype.setWalletAddr = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f),
+    ipInfoList: jspb.Message.toObjectList(msg.getIpInfoList(),
+    proto.sgn.gateway.v1.IpInfo.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse;
+  return proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.ErrMsg;
+      reader.readMessage(value,proto.sgn.gateway.v1.ErrMsg.deserializeBinaryFromReader);
+      msg.setErr(value);
+      break;
+    case 2:
+      var value = new proto.sgn.gateway.v1.IpInfo;
+      reader.readMessage(value,proto.sgn.gateway.v1.IpInfo.deserializeBinaryFromReader);
+      msg.addIpInfo(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getErr();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.ErrMsg.serializeBinaryToWriter
+    );
+  }
+  f = message.getIpInfoList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.sgn.gateway.v1.IpInfo.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional ErrMsg err = 1;
+ * @return {?proto.sgn.gateway.v1.ErrMsg}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.prototype.getErr = function() {
+  return /** @type{?proto.sgn.gateway.v1.ErrMsg} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.ErrMsg, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.ErrMsg|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse} returns this
+*/
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.prototype.setErr = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.prototype.clearErr = function() {
+  return this.setErr(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.prototype.hasErr = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated IpInfo ip_info = 2;
+ * @return {!Array<!proto.sgn.gateway.v1.IpInfo>}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.prototype.getIpInfoList = function() {
+  return /** @type{!Array<!proto.sgn.gateway.v1.IpInfo>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.IpInfo, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.sgn.gateway.v1.IpInfo>} value
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse} returns this
+*/
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.prototype.setIpInfoList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.IpInfo=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sgn.gateway.v1.IpInfo}
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.prototype.addIpInfo = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sgn.gateway.v1.IpInfo, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetIpListByWalletForCsToolResponse.prototype.clearIpInfoList = function() {
+  return this.setIpInfoList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.IpInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.IpInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.IpInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.IpInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    ip: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    browser: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.IpInfo}
+ */
+proto.sgn.gateway.v1.IpInfo.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.IpInfo;
+  return proto.sgn.gateway.v1.IpInfo.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.IpInfo} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.IpInfo}
+ */
+proto.sgn.gateway.v1.IpInfo.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIp(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBrowser(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.IpInfo.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.IpInfo.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.IpInfo} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.IpInfo.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIp();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getBrowser();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string ip = 1;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.IpInfo.prototype.getIp = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.IpInfo} returns this
+ */
+proto.sgn.gateway.v1.IpInfo.prototype.setIp = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string browser = 2;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.IpInfo.prototype.getBrowser = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.IpInfo} returns this
+ */
+proto.sgn.gateway.v1.IpInfo.prototype.setBrowser = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
 
 
 
@@ -5559,7 +7996,9 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelResponse.prototype.toObject = function(
 proto.sgn.gateway.v1.GetRiskSeverityLevelResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f),
-    isBlocked: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+    isBlocked: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+    riskCategory: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    riskType: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -5605,6 +8044,14 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelResponse.deserializeBinaryFromReader = 
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setIsBlocked(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRiskCategory(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRiskType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -5646,6 +8093,20 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelResponse.serializeBinaryToWriter = func
   if (f) {
     writer.writeBool(
       2,
+      f
+    );
+  }
+  f = message.getRiskCategory();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getRiskType();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -5704,6 +8165,42 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelResponse.prototype.getIsBlocked = funct
  */
 proto.sgn.gateway.v1.GetRiskSeverityLevelResponse.prototype.setIsBlocked = function(value) {
   return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+/**
+ * optional string risk_category = 3;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.GetRiskSeverityLevelResponse.prototype.getRiskCategory = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.GetRiskSeverityLevelResponse} returns this
+ */
+proto.sgn.gateway.v1.GetRiskSeverityLevelResponse.prototype.setRiskCategory = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string risk_type = 4;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.GetRiskSeverityLevelResponse.prototype.getRiskType = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.GetRiskSeverityLevelResponse} returns this
+ */
+proto.sgn.gateway.v1.GetRiskSeverityLevelResponse.prototype.setRiskType = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -6059,12 +8556,12 @@ proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.toObject 
  */
 proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sig: msg.getSig_asB64(),
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    usrAddr: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    isWhitelist: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    whitelistReason: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    isBlacklist: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
+    usrAddr: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    isWhitelist: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    whitelistReason: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    isBlacklist: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
+    blacklistReason: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -6102,28 +8599,29 @@ proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.deserializeBinaryFr
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
       msg.setUsrAddr(value);
       break;
-    case 4:
+    case 3:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setIsWhitelist(value);
       break;
-    case 5:
+    case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setWhitelistReason(value);
       break;
-    case 6:
+    case 5:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setIsBlacklist(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBlacklistReason(value);
       break;
     default:
       reader.skipField();
@@ -6154,44 +8652,45 @@ proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.serialize
  */
 proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
-  f = message.getSigAddr();
+  f = message.getUsrAddr();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getUsrAddr();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
   f = message.getIsWhitelist();
   if (f) {
     writer.writeBool(
-      4,
+      3,
       f
     );
   }
   f = message.getWhitelistReason();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      4,
       f
     );
   }
   f = message.getIsBlacklist();
   if (f) {
     writer.writeBool(
+      5,
+      f
+    );
+  }
+  f = message.getBlacklistReason();
+  if (f.length > 0) {
+    writer.writeString(
       6,
       f
     );
@@ -6200,52 +8699,47 @@ proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.serializeBinaryToWr
 
 
 /**
- * optional bytes sig = 1;
- * @return {!(string|Uint8Array)}
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
 };
 
 
 /**
- * optional bytes sig = 1;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest} returns this
+*/
+proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
- * optional bytes sig = 1;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest} returns this
  */
-proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
+proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional string sig_addr = 2;
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string usr_addr = 2;
  * @return {string}
  */
-proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getSigAddr = function() {
+proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getUsrAddr = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -6254,35 +8748,17 @@ proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getSigAdd
  * @param {string} value
  * @return {!proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest} returns this
  */
-proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.setSigAddr = function(value) {
+proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.setUsrAddr = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional string usr_addr = 3;
- * @return {string}
- */
-proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getUsrAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest} returns this
- */
-proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.setUsrAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-/**
- * optional bool is_whitelist = 4;
+ * optional bool is_whitelist = 3;
  * @return {boolean}
  */
 proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getIsWhitelist = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
 };
 
 
@@ -6291,16 +8767,16 @@ proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getIsWhit
  * @return {!proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest} returns this
  */
 proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.setIsWhitelist = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 4, value);
+  return jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
 
 /**
- * optional string whitelist_reason = 5;
+ * optional string whitelist_reason = 4;
  * @return {string}
  */
 proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getWhitelistReason = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
@@ -6309,16 +8785,16 @@ proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getWhitel
  * @return {!proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest} returns this
  */
 proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.setWhitelistReason = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * optional bool is_blacklist = 6;
+ * optional bool is_blacklist = 5;
  * @return {boolean}
  */
 proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getIsBlacklist = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
 };
 
 
@@ -6327,7 +8803,25 @@ proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getIsBlac
  * @return {!proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest} returns this
  */
 proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.setIsBlacklist = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 6, value);
+  return jspb.Message.setProto3BooleanField(this, 5, value);
+};
+
+
+/**
+ * optional string blacklist_reason = 6;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.getBlacklistReason = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest} returns this
+ */
+proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolRequest.prototype.setBlacklistReason = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -6488,7 +8982,7 @@ proto.sgn.gateway.v1.UpdateRiskSeverityLevelForCsToolResponse.prototype.hasErr =
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.repeatedFields_ = [3];
+proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.repeatedFields_ = [2];
 
 
 
@@ -6521,11 +9015,10 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.toObject = f
  */
 proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sig: msg.getSig_asB64(),
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    usrAddrsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
-    pageNo: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    pageSize: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
+    usrAddrsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+    pageNo: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    pageSize: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -6563,22 +9056,19 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.deserializeBinaryFromR
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
       msg.addUsrAddrs(value);
       break;
-    case 4:
+    case 3:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setPageNo(value);
       break;
-    case 5:
+    case 4:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setPageSize(value);
       break;
@@ -6611,38 +9101,32 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.serializeBin
  */
 proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
-    );
-  }
-  f = message.getSigAddr();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
   f = message.getUsrAddrsList();
   if (f.length > 0) {
     writer.writeRepeatedString(
-      3,
+      2,
       f
     );
   }
   f = message.getPageNo();
   if (f !== 0) {
     writer.writeUint32(
-      4,
+      3,
       f
     );
   }
   f = message.getPageSize();
   if (f !== 0) {
     writer.writeUint32(
-      5,
+      4,
       f
     );
   }
@@ -6650,71 +9134,48 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.serializeBinaryToWrite
 
 
 /**
- * optional bytes sig = 1;
- * @return {!(string|Uint8Array)}
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
 };
 
 
 /**
- * optional bytes sig = 1;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest} returns this
+*/
+proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
- * optional bytes sig = 1;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest} returns this
  */
-proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
+proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional string sig_addr = 2;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getSigAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
 /**
- * @param {string} value
- * @return {!proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest} returns this
- */
-proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.setSigAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * repeated string usr_addrs = 3;
+ * repeated string usr_addrs = 2;
  * @return {!Array<string>}
  */
 proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getUsrAddrsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 3));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
 };
 
 
@@ -6723,7 +9184,7 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getUsrAddrsL
  * @return {!proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest} returns this
  */
 proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.setUsrAddrsList = function(value) {
-  return jspb.Message.setField(this, 3, value || []);
+  return jspb.Message.setField(this, 2, value || []);
 };
 
 
@@ -6733,7 +9194,7 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.setUsrAddrsL
  * @return {!proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest} returns this
  */
 proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.addUsrAddrs = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
 };
 
 
@@ -6747,11 +9208,11 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.clearUsrAddr
 
 
 /**
- * optional uint32 page_no = 4;
+ * optional uint32 page_no = 3;
  * @return {number}
  */
 proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getPageNo = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
@@ -6760,16 +9221,16 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getPageNo = 
  * @return {!proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest} returns this
  */
 proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.setPageNo = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
 /**
- * optional uint32 page_size = 5;
+ * optional uint32 page_size = 4;
  * @return {number}
  */
 proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getPageSize = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
@@ -6778,7 +9239,7 @@ proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.getPageSize 
  * @return {!proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest} returns this
  */
 proto.sgn.gateway.v1.GetRiskSeverityLevelForCsToolRequest.prototype.setPageSize = function(value) {
-  return jspb.Message.setProto3IntField(this, 5, value);
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
@@ -7123,7 +9584,10 @@ proto.sgn.gateway.v1.RiskSeverityLevelDataElement.toObject = function(includeIns
     isWhitelist: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
     whitelistReason: jspb.Message.getFieldWithDefault(msg, 7, ""),
     lastUpdateTimeInSecond: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    isBlacklist: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
+    isBlacklist: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
+    browserInfo: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    slowMistInfo: (f = msg.getSlowMistInfo()) && proto.sgn.gateway.v1.SlowMistInfo.toObject(includeInstance, f),
+    blacklistReason: jspb.Message.getFieldWithDefault(msg, 12, "")
   };
 
   if (includeInstance) {
@@ -7195,6 +9659,19 @@ proto.sgn.gateway.v1.RiskSeverityLevelDataElement.deserializeBinaryFromReader = 
     case 9:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setIsBlacklist(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBrowserInfo(value);
+      break;
+    case 11:
+      var value = new proto.sgn.gateway.v1.SlowMistInfo;
+      reader.readMessage(value,proto.sgn.gateway.v1.SlowMistInfo.deserializeBinaryFromReader);
+      msg.setSlowMistInfo(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBlacklistReason(value);
       break;
     default:
       reader.skipField();
@@ -7285,6 +9762,28 @@ proto.sgn.gateway.v1.RiskSeverityLevelDataElement.serializeBinaryToWriter = func
   if (f) {
     writer.writeBool(
       9,
+      f
+    );
+  }
+  f = message.getBrowserInfo();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
+  f = message.getSlowMistInfo();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      proto.sgn.gateway.v1.SlowMistInfo.serializeBinaryToWriter
+    );
+  }
+  f = message.getBlacklistReason();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
       f
     );
   }
@@ -7450,6 +9949,299 @@ proto.sgn.gateway.v1.RiskSeverityLevelDataElement.prototype.getIsBlacklist = fun
  */
 proto.sgn.gateway.v1.RiskSeverityLevelDataElement.prototype.setIsBlacklist = function(value) {
   return jspb.Message.setProto3BooleanField(this, 9, value);
+};
+
+
+/**
+ * optional string browser_info = 10;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.RiskSeverityLevelDataElement.prototype.getBrowserInfo = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.RiskSeverityLevelDataElement} returns this
+ */
+proto.sgn.gateway.v1.RiskSeverityLevelDataElement.prototype.setBrowserInfo = function(value) {
+  return jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
+/**
+ * optional SlowMistInfo slow_mist_info = 11;
+ * @return {?proto.sgn.gateway.v1.SlowMistInfo}
+ */
+proto.sgn.gateway.v1.RiskSeverityLevelDataElement.prototype.getSlowMistInfo = function() {
+  return /** @type{?proto.sgn.gateway.v1.SlowMistInfo} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.SlowMistInfo, 11));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.SlowMistInfo|undefined} value
+ * @return {!proto.sgn.gateway.v1.RiskSeverityLevelDataElement} returns this
+*/
+proto.sgn.gateway.v1.RiskSeverityLevelDataElement.prototype.setSlowMistInfo = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.RiskSeverityLevelDataElement} returns this
+ */
+proto.sgn.gateway.v1.RiskSeverityLevelDataElement.prototype.clearSlowMistInfo = function() {
+  return this.setSlowMistInfo(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.RiskSeverityLevelDataElement.prototype.hasSlowMistInfo = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional string blacklist_reason = 12;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.RiskSeverityLevelDataElement.prototype.getBlacklistReason = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.RiskSeverityLevelDataElement} returns this
+ */
+proto.sgn.gateway.v1.RiskSeverityLevelDataElement.prototype.setBlacklistReason = function(value) {
+  return jspb.Message.setProto3StringField(this, 12, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.SlowMistInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.SlowMistInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.SlowMistInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.SlowMistInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    riskLevel: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    score: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    hackingEvent: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    detailList: jspb.Message.getFieldWithDefault(msg, 4, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.SlowMistInfo}
+ */
+proto.sgn.gateway.v1.SlowMistInfo.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.SlowMistInfo;
+  return proto.sgn.gateway.v1.SlowMistInfo.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.SlowMistInfo} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.SlowMistInfo}
+ */
+proto.sgn.gateway.v1.SlowMistInfo.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRiskLevel(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setScore(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHackingEvent(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDetailList(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.SlowMistInfo.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.SlowMistInfo.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.SlowMistInfo} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.SlowMistInfo.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getRiskLevel();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getScore();
+  if (f !== 0) {
+    writer.writeUint64(
+      2,
+      f
+    );
+  }
+  f = message.getHackingEvent();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getDetailList();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string risk_level = 1;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.SlowMistInfo.prototype.getRiskLevel = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.SlowMistInfo} returns this
+ */
+proto.sgn.gateway.v1.SlowMistInfo.prototype.setRiskLevel = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional uint64 score = 2;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.SlowMistInfo.prototype.getScore = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.SlowMistInfo} returns this
+ */
+proto.sgn.gateway.v1.SlowMistInfo.prototype.setScore = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional string hacking_event = 3;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.SlowMistInfo.prototype.getHackingEvent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.SlowMistInfo} returns this
+ */
+proto.sgn.gateway.v1.SlowMistInfo.prototype.setHackingEvent = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string detail_list = 4;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.SlowMistInfo.prototype.getDetailList = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.SlowMistInfo} returns this
+ */
+proto.sgn.gateway.v1.SlowMistInfo.prototype.setDetailList = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -9149,7 +11941,9 @@ proto.sgn.gateway.v1.PingResponse.prototype.toObject = function(opt_includeInsta
  */
 proto.sgn.gateway.v1.PingResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f)
+    err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f),
+    isAnonymous: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+    isWhiteList: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -9191,6 +11985,14 @@ proto.sgn.gateway.v1.PingResponse.deserializeBinaryFromReader = function(msg, re
       reader.readMessage(value,proto.sgn.gateway.v1.ErrMsg.deserializeBinaryFromReader);
       msg.setErr(value);
       break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsAnonymous(value);
+      break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsWhiteList(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -9226,6 +12028,20 @@ proto.sgn.gateway.v1.PingResponse.serializeBinaryToWriter = function(message, wr
       1,
       f,
       proto.sgn.gateway.v1.ErrMsg.serializeBinaryToWriter
+    );
+  }
+  f = message.getIsAnonymous();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+  f = message.getIsWhiteList();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
     );
   }
 };
@@ -9265,6 +12081,42 @@ proto.sgn.gateway.v1.PingResponse.prototype.clearErr = function() {
  */
 proto.sgn.gateway.v1.PingResponse.prototype.hasErr = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional bool is_anonymous = 2;
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.PingResponse.prototype.getIsAnonymous = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sgn.gateway.v1.PingResponse} returns this
+ */
+proto.sgn.gateway.v1.PingResponse.prototype.setIsAnonymous = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+/**
+ * optional bool is_white_list = 3;
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.PingResponse.prototype.getIsWhiteList = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sgn.gateway.v1.PingResponse} returns this
+ */
+proto.sgn.gateway.v1.PingResponse.prototype.setIsWhiteList = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
 
@@ -15742,11 +18594,10 @@ proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.toObject = function(opt_incl
  */
 proto.sgn.gateway.v1.GetUsrBalanceRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sig: msg.getSig_asB64(),
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    usrAddr: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    chainId: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    tokenSymbol: jspb.Message.getFieldWithDefault(msg, 5, "")
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
+    usrAddr: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    chainId: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    tokenSymbol: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -15784,22 +18635,19 @@ proto.sgn.gateway.v1.GetUsrBalanceRequest.deserializeBinaryFromReader = function
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
       msg.setUsrAddr(value);
       break;
-    case 4:
+    case 3:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setChainId(value);
       break;
-    case 5:
+    case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setTokenSymbol(value);
       break;
@@ -15832,38 +18680,32 @@ proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.serializeBinary = function()
  */
 proto.sgn.gateway.v1.GetUsrBalanceRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
-  f = message.getSigAddr();
+  f = message.getUsrAddr();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getUsrAddr();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
   f = message.getChainId();
   if (f !== 0) {
     writer.writeUint32(
-      4,
+      3,
       f
     );
   }
   f = message.getTokenSymbol();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      4,
       f
     );
   }
@@ -15871,52 +18713,47 @@ proto.sgn.gateway.v1.GetUsrBalanceRequest.serializeBinaryToWriter = function(mes
 
 
 /**
- * optional bytes sig = 1;
- * @return {!(string|Uint8Array)}
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
 };
 
 
 /**
- * optional bytes sig = 1;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetUsrBalanceRequest} returns this
+*/
+proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
- * optional bytes sig = 1;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.GetUsrBalanceRequest} returns this
  */
-proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
+proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional string sig_addr = 2;
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string usr_addr = 2;
  * @return {string}
  */
-proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getSigAddr = function() {
+proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getUsrAddr = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -15925,35 +18762,17 @@ proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getSigAddr = function() {
  * @param {string} value
  * @return {!proto.sgn.gateway.v1.GetUsrBalanceRequest} returns this
  */
-proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.setSigAddr = function(value) {
+proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.setUsrAddr = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional string usr_addr = 3;
- * @return {string}
- */
-proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getUsrAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sgn.gateway.v1.GetUsrBalanceRequest} returns this
- */
-proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.setUsrAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-/**
- * optional uint32 chain_id = 4;
+ * optional uint32 chain_id = 3;
  * @return {number}
  */
 proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getChainId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
@@ -15962,16 +18781,16 @@ proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getChainId = function() {
  * @return {!proto.sgn.gateway.v1.GetUsrBalanceRequest} returns this
  */
 proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.setChainId = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
 /**
- * optional string token_symbol = 5;
+ * optional string token_symbol = 4;
  * @return {string}
  */
 proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getTokenSymbol = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
@@ -15980,7 +18799,7 @@ proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.getTokenSymbol = function() 
  * @return {!proto.sgn.gateway.v1.GetUsrBalanceRequest} returns this
  */
 proto.sgn.gateway.v1.GetUsrBalanceRequest.prototype.setTokenSymbol = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -17085,6 +19904,658 @@ proto.sgn.gateway.v1.CampaignScore.prototype.getScore = function() {
  */
 proto.sgn.gateway.v1.CampaignScore.prototype.setScore = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetQualificationRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetQualificationRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetQualificationRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetQualificationRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    address: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    campaign: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetQualificationRequest}
+ */
+proto.sgn.gateway.v1.GetQualificationRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetQualificationRequest;
+  return proto.sgn.gateway.v1.GetQualificationRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetQualificationRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetQualificationRequest}
+ */
+proto.sgn.gateway.v1.GetQualificationRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAddress(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCampaign(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetQualificationRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetQualificationRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetQualificationRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetQualificationRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAddress();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getCampaign();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string address = 1;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.GetQualificationRequest.prototype.getAddress = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.GetQualificationRequest} returns this
+ */
+proto.sgn.gateway.v1.GetQualificationRequest.prototype.setAddress = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string campaign = 2;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.GetQualificationRequest.prototype.getCampaign = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.GetQualificationRequest} returns this
+ */
+proto.sgn.gateway.v1.GetQualificationRequest.prototype.setCampaign = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetQualificationResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetQualificationResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    error: (f = msg.getError()) && proto.sgn.gateway.v1.QualiErrMsg.toObject(includeInstance, f),
+    data: (f = msg.getData()) && proto.sgn.gateway.v1.QualiData.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetQualificationResponse}
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetQualificationResponse;
+  return proto.sgn.gateway.v1.GetQualificationResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetQualificationResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetQualificationResponse}
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.QualiErrMsg;
+      reader.readMessage(value,proto.sgn.gateway.v1.QualiErrMsg.deserializeBinaryFromReader);
+      msg.setError(value);
+      break;
+    case 2:
+      var value = new proto.sgn.gateway.v1.QualiData;
+      reader.readMessage(value,proto.sgn.gateway.v1.QualiData.deserializeBinaryFromReader);
+      msg.setData(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetQualificationResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetQualificationResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getError();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.QualiErrMsg.serializeBinaryToWriter
+    );
+  }
+  f = message.getData();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.sgn.gateway.v1.QualiData.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional QualiErrMsg error = 1;
+ * @return {?proto.sgn.gateway.v1.QualiErrMsg}
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.prototype.getError = function() {
+  return /** @type{?proto.sgn.gateway.v1.QualiErrMsg} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.QualiErrMsg, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.QualiErrMsg|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetQualificationResponse} returns this
+*/
+proto.sgn.gateway.v1.GetQualificationResponse.prototype.setError = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetQualificationResponse} returns this
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.prototype.clearError = function() {
+  return this.setError(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.prototype.hasError = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional QualiData data = 2;
+ * @return {?proto.sgn.gateway.v1.QualiData}
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.prototype.getData = function() {
+  return /** @type{?proto.sgn.gateway.v1.QualiData} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.QualiData, 2));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.QualiData|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetQualificationResponse} returns this
+*/
+proto.sgn.gateway.v1.GetQualificationResponse.prototype.setData = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetQualificationResponse} returns this
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.prototype.clearData = function() {
+  return this.setData(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetQualificationResponse.prototype.hasData = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.QualiErrMsg.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.QualiErrMsg.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.QualiErrMsg} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.QualiErrMsg.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    code: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    message: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.QualiErrMsg}
+ */
+proto.sgn.gateway.v1.QualiErrMsg.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.QualiErrMsg;
+  return proto.sgn.gateway.v1.QualiErrMsg.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.QualiErrMsg} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.QualiErrMsg}
+ */
+proto.sgn.gateway.v1.QualiErrMsg.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setCode(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMessage(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.QualiErrMsg.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.QualiErrMsg.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.QualiErrMsg} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.QualiErrMsg.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getCode();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getMessage();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 code = 1;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.QualiErrMsg.prototype.getCode = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.QualiErrMsg} returns this
+ */
+proto.sgn.gateway.v1.QualiErrMsg.prototype.setCode = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string message = 2;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.QualiErrMsg.prototype.getMessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.QualiErrMsg} returns this
+ */
+proto.sgn.gateway.v1.QualiErrMsg.prototype.setMessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.QualiData.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.QualiData.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.QualiData} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.QualiData.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    result: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.QualiData}
+ */
+proto.sgn.gateway.v1.QualiData.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.QualiData;
+  return proto.sgn.gateway.v1.QualiData.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.QualiData} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.QualiData}
+ */
+proto.sgn.gateway.v1.QualiData.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setResult(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.QualiData.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.QualiData.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.QualiData} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.QualiData.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResult();
+  if (f) {
+    writer.writeBool(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional bool result = 1;
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.QualiData.prototype.getResult = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sgn.gateway.v1.QualiData} returns this
+ */
+proto.sgn.gateway.v1.QualiData.prototype.setResult = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 1, value);
 };
 
 
@@ -20872,7 +24343,7 @@ proto.sgn.gateway.v1.GetTransferConfigsRequest.serializeBinaryToWriter = functio
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.gateway.v1.GetTransferConfigsResponse.repeatedFields_ = [2,5];
+proto.sgn.gateway.v1.GetTransferConfigsResponse.repeatedFields_ = [2,5,6];
 
 
 
@@ -20911,7 +24382,9 @@ proto.sgn.gateway.v1.GetTransferConfigsResponse.toObject = function(includeInsta
     chainTokenMap: (f = msg.getChainTokenMap()) ? f.toObject(includeInstance, proto.sgn.gateway.v1.ChainTokenInfo.toObject) : [],
     farmingRewardContractAddr: jspb.Message.getFieldWithDefault(msg, 4, ""),
     peggedPairConfigsList: jspb.Message.toObjectList(msg.getPeggedPairConfigsList(),
-    proto.sgn.gateway.v1.PeggedPairConfig.toObject, includeInstance)
+    proto.sgn.gateway.v1.PeggedPairConfig.toObject, includeInstance),
+    blockedBridgeDirectList: jspb.Message.toObjectList(msg.getBlockedBridgeDirectList(),
+    proto.sgn.gateway.v1.BlockBridgeDirect.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -20972,6 +24445,11 @@ proto.sgn.gateway.v1.GetTransferConfigsResponse.deserializeBinaryFromReader = fu
       var value = new proto.sgn.gateway.v1.PeggedPairConfig;
       reader.readMessage(value,proto.sgn.gateway.v1.PeggedPairConfig.deserializeBinaryFromReader);
       msg.addPeggedPairConfigs(value);
+      break;
+    case 6:
+      var value = new proto.sgn.gateway.v1.BlockBridgeDirect;
+      reader.readMessage(value,proto.sgn.gateway.v1.BlockBridgeDirect.deserializeBinaryFromReader);
+      msg.addBlockedBridgeDirect(value);
       break;
     default:
       reader.skipField();
@@ -21035,6 +24513,14 @@ proto.sgn.gateway.v1.GetTransferConfigsResponse.serializeBinaryToWriter = functi
       5,
       f,
       proto.sgn.gateway.v1.PeggedPairConfig.serializeBinaryToWriter
+    );
+  }
+  f = message.getBlockedBridgeDirectList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      6,
+      f,
+      proto.sgn.gateway.v1.BlockBridgeDirect.serializeBinaryToWriter
     );
   }
 };
@@ -21190,6 +24676,44 @@ proto.sgn.gateway.v1.GetTransferConfigsResponse.prototype.addPeggedPairConfigs =
  */
 proto.sgn.gateway.v1.GetTransferConfigsResponse.prototype.clearPeggedPairConfigsList = function() {
   return this.setPeggedPairConfigsList([]);
+};
+
+
+/**
+ * repeated BlockBridgeDirect blocked_bridge_direct = 6;
+ * @return {!Array<!proto.sgn.gateway.v1.BlockBridgeDirect>}
+ */
+proto.sgn.gateway.v1.GetTransferConfigsResponse.prototype.getBlockedBridgeDirectList = function() {
+  return /** @type{!Array<!proto.sgn.gateway.v1.BlockBridgeDirect>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.BlockBridgeDirect, 6));
+};
+
+
+/**
+ * @param {!Array<!proto.sgn.gateway.v1.BlockBridgeDirect>} value
+ * @return {!proto.sgn.gateway.v1.GetTransferConfigsResponse} returns this
+*/
+proto.sgn.gateway.v1.GetTransferConfigsResponse.prototype.setBlockedBridgeDirectList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 6, value);
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.BlockBridgeDirect=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sgn.gateway.v1.BlockBridgeDirect}
+ */
+proto.sgn.gateway.v1.GetTransferConfigsResponse.prototype.addBlockedBridgeDirect = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.sgn.gateway.v1.BlockBridgeDirect, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sgn.gateway.v1.GetTransferConfigsResponse} returns this
+ */
+proto.sgn.gateway.v1.GetTransferConfigsResponse.prototype.clearBlockedBridgeDirectList = function() {
+  return this.setBlockedBridgeDirectList([]);
 };
 
 
@@ -21536,6 +25060,538 @@ proto.sgn.gateway.v1.GetRfqConfigsResponse.prototype.getRfqContractAddressesMap 
 proto.sgn.gateway.v1.GetRfqConfigsResponse.prototype.clearRfqContractAddressesMap = function() {
   this.getRfqContractAddressesMap().clear();
   return this;};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.CircleUsdcConfigRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.CircleUsdcConfigRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.CircleUsdcConfigRequest}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.CircleUsdcConfigRequest;
+  return proto.sgn.gateway.v1.CircleUsdcConfigRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.CircleUsdcConfigRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.CircleUsdcConfigRequest}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.CircleUsdcConfigRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.CircleUsdcConfigRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.CircleUsdcConfigResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.CircleUsdcConfigResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f),
+    chaintokensList: jspb.Message.toObjectList(msg.getChaintokensList(),
+    proto.sgn.gateway.v1.CircleUSDC.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.CircleUsdcConfigResponse}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.CircleUsdcConfigResponse;
+  return proto.sgn.gateway.v1.CircleUsdcConfigResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.CircleUsdcConfigResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.CircleUsdcConfigResponse}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.ErrMsg;
+      reader.readMessage(value,proto.sgn.gateway.v1.ErrMsg.deserializeBinaryFromReader);
+      msg.setErr(value);
+      break;
+    case 2:
+      var value = new proto.sgn.gateway.v1.CircleUSDC;
+      reader.readMessage(value,proto.sgn.gateway.v1.CircleUSDC.deserializeBinaryFromReader);
+      msg.addChaintokens(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.CircleUsdcConfigResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.CircleUsdcConfigResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getErr();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.ErrMsg.serializeBinaryToWriter
+    );
+  }
+  f = message.getChaintokensList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.sgn.gateway.v1.CircleUSDC.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional ErrMsg err = 1;
+ * @return {?proto.sgn.gateway.v1.ErrMsg}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.prototype.getErr = function() {
+  return /** @type{?proto.sgn.gateway.v1.ErrMsg} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.ErrMsg, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.ErrMsg|undefined} value
+ * @return {!proto.sgn.gateway.v1.CircleUsdcConfigResponse} returns this
+*/
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.prototype.setErr = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.CircleUsdcConfigResponse} returns this
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.prototype.clearErr = function() {
+  return this.setErr(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.prototype.hasErr = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated CircleUSDC chainTokens = 2;
+ * @return {!Array<!proto.sgn.gateway.v1.CircleUSDC>}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.prototype.getChaintokensList = function() {
+  return /** @type{!Array<!proto.sgn.gateway.v1.CircleUSDC>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.CircleUSDC, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.sgn.gateway.v1.CircleUSDC>} value
+ * @return {!proto.sgn.gateway.v1.CircleUsdcConfigResponse} returns this
+*/
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.prototype.setChaintokensList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.CircleUSDC=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sgn.gateway.v1.CircleUSDC}
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.prototype.addChaintokens = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sgn.gateway.v1.CircleUSDC, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sgn.gateway.v1.CircleUsdcConfigResponse} returns this
+ */
+proto.sgn.gateway.v1.CircleUsdcConfigResponse.prototype.clearChaintokensList = function() {
+  return this.setChaintokensList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.CircleUSDC.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.CircleUSDC.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.CircleUSDC} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.CircleUSDC.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    chainId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    contractAddr: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    tokenAddr: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    tokenDecimal: jspb.Message.getFieldWithDefault(msg, 4, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.CircleUSDC}
+ */
+proto.sgn.gateway.v1.CircleUSDC.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.CircleUSDC;
+  return proto.sgn.gateway.v1.CircleUSDC.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.CircleUSDC} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.CircleUSDC}
+ */
+proto.sgn.gateway.v1.CircleUSDC.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setChainId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setContractAddr(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTokenAddr(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTokenDecimal(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.CircleUSDC.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.CircleUSDC.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.CircleUSDC} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.CircleUSDC.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getChainId();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getContractAddr();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getTokenAddr();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getTokenDecimal();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 chain_id = 1;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.CircleUSDC.prototype.getChainId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.CircleUSDC} returns this
+ */
+proto.sgn.gateway.v1.CircleUSDC.prototype.setChainId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string contract_addr = 2;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.CircleUSDC.prototype.getContractAddr = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.CircleUSDC} returns this
+ */
+proto.sgn.gateway.v1.CircleUSDC.prototype.setContractAddr = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string token_addr = 3;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.CircleUSDC.prototype.getTokenAddr = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.CircleUSDC} returns this
+ */
+proto.sgn.gateway.v1.CircleUSDC.prototype.setTokenAddr = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 token_decimal = 4;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.CircleUSDC.prototype.getTokenDecimal = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.CircleUSDC} returns this
+ */
+proto.sgn.gateway.v1.CircleUSDC.prototype.setTokenDecimal = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
 
 
 
@@ -33947,8 +38003,10 @@ proto.sgn.gateway.v1.GetTotalLiquidityProviderTokenBalanceRequest.deserializeBin
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
-      msg.setChainIdsList(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addChainIds(values[i]);
+      }
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -34317,8 +38375,10 @@ proto.sgn.gateway.v1.QueryLiquidityProviderTokenBalanceRequest.deserializeBinary
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
-      msg.setChainIdsList(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addChainIds(values[i]);
+      }
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -34876,7 +38936,7 @@ proto.sgn.gateway.v1.GetAbnormalStatusInfoResponse.prototype.clearInfoList = fun
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.gateway.v1.GetAllLPInfoRequest.repeatedFields_ = [1,2,3,4,10];
+proto.sgn.gateway.v1.GetAllLPInfoRequest.repeatedFields_ = [1,2,3,4,9];
 
 
 
@@ -34916,9 +38976,8 @@ proto.sgn.gateway.v1.GetAllLPInfoRequest.toObject = function(includeInstance, ms
     beginTime: jspb.Message.getFieldWithDefault(msg, 5, 0),
     endTime: jspb.Message.getFieldWithDefault(msg, 6, 0),
     nextPageToken: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    sig: msg.getSig_asB64(),
-    statusList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
+    statusList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -34960,12 +39019,16 @@ proto.sgn.gateway.v1.GetAllLPInfoRequest.deserializeBinaryFromReader = function(
       msg.addUsrAddress(value);
       break;
     case 2:
-      var value = /** @type {!Array<!proto.sgn.gateway.v1.LpActionType>} */ (reader.readPackedEnum());
-      msg.setActionTypeList(value);
+      var values = /** @type {!Array<!proto.sgn.gateway.v1.LpActionType>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addActionType(values[i]);
+      }
       break;
     case 3:
-      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
-      msg.setChainIdList(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addChainId(values[i]);
+      }
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -34984,16 +39047,15 @@ proto.sgn.gateway.v1.GetAllLPInfoRequest.deserializeBinaryFromReader = function(
       msg.setNextPageToken(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     case 9:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
-      break;
-    case 10:
-      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
-      msg.setStatusList(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addStatus(values[i]);
+      }
       break;
     default:
       reader.skipField();
@@ -35073,24 +39135,18 @@ proto.sgn.gateway.v1.GetAllLPInfoRequest.serializeBinaryToWriter = function(mess
       f
     );
   }
-  f = message.getSigAddr();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       8,
-      f
-    );
-  }
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      9,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
   f = message.getStatusList();
   if (f.length > 0) {
     writer.writePackedUint32(
-      10,
+      9,
       f
     );
   }
@@ -35300,71 +39356,48 @@ proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.setNextPageToken = function(v
 
 
 /**
- * optional string sig_addr = 8;
- * @return {string}
+ * optional DashboardAuth auth = 8;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.getSigAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 8));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetAllLPInfoRequest} returns this
+*/
+proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.GetAllLPInfoRequest} returns this
  */
-proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.setSigAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
+proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional bytes sig = 9;
- * @return {!(string|Uint8Array)}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
 /**
- * optional bytes sig = 9;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
-};
-
-
-/**
- * optional bytes sig = 9;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.sgn.gateway.v1.GetAllLPInfoRequest} returns this
- */
-proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 9, value);
-};
-
-
-/**
- * repeated uint32 status = 10;
+ * repeated uint32 status = 9;
  * @return {!Array<number>}
  */
 proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.getStatusList = function() {
-  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 10));
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 9));
 };
 
 
@@ -35373,7 +39406,7 @@ proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.getStatusList = function() {
  * @return {!proto.sgn.gateway.v1.GetAllLPInfoRequest} returns this
  */
 proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.setStatusList = function(value) {
-  return jspb.Message.setField(this, 10, value || []);
+  return jspb.Message.setField(this, 9, value || []);
 };
 
 
@@ -35383,7 +39416,7 @@ proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.setStatusList = function(valu
  * @return {!proto.sgn.gateway.v1.GetAllLPInfoRequest} returns this
  */
 proto.sgn.gateway.v1.GetAllLPInfoRequest.prototype.addStatus = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 10, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 9, value, opt_index);
 };
 
 
@@ -35983,7 +40016,7 @@ proto.sgn.gateway.v1.LPOperations.prototype.setStatus = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.gateway.v1.GetAllTXInfoRequest.repeatedFields_ = [1,2,3,4,10,11,13];
+proto.sgn.gateway.v1.GetAllTXInfoRequest.repeatedFields_ = [1,2,3,4,9,10,12];
 
 
 
@@ -36023,12 +40056,11 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.toObject = function(includeInstance, ms
     beginTime: jspb.Message.getFieldWithDefault(msg, 5, 0),
     endTime: jspb.Message.getFieldWithDefault(msg, 6, 0),
     nextPageToken: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    sig: msg.getSig_asB64(),
-    bridgeTypeList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f,
-    refIdList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
-    pageSize: jspb.Message.getFieldWithDefault(msg, 12, 0),
-    statusList: (f = jspb.Message.getRepeatedField(msg, 13)) == null ? undefined : f
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
+    bridgeTypeList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f,
+    refIdList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f,
+    pageSize: jspb.Message.getFieldWithDefault(msg, 11, 0),
+    statusList: (f = jspb.Message.getRepeatedField(msg, 12)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -36070,12 +40102,16 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.deserializeBinaryFromReader = function(
       msg.addUsrAddress(value);
       break;
     case 2:
-      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
-      msg.setSrcChainIdList(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addSrcChainId(values[i]);
+      }
       break;
     case 3:
-      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
-      msg.setDstChainIdList(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addDstChainId(values[i]);
+      }
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -36094,28 +40130,29 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.deserializeBinaryFromReader = function(
       msg.setNextPageToken(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     case 9:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
+      var values = /** @type {!Array<!proto.sgn.gateway.v1.BridgeType>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addBridgeType(values[i]);
+      }
       break;
     case 10:
-      var value = /** @type {!Array<!proto.sgn.gateway.v1.BridgeType>} */ (reader.readPackedEnum());
-      msg.setBridgeTypeList(value);
-      break;
-    case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.addRefId(value);
       break;
-    case 12:
+    case 11:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setPageSize(value);
       break;
-    case 13:
-      var value = /** @type {!Array<number>} */ (reader.readPackedUint32());
-      msg.setStatusList(value);
+    case 12:
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addStatus(values[i]);
+      }
       break;
     default:
       reader.skipField();
@@ -36195,45 +40232,39 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.serializeBinaryToWriter = function(mess
       f
     );
   }
-  f = message.getSigAddr();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       8,
-      f
-    );
-  }
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      9,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
   f = message.getBridgeTypeList();
   if (f.length > 0) {
     writer.writePackedEnum(
-      10,
+      9,
       f
     );
   }
   f = message.getRefIdList();
   if (f.length > 0) {
     writer.writeRepeatedString(
-      11,
+      10,
       f
     );
   }
   f = message.getPageSize();
   if (f !== 0) {
     writer.writeUint32(
-      12,
+      11,
       f
     );
   }
   f = message.getStatusList();
   if (f.length > 0) {
     writer.writePackedUint32(
-      13,
+      12,
       f
     );
   }
@@ -36443,71 +40474,48 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setNextPageToken = function(v
 
 
 /**
- * optional string sig_addr = 8;
- * @return {string}
+ * optional DashboardAuth auth = 8;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getSigAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 8));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetAllTXInfoRequest} returns this
+*/
+proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.GetAllTXInfoRequest} returns this
  */
-proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setSigAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
+proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional bytes sig = 9;
- * @return {!(string|Uint8Array)}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
 /**
- * optional bytes sig = 9;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
-};
-
-
-/**
- * optional bytes sig = 9;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.sgn.gateway.v1.GetAllTXInfoRequest} returns this
- */
-proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 9, value);
-};
-
-
-/**
- * repeated BridgeType bridge_type = 10;
+ * repeated BridgeType bridge_type = 9;
  * @return {!Array<!proto.sgn.gateway.v1.BridgeType>}
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getBridgeTypeList = function() {
-  return /** @type {!Array<!proto.sgn.gateway.v1.BridgeType>} */ (jspb.Message.getRepeatedField(this, 10));
+  return /** @type {!Array<!proto.sgn.gateway.v1.BridgeType>} */ (jspb.Message.getRepeatedField(this, 9));
 };
 
 
@@ -36516,7 +40524,7 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getBridgeTypeList = function(
  * @return {!proto.sgn.gateway.v1.GetAllTXInfoRequest} returns this
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setBridgeTypeList = function(value) {
-  return jspb.Message.setField(this, 10, value || []);
+  return jspb.Message.setField(this, 9, value || []);
 };
 
 
@@ -36526,7 +40534,7 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setBridgeTypeList = function(
  * @return {!proto.sgn.gateway.v1.GetAllTXInfoRequest} returns this
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.addBridgeType = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 10, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 9, value, opt_index);
 };
 
 
@@ -36540,11 +40548,11 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.clearBridgeTypeList = functio
 
 
 /**
- * repeated string ref_id = 11;
+ * repeated string ref_id = 10;
  * @return {!Array<string>}
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getRefIdList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 11));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 10));
 };
 
 
@@ -36553,7 +40561,7 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getRefIdList = function() {
  * @return {!proto.sgn.gateway.v1.GetAllTXInfoRequest} returns this
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setRefIdList = function(value) {
-  return jspb.Message.setField(this, 11, value || []);
+  return jspb.Message.setField(this, 10, value || []);
 };
 
 
@@ -36563,7 +40571,7 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setRefIdList = function(value
  * @return {!proto.sgn.gateway.v1.GetAllTXInfoRequest} returns this
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.addRefId = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 11, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 10, value, opt_index);
 };
 
 
@@ -36577,11 +40585,11 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.clearRefIdList = function() {
 
 
 /**
- * optional uint32 page_size = 12;
+ * optional uint32 page_size = 11;
  * @return {number}
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getPageSize = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
 };
 
 
@@ -36590,16 +40598,16 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getPageSize = function() {
  * @return {!proto.sgn.gateway.v1.GetAllTXInfoRequest} returns this
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setPageSize = function(value) {
-  return jspb.Message.setProto3IntField(this, 12, value);
+  return jspb.Message.setProto3IntField(this, 11, value);
 };
 
 
 /**
- * repeated uint32 status = 13;
+ * repeated uint32 status = 12;
  * @return {!Array<number>}
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getStatusList = function() {
-  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 13));
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 12));
 };
 
 
@@ -36608,7 +40616,7 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.getStatusList = function() {
  * @return {!proto.sgn.gateway.v1.GetAllTXInfoRequest} returns this
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setStatusList = function(value) {
-  return jspb.Message.setField(this, 13, value || []);
+  return jspb.Message.setField(this, 12, value || []);
 };
 
 
@@ -36618,7 +40626,7 @@ proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.setStatusList = function(valu
  * @return {!proto.sgn.gateway.v1.GetAllTXInfoRequest} returns this
  */
 proto.sgn.gateway.v1.GetAllTXInfoRequest.prototype.addStatus = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 13, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 12, value, opt_index);
 };
 
 
@@ -37767,8 +41775,7 @@ proto.sgn.gateway.v1.GetInfoByTxHashRequest.toObject = function(includeInstance,
     chainId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     txHash: jspb.Message.getFieldWithDefault(msg, 2, ""),
     type: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    sig: msg.getSig_asB64(),
-    addr: jspb.Message.getFieldWithDefault(msg, 5, "")
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -37818,12 +41825,9 @@ proto.sgn.gateway.v1.GetInfoByTxHashRequest.deserializeBinaryFromReader = functi
       msg.setType(value);
       break;
     case 4:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
-      break;
-    case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddr(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     default:
       reader.skipField();
@@ -37875,18 +41879,12 @@ proto.sgn.gateway.v1.GetInfoByTxHashRequest.serializeBinaryToWriter = function(m
       f
     );
   }
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       4,
-      f
-    );
-  }
-  f = message.getAddr();
-  if (f.length > 0) {
-    writer.writeString(
-      5,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
 };
@@ -37947,62 +41945,39 @@ proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.setType = function(value) 
 
 
 /**
- * optional bytes sig = 4;
- * @return {!(string|Uint8Array)}
+ * optional DashboardAuth auth = 4;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 4));
 };
 
 
 /**
- * optional bytes sig = 4;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetInfoByTxHashRequest} returns this
+*/
+proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
 /**
- * optional bytes sig = 4;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.GetInfoByTxHashRequest} returns this
  */
-proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 4, value);
+proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional string addr = 5;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.getAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sgn.gateway.v1.GetInfoByTxHashRequest} returns this
- */
-proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.setAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+proto.sgn.gateway.v1.GetInfoByTxHashRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -38041,7 +42016,8 @@ proto.sgn.gateway.v1.GetInfoByTxHashResponse.toObject = function(includeInstance
     operation: jspb.Message.getFieldWithDefault(msg, 1, 0),
     status: jspb.Message.getFieldWithDefault(msg, 2, 0),
     memo: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    info: jspb.Message.getFieldWithDefault(msg, 4, "")
+    info: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -38093,6 +42069,11 @@ proto.sgn.gateway.v1.GetInfoByTxHashResponse.deserializeBinaryFromReader = funct
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setInfo(value);
+      break;
+    case 5:
+      var value = new proto.sgn.gateway.v1.ErrMsg;
+      reader.readMessage(value,proto.sgn.gateway.v1.ErrMsg.deserializeBinaryFromReader);
+      msg.setErr(value);
       break;
     default:
       reader.skipField();
@@ -38149,6 +42130,14 @@ proto.sgn.gateway.v1.GetInfoByTxHashResponse.serializeBinaryToWriter = function(
     writer.writeString(
       4,
       f
+    );
+  }
+  f = message.getErr();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto.sgn.gateway.v1.ErrMsg.serializeBinaryToWriter
     );
   }
 };
@@ -38223,6 +42212,43 @@ proto.sgn.gateway.v1.GetInfoByTxHashResponse.prototype.getInfo = function() {
  */
 proto.sgn.gateway.v1.GetInfoByTxHashResponse.prototype.setInfo = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional ErrMsg err = 5;
+ * @return {?proto.sgn.gateway.v1.ErrMsg}
+ */
+proto.sgn.gateway.v1.GetInfoByTxHashResponse.prototype.getErr = function() {
+  return /** @type{?proto.sgn.gateway.v1.ErrMsg} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.ErrMsg, 5));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.ErrMsg|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetInfoByTxHashResponse} returns this
+*/
+proto.sgn.gateway.v1.GetInfoByTxHashResponse.prototype.setErr = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetInfoByTxHashResponse} returns this
+ */
+proto.sgn.gateway.v1.GetInfoByTxHashResponse.prototype.clearErr = function() {
+  return this.setErr(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetInfoByTxHashResponse.prototype.hasErr = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -38683,8 +42709,7 @@ proto.sgn.gateway.v1.FixEventMissRequest.toObject = function(includeInstance, ms
     chainId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     txHash: jspb.Message.getFieldWithDefault(msg, 2, ""),
     type: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    sig: msg.getSig_asB64(),
-    addr: jspb.Message.getFieldWithDefault(msg, 5, "")
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -38734,12 +42759,9 @@ proto.sgn.gateway.v1.FixEventMissRequest.deserializeBinaryFromReader = function(
       msg.setType(value);
       break;
     case 4:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
-      break;
-    case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddr(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     default:
       reader.skipField();
@@ -38791,18 +42813,12 @@ proto.sgn.gateway.v1.FixEventMissRequest.serializeBinaryToWriter = function(mess
       f
     );
   }
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       4,
-      f
-    );
-  }
-  f = message.getAddr();
-  if (f.length > 0) {
-    writer.writeString(
-      5,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
 };
@@ -38863,62 +42879,39 @@ proto.sgn.gateway.v1.FixEventMissRequest.prototype.setType = function(value) {
 
 
 /**
- * optional bytes sig = 4;
- * @return {!(string|Uint8Array)}
+ * optional DashboardAuth auth = 4;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.FixEventMissRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+proto.sgn.gateway.v1.FixEventMissRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 4));
 };
 
 
 /**
- * optional bytes sig = 4;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.FixEventMissRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.FixEventMissRequest} returns this
+*/
+proto.sgn.gateway.v1.FixEventMissRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
 /**
- * optional bytes sig = 4;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.FixEventMissRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.FixEventMissRequest} returns this
  */
-proto.sgn.gateway.v1.FixEventMissRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 4, value);
+proto.sgn.gateway.v1.FixEventMissRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional string addr = 5;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.FixEventMissRequest.prototype.getAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sgn.gateway.v1.FixEventMissRequest} returns this
- */
-proto.sgn.gateway.v1.FixEventMissRequest.prototype.setAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+proto.sgn.gateway.v1.FixEventMissRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -39888,8 +43881,7 @@ proto.sgn.gateway.v1.RfqFilterOrdersRequest.toObject = function(includeInstance,
     dstChainIdsList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f,
     srcTokenSymbolsList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
     dstTokenSymbolsList: (f = jspb.Message.getRepeatedField(msg, 12)) == null ? undefined : f,
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 13, ""),
-    sig: msg.getSig_asB64()
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -39943,8 +43935,10 @@ proto.sgn.gateway.v1.RfqFilterOrdersRequest.deserializeBinaryFromReader = functi
       msg.setOffset(value);
       break;
     case 5:
-      var value = /** @type {!Array<!proto.sgn.gateway.v1.OrderStatus>} */ (reader.readPackedEnum());
-      msg.setStatusesList(value);
+      var values = /** @type {!Array<!proto.sgn.gateway.v1.OrderStatus>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addStatuses(values[i]);
+      }
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
@@ -39959,12 +43953,16 @@ proto.sgn.gateway.v1.RfqFilterOrdersRequest.deserializeBinaryFromReader = functi
       msg.addUsrAddrs(value);
       break;
     case 9:
-      var value = /** @type {!Array<number>} */ (reader.readPackedInt32());
-      msg.setSrcChainIdsList(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedInt32() : [reader.readInt32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addSrcChainIds(values[i]);
+      }
       break;
     case 10:
-      var value = /** @type {!Array<number>} */ (reader.readPackedInt32());
-      msg.setDstChainIdsList(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedInt32() : [reader.readInt32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addDstChainIds(values[i]);
+      }
       break;
     case 11:
       var value = /** @type {string} */ (reader.readString());
@@ -39975,12 +43973,9 @@ proto.sgn.gateway.v1.RfqFilterOrdersRequest.deserializeBinaryFromReader = functi
       msg.addDstTokenSymbols(value);
       break;
     case 13:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
-      break;
-    case 14:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     default:
       reader.skipField();
@@ -40095,18 +44090,12 @@ proto.sgn.gateway.v1.RfqFilterOrdersRequest.serializeBinaryToWriter = function(m
       f
     );
   }
-  f = message.getSigAddr();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       13,
-      f
-    );
-  }
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      14,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
 };
@@ -40481,62 +44470,39 @@ proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.clearDstTokenSymbolsList =
 
 
 /**
- * optional string sig_addr = 13;
- * @return {string}
+ * optional DashboardAuth auth = 13;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.getSigAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 13));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.RfqFilterOrdersRequest} returns this
+*/
+proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 13, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.RfqFilterOrdersRequest} returns this
  */
-proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.setSigAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 13, value);
+proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional bytes sig = 14;
- * @return {!(string|Uint8Array)}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
-};
-
-
-/**
- * optional bytes sig = 14;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
-};
-
-
-/**
- * optional bytes sig = 14;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.sgn.gateway.v1.RfqFilterOrdersRequest} returns this
- */
-proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 14, value);
+proto.sgn.gateway.v1.RfqFilterOrdersRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 13) != null;
 };
 
 
@@ -44594,8 +48560,10 @@ proto.sgn.gateway.v1.FeeRebateEventLevelConfigWrapper.deserializeBinaryFromReade
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!Array<number>} */ (reader.readPackedDouble());
-      msg.setLevelDivisionLowerBoundList(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addLevelDivisionLowerBound(values[i]);
+      }
       break;
     case 2:
       var value = msg.getLevelConfigMap();
@@ -46700,8 +50668,10 @@ proto.sgn.gateway.v1.BscCampaignTransferWhiteList.deserializeBinaryFromReader = 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!Array<number>} */ (reader.readPackedUint64());
-      msg.setChainIdsList(value);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint64() : [reader.readUint64()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addChainIds(values[i]);
+      }
       break;
     default:
       reader.skipField();
@@ -48181,7 +52151,7 @@ proto.sgn.gateway.v1.GetCurrentBlockNumberByNodeResponse.prototype.clearProblema
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.repeatedFields_ = [3];
+proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.repeatedFields_ = [2];
 
 
 
@@ -48214,8 +52184,7 @@ proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.toObject = fu
  */
 proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sig: msg.getSig_asB64(),
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
     chainTokensList: jspb.Message.toObjectList(msg.getChainTokensList(),
     proto.sgn.gateway.v1.TogglePoolTokenInfo.toObject, includeInstance)
   };
@@ -48255,14 +52224,11 @@ proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.deserializeBinaryFromRe
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     case 2:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
-      break;
-    case 3:
       var value = new proto.sgn.gateway.v1.TogglePoolTokenInfo;
       reader.readMessage(value,proto.sgn.gateway.v1.TogglePoolTokenInfo.deserializeBinaryFromReader);
       msg.addChainTokens(value);
@@ -48296,24 +52262,18 @@ proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.serializeBina
  */
 proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSigAddr();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
-    );
-  }
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      2,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
   f = message.getChainTokensList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      2,
       f,
       proto.sgn.gateway.v1.TogglePoolTokenInfo.serializeBinaryToWriter
     );
@@ -48322,72 +52282,49 @@ proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.serializeBinaryToWriter
 
 
 /**
- * optional string sig_addr = 1;
- * @return {string}
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.getSigAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest} returns this
+*/
+proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest} returns this
  */
-proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.setSigAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional bytes sig = 2;
- * @return {!(string|Uint8Array)}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
 /**
- * optional bytes sig = 2;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
-};
-
-
-/**
- * optional bytes sig = 2;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest} returns this
- */
-proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 2, value);
-};
-
-
-/**
- * repeated TogglePoolTokenInfo chain_tokens = 3;
+ * repeated TogglePoolTokenInfo chain_tokens = 2;
  * @return {!Array<!proto.sgn.gateway.v1.TogglePoolTokenInfo>}
  */
 proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.getChainTokensList = function() {
   return /** @type{!Array<!proto.sgn.gateway.v1.TogglePoolTokenInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.TogglePoolTokenInfo, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.TogglePoolTokenInfo, 2));
 };
 
 
@@ -48396,7 +52333,7 @@ proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.getChainToken
  * @return {!proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest} returns this
 */
 proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.setChainTokensList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 3, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -48406,7 +52343,7 @@ proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.setChainToken
  * @return {!proto.sgn.gateway.v1.TogglePoolTokenInfo}
  */
 proto.sgn.gateway.v1.SaveServicePoolToggleConfigsRequest.prototype.addChainTokens = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.gateway.v1.TogglePoolTokenInfo, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sgn.gateway.v1.TogglePoolTokenInfo, opt_index);
 };
 
 
@@ -48576,7 +52513,7 @@ proto.sgn.gateway.v1.SaveServicePoolToggleConfigsResponse.prototype.hasErr = fun
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.repeatedFields_ = [3];
+proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.repeatedFields_ = [2];
 
 
 
@@ -48609,8 +52546,7 @@ proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.toObject = fun
  */
 proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sig: msg.getSig_asB64(),
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
     chainTokensList: jspb.Message.toObjectList(msg.getChainTokensList(),
     proto.sgn.gateway.v1.TogglePegTokenInfo.toObject, includeInstance)
   };
@@ -48650,14 +52586,11 @@ proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.deserializeBinaryFromRea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     case 2:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
-      break;
-    case 3:
       var value = new proto.sgn.gateway.v1.TogglePegTokenInfo;
       reader.readMessage(value,proto.sgn.gateway.v1.TogglePegTokenInfo.deserializeBinaryFromReader);
       msg.addChainTokens(value);
@@ -48691,24 +52624,18 @@ proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.serializeBinar
  */
 proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSigAddr();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
-    );
-  }
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      2,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
   f = message.getChainTokensList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      2,
       f,
       proto.sgn.gateway.v1.TogglePegTokenInfo.serializeBinaryToWriter
     );
@@ -48717,72 +52644,49 @@ proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.serializeBinaryToWriter 
 
 
 /**
- * optional string sig_addr = 1;
- * @return {string}
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.getSigAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest} returns this
+*/
+proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest} returns this
  */
-proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.setSigAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional bytes sig = 2;
- * @return {!(string|Uint8Array)}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
 /**
- * optional bytes sig = 2;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
-};
-
-
-/**
- * optional bytes sig = 2;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest} returns this
- */
-proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 2, value);
-};
-
-
-/**
- * repeated TogglePegTokenInfo chain_tokens = 3;
+ * repeated TogglePegTokenInfo chain_tokens = 2;
  * @return {!Array<!proto.sgn.gateway.v1.TogglePegTokenInfo>}
  */
 proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.getChainTokensList = function() {
   return /** @type{!Array<!proto.sgn.gateway.v1.TogglePegTokenInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.TogglePegTokenInfo, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.TogglePegTokenInfo, 2));
 };
 
 
@@ -48791,7 +52695,7 @@ proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.getChainTokens
  * @return {!proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest} returns this
 */
 proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.setChainTokensList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 3, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -48801,7 +52705,7 @@ proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.setChainTokens
  * @return {!proto.sgn.gateway.v1.TogglePegTokenInfo}
  */
 proto.sgn.gateway.v1.SaveServicePegToggleConfigsRequest.prototype.addChainTokens = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.gateway.v1.TogglePegTokenInfo, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sgn.gateway.v1.TogglePegTokenInfo, opt_index);
 };
 
 
@@ -48997,8 +52901,7 @@ proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.toObject = fun
  */
 proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sig: msg.getSig_asB64()
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -49036,12 +52939,9 @@ proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.deserializeBinaryFromRea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
-      break;
-    case 2:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     default:
       reader.skipField();
@@ -49072,80 +52972,51 @@ proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.serializeBinar
  */
 proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSigAddr();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
-    );
-  }
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      2,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional string sig_addr = 1;
- * @return {string}
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.getSigAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest} returns this
+*/
+proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest} returns this
  */
-proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.setSigAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional bytes sig = 2;
- * @return {!(string|Uint8Array)}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * optional bytes sig = 2;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
-};
-
-
-/**
- * optional bytes sig = 2;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest} returns this
- */
-proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 2, value);
+proto.sgn.gateway.v1.GetServicePoolToggleConfigsRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -49723,8 +53594,7 @@ proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.toObject = func
  */
 proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sig: msg.getSig_asB64()
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -49762,12 +53632,9 @@ proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.deserializeBinaryFromRead
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
-      break;
-    case 2:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     default:
       reader.skipField();
@@ -49798,80 +53665,51 @@ proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.serializeBinary
  */
 proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSigAddr();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
-    );
-  }
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      2,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional string sig_addr = 1;
- * @return {string}
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.getSigAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest} returns this
+*/
+proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest} returns this
  */
-proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.setSigAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional bytes sig = 2;
- * @return {!(string|Uint8Array)}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * optional bytes sig = 2;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
-};
-
-
-/**
- * optional bytes sig = 2;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest} returns this
- */
-proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 2, value);
+proto.sgn.gateway.v1.GetServicePegToggleConfigsRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -50470,11 +54308,10 @@ proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.toObject = function
  */
 proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sigAddr: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    sig: msg.getSig_asB64(),
-    systemAnnouncement: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    enabled: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    allfunctionalityenabled: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f),
+    systemAnnouncement: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    enabled: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    allfunctionalityenabled: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -50512,22 +54349,19 @@ proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.deserializeBinaryFromReader =
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSigAddr(value);
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
       break;
     case 2:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSig(value);
-      break;
-    case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setSystemAnnouncement(value);
       break;
-    case 4:
+    case 3:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setEnabled(value);
       break;
-    case 5:
+    case 4:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setAllfunctionalityenabled(value);
       break;
@@ -50560,38 +54394,32 @@ proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.serializeBinary = f
  */
 proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSigAddr();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
-    );
-  }
-  f = message.getSig_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      2,
-      f
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
     );
   }
   f = message.getSystemAnnouncement();
   if (f.length > 0) {
     writer.writeString(
-      3,
+      2,
       f
     );
   }
   f = message.getEnabled();
   if (f) {
     writer.writeBool(
-      4,
+      3,
       f
     );
   }
   f = message.getAllfunctionalityenabled();
   if (f) {
     writer.writeBool(
-      5,
+      4,
       f
     );
   }
@@ -50599,71 +54427,48 @@ proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.serializeBinaryToWriter = fun
 
 
 /**
- * optional string sig_addr = 1;
- * @return {string}
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
  */
-proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getSigAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.SaveSystemAnnouncementRequest} returns this
+*/
+proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.sgn.gateway.v1.SaveSystemAnnouncementRequest} returns this
  */
-proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.setSigAddr = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
 };
 
 
 /**
- * optional bytes sig = 2;
- * @return {!(string|Uint8Array)}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getSig = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
 /**
- * optional bytes sig = 2;
- * This is a type-conversion wrapper around `getSig()`
- * @return {string}
- */
-proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getSig_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSig()));
-};
-
-
-/**
- * optional bytes sig = 2;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSig()`
- * @return {!Uint8Array}
- */
-proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getSig_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSig()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.sgn.gateway.v1.SaveSystemAnnouncementRequest} returns this
- */
-proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.setSig = function(value) {
-  return jspb.Message.setProto3BytesField(this, 2, value);
-};
-
-
-/**
- * optional string system_announcement = 3;
+ * optional string system_announcement = 2;
  * @return {string}
  */
 proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getSystemAnnouncement = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
@@ -50672,16 +54477,16 @@ proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getSystemAnnounceme
  * @return {!proto.sgn.gateway.v1.SaveSystemAnnouncementRequest} returns this
  */
 proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.setSystemAnnouncement = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional bool enabled = 4;
+ * optional bool enabled = 3;
  * @return {boolean}
  */
 proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getEnabled = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
 };
 
 
@@ -50690,16 +54495,16 @@ proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getEnabled = functi
  * @return {!proto.sgn.gateway.v1.SaveSystemAnnouncementRequest} returns this
  */
 proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.setEnabled = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 4, value);
+  return jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
 
 /**
- * optional bool allFunctionalityEnabled = 5;
+ * optional bool allFunctionalityEnabled = 4;
  * @return {boolean}
  */
 proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getAllfunctionalityenabled = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
 };
 
 
@@ -50708,7 +54513,7 @@ proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.getAllfunctionality
  * @return {!proto.sgn.gateway.v1.SaveSystemAnnouncementRequest} returns this
  */
 proto.sgn.gateway.v1.SaveSystemAnnouncementRequest.prototype.setAllfunctionalityenabled = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 5, value);
+  return jspb.Message.setProto3BooleanField(this, 4, value);
 };
 
 
@@ -51996,6 +55801,1542 @@ proto.sgn.gateway.v1.IpLog.prototype.setTime = function(value) {
 };
 
 
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    startTimeInSecond: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    endTimeInSecond: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest;
+  return proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStartTimeInSecond(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setEndTimeInSecond(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getStartTimeInSecond();
+  if (f !== 0) {
+    writer.writeInt64(
+      1,
+      f
+    );
+  }
+  f = message.getEndTimeInSecond();
+  if (f !== 0) {
+    writer.writeInt64(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional int64 start_time_in_second = 1;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.prototype.getStartTimeInSecond = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest} returns this
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.prototype.setStartTimeInSecond = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional int64 end_time_in_second = 2;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.prototype.getEndTimeInSecond = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest} returns this
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountRequest.prototype.setEndTimeInSecond = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f),
+    elementsList: jspb.Message.toObjectList(msg.getElementsList(),
+    proto.sgn.gateway.v1.ChainTableRefundTxCountElement.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse;
+  return proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.ErrMsg;
+      reader.readMessage(value,proto.sgn.gateway.v1.ErrMsg.deserializeBinaryFromReader);
+      msg.setErr(value);
+      break;
+    case 2:
+      var value = new proto.sgn.gateway.v1.ChainTableRefundTxCountElement;
+      reader.readMessage(value,proto.sgn.gateway.v1.ChainTableRefundTxCountElement.deserializeBinaryFromReader);
+      msg.addElements(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getErr();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.ErrMsg.serializeBinaryToWriter
+    );
+  }
+  f = message.getElementsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.sgn.gateway.v1.ChainTableRefundTxCountElement.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional ErrMsg err = 1;
+ * @return {?proto.sgn.gateway.v1.ErrMsg}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.prototype.getErr = function() {
+  return /** @type{?proto.sgn.gateway.v1.ErrMsg} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.ErrMsg, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.ErrMsg|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse} returns this
+*/
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.prototype.setErr = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse} returns this
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.prototype.clearErr = function() {
+  return this.setErr(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.prototype.hasErr = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated ChainTableRefundTxCountElement elements = 2;
+ * @return {!Array<!proto.sgn.gateway.v1.ChainTableRefundTxCountElement>}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.prototype.getElementsList = function() {
+  return /** @type{!Array<!proto.sgn.gateway.v1.ChainTableRefundTxCountElement>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.ChainTableRefundTxCountElement, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.sgn.gateway.v1.ChainTableRefundTxCountElement>} value
+ * @return {!proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse} returns this
+*/
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.prototype.setElementsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement}
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.prototype.addElements = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sgn.gateway.v1.ChainTableRefundTxCountElement, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse} returns this
+ */
+proto.sgn.gateway.v1.GetChainTableRefundTxCountResponse.prototype.clearElementsList = function() {
+  return this.setElementsList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.ChainTableRefundTxCountElement.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    srcChainId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    srcTxCnt: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    dstChainId: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    dstTxCnt: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    sameChainId: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    sameChainTxCnt: jspb.Message.getFieldWithDefault(msg, 6, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement}
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.ChainTableRefundTxCountElement;
+  return proto.sgn.gateway.v1.ChainTableRefundTxCountElement.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement}
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setSrcChainId(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSrcTxCnt(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setDstChainId(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setDstTxCnt(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setSameChainId(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSameChainTxCnt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.ChainTableRefundTxCountElement.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSrcChainId();
+  if (f !== 0) {
+    writer.writeUint64(
+      1,
+      f
+    );
+  }
+  f = message.getSrcTxCnt();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getDstChainId();
+  if (f !== 0) {
+    writer.writeUint64(
+      3,
+      f
+    );
+  }
+  f = message.getDstTxCnt();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+  f = message.getSameChainId();
+  if (f !== 0) {
+    writer.writeUint64(
+      5,
+      f
+    );
+  }
+  f = message.getSameChainTxCnt();
+  if (f !== 0) {
+    writer.writeUint32(
+      6,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint64 src_chain_id = 1;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.getSrcChainId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement} returns this
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.setSrcChainId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 src_tx_cnt = 2;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.getSrcTxCnt = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement} returns this
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.setSrcTxCnt = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional uint64 dst_chain_id = 3;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.getDstChainId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement} returns this
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.setDstChainId = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 dst_tx_cnt = 4;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.getDstTxCnt = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement} returns this
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.setDstTxCnt = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional uint64 same_chain_id = 5;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.getSameChainId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement} returns this
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.setSameChainId = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional uint32 same_chain_tx_cnt = 6;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.getSameChainTxCnt = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.ChainTableRefundTxCountElement} returns this
+ */
+proto.sgn.gateway.v1.ChainTableRefundTxCountElement.prototype.setSameChainTxCnt = function(value) {
+  return jspb.Message.setProto3IntField(this, 6, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    auth: (f = msg.getAuth()) && proto.sgn.gateway.v1.DashboardAuth.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest;
+  return proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.DashboardAuth;
+      reader.readMessage(value,proto.sgn.gateway.v1.DashboardAuth.deserializeBinaryFromReader);
+      msg.setAuth(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.DashboardAuth.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional DashboardAuth auth = 1;
+ * @return {?proto.sgn.gateway.v1.DashboardAuth}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.prototype.getAuth = function() {
+  return /** @type{?proto.sgn.gateway.v1.DashboardAuth} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.DashboardAuth, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.DashboardAuth|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest} returns this
+*/
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.prototype.setAuth = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest} returns this
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolRequest.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.repeatedFields_ = [2,3];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    err: (f = msg.getErr()) && proto.sgn.gateway.v1.ErrMsg.toObject(includeInstance, f),
+    onChainContractLimitList: jspb.Message.toObjectList(msg.getOnChainContractLimitList(),
+    proto.sgn.gateway.v1.OnChainContractLimit.toObject, includeInstance),
+    onChainTokenLimitList: jspb.Message.toObjectList(msg.getOnChainTokenLimitList(),
+    proto.sgn.gateway.v1.OnChainTokenLimit.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse;
+  return proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sgn.gateway.v1.ErrMsg;
+      reader.readMessage(value,proto.sgn.gateway.v1.ErrMsg.deserializeBinaryFromReader);
+      msg.setErr(value);
+      break;
+    case 2:
+      var value = new proto.sgn.gateway.v1.OnChainContractLimit;
+      reader.readMessage(value,proto.sgn.gateway.v1.OnChainContractLimit.deserializeBinaryFromReader);
+      msg.addOnChainContractLimit(value);
+      break;
+    case 3:
+      var value = new proto.sgn.gateway.v1.OnChainTokenLimit;
+      reader.readMessage(value,proto.sgn.gateway.v1.OnChainTokenLimit.deserializeBinaryFromReader);
+      msg.addOnChainTokenLimit(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getErr();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.sgn.gateway.v1.ErrMsg.serializeBinaryToWriter
+    );
+  }
+  f = message.getOnChainContractLimitList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.sgn.gateway.v1.OnChainContractLimit.serializeBinaryToWriter
+    );
+  }
+  f = message.getOnChainTokenLimitList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      3,
+      f,
+      proto.sgn.gateway.v1.OnChainTokenLimit.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional ErrMsg err = 1;
+ * @return {?proto.sgn.gateway.v1.ErrMsg}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.getErr = function() {
+  return /** @type{?proto.sgn.gateway.v1.ErrMsg} */ (
+    jspb.Message.getWrapperField(this, proto.sgn.gateway.v1.ErrMsg, 1));
+};
+
+
+/**
+ * @param {?proto.sgn.gateway.v1.ErrMsg|undefined} value
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse} returns this
+*/
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.setErr = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.clearErr = function() {
+  return this.setErr(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.hasErr = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated OnChainContractLimit on_chain_contract_limit = 2;
+ * @return {!Array<!proto.sgn.gateway.v1.OnChainContractLimit>}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.getOnChainContractLimitList = function() {
+  return /** @type{!Array<!proto.sgn.gateway.v1.OnChainContractLimit>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.OnChainContractLimit, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.sgn.gateway.v1.OnChainContractLimit>} value
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse} returns this
+*/
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.setOnChainContractLimitList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.OnChainContractLimit=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sgn.gateway.v1.OnChainContractLimit}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.addOnChainContractLimit = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sgn.gateway.v1.OnChainContractLimit, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.clearOnChainContractLimitList = function() {
+  return this.setOnChainContractLimitList([]);
+};
+
+
+/**
+ * repeated OnChainTokenLimit on_chain_token_limit = 3;
+ * @return {!Array<!proto.sgn.gateway.v1.OnChainTokenLimit>}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.getOnChainTokenLimitList = function() {
+  return /** @type{!Array<!proto.sgn.gateway.v1.OnChainTokenLimit>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sgn.gateway.v1.OnChainTokenLimit, 3));
+};
+
+
+/**
+ * @param {!Array<!proto.sgn.gateway.v1.OnChainTokenLimit>} value
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse} returns this
+*/
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.setOnChainTokenLimitList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 3, value);
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.OnChainTokenLimit=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sgn.gateway.v1.OnChainTokenLimit}
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.addOnChainTokenLimit = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sgn.gateway.v1.OnChainTokenLimit, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse} returns this
+ */
+proto.sgn.gateway.v1.GetAllOnChainLimitForCsToolResponse.prototype.clearOnChainTokenLimitList = function() {
+  return this.setOnChainTokenLimitList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.OnChainContractLimit.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.OnChainContractLimit} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    chainId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    contractType: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    limitType: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    value: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.OnChainContractLimit}
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.OnChainContractLimit;
+  return proto.sgn.gateway.v1.OnChainContractLimit.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.OnChainContractLimit} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.OnChainContractLimit}
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setChainId(value);
+      break;
+    case 2:
+      var value = /** @type {!proto.sgn.gateway.v1.BridgeContractType} */ (reader.readEnum());
+      msg.setContractType(value);
+      break;
+    case 3:
+      var value = /** @type {!proto.sgn.gateway.v1.BridgeContractLimitType} */ (reader.readEnum());
+      msg.setLimitType(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.setValue(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.OnChainContractLimit.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.OnChainContractLimit} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getChainId();
+  if (f !== 0) {
+    writer.writeUint64(
+      1,
+      f
+    );
+  }
+  f = message.getContractType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
+  f = message.getLimitType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
+  f = message.getValue();
+  if (f !== 0.0) {
+    writer.writeDouble(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint64 chain_id = 1;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.prototype.getChainId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.OnChainContractLimit} returns this
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.prototype.setChainId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional BridgeContractType contract_type = 2;
+ * @return {!proto.sgn.gateway.v1.BridgeContractType}
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.prototype.getContractType = function() {
+  return /** @type {!proto.sgn.gateway.v1.BridgeContractType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.BridgeContractType} value
+ * @return {!proto.sgn.gateway.v1.OnChainContractLimit} returns this
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.prototype.setContractType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional BridgeContractLimitType limit_type = 3;
+ * @return {!proto.sgn.gateway.v1.BridgeContractLimitType}
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.prototype.getLimitType = function() {
+  return /** @type {!proto.sgn.gateway.v1.BridgeContractLimitType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.BridgeContractLimitType} value
+ * @return {!proto.sgn.gateway.v1.OnChainContractLimit} returns this
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.prototype.setLimitType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 3, value);
+};
+
+
+/**
+ * optional double value = 4;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.prototype.getValue = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 4, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.OnChainContractLimit} returns this
+ */
+proto.sgn.gateway.v1.OnChainContractLimit.prototype.setValue = function(value) {
+  return jspb.Message.setProto3FloatField(this, 4, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.toObject = function(opt_includeInstance) {
+  return proto.sgn.gateway.v1.OnChainTokenLimit.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sgn.gateway.v1.OnChainTokenLimit} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    chainId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    symbol: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    contractType: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    limitType: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    value: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sgn.gateway.v1.OnChainTokenLimit}
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sgn.gateway.v1.OnChainTokenLimit;
+  return proto.sgn.gateway.v1.OnChainTokenLimit.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sgn.gateway.v1.OnChainTokenLimit} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sgn.gateway.v1.OnChainTokenLimit}
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setChainId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSymbol(value);
+      break;
+    case 3:
+      var value = /** @type {!proto.sgn.gateway.v1.BridgeContractType} */ (reader.readEnum());
+      msg.setContractType(value);
+      break;
+    case 4:
+      var value = /** @type {!proto.sgn.gateway.v1.BridgeContractPerTokenLimitType} */ (reader.readEnum());
+      msg.setLimitType(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.setValue(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sgn.gateway.v1.OnChainTokenLimit.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sgn.gateway.v1.OnChainTokenLimit} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getChainId();
+  if (f !== 0) {
+    writer.writeUint64(
+      1,
+      f
+    );
+  }
+  f = message.getSymbol();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getContractType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
+  f = message.getLimitType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      4,
+      f
+    );
+  }
+  f = message.getValue();
+  if (f !== 0.0) {
+    writer.writeDouble(
+      5,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint64 chain_id = 1;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.getChainId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.OnChainTokenLimit} returns this
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.setChainId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string symbol = 2;
+ * @return {string}
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.getSymbol = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sgn.gateway.v1.OnChainTokenLimit} returns this
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.setSymbol = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional BridgeContractType contract_type = 3;
+ * @return {!proto.sgn.gateway.v1.BridgeContractType}
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.getContractType = function() {
+  return /** @type {!proto.sgn.gateway.v1.BridgeContractType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.BridgeContractType} value
+ * @return {!proto.sgn.gateway.v1.OnChainTokenLimit} returns this
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.setContractType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 3, value);
+};
+
+
+/**
+ * optional BridgeContractPerTokenLimitType limit_type = 4;
+ * @return {!proto.sgn.gateway.v1.BridgeContractPerTokenLimitType}
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.getLimitType = function() {
+  return /** @type {!proto.sgn.gateway.v1.BridgeContractPerTokenLimitType} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {!proto.sgn.gateway.v1.BridgeContractPerTokenLimitType} value
+ * @return {!proto.sgn.gateway.v1.OnChainTokenLimit} returns this
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.setLimitType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 4, value);
+};
+
+
+/**
+ * optional double value = 5;
+ * @return {number}
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.getValue = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 5, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sgn.gateway.v1.OnChainTokenLimit} returns this
+ */
+proto.sgn.gateway.v1.OnChainTokenLimit.prototype.setValue = function(value) {
+  return jspb.Message.setProto3FloatField(this, 5, value);
+};
+
+
 /**
  * @enum {number}
  */
@@ -52142,7 +57483,11 @@ proto.sgn.gateway.v1.ErrCode = {
   ERROR_CODE_TRANSFER_DISABLED: 1009,
   ERROR_CODE_LIQ_RM_DISABLED: 1010,
   ERROR_CODE_LIQ_AGG_RM_SRC_DISABLED: 1011,
-  ERROR_CODE_BAD_LIQ_SLIPPAGE: 1012
+  ERROR_CODE_BAD_LIQ_SLIPPAGE: 1012,
+  ERROR_CODE_AUTH_INVALID: 1013,
+  ERROR_CODE_AUTH_EXPIRED: 1014,
+  ERROR_CODE_ADDRESS_BLOCKED: 1015,
+  ERROR_CODE_BLOCK_BRIDGE_: 1016
 };
 
 /**
@@ -52155,6 +57500,63 @@ proto.sgn.gateway.v1.BridgeType = {
   BRIDGETYPE_BURN_WITHDRAW: 3,
   BRIDGETYPE_BURN_MINT: 4,
   BRIDGETYPE_RFQ: 5
+};
+
+/**
+ * @enum {number}
+ */
+proto.sgn.gateway.v1.BridgeContractType = {
+  BRIDGECONTRACTTYPE_UNKNOWN: 0,
+  BRIDGECONTRACTTYPE_CBRIDGE: 1,
+  BRIDGECONTRACTTYPE_VAULT_V0: 2,
+  BRIDGECONTRACTTYPE_VAULT_V2: 3,
+  BRIDGECONTRACTTYPE_PEG_V0: 4,
+  BRIDGECONTRACTTYPE_PEG_V2: 5
+};
+
+/**
+ * @enum {number}
+ */
+proto.sgn.gateway.v1.BridgeContractLimitType = {
+  BCL_UNKNOWN: 0,
+  BCL_POOL_EPOCH_LENGTH: 10,
+  BCL_POOL_DELAY_PERIOD: 11,
+  BCL_VAULT_V0_EPOCH_LENGTH: 20,
+  BCL_VAULT_V0_DELAY_PERIOD: 21,
+  BCL_VAULT_V2_EPOCH_LENGTH: 30,
+  BCL_VAULT_V2_DELAY_PERIOD: 31,
+  BCL_PEG_V0_EPOCH_LENGTH: 40,
+  BCL_PEG_V0_DELAY_PERIOD: 41,
+  BCL_PEG_V2_EPOCH_LENGTH: 50,
+  BCL_PEG_V2_DELAY_PERIOD: 51
+};
+
+/**
+ * @enum {number}
+ */
+proto.sgn.gateway.v1.BridgeContractPerTokenLimitType = {
+  BTL_UNKNOWN: 0,
+  BTL_POOL_MIN_ADD: 10,
+  BTL_POOL_MAX_SEND: 11,
+  BTL_POOL_MIN_SEND: 12,
+  BTL_POOL_EPOCH_VOLUME_CAP: 13,
+  BTL_POOL_DELAY_THRESHOLD: 14,
+  BTL_VAULT_V0_MIN_DEPOSIT: 20,
+  BTL_VAULT_V0_MAX_DEPOSIT: 21,
+  BTL_VAULT_V0_EPOCH_VOLUME_CAP: 22,
+  BTL_VAULT_V0_DELAY_THRESHOLD: 23,
+  BTL_VAULT_V2_MIN_DEPOSIT: 30,
+  BTL_VAULT_V2_MAX_DEPOSIT: 31,
+  BTL_VAULT_V2_EPOCH_VOLUME_CAP: 32,
+  BTL_VAULT_V2_DELAY_THRESHOLD: 33,
+  BTL_PEG_V0_MIN_BURN: 40,
+  BTL_PEG_V0_MAX_BURN: 41,
+  BTL_PEG_V0_EPOCH_VOLUME_CAP: 42,
+  BTL_PEG_V0_DELAY_THRESHOLD: 43,
+  BTL_PEG_V2_MIN_BURN: 50,
+  BTL_PEG_V2_MAX_BURN: 51,
+  BTL_PEG_V2_EPOCH_VOLUME_CAP: 52,
+  BTL_PEG_V2_DELAY_THRESHOLD: 53
 };
 
 goog.object.extend(exports, proto.sgn.gateway.v1);

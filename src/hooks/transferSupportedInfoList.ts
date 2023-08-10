@@ -1,21 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable camelcase */
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Chain, TokenInfo, Token, GetTransferConfigsResponse, MultiBurnPairConfig } from "../constants/type";
 import { useAppSelector } from "../redux/store";
-import { getNetworkById, CHAIN_LIST } from "../constants/network";
+import { CircleUSDC } from "../proto/gateway/gateway_pb";
+import { unambiguousTokenSymbol } from "../helpers/tokenInfo";
+import { kavaPegTokens } from "../constants/const";
+import { useWeb3Context } from "../providers/Web3ContextProvider";
+import { setSupportTransferChains } from "../redux/transferSlice";
 
 export const useTransferSupportedChainList = (useAsDestinationChain: boolean): Chain[] => {
   const { transferInfo } = useAppSelector(state => state);
-  const { fromChain, transferConfig, multiBurnConfigs } = transferInfo;
-
+  const { CHAIN_LIST, getNetworkById } = useWeb3Context();
+  const dispatch = useDispatch();
+  const { fromChain, transferConfig, multiBurnConfigs, circleUSDCConfig } = transferInfo;
+  const whiteListTransferSupportedChainIds = CHAIN_LIST.map(info => {
+    return info.chainId;
+  });
   const [fromChainList, setFromChainList] = useState<Chain[]>([]);
   const [chainList, setChainList] = useState<Chain[]>([]);
-
   useEffect(() => {
-    const whiteListTransferSupportedChainIds = CHAIN_LIST.map(info => {
-      return info.chainId;
-    });
-
     const allChainIds: number[] = transferConfig.chains
       .filter(chain => {
         return whiteListTransferSupportedChainIds.includes(chain.id);
@@ -25,36 +30,42 @@ export const useTransferSupportedChainList = (useAsDestinationChain: boolean): C
       });
 
     const bridgedIds = new Set<number>();
-
-    allChainIds.forEach(id1 => {
+    allChainIds?.forEach(id1 => {
       if (bridgedIds.has(id1)) {
         return;
       }
-      allChainIds.forEach(id2 => {
+      allChainIds?.forEach(id2 => {
         if (id1 === id2) {
           return;
         }
 
-        if (twoChainBridged(id1, id2, transferConfig, multiBurnConfigs)) {
+        if (
+          twoChainBridged(id1, id2, transferConfig, multiBurnConfigs, circleUSDCConfig.chaintokensList, getNetworkById)
+        ) {
           bridgedIds.add(id1);
           bridgedIds.add(id2);
         }
       });
     });
-
     const supportedChains = transferConfig.chains.filter(chain => {
       return bridgedIds.has(chain.id);
     });
-
+    dispatch(setSupportTransferChains(Array.from(bridgedIds)));
     setFromChainList(supportedChains);
-  }, [transferConfig, multiBurnConfigs]);
+  }, [transferConfig, multiBurnConfigs, circleUSDCConfig.chaintokensList]);
 
   useEffect(() => {
     if (useAsDestinationChain && fromChain && fromChain !== undefined) {
       const potentialTargetChainIds = new Set<number>();
       const { chain_token, chains, pegged_pair_configs } = transferConfig;
+      const { chaintokensList: circleUSDCTokens } = circleUSDCConfig;
 
       const fromChainTokenSymbolWhiteList = getNetworkById(fromChain.id).tokenSymbolList;
+
+      const fromChainSupportUSDC = fromChainTokenSymbolWhiteList.includes("USDC");
+      const circleUSDCTokenForSourceChain = circleUSDCTokens.find(tokenInfo => {
+        return tokenInfo.chainId === fromChain.id;
+      });
 
       const poolBasedSupportedTokenSymbols: string[] = chain_token[fromChain.id].token
         .filter(tokenInfo => {
@@ -68,7 +79,7 @@ export const useTransferSupportedChainList = (useAsDestinationChain: boolean): C
           return tokenInfo.token.symbol;
         });
 
-      chains.forEach(chain => {
+      chains?.forEach(chain => {
         if (chain.id === fromChain.id) {
           /// Skip From Chain
           return;
@@ -83,15 +94,26 @@ export const useTransferSupportedChainList = (useAsDestinationChain: boolean): C
           );
         });
         if (supportedTokens && supportedTokens.length > 0) {
-          supportedTokens.forEach(tokenInfo => {
+          supportedTokens?.forEach(tokenInfo => {
             if (poolBasedSupportedTokenSymbols.includes(tokenInfo.token.symbol)) {
               potentialTargetChainIds.add(chain.id);
             }
           });
         }
+
+        if (fromChainSupportUSDC && circleUSDCTokenForSourceChain) {
+          const toChainSupportUSDC = toChainTokenSymbolWhiteList.includes("USDC");
+          const circleUSDCTokenForToChain = circleUSDCTokens.find(tokenInfo => {
+            return tokenInfo.chainId === chain.id;
+          });
+
+          if (toChainSupportUSDC && circleUSDCTokenForToChain) {
+            potentialTargetChainIds.add(chain.id);
+          }
+        }
       });
 
-      pegged_pair_configs.forEach(peggedPairConfig => {
+      pegged_pair_configs?.forEach(peggedPairConfig => {
         if (
           peggedPairConfig.org_chain_id === fromChain.id &&
           fromChainTokenSymbolWhiteList.includes(peggedPairConfig.org_token.token.symbol)
@@ -111,7 +133,7 @@ export const useTransferSupportedChainList = (useAsDestinationChain: boolean): C
         }
       });
 
-      multiBurnConfigs.forEach(multiBurnConfig => {
+      multiBurnConfigs?.forEach(multiBurnConfig => {
         if (
           multiBurnConfig.burn_config_as_org.chain_id === fromChain.id &&
           fromChainTokenSymbolWhiteList.includes(multiBurnConfig.burn_config_as_org.token.token.symbol)
@@ -127,7 +149,7 @@ export const useTransferSupportedChainList = (useAsDestinationChain: boolean): C
 
       const targetChains: Chain[] = [];
 
-      potentialTargetChainIds.forEach(chainId => {
+      potentialTargetChainIds?.forEach(chainId => {
         const foundChains = chains.filter(chain => {
           return chain.id === chainId;
         });
@@ -141,7 +163,7 @@ export const useTransferSupportedChainList = (useAsDestinationChain: boolean): C
       /// User can select any transfer supported chain in chain white list as source chain
       setChainList(fromChainList);
     }
-  }, [fromChain, fromChainList, useAsDestinationChain, transferConfig, multiBurnConfigs]);
+  }, [fromChain, fromChainList, useAsDestinationChain, transferConfig, multiBurnConfigs, circleUSDCConfig]);
 
   return chainList;
 };
@@ -153,9 +175,11 @@ export interface SupportTokenListResult {
 
 export const useTransferSupportedTokenList = (): SupportTokenListResult => {
   const { transferInfo } = useAppSelector(state => state);
-  const { fromChain, toChain, transferConfig, multiBurnConfigs, rfqConfig } = transferInfo;
-  const { chain_token, pegged_pair_configs } = transferConfig;
-  const { chaintokensList } = rfqConfig;
+  const { fromChain, toChain, transferConfig, multiBurnConfigs, rfqConfig, circleUSDCConfig } = transferInfo;
+  const { chain_token, pegged_pair_configs, blocked_bridge_direct_list } = transferConfig;
+  const { chaintokensList: rfqTokenList } = rfqConfig;
+  const { chaintokensList: circleUSDCTokens } = circleUSDCConfig;
+  const { getNetworkById } = useWeb3Context();
 
   const [supportTokenListResult, setSupportTokenListResult] = useState<SupportTokenListResult>({
     fromChainId: 0,
@@ -165,7 +189,7 @@ export const useTransferSupportedTokenList = (): SupportTokenListResult => {
   useEffect(() => {
     if (fromChain && fromChain !== undefined) {
       const fromChainId = fromChain.id;
-      const fromChainTokenSymbolWhiteList = getNetworkById(fromChainId).tokenSymbolList;
+      const fromChainTokenSymbolWhiteList = getNetworkById(fromChainId)?.tokenSymbolList;
       const fromChainPoolBasedTokens = chain_token[fromChainId].token.filter(tokenInfo => {
         return (
           !tokenInfo.token.xfer_disabled &&
@@ -177,7 +201,7 @@ export const useTransferSupportedTokenList = (): SupportTokenListResult => {
       if (toChain && toChain !== undefined) {
         const toChainId = toChain.id;
 
-        const toChainTokenSymbolWhiteList = getNetworkById(toChainId).tokenSymbolList;
+        const toChainTokenSymbolWhiteList = getNetworkById(toChainId)?.tokenSymbolList;
 
         const toChainPoolBasedTokens = chain_token[toChainId].token.filter(tokenInfo => {
           return (
@@ -187,58 +211,12 @@ export const useTransferSupportedTokenList = (): SupportTokenListResult => {
           );
         });
 
-        // merge rfq config
-        chaintokensList.forEach(rfqChainToken => {
-          const tokensInPoolBasedConfig = fromChainPoolBasedTokens.filter(tokenInfo => {
-            return (
-              fromChain.id === rfqChainToken.tokeninfo?.chainId &&
-              tokenInfo.token.address === rfqChainToken.tokeninfo?.address
-            );
-          });
-          if (tokensInPoolBasedConfig.length === 0 && rfqChainToken.tokeninfo?.chainId === fromChain.id) {
-            fromChainPoolBasedTokens.push({
-              token: {
-                symbol: rfqChainToken.tokeninfo.symbol,
-                address: rfqChainToken.tokeninfo.address,
-                decimal: rfqChainToken.tokeninfo.decimals,
-                xfer_disabled: false,
-                display_symbol: "",
-              },
-              name: rfqChainToken.tokeninfo.name,
-              icon: rfqChainToken.tokeninfo.logoUri,
-              max_amt: "",
-              transfer_disabled: false, // rfqChainToken.tokeninfo.disabled,
-            });
-          }
-          const isInToChainPoolBasedTokens = toChainPoolBasedTokens.filter(tokenInfo => {
-            return (
-              toChain.id === rfqChainToken.tokeninfo?.chainId &&
-              tokenInfo.token.address === rfqChainToken.tokeninfo?.address
-            );
-          });
-          if (isInToChainPoolBasedTokens.length === 0 && rfqChainToken.tokeninfo?.chainId === toChain.id) {
-            toChainPoolBasedTokens.push({
-              token: {
-                symbol: rfqChainToken.tokeninfo.symbol,
-                address: rfqChainToken.tokeninfo.address,
-                decimal: rfqChainToken.tokeninfo.decimals,
-                xfer_disabled: false,
-                display_symbol: "",
-              },
-              name: rfqChainToken.tokeninfo.name,
-              icon: rfqChainToken.tokeninfo.logoUri,
-              max_amt: "",
-              transfer_disabled: false, // rfqChainToken.tokeninfo.disabled,
-            });
-          }
-        });
-
         const toChainPoolBasedTokenSymbol: string[] = toChainPoolBasedTokens.map(tokenInfo => {
           return tokenInfo.token.symbol;
         });
 
         const multiBurnTokens: TokenInfo[] = [];
-        multiBurnConfigs.forEach(burnConfig => {
+        multiBurnConfigs?.forEach(burnConfig => {
           if (
             burnConfig.burn_config_as_org.chain_id === fromChainId &&
             burnConfig.burn_config_as_dst.chain_id === toChainId &&
@@ -255,8 +233,21 @@ export const useTransferSupportedTokenList = (): SupportTokenListResult => {
         });
 
         const mintBurnTokens: TokenInfo[] = [];
-        pegged_pair_configs.forEach(peggedPairConfig => {
+        pegged_pair_configs?.forEach(peggedPairConfig => {
           if (fromChainId === 1 && toChainId === 56 && peggedPairConfig.org_token.token.symbol === "PEOPLE") {
+            return;
+          }
+
+          // only allow ethereum -> sui frax bridge
+          if (
+            fromChainId === 1 &&
+            toChainId !== 12370001 &&
+            peggedPairConfig.org_token.token.symbol.toLowerCase() === "frax"
+          ) {
+            return;
+          }
+
+          if (toChain.id === 2222 && kavaPegTokens.includes(peggedPairConfig.pegged_token.token.symbol)) {
             return;
           }
 
@@ -272,7 +263,8 @@ export const useTransferSupportedTokenList = (): SupportTokenListResult => {
             peggedPairConfig.org_chain_id === toChainId &&
             peggedPairConfig.pegged_chain_id === fromChainId &&
             toChainTokenSymbolWhiteList.includes(peggedPairConfig.org_token.token.symbol) &&
-            fromChainTokenSymbolWhiteList.includes(peggedPairConfig.pegged_token.token.symbol)
+            fromChainTokenSymbolWhiteList.includes(peggedPairConfig.pegged_token.token.symbol) &&
+            !(peggedPairConfig.org_token.token.symbol === "WETH" && peggedPairConfig.org_token.token.isNative) // As peg chain doesn't need to show eth, only weth
           ) {
             /// Pegged Burn Mode && Canonical Token Swap Mode
             /// If there is pegged pair config, it will not appear in multiBurn configs. No need to
@@ -298,7 +290,7 @@ export const useTransferSupportedTokenList = (): SupportTokenListResult => {
         const poolBasedTokens: TokenInfo[] = fromChainPoolBasedTokens.filter(tokenInfo => {
           return (
             toChainPoolBasedTokenSymbol.includes(tokenInfo.token.symbol) &&
-            !peggedModeTokenSymbols.includes(tokenInfo.token.display_symbol ?? tokenInfo.token.symbol)
+            !peggedModeTokenSymbols.includes(unambiguousTokenSymbol(tokenInfo.token))
           );
         });
 
@@ -306,13 +298,67 @@ export const useTransferSupportedTokenList = (): SupportTokenListResult => {
           return fromChainTokenSymbolWhiteList.includes(tokenInfo.token.symbol);
         });
 
-        setSupportTokenListResult({ fromChainId: fromChain.id, supportTokenList: finalTokens });
+        const usdcToken = finalTokens.find(tokenInfo => {
+          return tokenInfo.token.symbol === "USDC";
+        });
+        const circleUSDCTokenForSourceChain = circleUSDCTokens.find(tokenInfo => {
+          return tokenInfo.chainId === fromChainId;
+        });
+
+        const circleUSDCTokenForDestinationChain = circleUSDCTokens.find(tokenInfo => {
+          return tokenInfo.chainId === toChainId;
+        });
+
+        if (
+          circleUSDCTokenForSourceChain &&
+          circleUSDCTokenForDestinationChain &&
+          fromChainTokenSymbolWhiteList.includes("USDC_CIRCLE") &&
+          toChainTokenSymbolWhiteList.includes("USDC_CIRCLE") &&
+          usdcToken?.token.address.toLowerCase() !== circleUSDCTokenForSourceChain.tokenAddr.toLowerCase()
+        ) {
+          finalTokens.push({
+            token: {
+              symbol: "USDC_CIRCLE",
+              address: circleUSDCTokenForSourceChain.tokenAddr,
+              decimal: circleUSDCTokenForSourceChain.tokenDecimal,
+              xfer_disabled: false,
+              chainId: fromChain.id,
+              isNative: false,
+            },
+            name: "USD Coin",
+            icon: "https://get.celer.app/cbridge-icons/USDC.png",
+            max_amt: "",
+            transfer_disabled: false,
+          });
+        }
+
+        const tokens = finalTokens.filter(t => {
+          return !blocked_bridge_direct_list.find(blockedToken => {
+            return (
+              blockedToken.symbol.toLocaleLowerCase() === t.token.symbol.toLocaleLowerCase() &&
+              fromChainId === blockedToken.srcChainId &&
+              toChainId === blockedToken.dstChainId
+            );
+          });
+        });
+
+        setSupportTokenListResult({ fromChainId: fromChain.id, supportTokenList: tokens });
       } else {
         /// If there is no destination chain, token list should be empty
         setSupportTokenListResult({ fromChainId: fromChain.id, supportTokenList: [] });
       }
     }
-  }, [fromChain, toChain, chain_token, pegged_pair_configs, transferConfig, multiBurnConfigs, chaintokensList]);
+  }, [
+    fromChain,
+    toChain,
+    chain_token,
+    pegged_pair_configs,
+    transferConfig,
+    multiBurnConfigs,
+    rfqTokenList,
+    circleUSDCTokens,
+    blocked_bridge_direct_list,
+  ]);
 
   return supportTokenListResult;
 };
@@ -329,6 +375,8 @@ export const replaceTokenAddressForCanonicalTokenSwapIfNeeded = (
       address: canonical_token_contract_addr,
       decimal: tempTokenInfo.token.decimal,
       xfer_disabled: tempTokenInfo.token.xfer_disabled,
+      isNative: tokenInfo.token.isNative,
+      chainId: tokenInfo.token.chainId,
     };
 
     const result: TokenInfo = {
@@ -350,12 +398,28 @@ export const twoChainBridged = (
   chainId2: number,
   transferConfig: GetTransferConfigsResponse,
   multiBurnConfigs: MultiBurnPairConfig[],
+  circleUSDCTokens: CircleUSDC.AsObject[],
+  getNetworkById,
 ) => {
   let peggedBridged = false;
-
   const chain1TokenWhiteListSymbol = getNetworkById(chainId1).tokenSymbolList;
   const chain2TokenWhiteListSymbol = getNetworkById(chainId2).tokenSymbolList;
+  const chain1USDCToken = circleUSDCTokens.find(tokenInfo => {
+    return tokenInfo.chainId === chainId1;
+  });
 
+  const chain2USDCToken = circleUSDCTokens.find(tokenInfo => {
+    return tokenInfo.chainId === chainId2;
+  });
+
+  if (
+    chain1TokenWhiteListSymbol.includes("USDC") &&
+    chain2TokenWhiteListSymbol.includes("USDC") &&
+    chain1USDCToken &&
+    chain2USDCToken
+  ) {
+    return true;
+  }
   const burnConfig = multiBurnConfigs.find(multiBurnConfig => {
     return (
       (multiBurnConfig.burn_config_as_org.chain_id === chainId1 &&
@@ -373,7 +437,7 @@ export const twoChainBridged = (
     return true;
   }
 
-  transferConfig.pegged_pair_configs.forEach(peggedPairConfig => {
+  transferConfig.pegged_pair_configs?.forEach(peggedPairConfig => {
     const bridged =
       (peggedPairConfig.org_chain_id === chainId1 &&
         peggedPairConfig.pegged_chain_id === chainId2 &&
@@ -412,7 +476,7 @@ export const twoChainBridged = (
       .map(tokenInfo => {
         return tokenInfo.token.symbol;
       });
-    poolBasedTokensForChainId2.token.forEach(tokenInfo => {
+    poolBasedTokensForChainId2.token?.forEach(tokenInfo => {
       poolBasedBridged =
         poolBasedBridged ||
         (poolBasedTokenSymbolsForChainId1.includes(tokenInfo.token.symbol) &&

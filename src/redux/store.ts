@@ -4,27 +4,21 @@ import { PERSIST, persistReducer, persistStore } from "redux-persist";
 import createMigrate from "redux-persist/es/createMigrate";
 import storage from "redux-persist/lib/storage";
 import modalSlice from "./modalSlice";
-import assetSlice from "./assetSlice";
-import lpSlice from "./lpSlice";
 import globalInfoSlice from "./globalInfoSlice";
 import tokenToggleSlice from "./tokenToggleSlice";
 import transferSlice from "./transferSlice";
 import windowWidthSlice from "./windowWidthSlice";
-import configSlice from "./configSlice";
 import rewardSectionSlice from "./rewardSectionSlice";
 import serviceInfoSlice from "./serviceInfoSlice";
 
 const rootReducer = combineReducers({
   modal: modalSlice,
-  asset: assetSlice,
   transferInfo: transferSlice,
-  lp: lpSlice,
   globalInfo: globalInfoSlice,
   tokenToggle: tokenToggleSlice,
   windowWidth: windowWidthSlice,
-  config: configSlice,
   rewardSection: rewardSectionSlice,
-  serviceInfo: serviceInfoSlice
+  serviceInfo: serviceInfoSlice,
 });
 
 const migrations = {

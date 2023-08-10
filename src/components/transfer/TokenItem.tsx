@@ -1,11 +1,11 @@
 import { Avatar } from "antd";
 import { createUseStyles } from "react-jss";
-import { useWeb3Context } from "../../providers/Web3ContextProvider";
 import { useAppSelector } from "../../redux/store";
 import { Theme } from "../../theme";
-import { getTokenListSymbol } from "../../redux/assetSlice";
-import { getNonEVMMode, NonEVMMode } from "../../providers/NonEVMContextProvider";
-import { isGasToken } from "../../constants/network";
+import { getTokenListSymbol } from "../../redux/transferSlice";
+import { TokenInfo } from "../../constants/type";
+import { isETH } from "../../helpers/tokenInfo";
+import { kavaPegTokens } from "../../constants/const";
 
 /* eslint-disable camelcase */
 const useStyles = createUseStyles((theme: Theme) => ({
@@ -93,30 +93,51 @@ const useStyles = createUseStyles((theme: Theme) => ({
 const TokenItem = ({ onSelectToken, tokenInfo }) => {
   const { isMobile } = useAppSelector(state => state.windowWidth);
   const classes = useStyles();
-  const { chainId } = useWeb3Context();
-  const { fromChain, selectedTokenSymbol } = useAppSelector(state => state.transferInfo);
+  const { fromChain, selectedToken } = useAppSelector(state => state.transferInfo);
   const { icon, token } = tokenInfo;
-  const { symbol, display_symbol } = token;
+  const { symbol } = token;
   const tokenBalance = tokenInfo.balance;
 
-  const displayTokenName = (selectedToken) => {
-   if(isGasToken(fromChain?.id ?? 0, selectedToken.token.display_symbol ?? selectedToken.token.symbol) 
-    &&  tokenInfo.token.display_symbol === "ETH") {
-    return "Ethereum Token" 
-   }
-   return selectedToken?.name ?? "" 
-  }
+  const displayTokenName = (localTokenInfo: TokenInfo) => {
+    if (isETH(localTokenInfo.token)) {
+      return "Ethereum Token";
+    }
+
+    if (fromChain?.id === 2222 && kavaPegTokens.includes(localTokenInfo?.token.symbol ?? "")) {
+      return localTokenInfo?.name + " (Celer)";
+    }
+
+    if ((fromChain?.id === 42161 || fromChain?.id === 421613) && localTokenInfo?.token.symbol === "USDC") {
+      return "Bridged USDC";
+    }
+
+    return localTokenInfo?.name ?? "";
+  };
+
+  const isTokenSelected = (localTokenInfo: TokenInfo) => {
+    if (localTokenInfo.token.chainId !== selectedToken?.token.chainId) {
+      return false;
+    }
+
+    const localTokenIsETH = isETH(localTokenInfo.token);
+    const selectedTokenIsETH = isETH(selectedToken.token);
+
+    if (localTokenIsETH && selectedTokenIsETH) {
+      return true;
+    }
+
+    if (!localTokenIsETH && !selectedTokenIsETH) {
+      return selectedToken?.token.address === tokenInfo.token.address;
+    }
+
+    return false;
+  };
 
   return (
     <div
-      className={selectedTokenSymbol === (display_symbol ?? symbol) ? classes.activeItem : classes.item}
+      className={isTokenSelected(tokenInfo) ? classes.activeItem : classes.item}
       onClick={() => {
-        const fromChainNonEVMMode = getNonEVMMode(fromChain?.id ?? 0);
-        if (fromChainNonEVMMode === NonEVMMode.off) {
-          onSelectToken(display_symbol ?? getTokenListSymbol(symbol, chainId));
-        } else {
-          onSelectToken(display_symbol ?? getTokenListSymbol(symbol, fromChain?.id));
-        }
+        onSelectToken(tokenInfo);
       }}
     >
       <div className={classes.litem}>
@@ -128,7 +149,9 @@ const TokenItem = ({ onSelectToken, tokenInfo }) => {
         </div>
         <div className={classes.tokenName} style={{ textAlign: isMobile ? "right" : "left" }}>
           {tokenBalance}{" "}
-          <span className='tokenSymbolName' style={{ marginLeft: 5 }}>{display_symbol ?? getTokenListSymbol(symbol, fromChain?.id)}</span>
+          <span className="tokenSymbolName" style={{ marginLeft: 5 }}>
+            {isETH(token) ? "ETH" : getTokenListSymbol(symbol, fromChain?.id)}
+          </span>
         </div>
       </div>
     </div>

@@ -1,38 +1,43 @@
 import { BigNumber, ethers } from "ethers";
 import { useEffect, useState } from "react";
+import { StaticJsonRpcProvider } from "@ethersproject/providers";
 import { useToggle } from "react-use";
-import { isNonEVMChain } from "../providers/NonEVMContextProvider";
-import { ERC20 } from "../typechain/typechain/ERC20";
+import { Token } from "../constants/type";
+import { ERC20__factory } from "../typechain/typechain";
+import { useWeb3Context } from "../providers/Web3ContextProvider";
 
 export type UseBalanceReturn = [BigNumber, boolean, string, () => void];
 
-function useTokenBalance(
-  tokenContract: ERC20 | undefined,
-  address: string,
-  chainId = 1,
-  timeout = 3000,
-): UseBalanceReturn {
+function useTokenBalance(token: Token, timeout = 3000, getNetworkById): UseBalanceReturn {
   const [balance, setBalance] = useState(BigNumber.from(0));
   const [balanceLoading, setBalanceLoading] = useState(false);
   const [error, setError] = useState("");
   const [retryCount, setRetryCount] = useState(0);
   const [reloadTrigger, reload] = useToggle(false);
+  const { address } = useWeb3Context();
 
   useEffect(() => {
     setError("");
-  
-    if (!tokenContract || !address || !ethers.utils.isAddress(tokenContract.address) || isNonEVMChain(chainId)) {
+
+    if (!address || !ethers.utils.isAddress(token.address)) {
       return;
     }
 
     // fix nervos chain can't get balance who has not register the L2 account,
     // error: from id not found by from address:xx have you deposited?
     let overrides = {};
-    if (chainId === 71402) {
+    if (token.chainId === 71402) {
       overrides = { from: "0x9FEaB89C449C90282c93D0b532029eFA72eA00c8" };
     }
 
-    const balancePromise = tokenContract.balanceOf(address, overrides);
+    let balancePromise;
+    const jsonRpcProvider = new StaticJsonRpcProvider(getNetworkById(token.chainId).rpcUrl);
+    if (token.isNative) {
+      console.debug("native token load");
+      balancePromise = jsonRpcProvider.getBalance(address);
+    } else {
+      balancePromise = ERC20__factory.connect(token.address, jsonRpcProvider).balanceOf(address, overrides);
+    }
 
     let timeoutTimer: NodeJS.Timeout;
     const timeoutPromise = new Promise<BigNumber>((_, reject) => {
@@ -51,13 +56,12 @@ function useTokenBalance(
         setBalance(bal);
       })
       .catch((err: Error) => {
-        console.error("get balance error", err)
-        setError(err.message)
+        console.error("get balance error", err);
+        setError(err.message);
       })
       .finally(() => setBalanceLoading(false));
-
-
-  }, [tokenContract, address, reloadTrigger, timeout, chainId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token.chainId, token.address, reloadTrigger, timeout, address, token.isNative]);
 
   useEffect(() => {
     if (error && retryCount < 3) {

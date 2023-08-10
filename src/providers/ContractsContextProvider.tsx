@@ -53,6 +53,7 @@ export const ContractsContextProvider = ({ children }: ContractsContextProviderP
       originalTokenVaultV2: oTContractAddrV2,
       peggedTokenBridge: pTContractAddr,
       peggedTokenBridgeV2: pTContractAddrV2,
+      peggedNativeTokenBridge: pTContractAddrV2,
       rfqContract: rfqcontractAddr,
       transferAgent: transferAgentAddress,
     });

@@ -41,8 +41,9 @@ export const sgnOpsDataCheck = {
     otvault2: "0x7510792A3B1969F9307F3845CE88e39578f2bAE1",
     ptbridge: "0x16365b45EB269B5B5dACB34B4a15399Ec79b95eB",
     ptbridge2: "0x52E4f244f380f8fA51816c8a10A63105dd4De084",
-    rfqContract: "0x6e380ad5D15249eF2DE576E3189fc49B5713BE4f",
+    rfqContract: "0xcb1dB69399755Cf8A9EbE8A3033f3082793b67eB",
     transferAgent: "0x9b274BC73940d92d0Af292Bde759cbFCCE661a0b",
+    circleBridgeProxy: "0x6065A982F04F759b7d2D042D2864e569fad84214",
   },
   56: {
     /// "BSC"
@@ -51,7 +52,7 @@ export const sgnOpsDataCheck = {
     otvault2: "0x11a0c9270D88C99e221360BCA50c2f6Fda44A980",
     ptbridge: "0xd443FE6bf23A4C9B78312391A30ff881a097580E",
     ptbridge2: "0x26c76F7FeF00e02a5DD4B5Cc8a0f717eB61e1E4b",
-    rfqContract: "0x309b97ECc8eFA45831aB50d532Ac862da79bfB69",
+    rfqContract: "0x4446e0f8417C1db113899929A8F3cEe8e0DcBCDb",
     transferAgent: "0x3d85B598B734a0E7c8c1b62B00E972e9265dA541",
   },
   42161: {
@@ -60,9 +61,10 @@ export const sgnOpsDataCheck = {
     otvault: "0xFe31bFc4f7C9b69246a6dc0087D91a91Cb040f76",
     otvault2: "0xEA4B1b0aa3C110c55f650d28159Ce4AD43a4a58b",
     ptbridge: "0xbdd2739AE69A054895Be33A22b2D2ed71a1DE778",
-    ptbridge2: "",
-    rfqContract: "0x52A9A7F9b22C31218d26a4e91e2Ba01eD04520EE",
+    ptbridge2: "0xc72e7fC220e650e93495622422F3c14fb03aAf6B",
+    rfqContract: "0xAEC803CC6f6A9cd4189558333E4D4Fb5Af1142F6",
     transferAgent: "",
+    circleBridgeProxy: "0x054B95b60BFFACe948Fa4548DA8eE2e212fb7C0a",
   },
   137: {
     /// "Polygon"
@@ -71,7 +73,7 @@ export const sgnOpsDataCheck = {
     otvault2: "0x4C882ec256823eE773B25b414d36F92ef58a7c0C",
     ptbridge: "0x4d58FDC7d0Ee9b674F49a0ADE11F26C3c9426F7A",
     ptbridge2: "0xb51541df05DE07be38dcfc4a80c05389A54502BB",
-    rfqContract: "0x243b40e96c6bF21511E53d85c86F6Ec982f9a879",
+    rfqContract: "0x078EA5B54040BeF40717c9DCe02183c8F78acCD2",
     transferAgent: "",
   },
   43114: {
@@ -81,8 +83,9 @@ export const sgnOpsDataCheck = {
     otvault2: "0xb51541df05DE07be38dcfc4a80c05389A54502BB",
     ptbridge: "0x88DCDC47D2f83a99CF0000FDF667A468bB958a78",
     ptbridge2: "0xb774C6f82d1d5dBD36894762330809e512feD195",
-    rfqContract: "0x697aC93c9263346c5Ad0412F9356D5789a3AA687",
+    rfqContract: "0x7C343504Ac2AA18418b3830F5393786D3f62513B",
     transferAgent: "",
+    circleBridgeProxy: "0x9744ae566c64B6B6f7F9A4dD50f7496Df6Fef990",
   },
   250: {
     /// "Fantom"
@@ -98,10 +101,10 @@ export const sgnOpsDataCheck = {
     /// "Optimism"
     cbridge: "0x9D39Fc627A6d9d9F8C831c16995b209548cc3401",
     otvault: "0xbCfeF6Bb4597e724D720735d32A9249E0640aA11",
-    otvault2: "",
+    otvault2: "0x6e380ad5D15249eF2DE576E3189fc49B5713BE4f",
     ptbridge: "0x61f85fF2a2f4289Be4bb9B72Fc7010B3142B5f41",
-    ptbridge2: "",
-    rfqContract: "0x44435a66aE25d4e7F2FB054A68Bf6a0A44ae05DC",
+    ptbridge2: "0xC3c5B9474273113efB74e7Da43B5AAba0Cd9699A",
+    rfqContract: "0x754f2e6b0b74033F3db4Ed5A778fc6344c3Af818",
     transferAgent: "",
   },
   288: {
@@ -400,7 +403,7 @@ export const sgnOpsDataCheck = {
     otvault: "",
     otvault2: "",
     ptbridge: "",
-    ptbridge2: "",
+    ptbridge2: "0xa55C7E1274bE5db2275a0BDd055f81e8263b7954",
     rfqContract: "",
     transferAgent: "",
   },
@@ -434,12 +437,30 @@ export const sgnOpsDataCheck = {
     rfqContract: "",
     transferAgent: "",
   },
+  14000: {
+    cbridge: "0x9B36f165baB9ebe611d491180418d8De4b8f3a1f",
+    otvault: "",
+    otvault2: "0x9Bb46D5100d2Db4608112026951c9C965b233f4D",
+    ptbridge: "",
+    ptbridge2: "",
+    rfqContract: "",
+    transferAgent: "",
+  },
+  1990: {
+    cbridge: "0xD46F8E428A06789B5884df54E029e738277388D1",
+    otvault: "",
+    otvault2: "",
+    ptbridge: "",
+    ptbridge2: "0xa7C9FeDe809b6af10dC52590804c69F40f6f8154",
+    rfqContract: "",
+    transferAgent: "",
+  },
 
-// Testnet chains
-//
-//
-//
-//  
+  // Testnet chains
+  //
+  //
+  //
+  //
   12360002: {
     /// Aptos Testnet
     cbridge: "",
@@ -459,5 +480,117 @@ export const sgnOpsDataCheck = {
     ptbridge2: "0x0C33583c0c8267B20368299A45cE118eac90A258",
     rfqContract: "",
     transferAgent: "0xBC06BA73f674E3eECDF05ddC7B946351889A5cB6",
-  }
+    circleBridgeProxy: "0x440D284A8f30264Ab890E241C8137b6B6341507a",
+  },
+  248: {
+    /// Oasys
+    cbridge: "0x5200000000000000000000000000000000000015",
+    otvault: "",
+    otvault2: "",
+    ptbridge: "0x5200000000000000000000000000000000000017",
+    ptbridge2: "0x5200000000000000000000000000000000000017",
+    rfqContract: "",
+    transferAgent: "",
+  },
+
+  13000: {
+    // SPS
+    cbridge: "0x3b53D2C7B44d40BE05Fa5E2309FFeB6eB2492d88",
+    otvault: "",
+    otvault2: "0x51AF61B7026a0aE369acc8652Ab2fb637F4689F7",
+    ptbridge: "",
+    ptbridge2: "0xa349005a68FA33e8DACAAa850c45175bbcD49B19",
+    rfqContract: "",
+    transferAgent: "",
+  },
+  324: {
+    // ZKSyncMainnet
+    cbridge: "0x54069e96C4247b37C2fbd9559CA99f08CD1CD66c",
+    otvault: "",
+    otvault2: "",
+    ptbridge: "",
+    ptbridge2: "0x0D72Be73619e29A67fbD28348AC952288CC9ee46",
+    rfqContract: "",
+    transferAgent: "",
+  },
+  314: {
+    // Filecoin
+    cbridge: "",
+    otvault: "0xB37D31b2A74029B5951a2778F959282E2D518595",
+    otvault2: "0x7d2dB35Cd885F10E73ef367D56BF43B617b740dB",
+    ptbridge: "",
+    ptbridge2: "0xa7C9FeDe809b6af10dC52590804c69F40f6f8154",
+    rfqContract: "",
+    transferAgent: "",
+  },
+  7700: {
+    // Canto
+    cbridge: "0xD46F8E428A06789B5884df54E029e738277388D1",
+    otvault: "",
+    otvault2: "0xD33289644740eF5F488b0270f812F7B18B500935",
+    ptbridge: "",
+    ptbridge2: "0xa7C9FeDe809b6af10dC52590804c69F40f6f8154",
+    rfqContract: "",
+    transferAgent: "",
+  },
+  999999997: {
+    // Injective
+    cbridge: "0xe559e36196b88f03423c2ee5708dd83b1d8505e7",
+    otvault: "0xa6214ccc545a3bfb979851b09debed43f124bf61",
+    otvault2: "",
+    ptbridge: "0x0ec4a924e58b579049c67979bfabb454424e74de",
+    ptbridge2: "",
+    rfqContract: "",
+    transferAgent: "",
+  },
+  999999996: {
+    // aura
+    cbridge: "0xe559e36196b88f03423c2ee5708dd83b1d8505e7",
+    otvault: "0xa6214ccc545a3bfb979851b09debed43f124bf61",
+    otvault2: "0xc21dcaa1608a7f2559cee58352794db567f5576a7803bb5ae422314766191f14",
+    ptbridge: "0x0ec4a924e58b579049c67979bfabb454424e74de",
+    ptbridge2: "0xb687d7fb0fcf2a6a9dbe6b9f855d9ed6f028311529b1eec8bb6578a14b90f42c",
+    rfqContract: "",
+    transferAgent: "",
+  },
+  1101: {
+    // Polygon zkEVM
+    cbridge: "0xD46F8E428A06789B5884df54E029e738277388D1",
+    otvault: "",
+    otvault2: "",
+    ptbridge: "",
+    ptbridge2: "",
+    rfqContract: "",
+    transferAgent: "",
+  },
+  12370001: {
+    // SuiMainnet
+    cbridge: "94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690",
+    otvault: "94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690",
+    otvault2: "94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690",
+    ptbridge: "94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690",
+    ptbridge2: "94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690",
+    rfqContract: "",
+    transferAgent: "",
+  },
+  8453: {
+    // Base Mainnet
+    cbridge: "0x7d43AABC515C356145049227CeE54B608342c0ad",
+    otvault: "TODO: add ov for 8453",
+    otvault2: "TODO: add ov2 for 8453",
+    ptbridge: "TODO: add pb for 8453",
+    ptbridge2: "0x5471ea8f739dd37E9B81Be9c5c77754D8AA953E4",
+    rfqContract: "",
+    transferAgent: "",
+  },
+  59144: {
+    // Linea Mainnet
+    cbridge: "0x9B36f165baB9ebe611d491180418d8De4b8f3a1f",
+    otvault: "",
+    otvault2: "",
+    ptbridge: "",
+    ptbridge2: "0x9Bb46D5100d2Db4608112026951c9C965b233f4D",
+    rfqContract: "",
+    transferAgent: "",
+  },
 };

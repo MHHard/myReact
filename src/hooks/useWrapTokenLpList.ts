@@ -1,7 +1,5 @@
-import { JsonRpcProvider } from "@ethersproject/providers";
 import { formatUnits } from "ethers/lib/utils";
 import { useMemo } from "react";
-import { getNetworkById } from "../constants/network";
 import { LPInfo } from "../constants/type";
 import { dataClone } from "../helpers/dataClone";
 import { useWeb3Context } from "../providers/Web3ContextProvider";
@@ -18,7 +16,7 @@ export function useWrapTokenLpList(lpInfoList: LPInfo[]): {
   const { transferInfo } = useAppSelector(state => state);
   const { transferConfig } = transferInfo;
   const pegConfigs = transferConfig.pegged_pair_configs;
-  const { address } = useWeb3Context();
+  const { address, getNetworkById } = useWeb3Context();
 
   return useMemo(() => {
     if (!lpInfoList || lpInfoList.length === 0) {
@@ -49,11 +47,11 @@ export function useWrapTokenLpList(lpInfoList: LPInfo[]): {
                 try {
                   const wrapToken = config?.pegged_token.token;
 
-                  const provider = new JsonRpcProvider(getNetworkById(config.pegged_chain_id).rpcUrl);
                   const wrapTokenContract = (await readOnlyContract(
-                    provider,
+                    config.pegged_chain_id,
                     wrapToken.address,
                     ERC20__factory,
+                    getNetworkById,
                   )) as ERC20;
                   const totalLiquidity = await wrapTokenContract.totalSupply();
 
@@ -101,18 +99,18 @@ export function useWrapTokenLpList(lpInfoList: LPInfo[]): {
 
                 if (pegConfig && address) {
                   try {
-                    const rpcURL = getNetworkById(tokenOnEVMChain.chain.id).rpcUrl;
-                    const provider = new JsonRpcProvider(rpcURL);
                     const canonicalTokenContract = (await readOnlyContract(
-                      provider,
+                      tokenOnEVMChain.chain.id,
                       pegConfig.canonical_token_contract_addr,
                       ERC20__factory,
+                      getNetworkById,
                     )) as ERC20;
 
                     const wrapTokenContract = (await readOnlyContract(
-                      provider,
+                      tokenOnEVMChain.chain.id,
                       pegConfig.pegged_token.token.address,
                       WrappedBridgeToken__factory,
+                      getNetworkById,
                     )) as WrappedBridgeToken;
                     const userLiquidityAmt = await wrapTokenContract.liquidity(address);
 
@@ -126,9 +124,13 @@ export function useWrapTokenLpList(lpInfoList: LPInfo[]): {
                       ) {
                         /* eslint-disable camelcase */
                         it.total_liquidity_amt = totalTokenBalance.toString();
-                        it.total_liquidity = Number(formatUnits(totalTokenBalance.toString(), tokenOnEVMChain.token.token.decimal));
+                        it.total_liquidity = Number(
+                          formatUnits(totalTokenBalance.toString(), tokenOnEVMChain.token.token.decimal),
+                        );
                         it.liquidity_amt = userLiquidityAmt.toString();
-                        it.liquidity = Number(formatUnits(userLiquidityAmt.toString(), tokenOnEVMChain.token.token.decimal));
+                        it.liquidity = Number(
+                          formatUnits(userLiquidityAmt.toString(), tokenOnEVMChain.token.token.decimal),
+                        );
                         it.diableAggregateRemove = true;
                         it.isWrapTokenLiquidity = true;
                         return it;
@@ -147,5 +149,5 @@ export function useWrapTokenLpList(lpInfoList: LPInfo[]): {
         return originalLpList;
       },
     };
-  }, [lpInfoList, pegConfigs, address]);
+  }, [lpInfoList, pegConfigs, address, getNetworkById]);
 }

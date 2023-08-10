@@ -28,7 +28,6 @@ import {
   S3NFTConfigChain,
   S3NFTToken,
 } from "../../constants/type";
-import { getNetworkById } from "../../constants/network";
 import { storageConstants } from "../../constants/const";
 import { loadContract } from "../../hooks/customContractLoader";
 import { OrigNFT__factory } from "../../typechain/typechain/factories/OrigNFT__factory";
@@ -40,6 +39,7 @@ import { MCNNFT } from "../../typechain/typechain/MCNNFT";
 import { MCNNFT__factory } from "../../typechain/typechain/factories/MCNNFT__factory";
 import { isApeChain } from "../../hooks/useTransfer";
 import { ApeTip } from "./ApeTips";
+import "../../app.less";
 
 export type NFT_CHAIN_TYPE = "sourceChain" | "destinationChain";
 
@@ -368,9 +368,9 @@ const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: 
 
 const NFTBridgeTab = () => {
   const { isMobile } = useAppSelector(state => state.windowWidth);
-  const { transferRelatedFeatureDisabled } = useAppSelector(state => state.serviceInfo)
+  const { transferRelatedFeatureDisabled } = useAppSelector(state => state.serviceInfo);
   const classes = useStyles({ isMobile });
-  const { signer, chainId, address } = useWeb3Context();
+  const { signer, chainId, address, getNetworkById } = useWeb3Context();
   const dispatch = useAppDispatch();
   const onShowProviderModal = useCallback(() => {
     dispatch(openModal(ModalName.provider));
@@ -402,6 +402,9 @@ const NFTBridgeTab = () => {
 
   const { transactor } = useContractsContext();
   const { themeType } = useContext(ColorThemeContext);
+
+  const { transferConfig } = useAppSelector(state => state.transferInfo);
+  const { chains } = transferConfig;
 
   const routeHistory = useHistory();
 
@@ -552,36 +555,38 @@ const NFTBridgeTab = () => {
   };
 
   useEffect(() => {
-    let isMounted = true; 
+    let isMounted = true;
 
     getNFTBridgeChainList().then(res => {
       if (isMounted) {
         setS3NFTConfigChains(res.bridges);
-        console.debug("nfts>>>", JSON.stringify(res.nfts))
+        console.debug("nfts>>>", JSON.stringify(res.nfts));
         setNftList(res.nfts);
       }
-      return () => { isMounted = false };
+      return () => {
+        isMounted = false;
+      };
     });
   }, []);
 
   useEffect(() => {
-    if (!s3NFTConfigChains || s3NFTConfigChains.length === 0) {
+    if (!s3NFTConfigChains || s3NFTConfigChains.length === 0 || !chains || chains.length === 0) {
       return;
     }
     const nftChainList: NFTChain[] = [];
-    s3NFTConfigChains.forEach(configChain => {
-      const chain = getNetworkById(configChain.chainid);
-      if(chain && chain.chainId === configChain.chainid) {
+    s3NFTConfigChains?.forEach(configChain => {
+      const chain = chains.find(it => it.id === configChain.chainid);
+      if (chain && chain.id === configChain.chainid) {
         nftChainList.push({
           chainid: configChain.chainid,
           addr: configChain.addr,
-          icon: chain.iconUrl,
+          icon: chain.icon,
           name: chain.name,
         });
       }
     });
     setNFTChains(nftChainList);
-  }, [s3NFTConfigChains]);
+  }, [s3NFTConfigChains, chains]);
 
   const getDstChainInChainPair = (sourceChainId: number): number | undefined => {
     if (sourceChainId) {
@@ -639,33 +644,36 @@ const NFTBridgeTab = () => {
       finalDefaultDstChain = nftChains[1];
     }
 
-    const targetDestinationChainIds = new Set<number>()
-    targetDestinationChainIds.add(chainId)
+    const targetDestinationChainIds = new Set<number>();
+    targetDestinationChainIds.add(chainId);
 
-    nftList.forEach(nftConfig => {
-      let ids: number[] = []
+    nftList?.forEach(nftConfig => {
+      let ids: number[] = [];
 
       if (nftConfig.orig) {
-        ids.push(nftConfig.orig.chainid)
-      } 
+        ids.push(nftConfig.orig.chainid);
+      }
 
-      ids = ids.concat(nftConfig.pegs.map(item => {
-        return item.chainid
-      }))
+      ids = ids.concat(
+        nftConfig.pegs.map(item => {
+          return item.chainid;
+        }),
+      );
 
       if (ids.includes(chainId)) {
-        ids.forEach(id => {
-          targetDestinationChainIds.add(id)
-        })
+        ids?.forEach(id => {
+          targetDestinationChainIds.add(id);
+        });
       }
-    })
+    });
 
-    targetDestinationChainIds.delete(chainId)
+    targetDestinationChainIds.delete(chainId);
 
     if (!targetDestinationChainIds.has(finalDefaultDstChain?.chainid ?? 0)) {
-      finalDefaultDstChain = nftChains.find(nftChain => {
-        return targetDestinationChainIds.has(nftChain.chainid)
-      }) ?? finalDefaultDstChain
+      finalDefaultDstChain =
+        nftChains.find(nftChain => {
+          return targetDestinationChainIds.has(nftChain.chainid);
+        }) ?? finalDefaultDstChain;
     }
 
     setDstChain(finalDefaultDstChain);
@@ -725,7 +733,7 @@ const NFTBridgeTab = () => {
     _dstChainId: number,
   ): S3NFTToken | undefined => {
     let dstNFTToken;
-    nftConfigs.forEach(nftConfig => {
+    nftConfigs?.forEach(nftConfig => {
       if (nftConfig.orig) {
         const pegs = nftConfig.pegs;
         // selected nft address exsits in pegs array
@@ -853,7 +861,7 @@ const NFTBridgeTab = () => {
     if (nftChainType === SOURCE_CHAIN) {
       setNftChainSelectorVisible(false);
       if (chainId !== nftChain.chainid) {
-        switchChain(nftChain.chainid, "", () => {});
+        switchChain(nftChain.chainid, "", () => {}, getNetworkById);
       }
     } else if (nftChainType === DESTINATION_CHAIN) {
       setDstChain(nftChain);
@@ -934,14 +942,19 @@ const NFTBridgeTab = () => {
               <span style={{ fontWeight: "bold" }}>{sourceChain?.name} </span>
             ) : (
               // eslint-disable-next-line
-              <a 
+              <a
                 style={{ fontWeight: "bold" }}
                 // eslint-disable-next-line
                 onClick={() => {
-                  switchChain(sourceChain?.chainid, "", targetChainId => {
-                    console.debug(`switched chain to ${targetChainId}`);
-                    routeHistory.push("nft");
-                  });
+                  switchChain(
+                    sourceChain?.chainid,
+                    "",
+                    targetChainId => {
+                      console.debug(`switched chain to ${targetChainId}`);
+                      routeHistory.push("nft");
+                    },
+                    getNetworkById,
+                  );
                 }}
               >
                 {sourceChain?.name}{" "}
@@ -1073,7 +1086,7 @@ const NFTBridgeTab = () => {
   if (nftChainType === "sourceChain") {
     chainList = nftChains;
   } else {
-    nftChains.forEach(item => {
+    nftChains?.forEach(item => {
       if (item.chainid !== sourceChain?.chainid) {
         chainList.push(item);
       }
@@ -1191,8 +1204,8 @@ const NFTBridgeTab = () => {
         nftChainType={nftChainType}
         nftChains={chainList}
         visible={nftChainSelectorVisible}
-        sourceChain = {sourceChain}
-        nftList = {nftList}
+        sourceChain={sourceChain}
+        nftList={nftList}
         onCancel={() => {
           setNftChainSelectorVisible(false);
         }}

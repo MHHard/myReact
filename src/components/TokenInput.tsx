@@ -3,7 +3,7 @@ import { ChangeEvent, FC } from "react";
 import { createUseStyles } from "react-jss";
 import { Theme } from "../theme";
 import { useAppSelector } from "../redux/store";
-import { validFloatRegex } from "../constants/regex";
+import { validFloatRegex } from "../constants/const";
 
 export interface ITokenInputChangeEvent {
   value: string;

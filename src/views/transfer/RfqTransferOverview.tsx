@@ -2,15 +2,17 @@ import React from "react";
 import { BigNumber } from "@ethersproject/bignumber";
 import { createUseStyles } from "react-jss";
 import { formatDecimalPart } from "celer-web-utils/lib/format";
-import { Chain, Token, TokenInfo, GetTransferConfigsResponse, PeggedPairConfig } from "../../constants/type";
+import { Chain, TokenInfo, GetTransferConfigsResponse } from "../../constants/type";
 import { useAppSelector } from "../../redux/store";
 import { Theme } from "../../theme";
-import { getTokenSymbolWithPeggedMode, getTokenListSymbol } from "../../redux/assetSlice";
+import { getTokenListSymbol } from "../../redux/transferSlice";
 import bridgeRateDangerPng from "../../images/bridgeRateDanger.png";
 import noticePng from "../../images/noticeIcon.png";
 import { PriceResponse } from "../../proto/sdk/service/rfq//user_pb";
 import { formatDecimal } from "../../helpers/format";
 import rfqShareImage from "../../images/rfqShare.png";
+import { getTokenDisplaySymbol } from "./TransferOverview";
+import { isETH } from "../../helpers/tokenInfo";
 
 const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: Theme) => ({
   box: {
@@ -71,7 +73,7 @@ const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: 
     justifyContent: "space-between",
     backgroundColor: theme.secondBackground,
     borderRadius: 8,
-    height: props => (props.isMobile ? 70 :44),
+    height: props => (props.isMobile ? 70 : 44),
     padding: "8px 12px",
     marginBottom: 2,
   },
@@ -132,7 +134,7 @@ function RfqTransferOverview({
     <div className={styles.box}>
       <div className={styles.noticeItem}>
         <span className={styles.noticeTitle}>
-          <img id='rfqImg' className={styles.noticeIconImg} src={noticePng} alt="" />
+          <img id="rfqImg" className={styles.noticeIconImg} src={noticePng} alt="" />
           <span> This transfer utilizes liquidity from Peti xRFQ protocol</span>
           <div
             onClick={() => {
@@ -161,11 +163,16 @@ function RfqTransferOverview({
             <div className={bridgeRate <= 0.95 ? styles.bridgeRate : undefined}>{bridgeRate}</div>
           ) : (
             <div className={bridgeRate <= 0.95 ? styles.bridgeRate : undefined}>
-              1{" "}
-              {selectedToken?.token?.display_symbol ?? getTokenListSymbol(selectedToken?.token?.symbol, fromChain?.id)}{" "}
+              1 {isETH(selectedToken?.token) ? "ETH" : getTokenListSymbol(selectedToken?.token?.symbol, fromChain?.id)}{" "}
               on <img className={styles.iconImg} src={fromChain?.icon} alt="" /> = {bridgeRate}{" "}
-              {getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs)} on{" "}
-              <img className={styles.iconImg} src={toChain?.icon} alt="" />
+              {getTokenDisplaySymbol(
+                selectedToken?.token,
+                fromChain,
+                toChain,
+                transferConfig.pegged_pair_configs,
+                false,
+              )}{" "}
+              on <img className={styles.iconImg} src={toChain?.icon} alt="" />
             </div>
           )}
         </span>
@@ -174,7 +181,7 @@ function RfqTransferOverview({
         <span className={styles.title}>Fee</span>
         <span className={styles.content}>
           {formatDecimalPart(totalFee, 8, "round", true)}{" "}
-          {getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs)}
+          {getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs, false)}
         </span>
       </div>
       <div className={styles.item}>
@@ -184,14 +191,5 @@ function RfqTransferOverview({
     </div>
   );
 }
-
-export const getTokenDisplaySymbol = (
-  selectedToken: Token | undefined,
-  fromChain: Chain | undefined,
-  toChain: Chain | undefined,
-  peggedPairConfigs: Array<PeggedPairConfig>,
-) => {
-  return getTokenSymbolWithPeggedMode(fromChain?.id, toChain?.id, selectedToken?.symbol ?? "", peggedPairConfigs);
-};
 
 export default React.memo(RfqTransferOverview);

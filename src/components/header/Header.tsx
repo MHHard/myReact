@@ -5,11 +5,10 @@ import { LoadingOutlined, MenuOutlined } from "@ant-design/icons";
 import classNames from "classnames";
 import { ColorThemeContext } from "../../providers/ThemeProvider";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { openModal, ModalName, closeModal } from "../../redux/modalSlice";
+import { openModal, ModalName } from "../../redux/modalSlice";
 import { setIsChainShow, setChainSource } from "../../redux/transferSlice";
 import { useWeb3Context } from "../../providers/Web3ContextProvider";
 import { Theme } from "../../theme/theme";
-import MenuButton from "./MenuButton";
 import Account from "./Account";
 import cbridgeLogo from "../../images/cbridgeLogo.svg";
 import cBrdige2Light from "../../images/cBridgeLight.svg";
@@ -19,12 +18,8 @@ import lightHomeHistory from "../../images/lightHomeHistory.svg";
 import dark from "../../images/dark.svg";
 import light from "../../images/light.svg";
 
-import MenuModal from "./MenuModal";
-import { getNetworkById } from "../../constants/network";
-import ViewTab from "../../components/ViewTab";
-import { useNonEVMContext } from "../../providers/NonEVMContextProvider";
 import { Chain } from "../../constants/type";
-import LinkList from "./LinkList";
+import HistoryButton from "./HistoryButton";
 
 const useStyles = createUseStyles((theme: Theme) => ({
   header: {
@@ -317,118 +312,14 @@ const useStyles = createUseStyles((theme: Theme) => ({
   },
 }));
 
-const historyButtonStyles = createUseStyles((theme: Theme) => ({
-  box: {
-    position: "relative",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: 22,
-    borderRadius: 12,
-    background: theme.primaryBrand,
-  },
-  titleBox: {
-    fontWeight: 400,
-    fontSize: 12,
-    padding: "0 4px 0 6px",
-    color: theme.unityWhite,
-  },
-  mobileHistoryBtnWrapper: {
-    display: "flex",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    background: theme.primaryBackground,
-    borderRadius: 12,
-    height: 24,
-    paddingLeft: 2,
-    paddingRight: 4,
-  },
-  mobileHistoryBtnIcon: {
-    fontSize: 18,
-    color: theme.surfacePrimary,
-    marginRight: 2,
-    width: 18,
-    height: 18,
-    pointerEvents: "none",
-  },
-  mobileHistoryText: {
-    fontSize: 14,
-    fontWeight: 400,
-    color: theme.surfacePrimary,
-  },
-  dot: {
-    width: 8,
-    height: 8,
-    border: "1px solid #fff",
-    borderRadius: "50%",
-    background: theme.infoDanger,
-    position: "absolute",
-    top: -3,
-    right: 0,
-  },
-}));
-
-type HistoryButtonProps = {
-  totalActionNum: number;
-  totalPendingNum: number;
-  onClick: () => void;
-};
-
-function HistoryButton({ totalActionNum, totalPendingNum, onClick }: HistoryButtonProps) {
-  const styles = historyButtonStyles();
-  const { themeType } = useContext(ColorThemeContext);
-  let content;
-  if (totalActionNum) {
-    content = (
-      <div className={styles.box} onClick={onClick}>
-        <div className={styles.titleBox}>
-          <img
-            style={{ maxWidth: "100%", maxHeight: "100%", height: 16, position: "relative", top: -1 }}
-            src="./actionLogo.svg"
-            alt=""
-          />
-          <span style={{ marginLeft: 2 }}>{`${totalActionNum} Action${
-            Number(totalActionNum) !== 1 ? "s" : ""
-          } Required`}</span>
-        </div>
-        <div className={styles.dot} />
-      </div>
-    );
-  } else if (totalPendingNum) {
-    content = (
-      <div className={styles.box} onClick={onClick}>
-        <div className={styles.titleBox}>
-          <span>{` ${totalPendingNum} Pending`}</span>
-          <LoadingOutlined style={{ fontSize: 12, marginLeft: 2, color: "#fff" }} />
-        </div>
-      </div>
-    );
-  } else {
-    content = (
-      <div className={styles.mobileHistoryBtnWrapper} onClick={onClick}>
-        <img
-          src={themeType === "dark" ? homeHistoryIcon : lightHomeHistory}
-          className={styles.mobileHistoryBtnIcon}
-          alt="homeHistoryIcon icon for history"
-        />
-        <span className={styles.mobileHistoryText}>History</span>
-      </div>
-    );
-  }
-  return content;
-}
-
-export default function Header(): JSX.Element {
+export default function Header({ showHistory }): JSX.Element {
   const { isMobile } = useAppSelector(state => state.windowWidth);
   const classes = useStyles();
   const [sGNModalState, setSGNModalState] = useState(false);
   const { themeType, toggleTheme } = useContext(ColorThemeContext);
-  const { network, signer, chainId } = useWeb3Context();
-  const { nonEVMConnected } = useNonEVMContext();
+  const { network, signer, chainId, getNetworkById } = useWeb3Context();
   const dispatch = useAppDispatch();
-  const { totalActionNum, totalPaddingNum, transferConfig, fromChain, isFromSEO } = useAppSelector(
-    state => state.transferInfo,
-  );
+  const { totalActionNum, totalPaddingNum, transferConfig, fromChain } = useAppSelector(state => state.transferInfo);
   // const logoUrl = isMobile && signer ? cBridgeIcon : themeType === "dark" ? cBrdige2Dark : cBrdige2Light;
   const logoUrl = cbridgeLogo;
   const biglogoUrl = themeType === "dark" ? cBrdige2Light : cBrdige2Dark;
@@ -493,15 +384,10 @@ export default function Header(): JSX.Element {
     }
     return content;
   };
-  // const { totalTxVolume, last24HourTxVolume } = startDate;
-  const { modal } = useAppSelector(state => state);
-  const { showMenuModal } = modal;
   const handleShowMenuModal = useCallback(() => {
     dispatch(openModal(ModalName.menu));
   }, [dispatch]);
-  const handleCloseMenuModal = () => {
-    dispatch(closeModal(ModalName.menu));
-  };
+
   if (isMobile) {
     return (
       <div className={classes.mobilePageHeaderWrapper}>
@@ -521,26 +407,11 @@ export default function Header(): JSX.Element {
           </span>
 
           <div className={classes.mobileHeaderPanel} style={{ flex: "1 0 auto" }}>
-            <div style={{ marginRight: 2 }}>
-              {signer && (
-                <HistoryButton
-                  totalActionNum={totalActionNum}
-                  totalPendingNum={totalPaddingNum}
-                  onClick={() => handleOpenHistoryModal()}
-                />
-              )}
-            </div>
+            <div style={{ marginRight: 2 }}>{signer && showHistory && <HistoryButton />}</div>
             <Account />
             <Button type="primary" className={classes.menuBtn} icon={<MenuOutlined />} onClick={handleShowMenuModal} />
           </div>
         </div>
-        {!isFromSEO && (
-          <div className={classes.mobileViewTab}>
-            <ViewTab />
-          </div>
-        )}
-
-        <MenuModal visible={showMenuModal} onCancel={handleCloseMenuModal} />
       </div>
     );
   }
@@ -549,7 +420,7 @@ export default function Header(): JSX.Element {
     <div className={classes.header}>
       <div className={classes.hleft}>
         <div className={classes.headerLeft}>
-          <div className={classes.logoWrapper}>
+          <div id="logoWrapper" className={classes.logoWrapper}>
             <PageHeader
               title={
                 <div>
@@ -574,13 +445,12 @@ export default function Header(): JSX.Element {
               style={{ paddingRight: 0 }}
             />
           </div>
-          <LinkList classStyle={classes} />
         </div>
-        {!isFromSEO && (
+        {/* {!isFromSEO && (
           <div className="tabBody">
             <ViewTab />
           </div>
-        )}
+        )} */}
       </div>
 
       <div className={classes.headerRight}>
@@ -594,7 +464,7 @@ export default function Header(): JSX.Element {
             <div className={classes.historyText}>{getstatusText()}</div>
           </div>
         </div>
-        {(signer || nonEVMConnected) && (
+        {signer && (
           <div
             className={classNames("chainLocale", classes.btnHover)}
             style={
@@ -635,8 +505,6 @@ export default function Header(): JSX.Element {
             </div>
           </div>
         </div>
-
-        <MenuButton />
 
         <Modal
           title=""

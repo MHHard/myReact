@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { JsonRpcProvider } from "@ethersproject/providers";
+import { useCallback, useEffect, useState } from "react";
 import { BigNumber } from "@ethersproject/bignumber";
 import { parseUnits } from "@ethersproject/units";
 
@@ -7,7 +6,6 @@ import { useReadOnlyCustomContractLoader } from ".";
 import { Bridge, Bridge__factory } from "../typechain/typechain";
 import { useAppSelector, useAppDispatch } from "../redux/store";
 import { formatDecimal } from "../helpers/format";
-import { CHAIN_LIST } from "../constants/network";
 import { setBigAmountDelayInfos, BigAmountDelayInfo } from "../redux/transferSlice";
 import { Token, Chain } from "../constants/type";
 import { PeggedChainMode, usePeggedPairConfig } from "./usePeggedPairConfig";
@@ -15,7 +13,7 @@ import { OriginalTokenVault__factory } from "../typechain/typechain/factories/Or
 import { PeggedTokenBridge__factory } from "../typechain/typechain/factories/PeggedTokenBridge__factory";
 import { OriginalTokenVaultV2__factory } from "../typechain/typechain/factories/OriginalTokenVaultV2__factory";
 import { PeggedTokenBridgeV2__factory } from "../typechain/typechain/factories/PeggedTokenBridgeV2__factory";
-import { isNonEVMChain } from "../providers/NonEVMContextProvider";
+import { useWeb3Context } from "../providers/Web3ContextProvider";
 
 export const useBigAmountDelay = (
   chain: Chain | undefined,
@@ -24,6 +22,7 @@ export const useBigAmountDelay = (
   hasEpochVolumeCaps = false,
   epochVolumeCaps?: BigNumber,
 ) => {
+  const { CHAIN_LIST } = useWeb3Context();
   const dispatch = useAppDispatch();
   const { transferInfo } = useAppSelector(state => state);
   const [isBigAmountDelayed, setIsBigAmountDelayed] = useState(false);
@@ -35,38 +34,28 @@ export const useBigAmountDelay = (
     return it.chainId === chain?.id ?? "";
   });
   const rpcUrl = toChainValue?.rpcUrl ?? "";
-  const provider = useMemo(() => {
-    return rpcUrl.length > 0 ? new JsonRpcProvider(rpcUrl) : undefined;
-  }, [rpcUrl]);
   const pegConfig = usePeggedPairConfig();
   const contractAddress = (() => {
-    if (isNonEVMChain(chain?.id ?? 0)) {
-      return "";
-    }
     switch (pegConfig.mode) {
       case PeggedChainMode.Deposit:
-        if (isNonEVMChain(pegConfig.config.pegged_chain_id)) {
-          return "";
-        }
         return pegConfig.config.pegged_burn_contract_addr;
       case PeggedChainMode.Burn:
-        if (isNonEVMChain(pegConfig.config.org_chain_id)) {
-          return "";
-        }
         return pegConfig.config.pegged_deposit_contract_addr;
       default:
         return chain?.contract_addr ?? "";
     }
   })();
 
-  const dstBridge = useReadOnlyCustomContractLoader(provider, contractAddress, Bridge__factory) as Bridge | undefined;
+  const dstBridge = useReadOnlyCustomContractLoader(chain?.id ?? 0, contractAddress, Bridge__factory) as
+    | Bridge
+    | undefined;
   const originalTokenVault = useReadOnlyCustomContractLoader(
-    provider,
+    chain?.id ?? 0,
     contractAddress,
     pegConfig.config.vault_version > 0 ? OriginalTokenVaultV2__factory : OriginalTokenVault__factory,
   );
   const peggedTokenBridge = useReadOnlyCustomContractLoader(
-    provider,
+    chain?.id ?? 0,
     contractAddress,
     pegConfig.config.bridge_version > 0 ? PeggedTokenBridgeV2__factory : PeggedTokenBridge__factory,
   );

@@ -9,7 +9,7 @@ import ActionTitle from "./common/ActionTitle";
 import { Theme } from "../theme/theme";
 import { useAppSelector } from "../redux/store";
 import cloverLogo from "../providers/logos/clover.svg";
-import dcentLogo from "../providers/logos/dcent.png";
+import dcentLogo from "../providers/logos/dcent1.png";
 import tokenPocketLogo from "../providers/logos/token-pocket.jpg";
 import coinbaseLogo from "../providers/logos/coinbase.png";
 import safepalLogo from "../providers/logos/safepal.jpeg";
@@ -331,6 +331,8 @@ export default function ProviderModal({ visible, onCancel }: ProviderModalProps)
                   handleSelectProvider("clover");
                 }}
               />
+              <Provider provider={injected.OKXWALLET} onClick={() => handleSelectProvider(injected.OKXWALLET.name)} />
+
               {isMobile ? (
                 <>
                   <Provider provider={injected.IMTOKEN} onClick={() => handleSelectProvider(injected.IMTOKEN.name)} />

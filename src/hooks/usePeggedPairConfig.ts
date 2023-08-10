@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import { useEffect, useState } from "react";
 import { PeggedPairConfig } from "../constants/type";
-import { isNonEVMChain } from "../providers/NonEVMContextProvider";
 import {
   setOTContractAddr,
   setPTContractAddr,
@@ -28,60 +27,6 @@ export class PeggedPair {
     this.mode = mode;
     this.config = config;
   }
-
-  /**
-   * to get the target token address for getting user interface balance
-   *
-   * if the transfer mode is mint & swap, user get the final token must be canonical token. so the balance is get via the canonical token address.
-   * for example there is a mint flow, FRAX(Ethereum Mainnet) -> mint -> CelrFRAX(mint token) -> swap -> FRAX(BSC)
-   * On BSC user just can see the FRAX instead of CelrFRAX, that is canonical token.
-   *
-   * @param originalAddress
-   * @param fromChainId
-   * @param tokenSymbol
-   * @param peggedPairs
-   * @returns
-   */
-  getTokenBalanceAddress = (
-    originalAddress: string,
-    fromChainId: number | undefined = undefined,
-    tokenSymbol: string | undefined = undefined,
-    peggedPairs: Array<PeggedPairConfig> | undefined = undefined,
-  ) => {
-    if (!fromChainId || !tokenSymbol || !peggedPairs) {
-      return originalAddress;
-    }
-
-    const peggedTokens = peggedPairs?.filter(item => {
-      return item.pegged_chain_id === fromChainId && tokenSymbol === item.pegged_token.token.symbol;
-    });
-
-    if (peggedTokens && peggedTokens.length > 0 && peggedTokens[0].canonical_token_contract_addr.length > 0) {
-      return peggedTokens[0].canonical_token_contract_addr;
-    }
-
-    if (isNonEVMChain(fromChainId)) {
-      const nonEVMDeposit = peggedPairs?.find(peggedPairConfig => {
-        return peggedPairConfig.org_chain_id === fromChainId && peggedPairConfig.org_token.token.symbol === tokenSymbol;
-      });
-
-      if (nonEVMDeposit) {
-        return nonEVMDeposit.pegged_token.token.address;
-      }
-
-      const nonEVMBurn = peggedPairs?.find(peggedPairConfig => {
-        return (
-          peggedPairConfig.pegged_chain_id === fromChainId && peggedPairConfig.pegged_token.token.symbol === tokenSymbol
-        );
-      });
-
-      if (nonEVMBurn) {
-        return nonEVMBurn.org_token.token.address;
-      }
-    }
-
-    return originalAddress;
-  };
 
   getHistoryTokenBalanceAddress = (
     originalAddress: string,
@@ -175,6 +120,39 @@ export const GetPeggedMode = (
   return PeggedChainMode.Off;
 };
 
+/**
+ * Get the target token address for getting user interface balance
+ *
+ * if the transfer mode is mint & swap, user get the final token must be canonical token. so the balance is get via the canonical token address.
+ * for example there is a mint flow, FRAX(Ethereum Mainnet) -> mint -> CelrFRAX(mint token) -> swap -> FRAX(BSC)
+ * On BSC user just can see the FRAX instead of CelrFRAX, that is canonical token.
+ *
+ * @param originalAddress
+ * @param fromChainId
+ * @param tokenSymbol
+ * @param peggedPairs
+ * @returns
+ */
+export const getTokenBalanceAddress = (
+  originalAddress: string,
+  fromChainId: number | undefined = undefined,
+  tokenSymbol: string | undefined = undefined,
+  peggedPairs: Array<PeggedPairConfig> | undefined = undefined,
+) => {
+  if (!fromChainId || !tokenSymbol || !peggedPairs) {
+    return originalAddress;
+  }
+
+  const peggedTokens = peggedPairs?.filter(item => {
+    return item.pegged_chain_id === fromChainId && tokenSymbol === item.pegged_token.token.symbol;
+  });
+
+  if (peggedTokens && peggedTokens.length > 0 && peggedTokens[0].canonical_token_contract_addr.length > 0) {
+    return peggedTokens[0].canonical_token_contract_addr;
+  }
+  return originalAddress;
+};
+
 export const getPeggedPairConfigs = (pegged_pair_configs, fromChain, toChain, selectedToken, dispatch) => {
   const depositConfigs = pegged_pair_configs.filter(
     e =>
@@ -189,50 +167,29 @@ export const getPeggedPairConfigs = (pegged_pair_configs, fromChain, toChain, se
       e.org_token.token.symbol === selectedToken?.token.symbol,
   );
   if (depositConfigs.length > 0) {
-    if (isNonEVMChain(depositConfigs[0].pegged_chain_id)) {
-      /// Deposit EVM(org) ===> Non EVM(peg)
-      if (depositConfigs[0].vault_version > 0) {
-        dispatch(setOTContractAddrV2(depositConfigs[0].pegged_deposit_contract_addr));
-      } else {
-        dispatch(setOTContractAddr(depositConfigs[0].pegged_deposit_contract_addr));
-      }
-    } else if (!isNonEVMChain(depositConfigs[0].org_chain_id)) {
-      /// Deposit EVM(org) ===> EVM(peg)
-      if (depositConfigs[0].vault_version > 0) {
-        dispatch(setOTContractAddrV2(depositConfigs[0].pegged_deposit_contract_addr));
-      } else {
-        dispatch(setOTContractAddr(depositConfigs[0].pegged_deposit_contract_addr));
-      }
+    /// Deposit EVM(org) ===> EVM(peg)
+    if (depositConfigs[0].vault_version > 0) {
+      dispatch(setOTContractAddrV2(depositConfigs[0].pegged_deposit_contract_addr));
     } else {
-      /// Deposit Non EVM(org) ===> EVM(peg)
+      dispatch(setOTContractAddr(depositConfigs[0].pegged_deposit_contract_addr));
     }
+
     return new PeggedPair(PeggedChainMode.Deposit, depositConfigs[0]);
   }
   if (burnConfigs.length > 0) {
     // peg v0 to v0 transition, it's pair can be removed once all the v0 peg be migrated to v2.
-    if(burnConfigs[0].migration_peg_burn_contract_addr) {
+    if (burnConfigs[0].migration_peg_burn_contract_addr) {
       dispatch(setPTContractAddrV2(burnConfigs[0].pegged_burn_contract_addr));
       dispatch(setPTContractAddr(burnConfigs[0].migration_peg_burn_contract_addr));
-      return new PeggedPair(PeggedChainMode.TransitionPegV2, burnConfigs[0])
+      return new PeggedPair(PeggedChainMode.TransitionPegV2, burnConfigs[0]);
     }
-    
-    if (isNonEVMChain(burnConfigs[0].org_chain_id)) {
-      /// Burn EVM(peg) ===> NonEVM(org)
-      if (burnConfigs[0].bridge_version > 0) {
-        dispatch(setPTContractAddrV2(burnConfigs[0].pegged_burn_contract_addr));
-      } else {
-        dispatch(setPTContractAddr(burnConfigs[0].pegged_burn_contract_addr));
-      }
-    } else if (!isNonEVMChain(burnConfigs[0].pegged_chain_id)) {
-      /// Burn EVM(peg) ===> EVM(org)
-      if (burnConfigs[0].bridge_version > 0) {
-        dispatch(setPTContractAddrV2(burnConfigs[0].pegged_burn_contract_addr));
-      } else {
-        dispatch(setPTContractAddr(burnConfigs[0].pegged_burn_contract_addr));
-      }
+    /// Burn EVM(peg) ===> EVM(org)
+    if (burnConfigs[0].bridge_version > 0) {
+      dispatch(setPTContractAddrV2(burnConfigs[0].pegged_burn_contract_addr));
     } else {
-      /// Burn NonEVM(peg) ===> EVM(org)
+      dispatch(setPTContractAddr(burnConfigs[0].pegged_burn_contract_addr));
     }
+
     if (burnConfigs[0].canonical_token_contract_addr.length > 0) {
       return new PeggedPair(PeggedChainMode.BurnThenSwap, burnConfigs[0]);
     }

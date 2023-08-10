@@ -4,26 +4,27 @@ import { useAsync } from "react-use";
 import { useHistory } from "react-router-dom";
 
 import Web3Modal from "@celer-network/web3modal";
-import { JsonRpcProvider, JsonRpcSigner, Web3Provider } from "@ethersproject/providers"; // InfuraProvider,
+import { StaticJsonRpcProvider, JsonRpcSigner, Web3Provider } from "@ethersproject/providers"; // InfuraProvider,
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { getNetworkById, CHAIN_LIST } from "../constants/network"; // INFURA_ID
+import { NetworkInfo } from "../constants/network"; // INFURA_ID
 import { storageConstants } from "../constants/const";
 import { TabKeys, generateTabKey } from "../helpers/viewTabKeyGeneration";
+import { LocalChainConfigType } from "../constants/type";
 
-const targetNetworkId = Number(process.env.REACT_APP_NETWORK_ID) || 3;
-
+// const targetNetworkId = Number(process.env.REACT_APP_NETWORK_ID) || 3;
+const defaultChain = {
+  name: "",
+  chainId: 883,
+  rpcUrl: "http://localhost:8545",
+  iconUrl: "./noChain.png",
+  symbol: "",
+  blockExplorerUrl: "",
+  tokenSymbolList: [],
+  lqMintTokenSymbolBlackList: [],
+};
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-export const rpcUrls = () => {
-  const rpcMap = {};
-  /* eslint-disable-next-line no-restricted-syntax */
-  for (const network of CHAIN_LIST) {
-    rpcMap[network.chainId] = network.rpcUrl;
-  }
-  return rpcMap;
-};
-
-const web3Modal = new Web3Modal({
+let web3Modal = new Web3Modal({
   cacheProvider: true, // optional
   network: "mainnet",
   providerOptions: {
@@ -45,15 +46,14 @@ const web3Modal = new Web3Modal({
       package: WalletConnectProvider,
       options: {
         infuraId: process.env.REACT_APP_INFURA_ID, // required
-        rpc: rpcUrls(),
+        rpc: {},
       },
     },
   },
   theme: "dark",
 });
-
 interface Web3ContextProps {
-  provider: JsonRpcProvider | undefined;
+  provider: StaticJsonRpcProvider | undefined;
   signer: JsonRpcSigner | undefined;
   network: string;
   address: string;
@@ -61,8 +61,12 @@ interface Web3ContextProps {
   chainId: number;
   web3Modal: Web3Modal;
   connecting: boolean;
+  CHAIN_LIST: NetworkInfo[];
+  basicConfiguration: LocalChainConfigType;
   loadWeb3Modal: (providerName: string, catchMethod?: () => void) => Promise<void>;
   logoutOfWeb3Modal: () => Promise<void>;
+  setWbe3Config: (providerIn: StaticJsonRpcProvider | undefined, config: LocalChainConfigType) => Promise<void>;
+  getNetworkById: (cId: number | string) => NetworkInfo;
 }
 
 interface Web3ContextProviderProps {
@@ -74,27 +78,37 @@ export const Web3Context = createContext<Web3ContextProps>({
   signer: undefined,
   address: "",
   rpcUrl: "",
-  network: getNetworkById(targetNetworkId).name,
+  network: "",
   chainId: 0,
   web3Modal,
   connecting: false,
+  CHAIN_LIST: [],
+  basicConfiguration: {},
   loadWeb3Modal: async () => {},
   logoutOfWeb3Modal: async () => {},
+  setWbe3Config: async () => {},
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  getNetworkById: cId => {
+    const test: NetworkInfo = defaultChain;
+    return test;
+  },
 });
 
 export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX.Element => {
-  const networkObject = getNetworkById(targetNetworkId);
-  const [provider, setProvider] = useState<JsonRpcProvider>();
+  // const networkObject = getNetworkById(targetNetworkId);
+  const [provider, setProvider] = useState<StaticJsonRpcProvider>();
   const [signer, setSigner] = useState<JsonRpcSigner>();
-  const [network, setNetwork] = useState(networkObject.name);
+  const [network, setNetwork] = useState("");
   const [address, setAddress] = useState("");
-  const [rpcUrl, setRpcUrl] = useState(networkObject.rpcUrl);
+  const [rpcUrl, setRpcUrl] = useState("");
   const [chainId, setChainId] = useState(0);
   const [connectName, setConnectName] = useState("injected");
   const [connecting, setConnecting] = useState(false);
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const [web3Connection, setWeb3Connection] = useState<any>();
   const [shouldReload, setShouldReload] = useState(false);
+  const [chainList, setChainList] = useState<NetworkInfo[]>([]);
+  const [basicConfig, setBasicConfig] = useState<LocalChainConfigType>({});
   const [newChainId, setNewChainId] = useState(0);
   const history = useHistory();
 
@@ -129,11 +143,21 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
       }
 
       if (generateTabKey(history.location.pathname.toLowerCase()) === TabKeys.Transfer) {
-        history.push(
-          `/${newChainId}/${localStorage.getItem(storageConstants.KEY_TO_CHAIN_ID) ?? 0}/${localStorage.getItem(
-            storageConstants.KEY_SELECTED_TOKEN_SYMBOL,
-          )}${refIdSuffix}`,
-        );
+        const localSourceChainId = localStorage.getItem(storageConstants.KEY_FROM_CHAIN_ID);
+        const localDestinationChainId = localStorage.getItem(storageConstants.KEY_TO_CHAIN_ID);
+        if (newChainId.toString() === localDestinationChainId) {
+          history.push(
+            `/${newChainId}/${localSourceChainId ?? 0}/${localStorage.getItem(
+              storageConstants.KEY_SELECTED_TOKEN_SYMBOL,
+            )}${refIdSuffix}`,
+          );
+        } else {
+          history.push(
+            `/${newChainId}/${localStorage.getItem(storageConstants.KEY_TO_CHAIN_ID) ?? 0}/${localStorage.getItem(
+              storageConstants.KEY_SELECTED_TOKEN_SYMBOL,
+            )}${refIdSuffix}`,
+          );
+        }
       }
 
       window.location.reload();
@@ -155,7 +179,6 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
     if (!provider) {
       return;
     }
-
     const networkData = await provider.getNetwork();
     console.debug("provider", provider, networkData);
     setChainId(networkData.chainId);
@@ -193,6 +216,71 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
     localStorage.setItem(storageConstants.KEY_WEB3_PROVIDER_NAME, providerName);
   }, []);
 
+  const getNetworkById: (cId: number | string) => NetworkInfo = (cId: number | string) => {
+    for (let i = 0; i < chainList.length; i++) {
+      if (chainList[i]?.chainId === cId || chainList[i].chainId === Number(cId)) {
+        return chainList[i];
+      }
+    }
+    return defaultChain;
+  };
+  useEffect(() => {
+    const rpcMap = {};
+    const chains: NetworkInfo[] = Object.values(basicConfig) as NetworkInfo[];
+    /* eslint-disable-next-line no-restricted-syntax */
+    for (const net of chains) {
+      rpcMap[net.chainId] = net.rpcUrl;
+    }
+    web3Modal = new Web3Modal({
+      cacheProvider: true, // optional
+      network: "mainnet",
+      providerOptions: {
+        injected: {
+          display: {
+            // logo: "data:image/gif;base64,INSERT_BASE64_STRING",
+            name: "Injected",
+            description: "Connect with the provider in your Browser",
+          },
+          package: null,
+        },
+        // Example with WalletConnect provider
+        walletconnect: {
+          display: {
+            // logo: "data:image/gif;base64,INSERT_BASE64_STRING",
+            name: "Mobile",
+            description: "Scan qrcode with your mobile wallet",
+          },
+          package: WalletConnectProvider,
+          options: {
+            infuraId: process.env.REACT_APP_INFURA_ID, // required
+            rpc: rpcMap,
+          },
+        },
+      },
+      theme: "dark",
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [basicConfig]);
+
+  const setWbe3Config = async (providerIn: StaticJsonRpcProvider | undefined, config: LocalChainConfigType) => {
+    console.log(6666666, providerIn, config);
+
+    if (!providerIn) {
+      return;
+    }
+    setBasicConfig(config);
+    const chains: NetworkInfo[] = Object.values(config) as NetworkInfo[];
+    console.log(6665555, chains);
+    setChainList(chains);
+    setConnectName("");
+    setProvider(provider);
+    const newSigner = await providerIn.getSigner();
+    setSigner(newSigner);
+    const walletAddress = await newSigner.getAddress();
+    setAddress(walletAddress);
+    localStorage.setItem(storageConstants.KEY_WEB3_PROVIDER_NAME, "");
+  };
+
   const logoutOfWeb3Modal = useCallback(async () => {
     if (web3Connection && web3Connection.close) {
       web3Connection.close();
@@ -211,7 +299,7 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
   }, [loadWeb3Modal, connectName]);
 
   // useEffect(() => {
-  //   let infuraProvider: JsonRpcProvider | undefined;
+  //   let infuraProvider: StaticJsonRpcProvider | undefined;
   //   try {
   //     infuraProvider = new InfuraProvider(network, INFURA_ID);
   //   } catch (e) {
@@ -231,8 +319,12 @@ export const Web3ContextProvider = ({ children }: Web3ContextProviderProps): JSX
         chainId,
         web3Modal,
         connecting,
+        CHAIN_LIST: chainList,
+        basicConfiguration: basicConfig,
         loadWeb3Modal,
         logoutOfWeb3Modal,
+        setWbe3Config,
+        getNetworkById,
       }}
     >
       {children}

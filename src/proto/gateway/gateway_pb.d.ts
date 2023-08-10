@@ -15,6 +15,250 @@ import * as sdk_service_rfq_user_pb from '../sdk/service/rfq/user_pb';
 import * as sdk_service_rfq_model_pb from '../sdk/service/rfq/model_pb';
 
 
+export class GetBlockBridgeDirectListForCsToolRequest extends jspb.Message {
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetBlockBridgeDirectListForCsToolRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetBlockBridgeDirectListForCsToolRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetBlockBridgeDirectListForCsToolRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetBlockBridgeDirectListForCsToolRequest): GetBlockBridgeDirectListForCsToolRequest.AsObject;
+  static serializeBinaryToWriter(message: GetBlockBridgeDirectListForCsToolRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetBlockBridgeDirectListForCsToolRequest;
+  static deserializeBinaryFromReader(message: GetBlockBridgeDirectListForCsToolRequest, reader: jspb.BinaryReader): GetBlockBridgeDirectListForCsToolRequest;
+}
+
+export namespace GetBlockBridgeDirectListForCsToolRequest {
+  export type AsObject = {
+    auth?: DashboardAuth.AsObject,
+  }
+}
+
+export class GetBlockBridgeDirectListForCsToolResponse extends jspb.Message {
+  getErr(): ErrMsg | undefined;
+  setErr(value?: ErrMsg): GetBlockBridgeDirectListForCsToolResponse;
+  hasErr(): boolean;
+  clearErr(): GetBlockBridgeDirectListForCsToolResponse;
+
+  getBlockedBridgeDirectList(): Array<BlockBridgeDirect>;
+  setBlockedBridgeDirectList(value: Array<BlockBridgeDirect>): GetBlockBridgeDirectListForCsToolResponse;
+  clearBlockedBridgeDirectList(): GetBlockBridgeDirectListForCsToolResponse;
+  addBlockedBridgeDirect(value?: BlockBridgeDirect, index?: number): BlockBridgeDirect;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetBlockBridgeDirectListForCsToolResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetBlockBridgeDirectListForCsToolResponse): GetBlockBridgeDirectListForCsToolResponse.AsObject;
+  static serializeBinaryToWriter(message: GetBlockBridgeDirectListForCsToolResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetBlockBridgeDirectListForCsToolResponse;
+  static deserializeBinaryFromReader(message: GetBlockBridgeDirectListForCsToolResponse, reader: jspb.BinaryReader): GetBlockBridgeDirectListForCsToolResponse;
+}
+
+export namespace GetBlockBridgeDirectListForCsToolResponse {
+  export type AsObject = {
+    err?: ErrMsg.AsObject,
+    blockedBridgeDirectList: Array<BlockBridgeDirect.AsObject>,
+  }
+}
+
+export class SetBlockBridgeDirectListForCsToolRequest extends jspb.Message {
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): SetBlockBridgeDirectListForCsToolRequest;
+  hasAuth(): boolean;
+  clearAuth(): SetBlockBridgeDirectListForCsToolRequest;
+
+  getNewConfig(): BlockBridgeDirect | undefined;
+  setNewConfig(value?: BlockBridgeDirect): SetBlockBridgeDirectListForCsToolRequest;
+  hasNewConfig(): boolean;
+  clearNewConfig(): SetBlockBridgeDirectListForCsToolRequest;
+
+  getAddNew(): boolean;
+  setAddNew(value: boolean): SetBlockBridgeDirectListForCsToolRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SetBlockBridgeDirectListForCsToolRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SetBlockBridgeDirectListForCsToolRequest): SetBlockBridgeDirectListForCsToolRequest.AsObject;
+  static serializeBinaryToWriter(message: SetBlockBridgeDirectListForCsToolRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SetBlockBridgeDirectListForCsToolRequest;
+  static deserializeBinaryFromReader(message: SetBlockBridgeDirectListForCsToolRequest, reader: jspb.BinaryReader): SetBlockBridgeDirectListForCsToolRequest;
+}
+
+export namespace SetBlockBridgeDirectListForCsToolRequest {
+  export type AsObject = {
+    auth?: DashboardAuth.AsObject,
+    newConfig?: BlockBridgeDirect.AsObject,
+    addNew: boolean,
+  }
+}
+
+export class SetBlockBridgeDirectListForCsToolResponse extends jspb.Message {
+  getErr(): ErrMsg | undefined;
+  setErr(value?: ErrMsg): SetBlockBridgeDirectListForCsToolResponse;
+  hasErr(): boolean;
+  clearErr(): SetBlockBridgeDirectListForCsToolResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SetBlockBridgeDirectListForCsToolResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: SetBlockBridgeDirectListForCsToolResponse): SetBlockBridgeDirectListForCsToolResponse.AsObject;
+  static serializeBinaryToWriter(message: SetBlockBridgeDirectListForCsToolResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SetBlockBridgeDirectListForCsToolResponse;
+  static deserializeBinaryFromReader(message: SetBlockBridgeDirectListForCsToolResponse, reader: jspb.BinaryReader): SetBlockBridgeDirectListForCsToolResponse;
+}
+
+export namespace SetBlockBridgeDirectListForCsToolResponse {
+  export type AsObject = {
+    err?: ErrMsg.AsObject,
+  }
+}
+
+export class BlockBridgeDirect extends jspb.Message {
+  getSymbol(): string;
+  setSymbol(value: string): BlockBridgeDirect;
+
+  getSrcChainId(): number;
+  setSrcChainId(value: number): BlockBridgeDirect;
+
+  getDstChainId(): number;
+  setDstChainId(value: number): BlockBridgeDirect;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BlockBridgeDirect.AsObject;
+  static toObject(includeInstance: boolean, msg: BlockBridgeDirect): BlockBridgeDirect.AsObject;
+  static serializeBinaryToWriter(message: BlockBridgeDirect, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BlockBridgeDirect;
+  static deserializeBinaryFromReader(message: BlockBridgeDirect, reader: jspb.BinaryReader): BlockBridgeDirect;
+}
+
+export namespace BlockBridgeDirect {
+  export type AsObject = {
+    symbol: string,
+    srcChainId: number,
+    dstChainId: number,
+  }
+}
+
+export class GetWalletsByIpForCsToolRequest extends jspb.Message {
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetWalletsByIpForCsToolRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetWalletsByIpForCsToolRequest;
+
+  getIp(): string;
+  setIp(value: string): GetWalletsByIpForCsToolRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetWalletsByIpForCsToolRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetWalletsByIpForCsToolRequest): GetWalletsByIpForCsToolRequest.AsObject;
+  static serializeBinaryToWriter(message: GetWalletsByIpForCsToolRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetWalletsByIpForCsToolRequest;
+  static deserializeBinaryFromReader(message: GetWalletsByIpForCsToolRequest, reader: jspb.BinaryReader): GetWalletsByIpForCsToolRequest;
+}
+
+export namespace GetWalletsByIpForCsToolRequest {
+  export type AsObject = {
+    auth?: DashboardAuth.AsObject,
+    ip: string,
+  }
+}
+
+export class GetWalletsByIpForCsToolResponse extends jspb.Message {
+  getErr(): ErrMsg | undefined;
+  setErr(value?: ErrMsg): GetWalletsByIpForCsToolResponse;
+  hasErr(): boolean;
+  clearErr(): GetWalletsByIpForCsToolResponse;
+
+  getWalletsList(): Array<string>;
+  setWalletsList(value: Array<string>): GetWalletsByIpForCsToolResponse;
+  clearWalletsList(): GetWalletsByIpForCsToolResponse;
+  addWallets(value: string, index?: number): GetWalletsByIpForCsToolResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetWalletsByIpForCsToolResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetWalletsByIpForCsToolResponse): GetWalletsByIpForCsToolResponse.AsObject;
+  static serializeBinaryToWriter(message: GetWalletsByIpForCsToolResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetWalletsByIpForCsToolResponse;
+  static deserializeBinaryFromReader(message: GetWalletsByIpForCsToolResponse, reader: jspb.BinaryReader): GetWalletsByIpForCsToolResponse;
+}
+
+export namespace GetWalletsByIpForCsToolResponse {
+  export type AsObject = {
+    err?: ErrMsg.AsObject,
+    walletsList: Array<string>,
+  }
+}
+
+export class GetIpListByWalletForCsToolRequest extends jspb.Message {
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetIpListByWalletForCsToolRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetIpListByWalletForCsToolRequest;
+
+  getWalletAddr(): string;
+  setWalletAddr(value: string): GetIpListByWalletForCsToolRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetIpListByWalletForCsToolRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetIpListByWalletForCsToolRequest): GetIpListByWalletForCsToolRequest.AsObject;
+  static serializeBinaryToWriter(message: GetIpListByWalletForCsToolRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetIpListByWalletForCsToolRequest;
+  static deserializeBinaryFromReader(message: GetIpListByWalletForCsToolRequest, reader: jspb.BinaryReader): GetIpListByWalletForCsToolRequest;
+}
+
+export namespace GetIpListByWalletForCsToolRequest {
+  export type AsObject = {
+    auth?: DashboardAuth.AsObject,
+    walletAddr: string,
+  }
+}
+
+export class GetIpListByWalletForCsToolResponse extends jspb.Message {
+  getErr(): ErrMsg | undefined;
+  setErr(value?: ErrMsg): GetIpListByWalletForCsToolResponse;
+  hasErr(): boolean;
+  clearErr(): GetIpListByWalletForCsToolResponse;
+
+  getIpInfoList(): Array<IpInfo>;
+  setIpInfoList(value: Array<IpInfo>): GetIpListByWalletForCsToolResponse;
+  clearIpInfoList(): GetIpListByWalletForCsToolResponse;
+  addIpInfo(value?: IpInfo, index?: number): IpInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetIpListByWalletForCsToolResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetIpListByWalletForCsToolResponse): GetIpListByWalletForCsToolResponse.AsObject;
+  static serializeBinaryToWriter(message: GetIpListByWalletForCsToolResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetIpListByWalletForCsToolResponse;
+  static deserializeBinaryFromReader(message: GetIpListByWalletForCsToolResponse, reader: jspb.BinaryReader): GetIpListByWalletForCsToolResponse;
+}
+
+export namespace GetIpListByWalletForCsToolResponse {
+  export type AsObject = {
+    err?: ErrMsg.AsObject,
+    ipInfoList: Array<IpInfo.AsObject>,
+  }
+}
+
+export class IpInfo extends jspb.Message {
+  getIp(): string;
+  setIp(value: string): IpInfo;
+
+  getBrowser(): string;
+  setBrowser(value: string): IpInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): IpInfo.AsObject;
+  static toObject(includeInstance: boolean, msg: IpInfo): IpInfo.AsObject;
+  static serializeBinaryToWriter(message: IpInfo, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): IpInfo;
+  static deserializeBinaryFromReader(message: IpInfo, reader: jspb.BinaryReader): IpInfo;
+}
+
+export namespace IpInfo {
+  export type AsObject = {
+    ip: string,
+    browser: string,
+  }
+}
+
 export class GetDataByTimeRangeAndBridgeTypeRequest extends jspb.Message {
   getBegin(): number;
   setBegin(value: number): GetDataByTimeRangeAndBridgeTypeRequest;
@@ -156,6 +400,12 @@ export class GetRiskSeverityLevelResponse extends jspb.Message {
   getIsBlocked(): boolean;
   setIsBlocked(value: boolean): GetRiskSeverityLevelResponse;
 
+  getRiskCategory(): string;
+  setRiskCategory(value: string): GetRiskSeverityLevelResponse;
+
+  getRiskType(): string;
+  setRiskType(value: string): GetRiskSeverityLevelResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetRiskSeverityLevelResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetRiskSeverityLevelResponse): GetRiskSeverityLevelResponse.AsObject;
@@ -168,6 +418,8 @@ export namespace GetRiskSeverityLevelResponse {
   export type AsObject = {
     err?: ErrMsg.AsObject,
     isBlocked: boolean,
+    riskCategory: string,
+    riskType: string,
   }
 }
 
@@ -216,13 +468,10 @@ export namespace GetBalanceDetailResponse {
 }
 
 export class UpdateRiskSeverityLevelForCsToolRequest extends jspb.Message {
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): UpdateRiskSeverityLevelForCsToolRequest;
-
-  getSigAddr(): string;
-  setSigAddr(value: string): UpdateRiskSeverityLevelForCsToolRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): UpdateRiskSeverityLevelForCsToolRequest;
+  hasAuth(): boolean;
+  clearAuth(): UpdateRiskSeverityLevelForCsToolRequest;
 
   getUsrAddr(): string;
   setUsrAddr(value: string): UpdateRiskSeverityLevelForCsToolRequest;
@@ -236,6 +485,9 @@ export class UpdateRiskSeverityLevelForCsToolRequest extends jspb.Message {
   getIsBlacklist(): boolean;
   setIsBlacklist(value: boolean): UpdateRiskSeverityLevelForCsToolRequest;
 
+  getBlacklistReason(): string;
+  setBlacklistReason(value: string): UpdateRiskSeverityLevelForCsToolRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateRiskSeverityLevelForCsToolRequest.AsObject;
   static toObject(includeInstance: boolean, msg: UpdateRiskSeverityLevelForCsToolRequest): UpdateRiskSeverityLevelForCsToolRequest.AsObject;
@@ -246,12 +498,12 @@ export class UpdateRiskSeverityLevelForCsToolRequest extends jspb.Message {
 
 export namespace UpdateRiskSeverityLevelForCsToolRequest {
   export type AsObject = {
-    sig: Uint8Array | string,
-    sigAddr: string,
+    auth?: DashboardAuth.AsObject,
     usrAddr: string,
     isWhitelist: boolean,
     whitelistReason: string,
     isBlacklist: boolean,
+    blacklistReason: string,
   }
 }
 
@@ -276,13 +528,10 @@ export namespace UpdateRiskSeverityLevelForCsToolResponse {
 }
 
 export class GetRiskSeverityLevelForCsToolRequest extends jspb.Message {
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): GetRiskSeverityLevelForCsToolRequest;
-
-  getSigAddr(): string;
-  setSigAddr(value: string): GetRiskSeverityLevelForCsToolRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetRiskSeverityLevelForCsToolRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetRiskSeverityLevelForCsToolRequest;
 
   getUsrAddrsList(): Array<string>;
   setUsrAddrsList(value: Array<string>): GetRiskSeverityLevelForCsToolRequest;
@@ -305,8 +554,7 @@ export class GetRiskSeverityLevelForCsToolRequest extends jspb.Message {
 
 export namespace GetRiskSeverityLevelForCsToolRequest {
   export type AsObject = {
-    sig: Uint8Array | string,
-    sigAddr: string,
+    auth?: DashboardAuth.AsObject,
     usrAddrsList: Array<string>,
     pageNo: number,
     pageSize: number,
@@ -379,6 +627,17 @@ export class RiskSeverityLevelDataElement extends jspb.Message {
   getIsBlacklist(): boolean;
   setIsBlacklist(value: boolean): RiskSeverityLevelDataElement;
 
+  getBrowserInfo(): string;
+  setBrowserInfo(value: string): RiskSeverityLevelDataElement;
+
+  getSlowMistInfo(): SlowMistInfo | undefined;
+  setSlowMistInfo(value?: SlowMistInfo): RiskSeverityLevelDataElement;
+  hasSlowMistInfo(): boolean;
+  clearSlowMistInfo(): RiskSeverityLevelDataElement;
+
+  getBlacklistReason(): string;
+  setBlacklistReason(value: string): RiskSeverityLevelDataElement;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RiskSeverityLevelDataElement.AsObject;
   static toObject(includeInstance: boolean, msg: RiskSeverityLevelDataElement): RiskSeverityLevelDataElement.AsObject;
@@ -398,6 +657,39 @@ export namespace RiskSeverityLevelDataElement {
     whitelistReason: string,
     lastUpdateTimeInSecond: number,
     isBlacklist: boolean,
+    browserInfo: string,
+    slowMistInfo?: SlowMistInfo.AsObject,
+    blacklistReason: string,
+  }
+}
+
+export class SlowMistInfo extends jspb.Message {
+  getRiskLevel(): string;
+  setRiskLevel(value: string): SlowMistInfo;
+
+  getScore(): number;
+  setScore(value: number): SlowMistInfo;
+
+  getHackingEvent(): string;
+  setHackingEvent(value: string): SlowMistInfo;
+
+  getDetailList(): string;
+  setDetailList(value: string): SlowMistInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SlowMistInfo.AsObject;
+  static toObject(includeInstance: boolean, msg: SlowMistInfo): SlowMistInfo.AsObject;
+  static serializeBinaryToWriter(message: SlowMistInfo, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SlowMistInfo;
+  static deserializeBinaryFromReader(message: SlowMistInfo, reader: jspb.BinaryReader): SlowMistInfo;
+}
+
+export namespace SlowMistInfo {
+  export type AsObject = {
+    riskLevel: string,
+    score: number,
+    hackingEvent: string,
+    detailList: string,
   }
 }
 
@@ -627,6 +919,12 @@ export class PingResponse extends jspb.Message {
   hasErr(): boolean;
   clearErr(): PingResponse;
 
+  getIsAnonymous(): boolean;
+  setIsAnonymous(value: boolean): PingResponse;
+
+  getIsWhiteList(): boolean;
+  setIsWhiteList(value: boolean): PingResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PingResponse.AsObject;
   static toObject(includeInstance: boolean, msg: PingResponse): PingResponse.AsObject;
@@ -638,6 +936,8 @@ export class PingResponse extends jspb.Message {
 export namespace PingResponse {
   export type AsObject = {
     err?: ErrMsg.AsObject,
+    isAnonymous: boolean,
+    isWhiteList: boolean,
   }
 }
 
@@ -1500,13 +1800,10 @@ export namespace InitWithdrawResponse {
 }
 
 export class GetUsrBalanceRequest extends jspb.Message {
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): GetUsrBalanceRequest;
-
-  getSigAddr(): string;
-  setSigAddr(value: string): GetUsrBalanceRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetUsrBalanceRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetUsrBalanceRequest;
 
   getUsrAddr(): string;
   setUsrAddr(value: string): GetUsrBalanceRequest;
@@ -1527,8 +1824,7 @@ export class GetUsrBalanceRequest extends jspb.Message {
 
 export namespace GetUsrBalanceRequest {
   export type AsObject = {
-    sig: Uint8Array | string,
-    sigAddr: string,
+    auth?: DashboardAuth.AsObject,
     usrAddr: string,
     chainId: number,
     tokenSymbol: string,
@@ -1678,6 +1974,94 @@ export namespace CampaignScore {
   export type AsObject = {
     usrAddr: string,
     score: number,
+  }
+}
+
+export class GetQualificationRequest extends jspb.Message {
+  getAddress(): string;
+  setAddress(value: string): GetQualificationRequest;
+
+  getCampaign(): string;
+  setCampaign(value: string): GetQualificationRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetQualificationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetQualificationRequest): GetQualificationRequest.AsObject;
+  static serializeBinaryToWriter(message: GetQualificationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetQualificationRequest;
+  static deserializeBinaryFromReader(message: GetQualificationRequest, reader: jspb.BinaryReader): GetQualificationRequest;
+}
+
+export namespace GetQualificationRequest {
+  export type AsObject = {
+    address: string,
+    campaign: string,
+  }
+}
+
+export class GetQualificationResponse extends jspb.Message {
+  getError(): QualiErrMsg | undefined;
+  setError(value?: QualiErrMsg): GetQualificationResponse;
+  hasError(): boolean;
+  clearError(): GetQualificationResponse;
+
+  getData(): QualiData | undefined;
+  setData(value?: QualiData): GetQualificationResponse;
+  hasData(): boolean;
+  clearData(): GetQualificationResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetQualificationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetQualificationResponse): GetQualificationResponse.AsObject;
+  static serializeBinaryToWriter(message: GetQualificationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetQualificationResponse;
+  static deserializeBinaryFromReader(message: GetQualificationResponse, reader: jspb.BinaryReader): GetQualificationResponse;
+}
+
+export namespace GetQualificationResponse {
+  export type AsObject = {
+    error?: QualiErrMsg.AsObject,
+    data?: QualiData.AsObject,
+  }
+}
+
+export class QualiErrMsg extends jspb.Message {
+  getCode(): number;
+  setCode(value: number): QualiErrMsg;
+
+  getMessage(): string;
+  setMessage(value: string): QualiErrMsg;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QualiErrMsg.AsObject;
+  static toObject(includeInstance: boolean, msg: QualiErrMsg): QualiErrMsg.AsObject;
+  static serializeBinaryToWriter(message: QualiErrMsg, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QualiErrMsg;
+  static deserializeBinaryFromReader(message: QualiErrMsg, reader: jspb.BinaryReader): QualiErrMsg;
+}
+
+export namespace QualiErrMsg {
+  export type AsObject = {
+    code: number,
+    message: string,
+  }
+}
+
+export class QualiData extends jspb.Message {
+  getResult(): boolean;
+  setResult(value: boolean): QualiData;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QualiData.AsObject;
+  static toObject(includeInstance: boolean, msg: QualiData): QualiData.AsObject;
+  static serializeBinaryToWriter(message: QualiData, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QualiData;
+  static deserializeBinaryFromReader(message: QualiData, reader: jspb.BinaryReader): QualiData;
+}
+
+export namespace QualiData {
+  export type AsObject = {
+    result: boolean,
   }
 }
 
@@ -2167,6 +2551,11 @@ export class GetTransferConfigsResponse extends jspb.Message {
   clearPeggedPairConfigsList(): GetTransferConfigsResponse;
   addPeggedPairConfigs(value?: PeggedPairConfig, index?: number): PeggedPairConfig;
 
+  getBlockedBridgeDirectList(): Array<BlockBridgeDirect>;
+  setBlockedBridgeDirectList(value: Array<BlockBridgeDirect>): GetTransferConfigsResponse;
+  clearBlockedBridgeDirectList(): GetTransferConfigsResponse;
+  addBlockedBridgeDirect(value?: BlockBridgeDirect, index?: number): BlockBridgeDirect;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetTransferConfigsResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetTransferConfigsResponse): GetTransferConfigsResponse.AsObject;
@@ -2182,6 +2571,7 @@ export namespace GetTransferConfigsResponse {
     chainTokenMap: Array<[number, ChainTokenInfo.AsObject]>,
     farmingRewardContractAddr: string,
     peggedPairConfigsList: Array<PeggedPairConfig.AsObject>,
+    blockedBridgeDirectList: Array<BlockBridgeDirect.AsObject>,
   }
 }
 
@@ -2226,6 +2616,76 @@ export namespace GetRfqConfigsResponse {
     err?: ErrMsg.AsObject,
     chaintokensList: Array<RfqChainToken.AsObject>,
     rfqContractAddressesMap: Array<[number, string]>,
+  }
+}
+
+export class CircleUsdcConfigRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CircleUsdcConfigRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CircleUsdcConfigRequest): CircleUsdcConfigRequest.AsObject;
+  static serializeBinaryToWriter(message: CircleUsdcConfigRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CircleUsdcConfigRequest;
+  static deserializeBinaryFromReader(message: CircleUsdcConfigRequest, reader: jspb.BinaryReader): CircleUsdcConfigRequest;
+}
+
+export namespace CircleUsdcConfigRequest {
+  export type AsObject = {
+  }
+}
+
+export class CircleUsdcConfigResponse extends jspb.Message {
+  getErr(): ErrMsg | undefined;
+  setErr(value?: ErrMsg): CircleUsdcConfigResponse;
+  hasErr(): boolean;
+  clearErr(): CircleUsdcConfigResponse;
+
+  getChaintokensList(): Array<CircleUSDC>;
+  setChaintokensList(value: Array<CircleUSDC>): CircleUsdcConfigResponse;
+  clearChaintokensList(): CircleUsdcConfigResponse;
+  addChaintokens(value?: CircleUSDC, index?: number): CircleUSDC;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CircleUsdcConfigResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CircleUsdcConfigResponse): CircleUsdcConfigResponse.AsObject;
+  static serializeBinaryToWriter(message: CircleUsdcConfigResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CircleUsdcConfigResponse;
+  static deserializeBinaryFromReader(message: CircleUsdcConfigResponse, reader: jspb.BinaryReader): CircleUsdcConfigResponse;
+}
+
+export namespace CircleUsdcConfigResponse {
+  export type AsObject = {
+    err?: ErrMsg.AsObject,
+    chaintokensList: Array<CircleUSDC.AsObject>,
+  }
+}
+
+export class CircleUSDC extends jspb.Message {
+  getChainId(): number;
+  setChainId(value: number): CircleUSDC;
+
+  getContractAddr(): string;
+  setContractAddr(value: string): CircleUSDC;
+
+  getTokenAddr(): string;
+  setTokenAddr(value: string): CircleUSDC;
+
+  getTokenDecimal(): number;
+  setTokenDecimal(value: number): CircleUSDC;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CircleUSDC.AsObject;
+  static toObject(includeInstance: boolean, msg: CircleUSDC): CircleUSDC.AsObject;
+  static serializeBinaryToWriter(message: CircleUSDC, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CircleUSDC;
+  static deserializeBinaryFromReader(message: CircleUSDC, reader: jspb.BinaryReader): CircleUSDC;
+}
+
+export namespace CircleUSDC {
+  export type AsObject = {
+    chainId: number,
+    contractAddr: string,
+    tokenAddr: string,
+    tokenDecimal: number,
   }
 }
 
@@ -4001,13 +4461,10 @@ export class GetAllLPInfoRequest extends jspb.Message {
   getNextPageToken(): number;
   setNextPageToken(value: number): GetAllLPInfoRequest;
 
-  getSigAddr(): string;
-  setSigAddr(value: string): GetAllLPInfoRequest;
-
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): GetAllLPInfoRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetAllLPInfoRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetAllLPInfoRequest;
 
   getStatusList(): Array<number>;
   setStatusList(value: Array<number>): GetAllLPInfoRequest;
@@ -4031,8 +4488,7 @@ export namespace GetAllLPInfoRequest {
     beginTime: number,
     endTime: number,
     nextPageToken: number,
-    sigAddr: string,
-    sig: Uint8Array | string,
+    auth?: DashboardAuth.AsObject,
     statusList: Array<number>,
   }
 }
@@ -4143,13 +4599,10 @@ export class GetAllTXInfoRequest extends jspb.Message {
   getNextPageToken(): number;
   setNextPageToken(value: number): GetAllTXInfoRequest;
 
-  getSigAddr(): string;
-  setSigAddr(value: string): GetAllTXInfoRequest;
-
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): GetAllTXInfoRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetAllTXInfoRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetAllTXInfoRequest;
 
   getBridgeTypeList(): Array<BridgeType>;
   setBridgeTypeList(value: Array<BridgeType>): GetAllTXInfoRequest;
@@ -4186,8 +4639,7 @@ export namespace GetAllTXInfoRequest {
     beginTime: number,
     endTime: number,
     nextPageToken: number,
-    sigAddr: string,
-    sig: Uint8Array | string,
+    auth?: DashboardAuth.AsObject,
     bridgeTypeList: Array<BridgeType>,
     refIdList: Array<string>,
     pageSize: number,
@@ -4351,13 +4803,10 @@ export class GetInfoByTxHashRequest extends jspb.Message {
   getType(): CSType;
   setType(value: CSType): GetInfoByTxHashRequest;
 
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): GetInfoByTxHashRequest;
-
-  getAddr(): string;
-  setAddr(value: string): GetInfoByTxHashRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetInfoByTxHashRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetInfoByTxHashRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetInfoByTxHashRequest.AsObject;
@@ -4372,8 +4821,7 @@ export namespace GetInfoByTxHashRequest {
     chainId: number,
     txHash: string,
     type: CSType,
-    sig: Uint8Array | string,
-    addr: string,
+    auth?: DashboardAuth.AsObject,
   }
 }
 
@@ -4390,6 +4838,11 @@ export class GetInfoByTxHashResponse extends jspb.Message {
   getInfo(): string;
   setInfo(value: string): GetInfoByTxHashResponse;
 
+  getErr(): ErrMsg | undefined;
+  setErr(value?: ErrMsg): GetInfoByTxHashResponse;
+  hasErr(): boolean;
+  clearErr(): GetInfoByTxHashResponse;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetInfoByTxHashResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetInfoByTxHashResponse): GetInfoByTxHashResponse.AsObject;
@@ -4404,6 +4857,7 @@ export namespace GetInfoByTxHashResponse {
     status: UserCaseStatus,
     memo: string,
     info: string,
+    err?: ErrMsg.AsObject,
   }
 }
 
@@ -4473,13 +4927,10 @@ export class FixEventMissRequest extends jspb.Message {
   getType(): CSType;
   setType(value: CSType): FixEventMissRequest;
 
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): FixEventMissRequest;
-
-  getAddr(): string;
-  setAddr(value: string): FixEventMissRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): FixEventMissRequest;
+  hasAuth(): boolean;
+  clearAuth(): FixEventMissRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): FixEventMissRequest.AsObject;
@@ -4494,8 +4945,7 @@ export namespace FixEventMissRequest {
     chainId: number,
     txHash: string,
     type: CSType,
-    sig: Uint8Array | string,
-    addr: string,
+    auth?: DashboardAuth.AsObject,
   }
 }
 
@@ -4672,13 +5122,10 @@ export class RfqFilterOrdersRequest extends jspb.Message {
   clearDstTokenSymbolsList(): RfqFilterOrdersRequest;
   addDstTokenSymbols(value: string, index?: number): RfqFilterOrdersRequest;
 
-  getSigAddr(): string;
-  setSigAddr(value: string): RfqFilterOrdersRequest;
-
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): RfqFilterOrdersRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): RfqFilterOrdersRequest;
+  hasAuth(): boolean;
+  clearAuth(): RfqFilterOrdersRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RfqFilterOrdersRequest.AsObject;
@@ -4702,8 +5149,7 @@ export namespace RfqFilterOrdersRequest {
     dstChainIdsList: Array<number>,
     srcTokenSymbolsList: Array<string>,
     dstTokenSymbolsList: Array<string>,
-    sigAddr: string,
-    sig: Uint8Array | string,
+    auth?: DashboardAuth.AsObject,
   }
 }
 
@@ -5716,13 +6162,10 @@ export namespace GetCurrentBlockNumberByNodeResponse {
 }
 
 export class SaveServicePoolToggleConfigsRequest extends jspb.Message {
-  getSigAddr(): string;
-  setSigAddr(value: string): SaveServicePoolToggleConfigsRequest;
-
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): SaveServicePoolToggleConfigsRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): SaveServicePoolToggleConfigsRequest;
+  hasAuth(): boolean;
+  clearAuth(): SaveServicePoolToggleConfigsRequest;
 
   getChainTokensList(): Array<TogglePoolTokenInfo>;
   setChainTokensList(value: Array<TogglePoolTokenInfo>): SaveServicePoolToggleConfigsRequest;
@@ -5739,8 +6182,7 @@ export class SaveServicePoolToggleConfigsRequest extends jspb.Message {
 
 export namespace SaveServicePoolToggleConfigsRequest {
   export type AsObject = {
-    sigAddr: string,
-    sig: Uint8Array | string,
+    auth?: DashboardAuth.AsObject,
     chainTokensList: Array<TogglePoolTokenInfo.AsObject>,
   }
 }
@@ -5766,13 +6208,10 @@ export namespace SaveServicePoolToggleConfigsResponse {
 }
 
 export class SaveServicePegToggleConfigsRequest extends jspb.Message {
-  getSigAddr(): string;
-  setSigAddr(value: string): SaveServicePegToggleConfigsRequest;
-
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): SaveServicePegToggleConfigsRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): SaveServicePegToggleConfigsRequest;
+  hasAuth(): boolean;
+  clearAuth(): SaveServicePegToggleConfigsRequest;
 
   getChainTokensList(): Array<TogglePegTokenInfo>;
   setChainTokensList(value: Array<TogglePegTokenInfo>): SaveServicePegToggleConfigsRequest;
@@ -5789,8 +6228,7 @@ export class SaveServicePegToggleConfigsRequest extends jspb.Message {
 
 export namespace SaveServicePegToggleConfigsRequest {
   export type AsObject = {
-    sigAddr: string,
-    sig: Uint8Array | string,
+    auth?: DashboardAuth.AsObject,
     chainTokensList: Array<TogglePegTokenInfo.AsObject>,
   }
 }
@@ -5816,13 +6254,10 @@ export namespace SaveServicePegToggleConfigsResponse {
 }
 
 export class GetServicePoolToggleConfigsRequest extends jspb.Message {
-  getSigAddr(): string;
-  setSigAddr(value: string): GetServicePoolToggleConfigsRequest;
-
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): GetServicePoolToggleConfigsRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetServicePoolToggleConfigsRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetServicePoolToggleConfigsRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetServicePoolToggleConfigsRequest.AsObject;
@@ -5834,8 +6269,7 @@ export class GetServicePoolToggleConfigsRequest extends jspb.Message {
 
 export namespace GetServicePoolToggleConfigsRequest {
   export type AsObject = {
-    sigAddr: string,
-    sig: Uint8Array | string,
+    auth?: DashboardAuth.AsObject,
   }
 }
 
@@ -5910,13 +6344,10 @@ export namespace TogglePoolTokenInfo {
 }
 
 export class GetServicePegToggleConfigsRequest extends jspb.Message {
-  getSigAddr(): string;
-  setSigAddr(value: string): GetServicePegToggleConfigsRequest;
-
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): GetServicePegToggleConfigsRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetServicePegToggleConfigsRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetServicePegToggleConfigsRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetServicePegToggleConfigsRequest.AsObject;
@@ -5928,8 +6359,7 @@ export class GetServicePegToggleConfigsRequest extends jspb.Message {
 
 export namespace GetServicePegToggleConfigsRequest {
   export type AsObject = {
-    sigAddr: string,
-    sig: Uint8Array | string,
+    auth?: DashboardAuth.AsObject,
   }
 }
 
@@ -6006,13 +6436,10 @@ export namespace TogglePegTokenInfo {
 }
 
 export class SaveSystemAnnouncementRequest extends jspb.Message {
-  getSigAddr(): string;
-  setSigAddr(value: string): SaveSystemAnnouncementRequest;
-
-  getSig(): Uint8Array | string;
-  getSig_asU8(): Uint8Array;
-  getSig_asB64(): string;
-  setSig(value: Uint8Array | string): SaveSystemAnnouncementRequest;
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): SaveSystemAnnouncementRequest;
+  hasAuth(): boolean;
+  clearAuth(): SaveSystemAnnouncementRequest;
 
   getSystemAnnouncement(): string;
   setSystemAnnouncement(value: string): SaveSystemAnnouncementRequest;
@@ -6033,8 +6460,7 @@ export class SaveSystemAnnouncementRequest extends jspb.Message {
 
 export namespace SaveSystemAnnouncementRequest {
   export type AsObject = {
-    sigAddr: string,
-    sig: Uint8Array | string,
+    auth?: DashboardAuth.AsObject,
     systemAnnouncement: string,
     enabled: boolean,
     allfunctionalityenabled: boolean,
@@ -6213,6 +6639,208 @@ export namespace IpLog {
   }
 }
 
+export class GetChainTableRefundTxCountRequest extends jspb.Message {
+  getStartTimeInSecond(): number;
+  setStartTimeInSecond(value: number): GetChainTableRefundTxCountRequest;
+
+  getEndTimeInSecond(): number;
+  setEndTimeInSecond(value: number): GetChainTableRefundTxCountRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetChainTableRefundTxCountRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetChainTableRefundTxCountRequest): GetChainTableRefundTxCountRequest.AsObject;
+  static serializeBinaryToWriter(message: GetChainTableRefundTxCountRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetChainTableRefundTxCountRequest;
+  static deserializeBinaryFromReader(message: GetChainTableRefundTxCountRequest, reader: jspb.BinaryReader): GetChainTableRefundTxCountRequest;
+}
+
+export namespace GetChainTableRefundTxCountRequest {
+  export type AsObject = {
+    startTimeInSecond: number,
+    endTimeInSecond: number,
+  }
+}
+
+export class GetChainTableRefundTxCountResponse extends jspb.Message {
+  getErr(): ErrMsg | undefined;
+  setErr(value?: ErrMsg): GetChainTableRefundTxCountResponse;
+  hasErr(): boolean;
+  clearErr(): GetChainTableRefundTxCountResponse;
+
+  getElementsList(): Array<ChainTableRefundTxCountElement>;
+  setElementsList(value: Array<ChainTableRefundTxCountElement>): GetChainTableRefundTxCountResponse;
+  clearElementsList(): GetChainTableRefundTxCountResponse;
+  addElements(value?: ChainTableRefundTxCountElement, index?: number): ChainTableRefundTxCountElement;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetChainTableRefundTxCountResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetChainTableRefundTxCountResponse): GetChainTableRefundTxCountResponse.AsObject;
+  static serializeBinaryToWriter(message: GetChainTableRefundTxCountResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetChainTableRefundTxCountResponse;
+  static deserializeBinaryFromReader(message: GetChainTableRefundTxCountResponse, reader: jspb.BinaryReader): GetChainTableRefundTxCountResponse;
+}
+
+export namespace GetChainTableRefundTxCountResponse {
+  export type AsObject = {
+    err?: ErrMsg.AsObject,
+    elementsList: Array<ChainTableRefundTxCountElement.AsObject>,
+  }
+}
+
+export class ChainTableRefundTxCountElement extends jspb.Message {
+  getSrcChainId(): number;
+  setSrcChainId(value: number): ChainTableRefundTxCountElement;
+
+  getSrcTxCnt(): number;
+  setSrcTxCnt(value: number): ChainTableRefundTxCountElement;
+
+  getDstChainId(): number;
+  setDstChainId(value: number): ChainTableRefundTxCountElement;
+
+  getDstTxCnt(): number;
+  setDstTxCnt(value: number): ChainTableRefundTxCountElement;
+
+  getSameChainId(): number;
+  setSameChainId(value: number): ChainTableRefundTxCountElement;
+
+  getSameChainTxCnt(): number;
+  setSameChainTxCnt(value: number): ChainTableRefundTxCountElement;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ChainTableRefundTxCountElement.AsObject;
+  static toObject(includeInstance: boolean, msg: ChainTableRefundTxCountElement): ChainTableRefundTxCountElement.AsObject;
+  static serializeBinaryToWriter(message: ChainTableRefundTxCountElement, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ChainTableRefundTxCountElement;
+  static deserializeBinaryFromReader(message: ChainTableRefundTxCountElement, reader: jspb.BinaryReader): ChainTableRefundTxCountElement;
+}
+
+export namespace ChainTableRefundTxCountElement {
+  export type AsObject = {
+    srcChainId: number,
+    srcTxCnt: number,
+    dstChainId: number,
+    dstTxCnt: number,
+    sameChainId: number,
+    sameChainTxCnt: number,
+  }
+}
+
+export class GetAllOnChainLimitForCsToolRequest extends jspb.Message {
+  getAuth(): DashboardAuth | undefined;
+  setAuth(value?: DashboardAuth): GetAllOnChainLimitForCsToolRequest;
+  hasAuth(): boolean;
+  clearAuth(): GetAllOnChainLimitForCsToolRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetAllOnChainLimitForCsToolRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetAllOnChainLimitForCsToolRequest): GetAllOnChainLimitForCsToolRequest.AsObject;
+  static serializeBinaryToWriter(message: GetAllOnChainLimitForCsToolRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetAllOnChainLimitForCsToolRequest;
+  static deserializeBinaryFromReader(message: GetAllOnChainLimitForCsToolRequest, reader: jspb.BinaryReader): GetAllOnChainLimitForCsToolRequest;
+}
+
+export namespace GetAllOnChainLimitForCsToolRequest {
+  export type AsObject = {
+    auth?: DashboardAuth.AsObject,
+  }
+}
+
+export class GetAllOnChainLimitForCsToolResponse extends jspb.Message {
+  getErr(): ErrMsg | undefined;
+  setErr(value?: ErrMsg): GetAllOnChainLimitForCsToolResponse;
+  hasErr(): boolean;
+  clearErr(): GetAllOnChainLimitForCsToolResponse;
+
+  getOnChainContractLimitList(): Array<OnChainContractLimit>;
+  setOnChainContractLimitList(value: Array<OnChainContractLimit>): GetAllOnChainLimitForCsToolResponse;
+  clearOnChainContractLimitList(): GetAllOnChainLimitForCsToolResponse;
+  addOnChainContractLimit(value?: OnChainContractLimit, index?: number): OnChainContractLimit;
+
+  getOnChainTokenLimitList(): Array<OnChainTokenLimit>;
+  setOnChainTokenLimitList(value: Array<OnChainTokenLimit>): GetAllOnChainLimitForCsToolResponse;
+  clearOnChainTokenLimitList(): GetAllOnChainLimitForCsToolResponse;
+  addOnChainTokenLimit(value?: OnChainTokenLimit, index?: number): OnChainTokenLimit;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetAllOnChainLimitForCsToolResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetAllOnChainLimitForCsToolResponse): GetAllOnChainLimitForCsToolResponse.AsObject;
+  static serializeBinaryToWriter(message: GetAllOnChainLimitForCsToolResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetAllOnChainLimitForCsToolResponse;
+  static deserializeBinaryFromReader(message: GetAllOnChainLimitForCsToolResponse, reader: jspb.BinaryReader): GetAllOnChainLimitForCsToolResponse;
+}
+
+export namespace GetAllOnChainLimitForCsToolResponse {
+  export type AsObject = {
+    err?: ErrMsg.AsObject,
+    onChainContractLimitList: Array<OnChainContractLimit.AsObject>,
+    onChainTokenLimitList: Array<OnChainTokenLimit.AsObject>,
+  }
+}
+
+export class OnChainContractLimit extends jspb.Message {
+  getChainId(): number;
+  setChainId(value: number): OnChainContractLimit;
+
+  getContractType(): BridgeContractType;
+  setContractType(value: BridgeContractType): OnChainContractLimit;
+
+  getLimitType(): BridgeContractLimitType;
+  setLimitType(value: BridgeContractLimitType): OnChainContractLimit;
+
+  getValue(): number;
+  setValue(value: number): OnChainContractLimit;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): OnChainContractLimit.AsObject;
+  static toObject(includeInstance: boolean, msg: OnChainContractLimit): OnChainContractLimit.AsObject;
+  static serializeBinaryToWriter(message: OnChainContractLimit, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OnChainContractLimit;
+  static deserializeBinaryFromReader(message: OnChainContractLimit, reader: jspb.BinaryReader): OnChainContractLimit;
+}
+
+export namespace OnChainContractLimit {
+  export type AsObject = {
+    chainId: number,
+    contractType: BridgeContractType,
+    limitType: BridgeContractLimitType,
+    value: number,
+  }
+}
+
+export class OnChainTokenLimit extends jspb.Message {
+  getChainId(): number;
+  setChainId(value: number): OnChainTokenLimit;
+
+  getSymbol(): string;
+  setSymbol(value: string): OnChainTokenLimit;
+
+  getContractType(): BridgeContractType;
+  setContractType(value: BridgeContractType): OnChainTokenLimit;
+
+  getLimitType(): BridgeContractPerTokenLimitType;
+  setLimitType(value: BridgeContractPerTokenLimitType): OnChainTokenLimit;
+
+  getValue(): number;
+  setValue(value: number): OnChainTokenLimit;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): OnChainTokenLimit.AsObject;
+  static toObject(includeInstance: boolean, msg: OnChainTokenLimit): OnChainTokenLimit.AsObject;
+  static serializeBinaryToWriter(message: OnChainTokenLimit, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OnChainTokenLimit;
+  static deserializeBinaryFromReader(message: OnChainTokenLimit, reader: jspb.BinaryReader): OnChainTokenLimit;
+}
+
+export namespace OnChainTokenLimit {
+  export type AsObject = {
+    chainId: number,
+    symbol: string,
+    contractType: BridgeContractType,
+    limitType: BridgeContractPerTokenLimitType,
+    value: number,
+  }
+}
+
 export enum LPType { 
   LP_TYPE_UNKNOWN = 0,
   LP_TYPE_ADD = 1,
@@ -6317,6 +6945,10 @@ export enum ErrCode {
   ERROR_CODE_LIQ_RM_DISABLED = 1010,
   ERROR_CODE_LIQ_AGG_RM_SRC_DISABLED = 1011,
   ERROR_CODE_BAD_LIQ_SLIPPAGE = 1012,
+  ERROR_CODE_AUTH_INVALID = 1013,
+  ERROR_CODE_AUTH_EXPIRED = 1014,
+  ERROR_CODE_ADDRESS_BLOCKED = 1015,
+  ERROR_CODE_BLOCK_BRIDGE_ = 1016,
 }
 export enum BridgeType { 
   BRIDGETYPE_UNKNOWN = 0,
@@ -6325,4 +6957,49 @@ export enum BridgeType {
   BRIDGETYPE_BURN_WITHDRAW = 3,
   BRIDGETYPE_BURN_MINT = 4,
   BRIDGETYPE_RFQ = 5,
+}
+export enum BridgeContractType { 
+  BRIDGECONTRACTTYPE_UNKNOWN = 0,
+  BRIDGECONTRACTTYPE_CBRIDGE = 1,
+  BRIDGECONTRACTTYPE_VAULT_V0 = 2,
+  BRIDGECONTRACTTYPE_VAULT_V2 = 3,
+  BRIDGECONTRACTTYPE_PEG_V0 = 4,
+  BRIDGECONTRACTTYPE_PEG_V2 = 5,
+}
+export enum BridgeContractLimitType { 
+  BCL_UNKNOWN = 0,
+  BCL_POOL_EPOCH_LENGTH = 10,
+  BCL_POOL_DELAY_PERIOD = 11,
+  BCL_VAULT_V0_EPOCH_LENGTH = 20,
+  BCL_VAULT_V0_DELAY_PERIOD = 21,
+  BCL_VAULT_V2_EPOCH_LENGTH = 30,
+  BCL_VAULT_V2_DELAY_PERIOD = 31,
+  BCL_PEG_V0_EPOCH_LENGTH = 40,
+  BCL_PEG_V0_DELAY_PERIOD = 41,
+  BCL_PEG_V2_EPOCH_LENGTH = 50,
+  BCL_PEG_V2_DELAY_PERIOD = 51,
+}
+export enum BridgeContractPerTokenLimitType { 
+  BTL_UNKNOWN = 0,
+  BTL_POOL_MIN_ADD = 10,
+  BTL_POOL_MAX_SEND = 11,
+  BTL_POOL_MIN_SEND = 12,
+  BTL_POOL_EPOCH_VOLUME_CAP = 13,
+  BTL_POOL_DELAY_THRESHOLD = 14,
+  BTL_VAULT_V0_MIN_DEPOSIT = 20,
+  BTL_VAULT_V0_MAX_DEPOSIT = 21,
+  BTL_VAULT_V0_EPOCH_VOLUME_CAP = 22,
+  BTL_VAULT_V0_DELAY_THRESHOLD = 23,
+  BTL_VAULT_V2_MIN_DEPOSIT = 30,
+  BTL_VAULT_V2_MAX_DEPOSIT = 31,
+  BTL_VAULT_V2_EPOCH_VOLUME_CAP = 32,
+  BTL_VAULT_V2_DELAY_THRESHOLD = 33,
+  BTL_PEG_V0_MIN_BURN = 40,
+  BTL_PEG_V0_MAX_BURN = 41,
+  BTL_PEG_V0_EPOCH_VOLUME_CAP = 42,
+  BTL_PEG_V0_DELAY_THRESHOLD = 43,
+  BTL_PEG_V2_MIN_BURN = 50,
+  BTL_PEG_V2_MAX_BURN = 51,
+  BTL_PEG_V2_EPOCH_VOLUME_CAP = 52,
+  BTL_PEG_V2_DELAY_THRESHOLD = 53,
 }

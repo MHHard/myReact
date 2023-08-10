@@ -1,7 +1,6 @@
 import { Modal, Button } from "antd";
 import { createUseStyles } from "react-jss";
 import { Theme } from "../../theme";
-import { getNetworkById } from "../../constants/network";
 import { useAppSelector } from "../../redux/store";
 import { useWeb3Context } from "../../providers/Web3ContextProvider";
 
@@ -103,7 +102,7 @@ const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: 
 }));
 
 export default function SimpleResModal(props: SimpleResModalProps) {
-  const { chainId } = useWeb3Context();
+  const { chainId, getNetworkById } = useWeb3Context();
   const { isMobile } = useAppSelector(state => state.windowWidth);
   const classes = useStyles({ isMobile });
   const { loading, visible, icon, titleText, txHash, message, btnText, onClose, onSubmit } = props;

@@ -5,11 +5,11 @@ import { formatDecimalPart } from "celer-web-utils/lib/format";
 import { Theme } from "../../theme";
 import { useAppSelector } from "../../redux/store";
 import { formatDecimal } from "../../helpers/format";
-import { getTokenListSymbol, getTokenSymbolWithPeggedMode } from "../../redux/assetSlice";
-import { Chain, Token, PeggedPairConfig } from "../../constants/type";
+import { getTokenListSymbol } from "../../redux/transferSlice";
 import { PeggedChainMode, usePeggedPairConfig } from "../../hooks/usePeggedPairConfig";
-import { useNonEVMBigAmountDelay } from "../../hooks/useNonEVMBigAmountDelay";
 import { useMultiBurnConfig } from "../../hooks/useMultiBurnConfig";
+import { isETH } from "../../helpers/tokenInfo";
+import { getTokenDisplaySymbol } from "../../views/transfer/TransferOverview";
 
 /* eslint-disable camelcase */
 const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: Theme) => ({
@@ -157,7 +157,6 @@ const RfqTransDetail: FC<IProps> = ({ amount, receiveAmount, latencyMinutes, isB
   const { fromChain, toChain, selectedToken, transferConfig, priceResponse } = transferInfo;
   const pegConfig = usePeggedPairConfig();
   const { multiBurnConfig } = useMultiBurnConfig();
-  const { nonEVMBigAmountDelayed, nonEVMDelayTimeInMinute } = useNonEVMBigAmountDelay(receiveAmount);
 
   let estimatedReceiveAmount;
   if (receiveAmount === 0) {
@@ -188,8 +187,6 @@ const RfqTransDetail: FC<IProps> = ({ amount, receiveAmount, latencyMinutes, isB
     let result = `${latencyMinutes} minutes`;
     if (isBigAmountDelayed) {
       result = `up to ${delayMinutes} minutes`;
-    } else if (nonEVMBigAmountDelayed) {
-      result = `up to ${nonEVMDelayTimeInMinute} minutes`;
     }
     return result;
   };
@@ -211,7 +208,7 @@ const RfqTransDetail: FC<IProps> = ({ amount, receiveAmount, latencyMinutes, isB
             - {Number(formatDecimalPart(amount, 6, "floor", true)).toFixed(6) || "0.0"}
           </div>
           <div className={classes.fromNet}>
-            {selectedToken?.token?.display_symbol ?? getTokenListSymbol(selectedToken?.token.symbol, fromChain?.id)}
+            {isETH(selectedToken?.token) ? "ETH" : getTokenListSymbol(selectedToken?.token.symbol, fromChain?.id)}
           </div>
         </div>
       </div>
@@ -228,7 +225,13 @@ const RfqTransDetail: FC<IProps> = ({ amount, receiveAmount, latencyMinutes, isB
         <div className={classes.itemRight}>
           <div className={classes.totalValueRN}>+{estimatedReceiveAmount}</div>
           <div className={classes.fromNet}>{`(estimated) ${
-            getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs) ?? ""
+            getTokenDisplaySymbol(
+              selectedToken?.token,
+              fromChain,
+              toChain,
+              transferConfig.pegged_pair_configs,
+              false,
+            ) ?? ""
           }`}</div>
         </div>
       </div>
@@ -240,12 +243,18 @@ const RfqTransDetail: FC<IProps> = ({ amount, receiveAmount, latencyMinutes, isB
             <div className={classes.rightContent}>{bridgeRate}</div>
           ) : (
             <div className={classes.rightContent}>
-              1{" "}
-              {selectedToken?.token?.display_symbol ?? getTokenListSymbol(selectedToken?.token?.symbol, fromChain?.id)}{" "}
+              1 {isETH(selectedToken?.token) ? "ETH" : getTokenListSymbol(selectedToken?.token.symbol, fromChain?.id)}
               on
               <img className={classes.desImg} height={14} style={{ marginRight: 6 }} src={fromChain?.icon} alt="" />
               {pegConfig.mode === PeggedChainMode.Off && multiBurnConfig === undefined ? "≈" : "="} {bridgeRate}{" "}
-              {getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs)} on
+              {getTokenDisplaySymbol(
+                selectedToken?.token,
+                fromChain,
+                toChain,
+                transferConfig.pegged_pair_configs,
+                false,
+              )}{" "}
+              on
               <img className={classes.desImg} height={14} src={toChain?.icon} alt="" />
             </div>
           )}
@@ -256,7 +265,7 @@ const RfqTransDetail: FC<IProps> = ({ amount, receiveAmount, latencyMinutes, isB
           </div>
           <div className={classes.rightContent}>
             {formatDecimalPart(totalFee || "0", 8, "round", true)}{" "}
-            {getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs)}
+            {getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs, false)}
           </div>
         </div>
         <div className={classes.descripetItem}>
@@ -266,15 +275,6 @@ const RfqTransDetail: FC<IProps> = ({ amount, receiveAmount, latencyMinutes, isB
       </div>
     </div>
   );
-};
-
-export const getTokenDisplaySymbol = (
-  selectedToken: Token | undefined,
-  fromChain: Chain | undefined,
-  toChain: Chain | undefined,
-  peggedPairConfigs: Array<PeggedPairConfig>,
-) => {
-  return getTokenSymbolWithPeggedMode(fromChain?.id, toChain?.id, selectedToken?.symbol ?? "", peggedPairConfigs);
 };
 
 export default RfqTransDetail;

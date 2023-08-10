@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { Button, Modal } from "antd";
 
 interface ResultModalProps {

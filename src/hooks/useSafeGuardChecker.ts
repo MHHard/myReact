@@ -1,12 +1,12 @@
 import { BigNumber } from "ethers";
 import { useMemo, useState } from "react";
-import { CoMinterCap, DestinationChainTransferInfo, SourceChainTransferInfo, TransferPair } from "../constants/type";
+import { CoMinterCap, DestinationChainTransferInfo, SourceChainTransferInfo, TokenInfo, TransferPair } from "../constants/type";
 import { validateTransferPair } from "../helpers/transferPairValidation";
 import { useBridgeChainTokensContext } from "../providers/BridgeChainTokensProvider";
 import { useCoMinterCaps } from "./useCoMinterCaps";
 import { useDestinationChainTransferInfo } from "./useDestinationChainTransferInfo";
 import { useIsWrapTokenTransferAtLimit, WrapTokenCaps } from "./useIsWrapTokenTransferAtLimit";
-import { useBurnTotalSupply, useInBoundTokenLimit } from "./useMaxPeggedTokenAmount";
+import { useBurnTotalSupply, useInBoundTokenLimit } from "./useBurnTotalSupply";
 import { useSourceChainTransferInfo } from "./useSourceChainTransferInfo";
 
 export interface SafeGuardParmeters {
@@ -28,7 +28,10 @@ export interface SafeGuardResult {
   isSafeGuardTaskInProgress: boolean;
 }
 
-export function useSafeGuardCheck(transferPair: TransferPair): SafeGuardResult {
+export function useSafeGuardCheck(  
+  transferPair: TransferPair, 
+  destinationChainTokenInfo: TokenInfo | undefined
+  ): SafeGuardResult {
   const { sourceChainTransferInfoCallback } = useSourceChainTransferInfo(transferPair);
   const { destinationChainTransferInfoCallback } = useDestinationChainTransferInfo(transferPair);
   const { coMinterCapCallback } = useCoMinterCaps(transferPair);
@@ -45,11 +48,15 @@ export function useSafeGuardCheck(transferPair: TransferPair): SafeGuardResult {
 
   useMemo(() => {
     // reset safeguard before the new quering
-    setSafeGuardResult({
-      safeGuardParameters: undefined,
-      safeguardException: undefined,
-      isSafeGuardTaskInProgress: true,
-    });
+    setSafeGuardResult({safeGuardParameters: undefined, safeguardException: undefined, isSafeGuardTaskInProgress: false});
+
+    /// Skip Circle USDC bridge
+    if (destinationChainTokenInfo && 
+        transferPair.destinationToken && 
+        destinationChainTokenInfo.token.address !== transferPair.destinationToken.token.address) {
+      return
+    }
+
 
     if (!validateTransferPair(transferPair)) {
       return;
@@ -65,6 +72,9 @@ export function useSafeGuardCheck(transferPair: TransferPair): SafeGuardResult {
     ) {
       return;
     }
+
+    // reset safeguard before the new quering
+    setSafeGuardResult({safeGuardParameters: undefined, safeguardException: undefined, isSafeGuardTaskInProgress: true});
 
     const getTransferInfoConfigs = async () => {
       let sourceChainMinAmount = BigNumber.from(0);
@@ -135,7 +145,7 @@ export function useSafeGuardCheck(transferPair: TransferPair): SafeGuardResult {
           const burnSwapTotalSupplyInfo = value[3];
           const inboundTokenLimitInfo = value[4];
           const wrapTokenCapInfo = value[5];
-
+          
           sourceChainMinAmount = sourceChainInfo.minAmount;
           sourceChainMaxAmount = sourceChainInfo.maxAmount;
           destinationEpochVolumeCaps = destinationChainInfo.epochVolumeCaps;
@@ -159,7 +169,6 @@ export function useSafeGuardCheck(transferPair: TransferPair): SafeGuardResult {
             // setExceedsSafeguard(false);
             maxSend = undefined;
           }
-
           const parameters: SafeGuardParmeters = {
             destinationChainDelayThresholds: destinationChainInfo.delayThresholds,
             destinationChainDelayTimeInMinutes: destinationChainInfo.delayPeriod.toString(),
@@ -200,6 +209,7 @@ export function useSafeGuardCheck(transferPair: TransferPair): SafeGuardResult {
     onWrapTokenLiquidityCallback,
     transferPair,
     getTransferSnapshot,
+    destinationChainTokenInfo
   ]);
 
   return safeGuardResult;

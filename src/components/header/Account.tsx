@@ -1,15 +1,14 @@
 import { Button, Dropdown, Menu, Typography } from "antd";
 import { useCallback } from "react";
 import { createUseStyles } from "react-jss";
-import Icon from "@ant-design/icons";
+// import Icon from "@ant-design/icons";
 import { useWeb3Context } from "../../providers/Web3ContextProvider";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { ModalName, openModal } from "../../redux/modalSlice";
 import { Theme } from "../../theme/theme";
 import { useWalletConnectionContext } from "../../providers/WalletConnectionContextProvider";
-import { useNonEVMContext, isNonEVMChain, getNonEVMMode, NonEVMMode } from "../../providers/NonEVMContextProvider";
 import WalletIcon from "./WalletIcon";
-import { ReactComponent as logoOutIcon } from "../../images/logoOutIcon.svg";
+// import { ReactComponent as logoOutIcon } from "../../images/logoOutIcon.svg";
 
 const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: Theme) => ({
   addressBtn: {
@@ -126,49 +125,16 @@ export default function Account(): JSX.Element {
   const { fromChain } = useAppSelector(state => state.transferInfo);
   const classes = useStyles({ isMobile });
   const { logoutOfWeb3Modal } = useWeb3Context();
-  const { logoutNonEVMModal } = useNonEVMContext();
   const { connected, walletAddress, walletConnectionButtonTitle } = useWalletConnectionContext();
   const dispatch = useAppDispatch();
 
   const showWalletConnectionProviderModal = useCallback(() => {
-    const nonEVMMode = getNonEVMMode(fromChain?.id ?? 0);
-    switch (nonEVMMode) {
-      case NonEVMMode.flowMainnet:
-      case NonEVMMode.flowTest: {
-        dispatch(openModal(ModalName.flowProvider));
-        break;
-      }
-      case NonEVMMode.aptosMainnet:
-      case NonEVMMode.aptosTest:
-      case NonEVMMode.aptosDevnet: {
-        dispatch(openModal(ModalName.aptosProvider));
-        break;
-      }
-      case NonEVMMode.seiMainnet:
-      case NonEVMMode.seiDevnet:
-      case NonEVMMode.seiTestnet: {
-        dispatch(openModal(ModalName.seiProvider));
-        break;
-      }
-      case NonEVMMode.injectiveTestnet:
-      case NonEVMMode.injectiveMainnet: {
-        dispatch(openModal(ModalName.injProvider));
-        break;
-      }
-      default: {
-        dispatch(openModal(ModalName.provider));
-        break;
-      }
-    }
+    dispatch(openModal(ModalName.provider));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, fromChain]);
 
   const walletConnectionLogout = () => {
-    if (isNonEVMChain(fromChain?.id ?? 0)) {
-      logoutNonEVMModal();
-    } else {
-      logoutOfWeb3Modal();
-    }
+    logoutOfWeb3Modal();
   };
 
   if (connected) {
@@ -176,7 +142,7 @@ export default function Account(): JSX.Element {
       <Menu className={classes.dropDownMenu}>
         <Menu.Item className={classes.logoutBtn} key="logout" onClick={walletConnectionLogout}>
           Disconnect
-          <Icon component={logoOutIcon} style={{ fontSize: 14 }} />
+          {/* <Icon component={logoOutIcon} style={{ fontSize: 14 }} /> */}
         </Menu.Item>
       </Menu>
     );

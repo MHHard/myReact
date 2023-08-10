@@ -1,110 +1,109 @@
 /* eslint-disable */
 import { PeggedPair } from "../hooks/usePeggedPairConfig";
-import {
-  FlowDepositResponse,
-  FlowBurnResponse,
-  Chain,
-  MultiBurnPairConfig,
-  TokenInfo,
-  GetTransferConfigsResponse,
-  FlowTokenPathConfig,
-} from "./type";
+import { FlowDepositResponse, FlowBurnResponse, Chain, TokenInfo, FlowTokenPathConfig } from "./type";
 import { BigNumber, ethers, ContractTransaction } from "ethers";
 import { TransactionResponse } from "@ethersproject/providers";
 import { Transactor } from "../helpers/transactorWithNotifier";
 import { PegTokenSupply } from "../hooks/usePegV2Transition";
 import { BridgeContracts } from "../hooks/contractLoader";
 import { Quote } from "../proto/sdk/service/rfqmm/api_pb";
-import { AptosTransactionResponse } from "../redux/NonEVMAPIs/aptosAPIs";
-import { Types } from "aptos";
-import { DeliverTxResponse } from "@cosmjs/stargate";
-import { ExecuteResult } from "@cosmjs/cosmwasm-stargate";
-import { TxResponse } from "@injectivelabs/sdk-ts";
-export interface ITransferAdapter {
-  getInteractContract(): Array<string>;
-  getTransferId(): string;
-  transfer: () =>
+import { CircleBridgeProxy } from "../typechain/typechain";
+
+export abstract class ITransferAdapter<T> {
+  transferData: T;
+
+  nonce = new Date().getTime();
+
+  transferId = "";
+
+  srcBlockTxLink = "";
+
+  senderAddress = "";
+
+  receiverAddress = "";
+
+  constructor(transferData: T) {
+    this.transferData = transferData;
+  }
+
+  abstract getInteractContract(): Array<string>;
+  abstract getTransferId(): string;
+  abstract transfer: () =>
     | Promise<
-        | FlowBurnResponse
-        | FlowDepositResponse
-        | ContractTransaction
-        | TransactionResponse
-        | AptosTransactionResponse
-        | DeliverTxResponse
-        | ExecuteResult
-        | Uint8Array
-        | TxResponse
-        | undefined
+        FlowBurnResponse | FlowDepositResponse | ContractTransaction | TransactionResponse | Uint8Array | undefined
       >
     | undefined;
-  isResponseValid: (response: any) => boolean;
-  onSuccess: (response: any) => void;
-  estimateGas: () => Promise<BigNumber | undefined>;
+  abstract isResponseValid: (response: any) => boolean;
+  abstract onSuccess: (response: any) => void;
+  abstract estimateGas: () => Promise<BigNumber | undefined>;
+}
+
+export interface MaxITransfer {
+  fromChain: Chain;
+  toChain: Chain;
+  isNativeToken: boolean;
+  address: string;
+  value: BigNumber;
+  selectedToken: TokenInfo;
+  contracts: BridgeContracts;
+  transactor: Transactor<ethers.ContractTransaction> | undefined;
+  chainId: number;
+  amount: string;
+  pegConfig: PeggedPair;
+  pegSupply: PegTokenSupply | undefined;
+  selectedToChain: Chain | undefined;
+  maxSlippage: number;
+  dstAddress: string;
+  nonEVMReceiverAddress: string;
+  flowTokenPathConfigs: FlowTokenPathConfig[];
+  toAccount: string;
+  receiverEVMCompatibleAddress: string;
+  quote?: Quote.AsObject;
+  msgFee?: string;
+  type?: "RfqITransfer" | "CircleUSDCITransfer";
+  circleBridgeProxy: CircleBridgeProxy | undefined;
+  seiProvider?: any;
+  suiProvider?: any;
+  auraProvider?: any;
+  getNetworkById: any;
 }
 
 export interface BaseITransfer {
-  isTestNet: boolean;
-  isNativeToken: boolean;
-  chainId: number;
-  address: string;
   fromChain: Chain;
   toChain: Chain;
-  amount: string;
+  isNativeToken: boolean;
+  address: string;
+  dstAddress: string;
   value: BigNumber;
-  transactor: Transactor<ethers.ContractTransaction> | undefined;
+  selectedToken: TokenInfo;
   contracts: BridgeContracts;
+  transactor: Transactor<ethers.ContractTransaction> | undefined;
+  getNetworkById: any;
 }
 
 export interface ITransfer extends BaseITransfer {
-  multiBurnConfig: MultiBurnPairConfig | undefined;
   pegConfig: PeggedPair;
   pegSupply: PegTokenSupply | undefined;
-  selectedToken: TokenInfo;
   selectedToChain: Chain | undefined;
   maxSlippage: number;
-  receiverEVMCompatibleAddress: string;
   toAccount: string;
-  dstAddress: string;
-  transferConfig: GetTransferConfigsResponse;
-  flowTokenPathConfigs: FlowTokenPathConfig[];
+}
+
+export interface FlowITransfer extends BaseITransfer {
+  amount: string;
   nonEVMAddress: string;
   nonEVMReceiverAddress: string;
-  signAndSubmitTransaction?: (
-    transaction: Types.TransactionPayload,
-    options?: any,
-  ) => Promise<{ hash: Types.HexEncodedBytes }>;
-  seiProvider?: any;
-  fee?: number;
+  flowTokenPathConfigs: FlowTokenPathConfig[];
+  flowDepositContractAddress: string;
+  flowBurnContractAddress: string;
 }
 
-export interface IRfqTransfer extends BaseITransfer {
+export interface RfqITransfer extends BaseITransfer {
   quote: Quote.AsObject;
   msgFee: string;
-  type: "IRfqTransfer";
+  type: "RfqITransfer";
 }
 
-// export interface ITransfer {
-//   isTestNet: boolean;
-//   isNativeToken: boolean;
-//   chainId: number;
-//   address: string;
-//   fromChain: Chain;
-//   toChain: Chain;
-//   multiBurnConfig: MultiBurnPairConfig | undefined;
-//   pegConfig: PeggedPair;
-//   pegSupply: PegTokenSupply | undefined;
-//   amount: string;
-//   selectedToken: TokenInfo;
-//   selectedToChain: Chain | undefined;
-//   value: BigNumber;
-//   maxSlippage: number;
-//   receiverEVMCompatibleAddress: string;
-//   toAccount: string;
-//   dstAddress: string;
-//   transferConfig: GetTransferConfigsResponse;
-//   flowTokenPathConfigs: FlowTokenPathConfig[];
-//   nonEVMAddress: string;
-//   nonEVMReceiverAddress: string;
-//   transactor: Transactor<ethers.ContractTransaction> | undefined;
-//   contracts: BridgeContracts;
-// }
+export interface CircleUSDCITransfer extends BaseITransfer {
+  circleBridgeProxy: CircleBridgeProxy | undefined;
+}

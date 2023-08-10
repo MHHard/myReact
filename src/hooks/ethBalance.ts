@@ -1,11 +1,11 @@
-import { JsonRpcProvider } from "@ethersproject/providers";
+import { StaticJsonRpcProvider } from "@ethersproject/providers";
 import { BigNumber } from "ethers";
 import { useEffect, useState } from "react";
 import { useToggle } from "react-use";
 import { UseBalanceReturn } from "./tokenBalance";
 
 export default function useEthBalance(
-  provider: JsonRpcProvider | undefined,
+  provider: StaticJsonRpcProvider | undefined,
   userAddr: string,
   isGasToken: boolean,
   timeout = 3000,

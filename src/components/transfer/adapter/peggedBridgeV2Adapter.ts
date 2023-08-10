@@ -1,128 +1,127 @@
-
-import { BigNumber, ethers } from "ethers";
-import { Chain } from "../../../constants/type";
-import { pegV2ThirdPartDeployTokens } from "../../../constants/const";
+import { ethers } from "ethers";
+import { pegV2ThirdPartDeployTokens, pegNativeDeployTokens } from "../../../constants/const";
 import { PeggedTokenBridgeV2 } from "../../../typechain/typechain";
-import { Transactor } from "../../../helpers/transactorWithNotifier";
-import { getNetworkById } from "../../../constants/network";
 import { ITransfer, ITransferAdapter } from "../../../constants/transferAdatper";
 import { sgnOpsDataCheck } from "../../../sgn-ops-data-check/sgn-ops-data-check";
+import { PeggedNativeTokenBridge } from "../../../typechain/typechain/PeggedNativeTokenBridge";
 
-export default class PeggedBridgeV2Adapter implements ITransferAdapter{
-    value: BigNumber;
+export interface PeggedBridgeV2Transfer extends ITransfer {
+  peggedV2BurnTokenAddress: string;
+}
+export default class PeggedBridgeV2Adapter extends ITransferAdapter<PeggedBridgeV2Transfer> {
+  peggedTokenBridgeV2: PeggedTokenBridgeV2 | undefined = this.transferData.contracts.peggedTokenBridgeV2;
 
-    address: string;
+  peggedNativeTokenBridge: PeggedNativeTokenBridge | undefined = this.transferData.contracts.peggedNativeTokenBridge;
 
-    burnTokenAddress: string;
+  getTransferId(): string {
+    return ethers.utils.solidityKeccak256(
+      ["address", "address", "uint256", "uint64", "address", "uint64", "uint64", "address"],
+      [
+        this.transferData.address,
+        this.transferData.peggedV2BurnTokenAddress,
+        this.transferData.value.toString(),
+        this.transferData.toChain?.id.toString(),
+        this.transferData.toAccount,
+        this.nonce.toString(),
+        this.transferData.fromChain?.id.toString(),
+        this.peggedTokenBridgeV2?.address,
+      ],
+    );
+  }
 
-    fromChain: Chain;
+  getInteractContract(): string[] {
+    return [sgnOpsDataCheck[this.transferData.fromChain.id]?.ptbridge2, this.peggedTokenBridgeV2?.address];
+  }
 
-    toChain: Chain;
+  transfer = () => {
+    if (!this.transferData.transactor || !this.peggedTokenBridgeV2) return;
+    const gasLimit = sessionStorage.getItem("bot") ? { gasLimit: 50000000 } : {};
 
-    receiverEVMCompatibleAddress: string;
-
-    toAccount: string;
-
-    nonce = new Date().getTime();
-
-    contract: PeggedTokenBridgeV2 | undefined;
-
-    transactor: Transactor<ethers.ContractTransaction> | undefined;
-
-    transferId = '';
-
-    srcBlockTxLink = '';
- 
-    srcAddress = '';
-
-    dstAddress: string;
-
-    constructor(params: ITransfer, burnTokenAddress) {
-        this.burnTokenAddress = burnTokenAddress;
-        this.value = params.value;
-        this.address = params.address;
-        this.toChain = params.toChain;
-        this.fromChain = params.fromChain;
-        this.receiverEVMCompatibleAddress = params.receiverEVMCompatibleAddress;
-        this.toAccount = params.toAccount;
-        this.dstAddress = params.dstAddress;
-        this.contract = params.contracts.peggedTokenBridgeV2;
-        this.transactor = params.transactor;
-    }
-
-    getTransferId(): string {
-        return ethers.utils.solidityKeccak256(
-            ["address", "address", "uint256", "uint64", "address", "uint64", "uint64", "address"],
-            [
-              this.address,
-              this.burnTokenAddress,
-              this.value.toString(),
-              this.toChain?.id.toString(),
-              this.toAccount,
-              this.nonce.toString(),
-              this.fromChain?.id.toString(),
-              this.contract?.address,
-            ],
+    if (
+      pegNativeDeployTokens[this.transferData.fromChain?.id]
+        ?.map(item => item.toLocaleLowerCase())
+        ?.includes(this.transferData.peggedV2BurnTokenAddress.toLocaleLowerCase())
+    ) {
+      if (this.peggedNativeTokenBridge) {
+        // eslint-disable-next-line consistent-return
+        return this.transferData.transactor(
+          this.peggedNativeTokenBridge.burnNative(
+            this.transferData.toChain?.id ?? 0,
+            this.transferData.toAccount,
+            this.nonce,
+            { value: this.transferData.value, ...gasLimit },
+          ),
         );
       }
-  
-    getInteractContract(): string[] {
-        return [sgnOpsDataCheck[this.fromChain.id]?.ptbridge2, this.contract?.address];
     }
-
-    transfer() {
-        if(!this.transactor || !this.contract) return;
-        if (pegV2ThirdPartDeployTokens[this.fromChain?.id]?.includes(this.burnTokenAddress)) {
-            // eslint-disable-next-line consistent-return
-            return this.transactor(this.contract?.burnFrom(
-                this.burnTokenAddress,
-                this.value,
-                this.toChain?.id ?? 0,
-                this.toAccount,
-                this.nonce,
-            ))
-        } 
-        // eslint-disable-next-line consistent-return
-        return this.transactor(this.contract?.burn(
-            this.burnTokenAddress,
-            this.value,
-            this.toChain?.id ?? 0,
-            this.toAccount,
-            this.nonce,
-        ))   
+    if (
+      pegV2ThirdPartDeployTokens[this.transferData.fromChain?.id]
+        ?.map(item => item.toLocaleLowerCase())
+        ?.includes(this.transferData.peggedV2BurnTokenAddress.toLocaleLowerCase())
+    ) {
+      // eslint-disable-next-line consistent-return
+      return this.transferData.transactor(
+        this.peggedTokenBridgeV2?.burnFrom(
+          this.transferData.peggedV2BurnTokenAddress,
+          this.transferData.value,
+          this.transferData.toChain?.id ?? 0,
+          this.transferData.toAccount,
+          this.nonce,
+          gasLimit,
+        ),
+      );
     }
+    // eslint-disable-next-line consistent-return
+    return this.transferData.transactor(
+      this.peggedTokenBridgeV2?.burn(
+        this.transferData.peggedV2BurnTokenAddress,
+        this.transferData.value,
+        this.transferData.toChain?.id ?? 0,
+        this.transferData.toAccount,
+        this.nonce,
+        gasLimit,
+      ),
+    );
+  };
 
-    isResponseValid = (response) => {
-        const newtxStr = JSON.stringify(response);
-        const newtx = JSON.parse(newtxStr);
-        return !newtx.code;
-      }
-  
-    onSuccess(response) {
-        this.transferId = this.getTransferId();
-        this.srcBlockTxLink = `${getNetworkById(this.fromChain.id).blockExplorerUrl}/tx/${response.hash}`;
-        this.srcAddress = this.address;
+  isResponseValid = response => {
+    const newtxStr = JSON.stringify(response);
+    const newtx = JSON.parse(newtxStr);
+    return !newtx.code;
+  };
+
+  onSuccess = response => {
+    this.transferId = this.getTransferId();
+    this.srcBlockTxLink = `${this.transferData.getNetworkById(this.transferData.fromChain.id).blockExplorerUrl}/tx/${
+      response.hash
+    }`;
+    this.senderAddress = this.transferData.address;
+    this.receiverAddress = this.transferData.dstAddress;
+  };
+
+  estimateGas = async () => {
+    if (!this.transferData.transactor || !this.peggedTokenBridgeV2) return;
+    if (
+      pegV2ThirdPartDeployTokens[this.transferData.fromChain?.id]
+        ?.map(item => item.toLocaleLowerCase())
+        ?.includes(this.transferData.peggedV2BurnTokenAddress.toLocaleLowerCase())
+    ) {
+      // eslint-disable-next-line consistent-return
+      return this.peggedTokenBridgeV2?.estimateGas.burnFrom(
+        this.transferData.peggedV2BurnTokenAddress,
+        this.transferData.value,
+        this.transferData.toChain?.id ?? 0,
+        this.transferData.toAccount,
+        this.nonce,
+      );
     }
-
-    estimateGas = async () => {
-        if(!this.transactor || !this.contract) return;
-        if (pegV2ThirdPartDeployTokens[this.fromChain?.id]?.includes(this.burnTokenAddress)) {
-            // eslint-disable-next-line consistent-return
-            return this.contract?.estimateGas.burnFrom(
-                this.burnTokenAddress,
-                this.value,
-                this.toChain?.id ?? 0,
-                this.toAccount,
-                this.nonce,
-            )
-        } 
-        // eslint-disable-next-line consistent-return
-        return this.contract?.estimateGas.burn(
-            this.burnTokenAddress,
-            this.value,
-            this.toChain?.id ?? 0,
-            this.toAccount,
-            this.nonce,
-        ) 
-      }
+    // eslint-disable-next-line consistent-return
+    return this.peggedTokenBridgeV2?.estimateGas.burn(
+      this.transferData.peggedV2BurnTokenAddress,
+      this.transferData.value,
+      this.transferData.toChain?.id ?? 0,
+      this.transferData.toAccount,
+      this.nonce,
+    );
+  };
 }

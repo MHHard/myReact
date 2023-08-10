@@ -165,6 +165,10 @@ const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: 
     maxHeight: 485,
     overflowY: "auto",
     padding: "0 16px",
+
+    "& .ant-list-empty-text": {
+      color: theme.secondBrand,
+    },
   },
 }));
 
@@ -178,7 +182,15 @@ interface IProps {
   onCancel: () => void;
 }
 
-const NFTChainSelector: FC<IProps> = ({ nftChainType, nftChains, visible, sourceChain, nftList, onSelectChain, onCancel }) => {
+const NFTChainSelector: FC<IProps> = ({
+  nftChainType,
+  nftChains,
+  visible,
+  sourceChain,
+  nftList,
+  onSelectChain,
+  onCancel,
+}) => {
   const { isMobile } = useAppSelector(state => state.windowWidth);
   const classes = useStyles({ isMobile });
   const { chainId } = useWeb3Context();
@@ -240,33 +252,37 @@ const NFTChainSelector: FC<IProps> = ({ nftChainType, nftChains, visible, source
     });
 
     if (nftChainType === "destinationChain" && sourceChain !== undefined) {
-      const targetDestinationChainIds = new Set<number>()
-      targetDestinationChainIds.add(sourceChain.chainid)
+      const targetDestinationChainIds = new Set<number>();
+      targetDestinationChainIds.add(sourceChain.chainid);
 
-      nftList.forEach(nftConfig => {
-        let ids: number[] = []
+      nftList?.forEach(nftConfig => {
+        let ids: number[] = [];
 
         if (nftConfig.orig) {
-          ids.push(nftConfig.orig.chainid)
-        } 
+          ids.push(nftConfig.orig.chainid);
+        }
 
-        ids = ids.concat(nftConfig.pegs.map(item => {
-          return item.chainid
-        }))
+        ids = ids.concat(
+          nftConfig.pegs.map(item => {
+            return item.chainid;
+          }),
+        );
 
         if (ids.includes(sourceChain.chainid)) {
-          ids.forEach(id => {
-            targetDestinationChainIds.add(id)
-          })
+          ids?.forEach(id => {
+            targetDestinationChainIds.add(id);
+          });
         }
-      })
+      });
 
-      targetDestinationChainIds.delete(sourceChain.chainid)
-      
-      setFilterList(list.filter(item => {
-        return targetDestinationChainIds.has(item.chainid)
-      }));
-      return 
+      targetDestinationChainIds.delete(sourceChain.chainid);
+
+      setFilterList(
+        list.filter(item => {
+          return targetDestinationChainIds.has(item.chainid);
+        }),
+      );
+      return;
     }
     setFilterList(list);
   }, [nftChains, searchText, nftChainType, nftList, sourceChain]);

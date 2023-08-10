@@ -32,7 +32,7 @@ import {
   PriceOfTokens,
   PendingHistoryResponse,
   PingLPResponse,
-  LPType
+  LPType,
 } from "../constants/type";
 // import {
 //   Web,
@@ -66,6 +66,9 @@ import {
   GetRiskSeverityLevelRequest,
   RfqMarkRequest,
   RfqMarkResponse,
+  CircleUsdcConfigResponse,
+  CircleUsdcConfigRequest,
+  GetRiskSeverityLevelResponse,
 } from "../proto/gateway/gateway_pb";
 import { QueryChainSignersRequest, QueryChainSignersResponse } from "../proto/sgn/cbridge/v1/query_pb";
 import { gatewayServiceClient, gatewayServiceWithGrpcUrlClient, queryServiceClient } from "./grpcClients";
@@ -92,15 +95,18 @@ export const getRfqConfig = (reqParams: GetRfqConfigsRequest): Promise<GetRfqCon
 export const pingUserAddress = (address: string): Promise<PingResponse> =>
   axios.get(`${process.env.REACT_APP_SERVER_URL}/v1/ping`, { params: { addr: address } }).then(res => {
     return res.data;
-});
+  });
 
-export const getPriceOfTokens = (): Promise<PriceOfTokens> => 
-  axios.get(`https://cbridge-stat.s3.us-west-2.amazonaws.com/prod2/cbridge-price.json`).then(res => {
-    return res.data;
-}).catch(error => {
-  console.error(error);
-  return undefined;
-});
+export const getPriceOfTokens = (): Promise<PriceOfTokens> =>
+  axios
+    .get(`https://cbridge-stat.s3.us-west-2.amazonaws.com/prod2/cbridge-price.json`)
+    .then(res => {
+      return res.data;
+    })
+    .catch(error => {
+      console.error(error);
+      return undefined;
+    });
 
 // export const estimateAmt = (reqParams: EstimateAmtRequest): Promise<EstimateAmtResponse> => {
 //   return Web.EstimateAmt(reqParams, preFix);
@@ -151,7 +157,6 @@ export const getLPInfoList = (reqParams: GetLPInfoListRequest): Promise<GetLPInf
     .catch(e => {
       console.log("error=>", e);
     });
-
 
 // export const withdrawLiquidity = (params: WithdrawLiquidityRequest): Promise<WithdrawLiquidityResponse> =>
 //   axios
@@ -410,14 +415,17 @@ export const getDestinationTransferId = (sourceChainTransferId: string): Promise
     return response.getDstTransferId();
   });
 };
-export const getUserIsBlocked = (usrAddr: string, chainId: number, disableTrm = false): Promise<boolean> => {
+export const getUserIsBlocked = (
+  usrAddr: string,
+  chainId: number,
+  disableTrm = false,
+): Promise<GetRiskSeverityLevelResponse> => {
   const request = new GetRiskSeverityLevelRequest();
   request.setChainId(chainId);
   request.setUsrAddr(usrAddr);
   request.setDisableTrm(disableTrm);
   return gatewayServiceWithGrpcUrlClient.getRiskSeverityLevel(request, null).then(response => {
-    console.debug("response", response);
-    return response.getIsBlocked();
+    return response;
   });
 };
 
@@ -463,15 +471,24 @@ export const getPendingHistory = (addresses: string[]): Promise<PendingHistoryRe
 
 export const pingLiquidityProviderIP = (
   liquidityOperationType: LPType,
-  walletAddress: string
+  walletAddress: string,
 ): Promise<PingLPResponse> => {
+  return axios
+    .get(`${process.env.REACT_APP_SERVER_URL}/v1/pingLp`, {
+      params: {
+        lp_type: liquidityOperationType,
+        addr: walletAddress,
+      },
+    })
+    .then(res => {
+      return res.data;
+    });
+};
 
-  return axios.get(`${process.env.REACT_APP_SERVER_URL}/v1/pingLp`, { 
-    params: {  
-      lp_type: liquidityOperationType,
-      addr: walletAddress 
-    }
-  }).then(res => {
-    return res.data;
-  });
-}
+export const getCircleUSDCConfigs = (): Promise<CircleUsdcConfigResponse | undefined> => {
+  return gatewayServiceClient
+    .circleUsdcConfig(new CircleUsdcConfigRequest(), { "Cache-Control": "no-cache" })
+    .catch(_ => {
+      return undefined;
+    });
+};

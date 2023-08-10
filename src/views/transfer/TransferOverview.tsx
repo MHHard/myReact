@@ -4,16 +4,17 @@ import { BigNumber } from "@ethersproject/bignumber";
 import { Tooltip } from "antd";
 import { formatUnits } from "ethers/lib/utils";
 import { createUseStyles } from "react-jss";
+import { clone } from "lodash";
 import { formatDecimalPart } from "celer-web-utils/lib/format";
 import { Chain, Token, TokenInfo, GetTransferConfigsResponse, PeggedPairConfig } from "../../constants/type";
 import { useAppSelector } from "../../redux/store";
 import { Theme } from "../../theme";
-import { getTokenSymbolWithPeggedMode, getTokenListSymbol } from "../../redux/assetSlice";
+import { getTokenSymbolWithPeggedMode, getTokenListSymbol } from "../../redux/transferSlice";
 import { PeggedChainMode, usePeggedPairConfig } from "../../hooks/usePeggedPairConfig";
 import { EstimateAmtResponse } from "../../proto/gateway/gateway_pb";
 import { useMultiBurnConfig } from "../../hooks/useMultiBurnConfig";
 import bridgeRateDangerPng from "../../images/bridgeRateDanger.png";
-import { isAptosChain } from "../../providers/NonEVMContextProvider";
+import { isETH } from "../../helpers/tokenInfo";
 
 const useStyles = createUseStyles<string, { isMobile: boolean }, Theme>((theme: Theme) => ({
   box: {
@@ -106,6 +107,7 @@ type IProps = {
   delayMinutes: string;
   estimateAmtInfoInState: EstimateAmtResponse.AsObject | null;
   latencyMinutes: string | null;
+  useCircleUSDC: boolean;
 };
 
 function TransferOverview({
@@ -122,6 +124,7 @@ function TransferOverview({
   delayMinutes,
   estimateAmtInfoInState,
   latencyMinutes,
+  useCircleUSDC,
 }: IProps) {
   const { isMobile } = useAppSelector(state => state.windowWidth);
   const pegConfig = usePeggedPairConfig();
@@ -133,11 +136,15 @@ function TransferOverview({
 
   const baseTgas = formatUnits(
     baseFee || "0",
-    getTokenByChainAndTokenSymbol(toChain?.id, selectedToken?.token?.symbol)?.token.decimal,
+    useCircleUSDC
+      ? selectedToken?.token.decimal
+      : getTokenByChainAndTokenSymbol(toChain?.id, selectedToken?.token?.symbol)?.token.decimal,
   );
   const percTgas = formatUnits(
     percFee || "0",
-    getTokenByChainAndTokenSymbol(toChain?.id, selectedToken?.token?.symbol)?.token.decimal,
+    useCircleUSDC
+      ? selectedToken?.token.decimal
+      : getTokenByChainAndTokenSymbol(toChain?.id, selectedToken?.token?.symbol)?.token.decimal,
   );
 
   const getEstimatedTime = () => {
@@ -157,13 +164,8 @@ function TransferOverview({
       : "0";
   const arrivalGasTokenAmount = BigNumber.from(dropGasAmt);
 
-  let arrivalGasTokenDecimal =
+  const arrivalGasTokenDecimal =
     getTokenByChainAndTokenSymbol(toChainInConfig?.id ?? 0, toChainInConfig?.gas_token_symbol)?.token.decimal ?? 18;
-
-  if (isAptosChain(toChainInConfig?.id ?? 0)) {
-    arrivalGasTokenDecimal = 8
-  }
-  
   const arrivalGasTokenAmountValue = formatUnits(arrivalGasTokenAmount, arrivalGasTokenDecimal);
   const arrivalGasTokenAmountDisplay = formatDecimalPart(arrivalGasTokenAmountValue || "0", 6, "round", true);
   const arrivalGasTokenSymbol = toChainInConfig?.gas_token_symbol;
@@ -184,12 +186,18 @@ function TransferOverview({
             <div className={isBridgeRateTooLow ? styles.bridgeRate : undefined}>{bridgeRate}</div>
           ) : (
             <div className={isBridgeRateTooLow ? styles.bridgeRate : undefined}>
-              1{" "}
-              {selectedToken?.token?.display_symbol ?? getTokenListSymbol(selectedToken?.token?.symbol, fromChain?.id)}{" "}
+              1 {isETH(selectedToken?.token) ? "ETH" : getTokenListSymbol(selectedToken?.token?.symbol, fromChain?.id)}{" "}
               on <img className={styles.iconImg} src={fromChain?.icon} alt="" />{" "}
-              {pegConfig.mode === PeggedChainMode.Off && multiBurnConfig === undefined ? "≈" : "="} {bridgeRate}{" "}
-              {getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs)} on{" "}
-              <img className={styles.iconImg} src={toChain?.icon} alt="" />
+              {pegConfig.mode === PeggedChainMode.Off && multiBurnConfig === undefined && !useCircleUSDC ? "≈" : "="}{" "}
+              {bridgeRate}{" "}
+              {getTokenDisplaySymbol(
+                selectedToken?.token,
+                fromChain,
+                toChain,
+                transferConfig.pegged_pair_configs,
+                useCircleUSDC,
+              )}{" "}
+              on <img className={styles.iconImg} src={toChain?.icon} alt="" />
             </div>
           )}
         </span>
@@ -206,6 +214,7 @@ function TransferOverview({
                   fromChain,
                   toChain,
                   transferConfig.pegged_pair_configs,
+                  useCircleUSDC,
                 )}\n`}
                 <span style={{ fontWeight: 700 }}>The Protocol Fee</span>
                 {`: ${formatDecimalPart(percTgas || "0", 8, "round", true)} ${getTokenDisplaySymbol(
@@ -213,6 +222,7 @@ function TransferOverview({
                   fromChain,
                   toChain,
                   transferConfig.pegged_pair_configs,
+                  useCircleUSDC,
                 )}\n\nBase Fee is used to cover the gas cost for sending your transfer on the destination chain.\n\n`}
                 {pegConfig.mode === PeggedChainMode.Off && multiBurnConfig === undefined
                   ? "Protocol Fee is charged proportionally to your transfer amount. Protocol Fee is paid to cBridge LPs and Celer SGN as economic incentives."
@@ -229,7 +239,13 @@ function TransferOverview({
         </div>
         <span className={styles.content}>
           {formatDecimalPart(totalFee || "0", 8, "round", true)}{" "}
-          {getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs)}
+          {getTokenDisplaySymbol(
+            selectedToken?.token,
+            fromChain,
+            toChain,
+            transferConfig.pegged_pair_configs,
+            useCircleUSDC,
+          )}
         </span>
       </div>
       {pegConfig.mode === PeggedChainMode.Off && multiBurnConfig === undefined ? (
@@ -241,7 +257,13 @@ function TransferOverview({
                 <div className={styles.tooltipContent} style={{ textAlign: "center" }}>
                   {`You will receive at least ${
                     minimumReceived +
-                    getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs)
+                    getTokenDisplaySymbol(
+                      selectedToken?.token,
+                      fromChain,
+                      toChain,
+                      transferConfig.pegged_pair_configs,
+                      useCircleUSDC,
+                    )
                   } on ${toChain?.name} or the transfer won't go through.`}
                 </div>
               }
@@ -255,7 +277,13 @@ function TransferOverview({
           </div>
           <span className={styles.content}>
             {minimumReceived +
-              getTokenDisplaySymbol(selectedToken?.token, fromChain, toChain, transferConfig.pegged_pair_configs)}
+              getTokenDisplaySymbol(
+                selectedToken?.token,
+                fromChain,
+                toChain,
+                transferConfig.pegged_pair_configs,
+                useCircleUSDC,
+              )}
           </span>
         </div>
       ) : null}
@@ -289,22 +317,12 @@ function TransferOverview({
 }
 
 export const needToChangeTokenDisplaySymbol = (selectedToken: Token | undefined, toChain: Chain | undefined) => {
-  const symbol = selectedToken?.symbol ?? "";
-  if (symbol !== "WETH") {
+  if (!selectedToken || !toChain) {
     return false;
   }
-  const dstChainIds = [
-    1, // Ethereum
-    42161, // Arbitrum
-    10, // Optimism
-    5, // Goerli
-    288, // BOBA,
-    42170, // Arbitrum Nova
-  ];
-  if (!dstChainIds.find(id => id === toChain?.id ?? "")) {
-    return false;
-  }
-  return true;
+  const destinationChainToken = clone(selectedToken);
+  destinationChainToken.chainId = toChain.id;
+  return isETH(destinationChainToken);
 };
 
 export const getTokenDisplaySymbol = (
@@ -312,7 +330,11 @@ export const getTokenDisplaySymbol = (
   fromChain: Chain | undefined,
   toChain: Chain | undefined,
   peggedPairConfigs: Array<PeggedPairConfig>,
+  useCircleUSDCBridge: boolean,
 ) => {
+  if (useCircleUSDCBridge) {
+    return "USDC";
+  }
   return getTokenSymbolWithPeggedMode(fromChain?.id, toChain?.id, selectedToken?.symbol ?? "", peggedPairConfigs);
 };
 

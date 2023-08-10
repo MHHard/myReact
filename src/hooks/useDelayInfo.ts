@@ -1,17 +1,18 @@
 import { BigNumber } from "ethers";
 import { useMemo } from "react";
-import { JsonRpcProvider } from "@ethersproject/providers";
 import { safeParseUnits } from "celer-web-utils/lib/format";
 import { formatDecimal } from "../helpers/format";
 import { ChainDelayInfo, LPCheckpair } from "../constants/type";
 import { validateTransferPair } from "./useAsyncChecker";
-import { getNetworkById } from "../constants/network";
 import { readOnlyContract } from "./customReadyOnlyContractLoader";
 import { Bridge, Bridge__factory } from "../typechain/typechain";
+import { useWeb3Context } from "../providers/Web3ContextProvider";
 
 export function useDelayInfo(checkPair: LPCheckpair): {
   chainDelayInfoCallback: null | (() => Promise<ChainDelayInfo>);
 } {
+  const { getNetworkById } = useWeb3Context();
+
   return useMemo(() => {
     if (!validateTransferPair(checkPair)) {
       return { chainDelayInfoCallback: null };
@@ -28,11 +29,14 @@ export function useDelayInfo(checkPair: LPCheckpair): {
     let delayThresholds = "";
     let isBigAmountDelayed = false;
 
-    const provider = new JsonRpcProvider(getNetworkById(chainInfo?.id).rpcUrl);
-
     return {
       chainDelayInfoCallback: async function chainDelayInfo(): Promise<ChainDelayInfo> {
-        const bridge = (await readOnlyContract(provider, chainContractAddress, Bridge__factory)) as Bridge | undefined;
+        const bridge = (await readOnlyContract(
+          chainInfo?.id,
+          chainContractAddress,
+          Bridge__factory,
+          getNetworkById,
+        )) as Bridge | undefined;
         if (bridge) {
           const periodPromise = bridge.delayPeriod();
           const thresholdsPromise = bridge.delayThresholds(chainToken?.token?.address || "");
@@ -50,5 +54,5 @@ export function useDelayInfo(checkPair: LPCheckpair): {
         return { delayPeriod, delayThresholds, isBigAmountDelayed };
       },
     };
-  }, [checkPair]);
+  }, [checkPair, getNetworkById]);
 }

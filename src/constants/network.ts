@@ -1,9 +1,5 @@
-// import { TypeOfTag } from "typescript";
-import { basTestNetworks } from "./chains_bas_testnet";
 import { mainnetNetworks } from "./chains_mainnet";
-import { stagingNetworks } from "./chains_staging_mainnet";
 import { testNetworks } from "./chains_testnet";
-import { aptosNetwork } from "./chains_aptos";
 import { LocalChainConfigType } from "./type";
 
 export interface NetworkInfo {
@@ -25,26 +21,29 @@ export const isTestNet = process.env.REACT_APP_ENV_TYPE === "test";
 // type NetType = typeof stagingNetworks;
 let newNetworks: LocalChainConfigType;
 switch (type) {
-  case "staging":
-    newNetworks = stagingNetworks;
-    break;
   case "mainnet":
     newNetworks = mainnetNetworks;
     break;
   case "test":
     newNetworks = testNetworks;
     break;
-  case "basTest":
-    newNetworks = basTestNetworks;
-    break;
-  case "aptos":
-    newNetworks = aptosNetwork;
-    break;
   default:
     newNetworks = mainnetNetworks;
     break;
 }
-export const NETWORKS: LocalChainConfigType = newNetworks;
+export const NETWORKS = newNetworks;
+
+const defaultChain = {
+  name: "",
+  chainId: 883,
+  rpcUrl: "http://localhost:8545",
+  iconUrl: "./noChain.png",
+  symbol: "",
+  blockExplorerUrl: "",
+  tokenSymbolList: [],
+  lqMintTokenSymbolBlackList: [],
+};
+
 export const CHAIN_LIST: NetworkInfo[] = Object.values(NETWORKS) as NetworkInfo[];
 export const getNetworkById: (chainId: number | string) => NetworkInfo = (chainId: number | string) => {
   for (let i = 0; i < CHAIN_LIST.length; i++) {
@@ -52,7 +51,7 @@ export const getNetworkById: (chainId: number | string) => NetworkInfo = (chainI
       return CHAIN_LIST[i];
     }
   }
-  return NETWORKS.mainnet;
+  return defaultChain;
 };
 
 export const USD_TOKENS = {
@@ -66,28 +65,8 @@ export const isGasToken = (chainId: number, tokenSymbol: string) => {
   const localChainWithGasToken = Object.values(NETWORKS).find(
     localChain => chainId === localChain.chainId && tokenSymbol === localChain.symbol,
   );
-  if (chainId === 999999998) {
-    return isSeiChainNativeToken(chainId, tokenSymbol);
-  }
-  /// Remote config uses TUS as WTUS.
-  /// Treat TUS not gas token for Swimmer for this special case
-  if (chainId === 73772 && tokenSymbol === "TUS") {
-    return false;
-  }
-
   if (localChainWithGasToken) {
     return true;
   }
-  return false;
-};
-
-export const isSeiChainNativeToken = (chainId: number, tokenSymbol: string) => {
-  if (chainId !== 999999998) {
-    return false;
-  }
-  if (tokenSymbol === "usei" || tokenSymbol === "uceler" || tokenSymbol === "WBTC") {
-    return true;
-  }
-
   return false;
 };

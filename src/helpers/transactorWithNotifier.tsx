@@ -4,7 +4,7 @@ import { ClockCircleOutlined, WarningOutlined } from "@ant-design/icons";
 
 import { BigNumber, BigNumberish, ethers } from "ethers";
 
-import { JsonRpcProvider, TransactionRequest, TransactionResponse } from "@ethersproject/providers";
+import { StaticJsonRpcProvider, TransactionRequest, TransactionResponse } from "@ethersproject/providers";
 import { parseUnits } from "@ethersproject/units";
 import { storageConstants } from "../constants/const";
 import { isSignerMisMatchErr } from "../utils/errorCheck";
@@ -21,7 +21,7 @@ export type Transactor<T extends ethers.Transaction> = (
  * @param etherscanUrl Optional Etherscan URL
  */
 export default function transactorWithNotifier<T extends ethers.Transaction>(
-  provider?: JsonRpcProvider | undefined,
+  provider?: StaticJsonRpcProvider | undefined,
   gasPrice?: BigNumberish | undefined,
   etherscanUrl?: string,
 ): Transactor<T> | undefined {
