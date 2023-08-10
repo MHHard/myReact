@@ -1,8 +1,9 @@
 {
-  "name": "cbridge-v2-web",
+  "name": "cbridge-widget",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/index.tsx",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "dotenv -v NODE_ENV=development webpack-dev-server",
